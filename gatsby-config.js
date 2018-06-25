@@ -28,6 +28,7 @@ const queries = [
 ];
 
 module.exports = {
+  pathPrefix: `/LG-Blog-Gatsby`,
   siteMetadata: {
     title: config.siteTitle,
     description: config.siteDescription,

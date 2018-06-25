@@ -51,7 +51,9 @@
     "typeface-open-sans": "^0.0.54",
     "yaml-loader": "^0.5.0"
   },
-  "keywords": ["gatsby"],
+  "keywords": [
+    "gatsby"
+  ],
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
@@ -60,7 +62,8 @@
     "lint-errors": "eslint src/**/*.{js,jsx} --quiet",
     "lint": "eslint src/**/*.{js,jsx}",
     "stylelint": "stylelint src/**/*.js",
-    "generate-app-icons": "sh ./scripts/generate-app-icons.sh"
+    "generate-app-icons": "sh ./scripts/generate-app-icons.sh",
+    "deploy": "gatsby build --prefix-paths && gh-pages -d public"
   },
   "devDependencies": {
     "@mapbox/stylelint-processor-arbitrary-tags": "^0.2.0",
@@ -78,6 +81,7 @@
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-prettier": "^2.6.0",
     "eslint-plugin-react": "^7.8.2",
+    "gh-pages": "^1.2.0",
     "json-loader": "^0.5.7",
     "postcss": "^6.0.22",
     "postcss-cli": "^5.0.0",
