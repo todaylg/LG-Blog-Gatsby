@@ -1,0 +1,2 @@
+webpackJsonp([60335399758886],{115:function(t,e){t.exports={data:{pages:{edges:[{node:{fields:{slug:"/test/",prefix:"1"},frontmatter:{title:"Test",menuTitle:"Test"}}}]},footnote:{id:"/Users/lugang/My Github/LG-Blog-Gatsby/content/parts/footnote.md absPath of file >>> MarkdownRemark",html:'<ul>\n<li>© todaylg 2018</li>\n<li>build base on <a href="https://www.gatsbyjs.org/">gatsby</a> and <a href="https://github.com/greglobinski/gatsby-starter-hero-blog">hero-starter</a></li>\n</ul>'}},layoutContext:{}}}});
+//# sourceMappingURL=path----375e85e38f47004b13cc.js.map
