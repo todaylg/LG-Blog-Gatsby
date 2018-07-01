@@ -5,8 +5,8 @@
       "component---src-pages-index-js-196402a0cfcc6b7ff0e5.js.map"
     ],
     "path---category-小结": [
-      "path---category-小结-ca2632ab7fec5cb91527.js",
-      "path---category-小结-ca2632ab7fec5cb91527.js.map"
+      "path---category-小结-90217cec56792761e4a5.js",
+      "path---category-小结-90217cec56792761e4a5.js.map"
     ],
     "path---": [
       "path----375e85e38f47004b13cc.js",
@@ -33,8 +33,8 @@
       "component---src-layouts-index-js-af2032a96fc50b5bfd12.js.map"
     ],
     "path---category": [
-      "path---category-f3f6c8f168dfbe3e8062.js",
-      "path---category-f3f6c8f168dfbe3e8062.js.map"
+      "path---category-5770cf8dbfae44426ee3.js",
+      "path---category-5770cf8dbfae44426ee3.js.map"
     ],
     "component---src-pages-category-js": [
       "component---src-pages-category-js-bbb34571e9395b2ce79b.js",
@@ -45,12 +45,12 @@
       "path---category-废话集-42bf313bfb620ad06bf9.js.map"
     ],
     "path---index": [
-      "path---index-9c940794f81d1a9e92fb.js",
-      "path---index-9c940794f81d1a9e92fb.js.map"
+      "path---index-8c55363865c5062ca826.js",
+      "path---index-8c55363865c5062ca826.js.map"
     ],
     "path---hello-world": [
-      "path---hello-world-37b846f43bf3b631324e.js",
-      "path---hello-world-37b846f43bf3b631324e.js.map"
+      "path---hello-world-968a871c0abecacd7691.js",
+      "path---hello-world-968a871c0abecacd7691.js.map"
     ],
     "component---src-pages-404-js": [
       "component---src-pages-404-js-67108d2c79133c4984cb.js",
@@ -70,6 +70,10 @@
       "path---contact-206ac74de0d3aab26f03.js",
       "path---contact-206ac74de0d3aab26f03.js.map"
     ],
+    "path---complete-design-1": [
+      "path---complete-design-1-5119136840324d8199f1.js",
+      "path---complete-design-1-5119136840324d8199f1.js.map"
+    ],
     "component---src-templates-post-template-js": [
       "component---src-templates-post-template-js-12de744ce8a8d00889aa.js",
       "component---src-templates-post-template-js-12de744ce8a8d00889aa.js.map"
@@ -79,22 +83,22 @@
       "path---offline-plugin-app-shell-fallback-a0e39f21c11f6a62c5ab.js.map"
     ],
     "app": [
-      "app-df4fe1beb612c25c9595.js",
+      "app-6660df3e50d220053e06.js",
       "build-js-styles.css",
-      "app-df4fe1beb612c25c9595.js.map",
+      "app-6660df3e50d220053e06.js.map",
       "build-js-styles.css.map"
     ],
     "component---src-templates-page-template-js": [
       "component---src-templates-page-template-js-277489605b32655c14af.js",
       "component---src-templates-page-template-js-277489605b32655c14af.js.map"
     ],
-    "path---webvr": [
-      "path---webvr-98ec0f6443e8d487c3bf.js",
-      "path---webvr-98ec0f6443e8d487c3bf.js.map"
-    ],
     "path---404": [
       "path---404-a0e39f21c11f6a62c5ab.js",
       "path---404-a0e39f21c11f6a62c5ab.js.map"
+    ],
+    "path---complete-design-2": [
+      "path---complete-design-2-15a9fabaf1284a66d383.js",
+      "path---complete-design-2-15a9fabaf1284a66d383.js.map"
     ]
   }
 }
