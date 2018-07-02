@@ -1,19 +1,20 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[LG-Blog]]></title><description><![CDATA[LG-Blog]]></description><link>www.todaylg.com</link><generator>RSS for Node</generator><lastBuildDate>Mon, 02 Jul 2018 16:55:56 GMT</lastBuildDate><item><title><![CDATA[Vue工程结构目录及注意事项]]></title><description><![CDATA[Vue Document 好的基础开发结构可以大大便于之后的维护于拓展。 因为之前使用Vue都是赶时间所以Store没有进行过模块化，组件拆得也不够细，通常components直接替代掉了containers…]]></description><link>www.todaylg.com/vue-document/</link><guid isPermaLink="false">www.todaylg.com/vue-document/</guid><content:encoded>&lt;h3&gt;Vue Document&lt;/h3&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[LG-Blog]]></title><description><![CDATA[LG-Blog]]></description><link>www.todaylg.com</link><generator>RSS for Node</generator><lastBuildDate>Mon, 02 Jul 2018 17:03:57 GMT</lastBuildDate><item><title><![CDATA[Vue工程结构目录及注意事项]]></title><description><![CDATA[Vue Document 好的基础开发结构可以大大便于之后的维护于拓展。 因为之前使用Vue都是赶时间所以Store没有进行过模块化，组件拆得也不够细，通常components直接替代掉了containers…]]></description><link>www.todaylg.com/vue-document/</link><guid isPermaLink="false">www.todaylg.com/vue-document/</guid><content:encoded>&lt;h3&gt;Vue Document&lt;/h3&gt;
 &lt;p&gt;好的基础开发结构可以大大便于之后的维护于拓展。&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot;&gt;
-      &lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;.
-├── assets                                 // 公共资源
-│   ├── api                              // 公共API
-│   ├── lib                              // 公共第三方库
-├── components                             // 公共组件
-├── pages                                          // 页面集
-│   ├── page                                  // 具体页面
-│   │   ├── common                                             // 页面公共资源
-│   │   ├── components                                     // 组件（不含业务代码）
-│   │   ├── containers                                     // 根据业务代码对组件进行整合形成的容器，包含自身的数据管理
-│   │   ├── store                                                  // 数据模块化分散至容器
-│   │   ├── router                                              // 路由分配
-├── app.vue/js/html                         // 入口&lt;/code&gt;&lt;/pre&gt;
+      &lt;pre class=&quot;language-html&quot;&gt;&lt;code class=&quot;language-html&quot;&gt;.
+├── assets							// 公共资源
+│   ├── api							// 公共API
+│   ├── lib							// 公共第三方库
+├── components						// 公共组件
+├── pages							// 页面集
+│   ├── page						// 具体页面
+│   │   ├── common					// 页面公共资源
+│   │   ├── components				// 组件（不含业务代码）
+│   │   ├── containers				// 根据业务代码对组件进行整合形成的容器,
+									// 包含自身的数据管理
+│   │   ├── store					// 数据模块化分散至容器
+│   │   ├── router					// 路由分配
+├── app.vue/js/html					// 入口&lt;/code&gt;&lt;/pre&gt;
       &lt;/div&gt;
 &lt;p&gt;因为之前使用Vue都是赶时间所以Store没有进行过模块化，组件拆得也不够细，通常components直接替代掉了containers这一层，有时间讲道理还是要解耦的。&lt;/p&gt;
 &lt;h3&gt;注意事项&lt;/h3&gt;
