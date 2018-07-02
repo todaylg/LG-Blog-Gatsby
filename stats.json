@@ -33,8 +33,8 @@
       "component---src-layouts-index-js-af2032a96fc50b5bfd12.js.map"
     ],
     "path---category": [
-      "path---category-5770cf8dbfae44426ee3.js",
-      "path---category-5770cf8dbfae44426ee3.js.map"
+      "path---category-770af1835bedb2748fb3.js",
+      "path---category-770af1835bedb2748fb3.js.map"
     ],
     "component---src-pages-category-js": [
       "component---src-pages-category-js-bbb34571e9395b2ce79b.js",
@@ -45,8 +45,8 @@
       "path---category-废话集-42bf313bfb620ad06bf9.js.map"
     ],
     "path---index": [
-      "path---index-8c55363865c5062ca826.js",
-      "path---index-8c55363865c5062ca826.js.map"
+      "path---index-00afbab01d718ad37ad5.js",
+      "path---index-00afbab01d718ad37ad5.js.map"
     ],
     "path---hello-world": [
       "path---hello-world-968a871c0abecacd7691.js",
@@ -61,6 +61,10 @@
       "build-js-styles.css",
       "commons-7c4d77f391b491c8192f.js.map",
       "build-js-styles.css.map"
+    ],
+    "path---category-小记": [
+      "path---category-小记-de3a40b38ea13ddfdfae.js",
+      "path---category-小记-de3a40b38ea13ddfdfae.js.map"
     ],
     "path---404-html": [
       "path---404-html-a0e39f21c11f6a62c5ab.js",
@@ -83,9 +87,9 @@
       "path---offline-plugin-app-shell-fallback-a0e39f21c11f6a62c5ab.js.map"
     ],
     "app": [
-      "app-6660df3e50d220053e06.js",
+      "app-9006f7cbfc190ef576b7.js",
       "build-js-styles.css",
-      "app-6660df3e50d220053e06.js.map",
+      "app-9006f7cbfc190ef576b7.js.map",
       "build-js-styles.css.map"
     ],
     "component---src-templates-page-template-js": [
@@ -96,9 +100,13 @@
       "path---404-a0e39f21c11f6a62c5ab.js",
       "path---404-a0e39f21c11f6a62c5ab.js.map"
     ],
+    "path---vue-document": [
+      "path---vue-document-ada248815d4730964d9b.js",
+      "path---vue-document-ada248815d4730964d9b.js.map"
+    ],
     "path---complete-design-2": [
-      "path---complete-design-2-15a9fabaf1284a66d383.js",
-      "path---complete-design-2-15a9fabaf1284a66d383.js.map"
+      "path---complete-design-2-478ed59ebfdb5c6307d0.js",
+      "path---complete-design-2-478ed59ebfdb5c6307d0.js.map"
     ]
   }
 }
