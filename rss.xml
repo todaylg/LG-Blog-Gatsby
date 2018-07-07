@@ -1,22 +1,30 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[LG-Blog]]></title><description><![CDATA[LG-Blog]]></description><link>www.todaylg.com</link><generator>RSS for Node</generator><lastBuildDate>Mon, 02 Jul 2018 17:03:57 GMT</lastBuildDate><item><title><![CDATA[Vue工程结构目录及注意事项]]></title><description><![CDATA[Vue Document 好的基础开发结构可以大大便于之后的维护于拓展。 因为之前使用Vue都是赶时间所以Store没有进行过模块化，组件拆得也不够细，通常components直接替代掉了containers…]]></description><link>www.todaylg.com/vue-document/</link><guid isPermaLink="false">www.todaylg.com/vue-document/</guid><content:encoded>&lt;h3&gt;Vue Document&lt;/h3&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[LG-Blog]]></title><description><![CDATA[LG-Blog]]></description><link>www.todaylg.com</link><generator>RSS for Node</generator><lastBuildDate>Sat, 07 Jul 2018 18:54:15 GMT</lastBuildDate><item><title><![CDATA[CSS问题集]]></title><description><![CDATA[丢了CSS一段时间后突然拿起来用发现一下懵圈了。。。一些原来很基本的问题都忘完了。。把遇到的问题记一下，捡一捡吧。。 层级问题 相关： 层级 、 z-index 图片文字垂直居中 相关： 这里 多行文本与单行文本垂直居中]]></description><link>www.todaylg.com/css-problem/</link><guid isPermaLink="false">www.todaylg.com/css-problem/</guid><content:encoded>&lt;p&gt;丢了CSS一段时间后突然拿起来用发现一下懵圈了。。。一些原来很基本的问题都忘完了。。把遇到的问题记一下，捡一捡吧。。&lt;/p&gt;
+&lt;h4&gt;层级问题&lt;/h4&gt;
+&lt;iframe width=&quot;100%&quot; height=&quot;420&quot; src=&quot;https://code.h5jun.com/junor/3/edit?html,css,output&quot; allowpaymentrequest allowfullscreen=&quot;allowfullscreen&quot; frameborder=&quot;0&quot;&gt;&lt;/iframe&gt;
+&lt;p&gt;相关：&lt;a href=&quot;https://www.zhangxinxu.com/wordpress/2016/01/understand-css-stacking-context-order-z-index/&quot;&gt;层级&lt;/a&gt;、&lt;a href=&quot;https://www.zhangxinxu.com/wordpress/2011/08/css%E7%9B%B8%E5%AF%B9%E5%AE%9A%E4%BD%8D%E7%BB%9D%E5%AF%B9%E5%AE%9A%E4%BD%8D%E4%BA%94%E4%B9%8Bz-index%E7%AF%87/&quot;&gt;z-index&lt;/a&gt;&lt;/p&gt;
+&lt;h4&gt;图片文字垂直居中&lt;/h4&gt;
+&lt;iframe width=&quot;100%&quot; height=&quot;420&quot; src=&quot;https://code.h5jun.com/junor/1/edit?html,css,output&quot; allowpaymentrequest allowfullscreen=&quot;allowfullscreen&quot; frameborder=&quot;0&quot;&gt;&lt;/iframe&gt;
+&lt;p&gt;相关：&lt;a href=&quot;https://www.zhangxinxu.com/wordpress/2015/08/css-deep-understand-vertical-align-and-line-height/&quot;&gt;这里&lt;/a&gt;&lt;/p&gt;
+&lt;h4&gt;多行文本与单行文本垂直居中&lt;/h4&gt;
+&lt;iframe width=&quot;100%&quot; height=&quot;420&quot; src=&quot;https://code.h5jun.com/junor/2/edit?html,css,output&quot; allowpaymentrequest allowfullscreen=&quot;allowfullscreen&quot; frameborder=&quot;0&quot;&gt;&lt;/iframe&gt;</content:encoded></item><item><title><![CDATA[Vue工程结构目录及注意事项]]></title><description><![CDATA[Vue Document 好的基础开发结构可以大大便于之后的维护于拓展。 因为之前使用Vue都是赶时间所以Store没有进行过模块化，组件拆得也不够细（业务和纯组件能解构还是要解耦滴），通常components直接替代掉了containers…]]></description><link>www.todaylg.com/vue-document/</link><guid isPermaLink="false">www.todaylg.com/vue-document/</guid><content:encoded>&lt;h3&gt;Vue Document&lt;/h3&gt;
 &lt;p&gt;好的基础开发结构可以大大便于之后的维护于拓展。&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot;&gt;
       &lt;pre class=&quot;language-html&quot;&gt;&lt;code class=&quot;language-html&quot;&gt;.
-├── assets							// 公共资源
-│   ├── api							// 公共API
-│   ├── lib							// 公共第三方库
-├── components						// 公共组件
-├── pages							// 页面集
-│   ├── page						// 具体页面
-│   │   ├── common					// 页面公共资源
-│   │   ├── components				// 组件（不含业务代码）
-│   │   ├── containers				// 根据业务代码对组件进行整合形成的容器,
-									// 包含自身的数据管理
-│   │   ├── store					// 数据模块化分散至容器
-│   │   ├── router					// 路由分配
-├── app.vue/js/html					// 入口&lt;/code&gt;&lt;/pre&gt;
+├── assets                            // 公共资源
+│   ├── api                            // 公共API
+│   ├── lib                            // 公共第三方库
+├── components                        // 公共组件
+├── pages                            // 页面集
+│   ├── page                        // 具体页面
+│   │   ├── common                    // 页面公共资源
+│   │   ├── components                // 组件（不含业务代码）
+│   │   ├── containers                // 根据业务代码对组件进行整合形成的容器,
+                                    // 包含自身的数据管理
+│   │   ├── store                    // 数据模块化分散至容器
+│   │   ├── router                    // 路由分配
+├── app.vue/js/html                    // 入口&lt;/code&gt;&lt;/pre&gt;
       &lt;/div&gt;
-&lt;p&gt;因为之前使用Vue都是赶时间所以Store没有进行过模块化，组件拆得也不够细，通常components直接替代掉了containers这一层，有时间讲道理还是要解耦的。&lt;/p&gt;
+&lt;p&gt;因为之前使用Vue都是赶时间所以Store没有进行过模块化，组件拆得也不够细（业务和纯组件能解构还是要解耦滴），通常components直接替代掉了containers这一层，有时间讲道理还是要解耦的。&lt;/p&gt;
 &lt;h3&gt;注意事项&lt;/h3&gt;
 &lt;h4&gt;自定义指令及过滤器&lt;/h4&gt;
 &lt;p&gt;自定义指令着实是没有用到过，Vue.directive了解一下。&lt;/p&gt;
@@ -95,6 +103,7 @@ window&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;requestAnima
 &lt;p&gt;翻阅W3C规范会发现Web Audio API的很多规定参数都是个迷。。。比如实时取得的频域数据数组大小为什么规定为FFT大小的一半？猜想是浏览器底层实现FFT时为了防止频谱泄露使用了加窗函数（一般取50%），而要验证则需要看浏览器的实现代码。。。所以现在还是老老实实先放一放吧。&lt;/p&gt;
 &lt;p&gt;包括Web Audio API 的卷积运算（Convolution）功能实现环境音效的模拟。在声学中，回声可以用源声音与一个反映各种反射效应的波形的卷积表示（具体怎么实现的没有深入研究），这些反映反射效应的波形可以反映房间室内回声、教堂回声、电话声等等。&lt;/p&gt;</content:encoded></item><item><title><![CDATA[毕设小结（一）WebVR]]></title><description><![CDATA[借着毕设的机会，接触了一下WebVR和Web Audio API，以及通信本行的数字信号处理的知识。 当年在DPS…]]></description><link>www.todaylg.com/complete-design-1/</link><guid isPermaLink="false">www.todaylg.com/complete-design-1/</guid><content:encoded>&lt;p&gt;借着毕设的机会，接触了一下WebVR和Web Audio API，以及通信本行的数字信号处理的知识。&lt;/p&gt;
 &lt;p&gt;当年在DPS和高数课上流的口水化成了如今流下的泪水。。。内心不尽五味杂陈，&lt;strong&gt;技多不压身&lt;/strong&gt;属实是有道理的呀，学的时候觉得没有用，用的时候才后悔没好好学，人家毕业扔课本，我却寄课本：高数、DSP、从隔壁计科借过来的四大门课本，缺的东西属实有点忒多了。。。&lt;/p&gt;
+&lt;p&gt;总结一句精辟的话：排除两个前提条件（起步早、天赋高）的前提下，本科阶段跨离自己本专业自学转软件方向最大的两个问题在于&lt;strong&gt;知识体系的完整程度&lt;/strong&gt;和&lt;strong&gt;研究深度&lt;/strong&gt;。这些问题只能靠自己后面用时间给填回来，希望自己继续加油吧！&lt;/p&gt;
 &lt;p&gt;回到正题，因为涉及的新东西有点多，所以小结拆分为3个部分，分别介绍&lt;strong&gt;WebVR&lt;/strong&gt;、&lt;strong&gt;Web Audio API&lt;/strong&gt;、&lt;strong&gt;音乐节奏检测&lt;/strong&gt;。走你～&lt;/p&gt;
 &lt;h2&gt;WebVR&lt;/h2&gt;
 &lt;p&gt;因为穷和宅，在此之前一直没有体验过VR设备，就更别说啥VR开发了。印象里VR都是有钱人才能玩的东西，其实并不是这样，穷人也可以通过穷人版VR来进行VR体验，这穷人版VR就包括WebVR啦。&lt;/p&gt;
