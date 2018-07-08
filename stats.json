@@ -1,5 +1,9 @@
 {
   "assetsByChunkName": {
+    "path---vim-comand": [
+      "path---vim-comand-b3c606093dc5d045d5d3.js",
+      "path---vim-comand-b3c606093dc5d045d5d3.js.map"
+    ],
     "component---src-pages-index-js": [
       "component---src-pages-index-js-196402a0cfcc6b7ff0e5.js",
       "component---src-pages-index-js-196402a0cfcc6b7ff0e5.js.map"
@@ -7,10 +11,6 @@
     "path---category-小结": [
       "path---category-小结-90217cec56792761e4a5.js",
       "path---category-小结-90217cec56792761e4a5.js.map"
-    ],
-    "path---category-问题集": [
-      "path---category-问题集-6afe1e1d77883a6684b9.js",
-      "path---category-问题集-6afe1e1d77883a6684b9.js.map"
     ],
     "path---": [
       "path----375e85e38f47004b13cc.js",
@@ -37,20 +37,24 @@
       "component---src-layouts-index-js-af2032a96fc50b5bfd12.js.map"
     ],
     "path---category": [
-      "path---category-dab5b4496b0afce9af97.js",
-      "path---category-dab5b4496b0afce9af97.js.map"
+      "path---category-f2d26dca085fe474243c.js",
+      "path---category-f2d26dca085fe474243c.js.map"
     ],
     "component---src-pages-category-js": [
       "component---src-pages-category-js-bbb34571e9395b2ce79b.js",
       "component---src-pages-category-js-bbb34571e9395b2ce79b.js.map"
+    ],
+    "path---category-备忘": [
+      "path---category-备忘-2b68adf8379c34bdc2b3.js",
+      "path---category-备忘-2b68adf8379c34bdc2b3.js.map"
     ],
     "path---category-废话集": [
       "path---category-废话集-42bf313bfb620ad06bf9.js",
       "path---category-废话集-42bf313bfb620ad06bf9.js.map"
     ],
     "path---index": [
-      "path---index-ad7211909631175bd662.js",
-      "path---index-ad7211909631175bd662.js.map"
+      "path---index-76c49c74b71cc40b6b62.js",
+      "path---index-76c49c74b71cc40b6b62.js.map"
     ],
     "path---hello-world": [
       "path---hello-world-968a871c0abecacd7691.js",
@@ -87,17 +91,17 @@
       "component---src-templates-post-template-js-12de744ce8a8d00889aa.js.map"
     ],
     "path---css-problem": [
-      "path---css-problem-77fb4104baccd09d3017.js",
-      "path---css-problem-77fb4104baccd09d3017.js.map"
+      "path---css-problem-a096b13d4ba70b8d7598.js",
+      "path---css-problem-a096b13d4ba70b8d7598.js.map"
     ],
     "path---offline-plugin-app-shell-fallback": [
       "path---offline-plugin-app-shell-fallback-a0e39f21c11f6a62c5ab.js",
       "path---offline-plugin-app-shell-fallback-a0e39f21c11f6a62c5ab.js.map"
     ],
     "app": [
-      "app-241e8ef7613c45b7bf3d.js",
+      "app-4271df83f97ee45a72db.js",
       "build-js-styles.css",
-      "app-241e8ef7613c45b7bf3d.js.map",
+      "app-4271df83f97ee45a72db.js.map",
       "build-js-styles.css.map"
     ],
     "component---src-templates-page-template-js": [
@@ -109,8 +113,8 @@
       "path---404-a0e39f21c11f6a62c5ab.js.map"
     ],
     "path---vue-document": [
-      "path---vue-document-900047556d539a30a9d5.js",
-      "path---vue-document-900047556d539a30a9d5.js.map"
+      "path---vue-document-bcf875f89755c5e2d90f.js",
+      "path---vue-document-bcf875f89755c5e2d90f.js.map"
     ],
     "path---complete-design-2": [
       "path---complete-design-2-478ed59ebfdb5c6307d0.js",
