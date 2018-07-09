@@ -1,16 +1,12 @@
 {
   "assetsByChunkName": {
-    "path---vim-comand": [
-      "path---vim-comand-b3c606093dc5d045d5d3.js",
-      "path---vim-comand-b3c606093dc5d045d5d3.js.map"
+    "path---web-gl-learning-1": [
+      "path---web-gl-learning-1-12d65e90d9f588a06d8a.js",
+      "path---web-gl-learning-1-12d65e90d9f588a06d8a.js.map"
     ],
     "component---src-pages-index-js": [
       "component---src-pages-index-js-196402a0cfcc6b7ff0e5.js",
       "component---src-pages-index-js-196402a0cfcc6b7ff0e5.js.map"
-    ],
-    "path---category-小结": [
-      "path---category-小结-90217cec56792761e4a5.js",
-      "path---category-小结-90217cec56792761e4a5.js.map"
     ],
     "path---": [
       "path----375e85e38f47004b13cc.js",
@@ -37,42 +33,46 @@
       "component---src-layouts-index-js-af2032a96fc50b5bfd12.js.map"
     ],
     "path---category": [
-      "path---category-f2d26dca085fe474243c.js",
-      "path---category-f2d26dca085fe474243c.js.map"
+      "path---category-ffa65a731e1dc8c6b0d4.js",
+      "path---category-ffa65a731e1dc8c6b0d4.js.map"
+    ],
+    "path---category-大结": [
+      "path---category-大结-0b0352485079e7a5ffab.js",
+      "path---category-大结-0b0352485079e7a5ffab.js.map"
     ],
     "component---src-pages-category-js": [
       "component---src-pages-category-js-bbb34571e9395b2ce79b.js",
       "component---src-pages-category-js-bbb34571e9395b2ce79b.js.map"
     ],
     "path---category-备忘": [
-      "path---category-备忘-2b68adf8379c34bdc2b3.js",
-      "path---category-备忘-2b68adf8379c34bdc2b3.js.map"
+      "path---category-备忘-203814c0c6a5b7d7a811.js",
+      "path---category-备忘-203814c0c6a5b7d7a811.js.map"
     ],
     "path---category-废话集": [
       "path---category-废话集-42bf313bfb620ad06bf9.js",
       "path---category-废话集-42bf313bfb620ad06bf9.js.map"
     ],
     "path---index": [
-      "path---index-76c49c74b71cc40b6b62.js",
-      "path---index-76c49c74b71cc40b6b62.js.map"
+      "path---index-2c9bcc37f05cafc4208d.js",
+      "path---index-2c9bcc37f05cafc4208d.js.map"
     ],
     "path---hello-world": [
-      "path---hello-world-968a871c0abecacd7691.js",
-      "path---hello-world-968a871c0abecacd7691.js.map"
+      "path---hello-world-00c3389ac8dc4a1db0e7.js",
+      "path---hello-world-00c3389ac8dc4a1db0e7.js.map"
     ],
     "component---src-pages-404-js": [
       "component---src-pages-404-js-67108d2c79133c4984cb.js",
       "component---src-pages-404-js-67108d2c79133c4984cb.js.map"
+    ],
+    "path---svg-outline-animation": [
+      "path---svg-outline-animation-e9da3c82c6b0e5dcb5c6.js",
+      "path---svg-outline-animation-e9da3c82c6b0e5dcb5c6.js.map"
     ],
     "commons": [
       "commons-7c4d77f391b491c8192f.js",
       "build-js-styles.css",
       "commons-7c4d77f391b491c8192f.js.map",
       "build-js-styles.css.map"
-    ],
-    "path---category-小记": [
-      "path---category-小记-4b4532eb4724d84553c5.js",
-      "path---category-小记-4b4532eb4724d84553c5.js.map"
     ],
     "path---404-html": [
       "path---404-html-a0e39f21c11f6a62c5ab.js",
@@ -82,43 +82,43 @@
       "path---contact-206ac74de0d3aab26f03.js",
       "path---contact-206ac74de0d3aab26f03.js.map"
     ],
-    "path---complete-design-1": [
-      "path---complete-design-1-3fc815232f3f08338a7d.js",
-      "path---complete-design-1-3fc815232f3f08338a7d.js.map"
-    ],
     "component---src-templates-post-template-js": [
       "component---src-templates-post-template-js-12de744ce8a8d00889aa.js",
       "component---src-templates-post-template-js-12de744ce8a8d00889aa.js.map"
-    ],
-    "path---css-problem": [
-      "path---css-problem-a096b13d4ba70b8d7598.js",
-      "path---css-problem-a096b13d4ba70b8d7598.js.map"
     ],
     "path---offline-plugin-app-shell-fallback": [
       "path---offline-plugin-app-shell-fallback-a0e39f21c11f6a62c5ab.js",
       "path---offline-plugin-app-shell-fallback-a0e39f21c11f6a62c5ab.js.map"
     ],
+    "path---problem-set": [
+      "path---problem-set-655dfa9c7ced9c8e6079.js",
+      "path---problem-set-655dfa9c7ced9c8e6079.js.map"
+    ],
+    "path---web-gl-learning-2": [
+      "path---web-gl-learning-2-95e2399e192ed3c1e15b.js",
+      "path---web-gl-learning-2-95e2399e192ed3c1e15b.js.map"
+    ],
     "app": [
-      "app-4271df83f97ee45a72db.js",
+      "app-a9497c85d81e094515ca.js",
       "build-js-styles.css",
-      "app-4271df83f97ee45a72db.js.map",
+      "app-a9497c85d81e094515ca.js.map",
       "build-js-styles.css.map"
     ],
     "component---src-templates-page-template-js": [
       "component---src-templates-page-template-js-277489605b32655c14af.js",
       "component---src-templates-page-template-js-277489605b32655c14af.js.map"
     ],
+    "path---canvas-renderermation": [
+      "path---canvas-renderermation-d618e414d0dee6a9acf4.js",
+      "path---canvas-renderermation-d618e414d0dee6a9acf4.js.map"
+    ],
     "path---404": [
       "path---404-a0e39f21c11f6a62c5ab.js",
       "path---404-a0e39f21c11f6a62c5ab.js.map"
     ],
-    "path---vue-document": [
-      "path---vue-document-bcf875f89755c5e2d90f.js",
-      "path---vue-document-bcf875f89755c5e2d90f.js.map"
-    ],
-    "path---complete-design-2": [
-      "path---complete-design-2-478ed59ebfdb5c6307d0.js",
-      "path---complete-design-2-478ed59ebfdb5c6307d0.js.map"
+    "path---web-vr-and-web-audio-api": [
+      "path---web-vr-and-web-audio-api-afa9704cd100279abdf2.js",
+      "path---web-vr-and-web-audio-api-afa9704cd100279abdf2.js.map"
     ]
   }
 }
