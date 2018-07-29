@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[LG-Blog]]></title><description><![CDATA[LG-Blog]]></description><link>www.todaylg.com</link><generator>RSS for Node</generator><lastBuildDate>Mon, 09 Jul 2018 18:46:27 GMT</lastBuildDate><item><title><![CDATA[备忘册]]></title><description><![CDATA[Vue工程结构目录及注意事项 Vue Document 好的基础开发结构可以大大便于之后的维护于拓展。 因为之前使用Vue都是赶时间所以Store没有进行过模块化，组件拆得也不够细（业务和纯组件能解构还是要解耦滴），通常components直接替代掉了containers…]]></description><link>www.todaylg.com/problem-set/</link><guid isPermaLink="false">www.todaylg.com/problem-set/</guid><content:encoded>&lt;h2&gt;Vue工程结构目录及注意事项&lt;/h2&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[LG-Blog]]></title><description><![CDATA[LG-Blog]]></description><link>www.todaylg.com</link><generator>RSS for Node</generator><lastBuildDate>Sun, 29 Jul 2018 13:21:50 GMT</lastBuildDate><item><title><![CDATA[备忘册]]></title><description><![CDATA[Vue工程结构目录及注意事项（18-7-1） Vue Document 好的基础开发结构可以大大便于之后的维护于拓展。 因为之前使用Vue都是赶时间所以Store没有进行过模块化，组件拆得也不够细（业务和纯组件能解构还是要解耦滴），通常components…]]></description><link>www.todaylg.com/problem-set/</link><guid isPermaLink="false">www.todaylg.com/problem-set/</guid><content:encoded>&lt;h2&gt;Vue工程结构目录及注意事项（18-7-1）&lt;/h2&gt;
 &lt;h3&gt;Vue Document&lt;/h3&gt;
 &lt;p&gt;好的基础开发结构可以大大便于之后的维护于拓展。&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot;&gt;
@@ -28,6 +28,7 @@
 &lt;p&gt;2.除非是万不得已，别用setTimeInterval！！！并且切记与clear是同生共死的！&lt;/p&gt;
 &lt;p&gt;3.没有一种初始值叫做undefined！却有一种赋值叫做99999999*n。请容错！&lt;/p&gt;
 &lt;p&gt;自己用的场景还是偏少，所以命令根本记不住。。。备忘把常用的简单指令记一下。&lt;/p&gt;
+&lt;h2&gt;VIM基本操作备忘（18-7-7）&lt;/h2&gt;
 &lt;h3&gt;基本移动&lt;/h3&gt;
 &lt;table&gt;
 &lt;thead&gt;
@@ -197,7 +198,7 @@
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;hr&gt;
-&lt;h2&gt;CSS问题集&lt;/h2&gt;
+&lt;h2&gt;CSS问题集（18-7-14）&lt;/h2&gt;
 &lt;p&gt;丢了CSS一段时间后突然拿起来用发现一下懵圈了。。。一些原来很基本的问题都忘完了。。把遇到的问题记一下，捡一捡吧。。&lt;/p&gt;
 &lt;h4&gt;层级问题&lt;/h4&gt;
 &lt;iframe width=&quot;100%&quot; height=&quot;420&quot; src=&quot;https://code.h5jun.com/junor/3/edit?html,css,output&quot; allowpaymentrequest allowfullscreen=&quot;allowfullscreen&quot; frameborder=&quot;0&quot;&gt;&lt;/iframe&gt;
@@ -206,7 +207,12 @@
 &lt;iframe width=&quot;100%&quot; height=&quot;420&quot; src=&quot;https://code.h5jun.com/junor/1/edit?html,css,output&quot; allowpaymentrequest allowfullscreen=&quot;allowfullscreen&quot; frameborder=&quot;0&quot;&gt;&lt;/iframe&gt;
 &lt;p&gt;相关：&lt;a href=&quot;https://www.zhangxinxu.com/wordpress/2015/08/css-deep-understand-vertical-align-and-line-height/&quot;&gt;这里&lt;/a&gt;&lt;/p&gt;
 &lt;h4&gt;多行文本与单行文本垂直居中&lt;/h4&gt;
-&lt;iframe width=&quot;100%&quot; height=&quot;420&quot; src=&quot;https://code.h5jun.com/junor/2/edit?html,css,output&quot; allowpaymentrequest allowfullscreen=&quot;allowfullscreen&quot; frameborder=&quot;0&quot;&gt;&lt;/iframe&gt;</content:encoded></item><item><title><![CDATA[初探WebVR与Web Audio API]]></title><description><![CDATA[借着毕设的机会，接触了一下WebVR和Web Audio API，以及通信本行的数字信号处理的知识： WebVR-Audio-Visualizer 当年在DPS…]]></description><link>www.todaylg.com/webVR-and-web-audio-api/</link><guid isPermaLink="false">www.todaylg.com/webVR-and-web-audio-api/</guid><content:encoded>&lt;p&gt;借着毕设的机会，接触了一下WebVR和Web Audio API，以及通信本行的数字信号处理的知识：&lt;a href=&quot;https://github.com/todaylg/WebVR-Audio-Visualizer&quot;&gt;WebVR-Audio-Visualizer&lt;/a&gt;&lt;/p&gt;
+&lt;iframe width=&quot;100%&quot; height=&quot;420&quot; src=&quot;https://code.h5jun.com/junor/2/edit?html,css,output&quot; allowpaymentrequest allowfullscreen=&quot;allowfullscreen&quot; frameborder=&quot;0&quot;&gt;&lt;/iframe&gt;
+&lt;h2&gt;神奇的JSONP（18-7-29）&lt;/h2&gt;
+&lt;p&gt;遇见了一个较为特殊的场景：&lt;/p&gt;
+&lt;p&gt;在短时间内（几乎同时），连续发起两次jsonp跨域请求一个有CDN的后端接口（cache为true），几乎必现首次请求失败(走error回调)，后次请求成功（走success回调），神奇的是NetWork显示请求只发出了一次，看起来就像jsonp直接处决掉了首次请求。。。换为cache:false（加时间戳）后两次请求正常，单次请求也正常，换用CORS也正常。&lt;/p&gt;
+&lt;p&gt;也可能是JQ的坑，待研究。&lt;/p&gt;
+&lt;p&gt;还有个webpack打包完以后window下的全局函数访问不了的问题- -也记一下&lt;/p&gt;</content:encoded></item><item><title><![CDATA[初探WebVR与Web Audio API]]></title><description><![CDATA[借着毕设的机会，接触了一下WebVR和Web Audio API，以及通信本行的数字信号处理的知识： WebVR-Audio-Visualizer 当年在DPS…]]></description><link>www.todaylg.com/webVR-and-web-audio-api/</link><guid isPermaLink="false">www.todaylg.com/webVR-and-web-audio-api/</guid><content:encoded>&lt;p&gt;借着毕设的机会，接触了一下WebVR和Web Audio API，以及通信本行的数字信号处理的知识：&lt;a href=&quot;https://github.com/todaylg/WebVR-Audio-Visualizer&quot;&gt;WebVR-Audio-Visualizer&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;当年在DPS和高数课上流的口水化成了如今流下的泪水。。。内心不尽五味杂陈，&lt;strong&gt;技多不压身&lt;/strong&gt;属实是有道理的呀，学的时候觉得没有用，用的时候才后悔没好好学，人家毕业扔课本，我却寄课本：高数、DSP、从隔壁计科借过来的四大门课本，缺的东西属实有点忒多了。。。&lt;/p&gt;
 &lt;p&gt;总结一句精辟的话：排除两个前提条件（起步早、天赋高）的前提下，本科阶段跨离自己本专业自学转软件方向最大的两个问题在于&lt;strong&gt;知识体系的完整程度&lt;/strong&gt;和&lt;strong&gt;研究深度&lt;/strong&gt;。这些问题只能靠自己后面用时间给填回来，希望自己继续加油吧！&lt;/p&gt;
 &lt;p&gt;回到正题，因为涉及的新东西有点多，所以小结拆分为3个部分，分别介绍&lt;strong&gt;WebVR&lt;/strong&gt;、&lt;strong&gt;Web Audio API&lt;/strong&gt;、&lt;strong&gt;音乐节奏检测&lt;/strong&gt;。走你～&lt;/p&gt;
