@@ -37,8 +37,8 @@
       "component---src-layouts-index-js-af2032a96fc50b5bfd12.js.map"
     ],
     "path---category": [
-      "path---category-14a3d259253fb07f86cb.js",
-      "path---category-14a3d259253fb07f86cb.js.map"
+      "path---category-31fb26f0592adbfd38b1.js",
+      "path---category-31fb26f0592adbfd38b1.js.map"
     ],
     "path---category-大结": [
       "path---category-大结-f7506244c105479edcce.js",
@@ -53,20 +53,24 @@
       "path---category-备忘-12053bbc20df7add03ed.js.map"
     ],
     "path---miku-setup": [
-      "path---miku-setup-97d1c0d49b7e83484fcc.js",
-      "path---miku-setup-97d1c0d49b7e83484fcc.js.map"
+      "path---miku-setup-9d4d1054e82f0d1c8363.js",
+      "path---miku-setup-9d4d1054e82f0d1c8363.js.map"
     ],
     "path---category-废话集": [
       "path---category-废话集-42bf313bfb620ad06bf9.js",
       "path---category-废话集-42bf313bfb620ad06bf9.js.map"
     ],
     "path---index": [
-      "path---index-c3252a9577627b34d61d.js",
-      "path---index-c3252a9577627b34d61d.js.map"
+      "path---index-656e2931a67bf6e04b79.js",
+      "path---index-656e2931a67bf6e04b79.js.map"
     ],
     "path---hello-world": [
       "path---hello-world-efa06527e539b8b97fdf.js",
       "path---hello-world-efa06527e539b8b97fdf.js.map"
+    ],
+    "path---blender-2-80": [
+      "path---blender-2-80-b9b5aa0fd8b43c9a7bf7.js",
+      "path---blender-2-80-b9b5aa0fd8b43c9a7bf7.js.map"
     ],
     "component---src-pages-404-js": [
       "component---src-pages-404-js-67108d2c79133c4984cb.js",
@@ -107,9 +111,9 @@
       "path---web-gl-learning-2-73cc803d8fccf202e9a1.js.map"
     ],
     "app": [
-      "app-08d0711935284f9125eb.js",
+      "app-cf14134bb19fb134bacf.js",
       "build-js-styles.css",
-      "app-08d0711935284f9125eb.js.map",
+      "app-cf14134bb19fb134bacf.js.map",
       "build-js-styles.css.map"
     ],
     "component---src-templates-page-template-js": [
@@ -125,8 +129,8 @@
       "path---404-a0e39f21c11f6a62c5ab.js.map"
     ],
     "path---category-miku": [
-      "path---category-miku-f053eae90c1bed857282.js",
-      "path---category-miku-f053eae90c1bed857282.js.map"
+      "path---category-miku-07713e3274d0f919cab3.js",
+      "path---category-miku-07713e3274d0f919cab3.js.map"
     ],
     "path---web-vr-and-web-audio-api": [
       "path---web-vr-and-web-audio-api-d6bcf2825fb22320d924.js",
