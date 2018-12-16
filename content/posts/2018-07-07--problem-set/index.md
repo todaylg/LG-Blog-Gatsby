@@ -1,8 +1,9 @@
 ---
 title: 备忘册
 category: "备忘"
-cover: test5.png
+cover: test1.jpg
 author: todaylg
+
 
 
 
