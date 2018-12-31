@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="zh" prefix="og: http://ogp.me/ns#"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="preload" href="/LG-Blog-Gatsby/component---src-layouts-index-js-af2032a96fc50b5bfd12.js" as="script"/><link rel="preload" href="/LG-Blog-Gatsby/component---src-templates-post-template-js-12de744ce8a8d00889aa.js" as="script"/><link rel="preload" href="/LG-Blog-Gatsby/path---web-gl-learning-1-b15b38001fb8cecc5417.js" as="script"/><link rel="preload" href="/LG-Blog-Gatsby/app-cf14134bb19fb134bacf.js" as="script"/><link rel="preload" href="/LG-Blog-Gatsby/commons-7c4d77f391b491c8192f.js" as="script"/><title data-react-helmet="true">初探WebGL(一) - LG-Blog</title><meta data-react-helmet="true" name="description" content="LG-Blog"/><meta data-react-helmet="true" property="og:url" content="www.todaylg.com/webGL-learning-1/"/><meta data-react-helmet="true" property="og:title" content="初探WebGL(一) - LG-Blog"/><meta data-react-helmet="true" property="og:description" content="LG-Blog"/><meta data-react-helmet="true" property="og:image" content="[object Object]"/><meta data-react-helmet="true" property="og:type" content="website"/><meta data-react-helmet="true" property="fb:app_id" content=""/><meta data-react-helmet="true" name="twitter:card" content="summary"/><meta data-react-helmet="true" name="twitter:creator" content="WebAMV"/><link rel="manifest" href="/LG-Blog-Gatsby/manifest.webmanifest"/><meta name="theme-color" content="#666"/><link rel="alternate" type="application/rss+xml" href="/LG-Blog-Gatsby/rss.xml"/><style id="__jsx-3982648812">.item.jsx-3982648812,.showItem.jsx-3982648812{background:transparent;-webkit-transition:all 0.5s;-webkit-transition:all 0.5s;transition:all 0.5s;display:-webkit-box;display:-ms-flexbox;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;}
+<!DOCTYPE html><html lang="zh" prefix="og: http://ogp.me/ns#"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="preload" href="/LG-Blog-Gatsby/component---src-layouts-index-js-af2032a96fc50b5bfd12.js" as="script"/><link rel="preload" href="/LG-Blog-Gatsby/component---src-templates-post-template-js-12de744ce8a8d00889aa.js" as="script"/><link rel="preload" href="/LG-Blog-Gatsby/path---web-gl-learning-1-9ff8da5466353f523200.js" as="script"/><link rel="preload" href="/LG-Blog-Gatsby/app-f619232aedf3e40805e4.js" as="script"/><link rel="preload" href="/LG-Blog-Gatsby/commons-7c4d77f391b491c8192f.js" as="script"/><title data-react-helmet="true">《WebGL编程指南》读书笔记 - LG-Blog</title><meta data-react-helmet="true" name="description" content="LG-Blog"/><meta data-react-helmet="true" property="og:url" content="www.todaylg.com/webGL-learning-1/"/><meta data-react-helmet="true" property="og:title" content="《WebGL编程指南》读书笔记 - LG-Blog"/><meta data-react-helmet="true" property="og:description" content="LG-Blog"/><meta data-react-helmet="true" property="og:image" content="[object Object]"/><meta data-react-helmet="true" property="og:type" content="website"/><meta data-react-helmet="true" property="fb:app_id" content=""/><meta data-react-helmet="true" name="twitter:card" content="summary"/><meta data-react-helmet="true" name="twitter:creator" content="WebAMV"/><link rel="manifest" href="/LG-Blog-Gatsby/manifest.webmanifest"/><meta name="theme-color" content="#666"/><link rel="alternate" type="application/rss+xml" href="/LG-Blog-Gatsby/rss.xml"/><style id="__jsx-3982648812">.item.jsx-3982648812,.showItem.jsx-3982648812{background:transparent;-webkit-transition:all 0.5s;-webkit-transition:all 0.5s;transition:all 0.5s;display:-webkit-box;display:-ms-flexbox;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;}
 .item.jsx-3982648812 a,.showItem.jsx-3982648812 a{padding:10px;display:-webkit-box;display:-ms-flexbox;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;}
 .item.jsx-3982648812 svg,.showItem.jsx-3982648812 svg{margin:0 5px 0 0;opacity:0.3;}
 .itemList .hideItem{display:none;}
@@ -64,7 +64,8 @@ h1{-webkit-letter-spacing:-0.04em;-moz-letter-spacing:-0.04em;-ms-letter-spacing
 p{margin:0;}
 strong{font-weight:400;}
 a{-webkit-text-decoration:none;text-decoration:none;color:#666;}
-main{width:auto;display:block;}</style><style id="gatsby-inlined-css">@font-face{font-family:Open Sans;font-style:normal;font-display:swap;font-weight:300;src:local("Open Sans Light "),local("Open Sans-Light"),url(/LG-Blog-Gatsby/static/open-sans-latin-300.60c86674.woff2) format("woff2"),url(/LG-Blog-Gatsby/static/open-sans-latin-300.521d17bc.woff) format("woff")}@font-face{font-family:Open Sans;font-style:italic;font-display:swap;font-weight:300;src:local("Open Sans Light italic"),local("Open Sans-Lightitalic"),url(/LG-Blog-Gatsby/static/open-sans-latin-300italic.06bbd318.woff2) format("woff2"),url(/LG-Blog-Gatsby/static/open-sans-latin-300italic.8a648ff3.woff) format("woff")}@font-face{font-family:Open Sans;font-style:normal;font-display:swap;font-weight:400;src:local("Open Sans Regular "),local("Open Sans-Regular"),url(/LG-Blog-Gatsby/static/open-sans-latin-400.cffb686d.woff2) format("woff2"),url(/LG-Blog-Gatsby/static/open-sans-latin-400.bf2d0783.woff) format("woff")}@font-face{font-family:Open Sans;font-style:italic;font-display:swap;font-weight:400;src:local("Open Sans Regular italic"),local("Open Sans-Regularitalic"),url(/LG-Blog-Gatsby/static/open-sans-latin-400italic.987032ea.woff2) format("woff2"),url(/LG-Blog-Gatsby/static/open-sans-latin-400italic.db70d0b9.woff) format("woff")}@font-face{font-family:Open Sans;font-style:normal;font-display:swap;font-weight:600;src:local("Open Sans SemiBold "),local("Open Sans-SemiBold"),url(/LG-Blog-Gatsby/static/open-sans-latin-600.223a277b.woff2) format("woff2"),url(/LG-Blog-Gatsby/static/open-sans-latin-600.1cd5320f.woff) format("woff")}@font-face{font-family:Open Sans;font-style:italic;font-display:swap;font-weight:600;src:local("Open Sans SemiBold italic"),local("Open Sans-SemiBolditalic"),url(/LG-Blog-Gatsby/static/open-sans-latin-600italic.4950a720.woff2) format("woff2"),url(/LG-Blog-Gatsby/static/open-sans-latin-600italic.318ea1ad.woff) format("woff")}@font-face{font-family:Open Sans;font-style:normal;font-display:swap;font-weight:700;src:local("Open Sans Bold "),local("Open Sans-Bold"),url(/LG-Blog-Gatsby/static/open-sans-latin-700.d08c09f2.woff2) format("woff2"),url(/LG-Blog-Gatsby/static/open-sans-latin-700.623e3205.woff) format("woff")}@font-face{font-family:Open Sans;font-style:italic;font-display:swap;font-weight:700;src:local("Open Sans Bold italic"),local("Open Sans-Bolditalic"),url(/LG-Blog-Gatsby/static/open-sans-latin-700italic.c02f5da6.woff2) format("woff2"),url(/LG-Blog-Gatsby/static/open-sans-latin-700italic.72e19cbb.woff) format("woff")}@font-face{font-family:Open Sans;font-style:normal;font-display:swap;font-weight:800;src:local("Open Sans ExtraBold "),local("Open Sans-ExtraBold"),url(/LG-Blog-Gatsby/static/open-sans-latin-800.aaeffaf2.woff2) format("woff2"),url(/LG-Blog-Gatsby/static/open-sans-latin-800.c6aa0c4a.woff) format("woff")}@font-face{font-family:Open Sans;font-style:italic;font-display:swap;font-weight:800;src:local("Open Sans ExtraBold italic"),local("Open Sans-ExtraBolditalic"),url(/LG-Blog-Gatsby/static/open-sans-latin-800italic.6b3973ff.woff2) format("woff2"),url(/LG-Blog-Gatsby/static/open-sans-latin-800italic.79b58175.woff) format("woff")}code[class*=language-],pre[class*=language-]{color:#f8f8f2;background:none;text-shadow:0 1px rgba(0,0,0,.3);font-family:Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-ms-hyphens:none;hyphens:none}pre[class*=language-]{padding:1em;margin:.5em 0;overflow:auto;border-radius:.3em}:not(pre)>code[class*=language-],pre[class*=language-]{background:#272822}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal}.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#708090}.token.punctuation{color:#f8f8f2}.namespace{opacity:.7}.token.constant,.token.deleted,.token.property,.token.symbol,.token.tag{color:#f92672}.token.boolean,.token.number{color:#ae81ff}.token.attr-name,.token.builtin,.token.char,.token.inserted,.token.selector,.token.string{color:#a6e22e}.language-css .token.string,.style .token.string,.token.entity,.token.operator,.token.url,.token.variable{color:#f8f8f2}.token.atrule,.token.attr-value,.token.function{color:#e6db74}.token.keyword{color:#66d9ef}.token.important,.token.regex{color:#fd971f}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}</style><meta name="apple-mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="#D0E0D8"/><meta name="apple-mobile-web-app-title" content="Lazywill"/><link rel="apple-touch-icon" href="/icons/apple-icon-57x57.png" sizes="57x57"/><link rel="apple-touch-icon" href="/icons/apple-icon-60x60.png" sizes="60x60"/><link rel="apple-touch-icon" href="/icons/apple-icon-72x72.png" sizes="72x72"/><link rel="apple-touch-icon" href="/icons/apple-icon-76x76.png" sizes="76x76"/><link rel="apple-touch-icon" href="/icons/apple-icon-114x114.png" sizes="114x114"/><link rel="apple-touch-icon" href="/icons/apple-icon-120x120.png" sizes="120x120"/><link rel="apple-touch-icon" href="/icons/apple-icon-144x144.png" sizes="144x144"/><link rel="apple-touch-icon" href="/icons/apple-icon-152x152.png" sizes="152x152"/><link rel="apple-touch-icon" href="/icons/apple-icon-180x180.png" sizes="180x180"/><link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png"/><link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png"/><link rel="icon" type="image/png" sizes="96x96" href="/icons/favicon-96x96.png"/></head><body><noscript>You need to enable JavaScript to run this app!</noscript><div id="___gatsby"><header class="jsx-3242542942 header  "><a class="logoType" href="/LG-Blog-Gatsby/"><div class="jsx-3242542942 logo"><img src="/LG-Blog-Gatsby/static/avatar.421bc1a9.jpg" alt="LG-Blog" class="jsx-3242542942"/></div><div class="jsx-3242542942 type"><h1 class="jsx-3242542942">todaylg</h1><h2 class="jsx-3242542942"></h2></div></a><nav rel="js-menu" class="jsx-674193961 menu "><ul class="jsx-674193961 itemList"><li class="jsx-3982648812 item"><a class="" data-slug="/" href="/LG-Blog-Gatsby/"><svg fill="currentColor" preserveAspectRatio="xMidYMid meet" height="1em" width="1em" viewBox="0 0 40 40" style="vertical-align:middle"><g><path d="m32.9 22.1v10.8q0 0.5-0.4 1t-1 0.4h-8.6v-8.6h-5.7v8.6h-8.6q-0.5 0-1-0.4t-0.4-1v-10.8q0 0 0 0t0-0.1l12.9-10.6 12.8 10.6q0 0.1 0 0.1z m5-1.5l-1.4 1.7q-0.2 0.2-0.4 0.2h-0.1q-0.3 0-0.5-0.2l-15.4-12.8-15.5 12.8q-0.2 0.2-0.5 0.2-0.3 0-0.5-0.2l-1.4-1.7q-0.1-0.2-0.1-0.5t0.2-0.5l16.1-13.4q0.7-0.6 1.7-0.6t1.7 0.6l5.4 4.6v-4.4q0-0.3 0.2-0.5t0.5-0.2h4.3q0.3 0 0.5 0.2t0.2 0.5v9.1l4.9 4.1q0.2 0.2 0.3 0.5t-0.2 0.5z"></path></g></svg> <!-- -->Home</a></li><li class="jsx-3982648812 item"><a class="" data-slug="/category/" href="/LG-Blog-Gatsby/category/"><svg fill="currentColor" preserveAspectRatio="xMidYMid meet" height="1em" width="1em" viewBox="0 0 40 40" style="vertical-align:middle"><g><path d="m13 10q0-1.2-0.8-2t-2.1-0.9-2 0.9-0.8 2 0.8 2 2 0.9 2.1-0.9 0.8-2z m23.8 12.9q0 1.1-0.8 2l-11 10.9q-0.8 0.9-2 0.9-1.2 0-2-0.9l-16-15.9q-0.8-0.9-1.4-2.3t-0.6-2.6v-9.3q0-1.1 0.8-2t2.1-0.8h9.2q1.2 0 2.7 0.5t2.2 1.5l16 15.9q0.8 0.9 0.8 2.1z"></path></g></svg> <!-- -->Categories</a></li><li class="jsx-3982648812 item"><a class="" data-slug="/contact/" href="/LG-Blog-Gatsby/contact/"><svg fill="currentColor" preserveAspectRatio="xMidYMid meet" height="1em" width="1em" viewBox="0 0 40 40" style="vertical-align:middle"><g><path d="m40 15.8v17.8q0 1.4-1 2.5t-2.6 1h-32.8q-1.5 0-2.6-1t-1-2.5v-17.8q1 1.1 2.3 2 8 5.5 11 7.7 1.3 0.9 2.1 1.5t2.1 1 2.5 0.6h0q1.2 0 2.5-0.6t2.1-1 2.1-1.5q3.7-2.8 11.1-7.7 1.2-0.9 2.2-1.9z m0-6.5q0 1.7-1.1 3.4t-2.7 2.7q-8.4 5.8-10.5 7.3-0.2 0.1-0.9 0.6t-1.2 0.9-1.2 0.7-1.3 0.6-1.1 0.2h0q-0.5 0-1.1-0.2t-1.3-0.6-1.2-0.7-1.2-0.9-0.9-0.6q-2.1-1.5-5.9-4.1t-4.6-3.2q-1.3-0.9-2.6-2.6t-1.2-3q0-1.8 0.9-2.9t2.7-1.2h32.8q1.5 0 2.5 1.1t1.1 2.5z"></path></g></svg> <!-- -->About</a></li></ul></nav></header><div class="jsx-3242542942 sensor"></div><main class="jsx-1304903616 jsx-3347019808"><article class="jsx-1766939654 article"><header><h1 class="jsx-3306258923">初探WebGL(一)</h1><p class="jsx-1833289139 meta"><span class="jsx-1833289139"><svg fill="currentColor" preserveAspectRatio="xMidYMid meet" height="18" width="18" viewBox="0 0 40 40" style="vertical-align:middle"><g><path d="m4.4 37.1h6.4v-6.4h-6.4v6.4z m7.8 0h7.2v-6.4h-7.2v6.4z m-7.8-7.8h6.4v-7.2h-6.4v7.2z m7.8 0h7.2v-7.2h-7.2v7.2z m-7.8-8.6h6.4v-6.4h-6.4v6.4z m16.4 16.4h7.1v-6.4h-7.1v6.4z m-8.6-16.4h7.2v-6.4h-7.2v6.4z m17.2 16.4h6.4v-6.4h-6.4v6.4z m-8.6-7.8h7.1v-7.2h-7.1v7.2z m-7.9-19.3v-6.4q0-0.3-0.2-0.5t-0.5-0.2h-1.4q-0.3 0-0.5 0.2t-0.2 0.5v6.4q0 0.3 0.2 0.5t0.5 0.2h1.4q0.3 0 0.5-0.2t0.2-0.5z m16.5 19.3h6.4v-7.2h-6.4v7.2z m-8.6-8.6h7.1v-6.4h-7.1v6.4z m8.6 0h6.4v-6.4h-6.4v6.4z m0.7-10.7v-6.4q0-0.3-0.2-0.5t-0.5-0.2h-1.5q-0.3 0-0.5 0.2t-0.2 0.5v6.4q0 0.3 0.2 0.5t0.5 0.2h1.5q0.2 0 0.5-0.2t0.2-0.5z m8.5-1.4v28.5q0 1.2-0.8 2.1t-2 0.8h-31.4q-1.2 0-2.1-0.9t-0.8-2v-28.5q0-1.2 0.8-2t2.1-0.9h2.8v-2.1q0-1.5 1.1-2.6t2.5-1h1.4q1.5 0 2.5 1.1t1.1 2.5v2.1h8.6v-2.1q0-1.5 1-2.6t2.5-1h1.5q1.4 0 2.5 1.1t1 2.5v2.1h2.9q1.1 0 2 0.9t0.8 2z"></path></g></svg> <!-- -->2018-03-10</span><span class="jsx-1833289139"><svg fill="currentColor" preserveAspectRatio="xMidYMid meet" height="18" width="18" viewBox="0 0 40 40" style="vertical-align:middle"><g><path d="m35.9 31.4q0 2.6-1.6 4.2t-4.3 1.5h-19.5q-2.7 0-4.4-1.5t-1.6-4.2q0-1.2 0.1-2.3t0.3-2.5 0.6-2.4 0.9-2.2 1.4-1.8 1.9-1.2 2.5-0.4q0.2 0 1 0.5t1.6 1 2.4 1.1 3 0.5 3-0.5 2.4-1.1 1.7-1 0.9-0.5q1.4 0 2.5 0.4t1.9 1.2 1.4 1.8 0.9 2.2 0.6 2.4 0.4 2.5 0 2.3z m-7.1-20q0 3.6-2.5 6.1t-6.1 2.5-6-2.5-2.6-6.1 2.6-6 6-2.5 6.1 2.5 2.5 6z"></path></g></svg> <!-- -->todaylg</span><span class="jsx-1833289139"><svg fill="currentColor" preserveAspectRatio="xMidYMid meet" height="18" width="18" viewBox="0 0 40 40" style="vertical-align:middle"><g><path d="m13 10q0-1.2-0.8-2t-2.1-0.9-2 0.9-0.8 2 0.8 2 2 0.9 2.1-0.9 0.8-2z m23.8 12.9q0 1.1-0.8 2l-11 10.9q-0.8 0.9-2 0.9-1.2 0-2-0.9l-16-15.9q-0.8-0.9-1.4-2.3t-0.6-2.6v-9.3q0-1.1 0.8-2t2.1-0.8h9.2q1.2 0 2.7 0.5t2.2 1.5l16 15.9q0.8 0.9 0.8 2.1z"></path></g></svg><a href="/LG-Blog-Gatsby/category/大结">大结</a></span></p></header><div class="jsx-2925212198 bodytext"><h2>Part 1</h2>
+main{width:auto;display:block;}</style><style id="gatsby-inlined-css">@font-face{font-family:Open Sans;font-style:normal;font-display:swap;font-weight:300;src:local("Open Sans Light "),local("Open Sans-Light"),url(/LG-Blog-Gatsby/static/open-sans-latin-300.60c86674.woff2) format("woff2"),url(/LG-Blog-Gatsby/static/open-sans-latin-300.521d17bc.woff) format("woff")}@font-face{font-family:Open Sans;font-style:italic;font-display:swap;font-weight:300;src:local("Open Sans Light italic"),local("Open Sans-Lightitalic"),url(/LG-Blog-Gatsby/static/open-sans-latin-300italic.06bbd318.woff2) format("woff2"),url(/LG-Blog-Gatsby/static/open-sans-latin-300italic.8a648ff3.woff) format("woff")}@font-face{font-family:Open Sans;font-style:normal;font-display:swap;font-weight:400;src:local("Open Sans Regular "),local("Open Sans-Regular"),url(/LG-Blog-Gatsby/static/open-sans-latin-400.cffb686d.woff2) format("woff2"),url(/LG-Blog-Gatsby/static/open-sans-latin-400.bf2d0783.woff) format("woff")}@font-face{font-family:Open Sans;font-style:italic;font-display:swap;font-weight:400;src:local("Open Sans Regular italic"),local("Open Sans-Regularitalic"),url(/LG-Blog-Gatsby/static/open-sans-latin-400italic.987032ea.woff2) format("woff2"),url(/LG-Blog-Gatsby/static/open-sans-latin-400italic.db70d0b9.woff) format("woff")}@font-face{font-family:Open Sans;font-style:normal;font-display:swap;font-weight:600;src:local("Open Sans SemiBold "),local("Open Sans-SemiBold"),url(/LG-Blog-Gatsby/static/open-sans-latin-600.223a277b.woff2) format("woff2"),url(/LG-Blog-Gatsby/static/open-sans-latin-600.1cd5320f.woff) format("woff")}@font-face{font-family:Open Sans;font-style:italic;font-display:swap;font-weight:600;src:local("Open Sans SemiBold italic"),local("Open Sans-SemiBolditalic"),url(/LG-Blog-Gatsby/static/open-sans-latin-600italic.4950a720.woff2) format("woff2"),url(/LG-Blog-Gatsby/static/open-sans-latin-600italic.318ea1ad.woff) format("woff")}@font-face{font-family:Open Sans;font-style:normal;font-display:swap;font-weight:700;src:local("Open Sans Bold "),local("Open Sans-Bold"),url(/LG-Blog-Gatsby/static/open-sans-latin-700.d08c09f2.woff2) format("woff2"),url(/LG-Blog-Gatsby/static/open-sans-latin-700.623e3205.woff) format("woff")}@font-face{font-family:Open Sans;font-style:italic;font-display:swap;font-weight:700;src:local("Open Sans Bold italic"),local("Open Sans-Bolditalic"),url(/LG-Blog-Gatsby/static/open-sans-latin-700italic.c02f5da6.woff2) format("woff2"),url(/LG-Blog-Gatsby/static/open-sans-latin-700italic.72e19cbb.woff) format("woff")}@font-face{font-family:Open Sans;font-style:normal;font-display:swap;font-weight:800;src:local("Open Sans ExtraBold "),local("Open Sans-ExtraBold"),url(/LG-Blog-Gatsby/static/open-sans-latin-800.aaeffaf2.woff2) format("woff2"),url(/LG-Blog-Gatsby/static/open-sans-latin-800.c6aa0c4a.woff) format("woff")}@font-face{font-family:Open Sans;font-style:italic;font-display:swap;font-weight:800;src:local("Open Sans ExtraBold italic"),local("Open Sans-ExtraBolditalic"),url(/LG-Blog-Gatsby/static/open-sans-latin-800italic.6b3973ff.woff2) format("woff2"),url(/LG-Blog-Gatsby/static/open-sans-latin-800italic.79b58175.woff) format("woff")}code[class*=language-],pre[class*=language-]{color:#f8f8f2;background:none;text-shadow:0 1px rgba(0,0,0,.3);font-family:Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-ms-hyphens:none;hyphens:none}pre[class*=language-]{padding:1em;margin:.5em 0;overflow:auto;border-radius:.3em}:not(pre)>code[class*=language-],pre[class*=language-]{background:#272822}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal}.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#708090}.token.punctuation{color:#f8f8f2}.namespace{opacity:.7}.token.constant,.token.deleted,.token.property,.token.symbol,.token.tag{color:#f92672}.token.boolean,.token.number{color:#ae81ff}.token.attr-name,.token.builtin,.token.char,.token.inserted,.token.selector,.token.string{color:#a6e22e}.language-css .token.string,.style .token.string,.token.entity,.token.operator,.token.url,.token.variable{color:#f8f8f2}.token.atrule,.token.attr-value,.token.function{color:#e6db74}.token.keyword{color:#66d9ef}.token.important,.token.regex{color:#fd971f}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}</style><meta name="apple-mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="#D0E0D8"/><meta name="apple-mobile-web-app-title" content="Lazywill"/><link rel="apple-touch-icon" href="/icons/apple-icon-57x57.png" sizes="57x57"/><link rel="apple-touch-icon" href="/icons/apple-icon-60x60.png" sizes="60x60"/><link rel="apple-touch-icon" href="/icons/apple-icon-72x72.png" sizes="72x72"/><link rel="apple-touch-icon" href="/icons/apple-icon-76x76.png" sizes="76x76"/><link rel="apple-touch-icon" href="/icons/apple-icon-114x114.png" sizes="114x114"/><link rel="apple-touch-icon" href="/icons/apple-icon-120x120.png" sizes="120x120"/><link rel="apple-touch-icon" href="/icons/apple-icon-144x144.png" sizes="144x144"/><link rel="apple-touch-icon" href="/icons/apple-icon-152x152.png" sizes="152x152"/><link rel="apple-touch-icon" href="/icons/apple-icon-180x180.png" sizes="180x180"/><link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png"/><link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png"/><link rel="icon" type="image/png" sizes="96x96" href="/icons/favicon-96x96.png"/></head><body><noscript>You need to enable JavaScript to run this app!</noscript><div id="___gatsby"><header class="jsx-3242542942 header  "><a class="logoType" href="/LG-Blog-Gatsby/"><div class="jsx-3242542942 logo"><img src="/LG-Blog-Gatsby/static/avatar.421bc1a9.jpg" alt="LG-Blog" class="jsx-3242542942"/></div><div class="jsx-3242542942 type"><h1 class="jsx-3242542942">todaylg</h1><h2 class="jsx-3242542942"></h2></div></a><nav rel="js-menu" class="jsx-674193961 menu "><ul class="jsx-674193961 itemList"><li class="jsx-3982648812 item"><a class="" data-slug="/" href="/LG-Blog-Gatsby/"><svg fill="currentColor" preserveAspectRatio="xMidYMid meet" height="1em" width="1em" viewBox="0 0 40 40" style="vertical-align:middle"><g><path d="m32.9 22.1v10.8q0 0.5-0.4 1t-1 0.4h-8.6v-8.6h-5.7v8.6h-8.6q-0.5 0-1-0.4t-0.4-1v-10.8q0 0 0 0t0-0.1l12.9-10.6 12.8 10.6q0 0.1 0 0.1z m5-1.5l-1.4 1.7q-0.2 0.2-0.4 0.2h-0.1q-0.3 0-0.5-0.2l-15.4-12.8-15.5 12.8q-0.2 0.2-0.5 0.2-0.3 0-0.5-0.2l-1.4-1.7q-0.1-0.2-0.1-0.5t0.2-0.5l16.1-13.4q0.7-0.6 1.7-0.6t1.7 0.6l5.4 4.6v-4.4q0-0.3 0.2-0.5t0.5-0.2h4.3q0.3 0 0.5 0.2t0.2 0.5v9.1l4.9 4.1q0.2 0.2 0.3 0.5t-0.2 0.5z"></path></g></svg> <!-- -->Home</a></li><li class="jsx-3982648812 item"><a class="" data-slug="/category/" href="/LG-Blog-Gatsby/category/"><svg fill="currentColor" preserveAspectRatio="xMidYMid meet" height="1em" width="1em" viewBox="0 0 40 40" style="vertical-align:middle"><g><path d="m13 10q0-1.2-0.8-2t-2.1-0.9-2 0.9-0.8 2 0.8 2 2 0.9 2.1-0.9 0.8-2z m23.8 12.9q0 1.1-0.8 2l-11 10.9q-0.8 0.9-2 0.9-1.2 0-2-0.9l-16-15.9q-0.8-0.9-1.4-2.3t-0.6-2.6v-9.3q0-1.1 0.8-2t2.1-0.8h9.2q1.2 0 2.7 0.5t2.2 1.5l16 15.9q0.8 0.9 0.8 2.1z"></path></g></svg> <!-- -->Categories</a></li><li class="jsx-3982648812 item"><a class="" data-slug="/contact/" href="/LG-Blog-Gatsby/contact/"><svg fill="currentColor" preserveAspectRatio="xMidYMid meet" height="1em" width="1em" viewBox="0 0 40 40" style="vertical-align:middle"><g><path d="m40 15.8v17.8q0 1.4-1 2.5t-2.6 1h-32.8q-1.5 0-2.6-1t-1-2.5v-17.8q1 1.1 2.3 2 8 5.5 11 7.7 1.3 0.9 2.1 1.5t2.1 1 2.5 0.6h0q1.2 0 2.5-0.6t2.1-1 2.1-1.5q3.7-2.8 11.1-7.7 1.2-0.9 2.2-1.9z m0-6.5q0 1.7-1.1 3.4t-2.7 2.7q-8.4 5.8-10.5 7.3-0.2 0.1-0.9 0.6t-1.2 0.9-1.2 0.7-1.3 0.6-1.1 0.2h0q-0.5 0-1.1-0.2t-1.3-0.6-1.2-0.7-1.2-0.9-0.9-0.6q-2.1-1.5-5.9-4.1t-4.6-3.2q-1.3-0.9-2.6-2.6t-1.2-3q0-1.8 0.9-2.9t2.7-1.2h32.8q1.5 0 2.5 1.1t1.1 2.5z"></path></g></svg> <!-- -->About</a></li></ul></nav></header><div class="jsx-3242542942 sensor"></div><main class="jsx-1304903616 jsx-3347019808"><article class="jsx-1766939654 article"><header><h1 class="jsx-3306258923">《WebGL编程指南》读书笔记</h1><p class="jsx-1833289139 meta"><span class="jsx-1833289139"><svg fill="currentColor" preserveAspectRatio="xMidYMid meet" height="18" width="18" viewBox="0 0 40 40" style="vertical-align:middle"><g><path d="m4.4 37.1h6.4v-6.4h-6.4v6.4z m7.8 0h7.2v-6.4h-7.2v6.4z m-7.8-7.8h6.4v-7.2h-6.4v7.2z m7.8 0h7.2v-7.2h-7.2v7.2z m-7.8-8.6h6.4v-6.4h-6.4v6.4z m16.4 16.4h7.1v-6.4h-7.1v6.4z m-8.6-16.4h7.2v-6.4h-7.2v6.4z m17.2 16.4h6.4v-6.4h-6.4v6.4z m-8.6-7.8h7.1v-7.2h-7.1v7.2z m-7.9-19.3v-6.4q0-0.3-0.2-0.5t-0.5-0.2h-1.4q-0.3 0-0.5 0.2t-0.2 0.5v6.4q0 0.3 0.2 0.5t0.5 0.2h1.4q0.3 0 0.5-0.2t0.2-0.5z m16.5 19.3h6.4v-7.2h-6.4v7.2z m-8.6-8.6h7.1v-6.4h-7.1v6.4z m8.6 0h6.4v-6.4h-6.4v6.4z m0.7-10.7v-6.4q0-0.3-0.2-0.5t-0.5-0.2h-1.5q-0.3 0-0.5 0.2t-0.2 0.5v6.4q0 0.3 0.2 0.5t0.5 0.2h1.5q0.2 0 0.5-0.2t0.2-0.5z m8.5-1.4v28.5q0 1.2-0.8 2.1t-2 0.8h-31.4q-1.2 0-2.1-0.9t-0.8-2v-28.5q0-1.2 0.8-2t2.1-0.9h2.8v-2.1q0-1.5 1.1-2.6t2.5-1h1.4q1.5 0 2.5 1.1t1.1 2.5v2.1h8.6v-2.1q0-1.5 1-2.6t2.5-1h1.5q1.4 0 2.5 1.1t1 2.5v2.1h2.9q1.1 0 2 0.9t0.8 2z"></path></g></svg> <!-- -->2018-03-10</span><span class="jsx-1833289139"><svg fill="currentColor" preserveAspectRatio="xMidYMid meet" height="18" width="18" viewBox="0 0 40 40" style="vertical-align:middle"><g><path d="m35.9 31.4q0 2.6-1.6 4.2t-4.3 1.5h-19.5q-2.7 0-4.4-1.5t-1.6-4.2q0-1.2 0.1-2.3t0.3-2.5 0.6-2.4 0.9-2.2 1.4-1.8 1.9-1.2 2.5-0.4q0.2 0 1 0.5t1.6 1 2.4 1.1 3 0.5 3-0.5 2.4-1.1 1.7-1 0.9-0.5q1.4 0 2.5 0.4t1.9 1.2 1.4 1.8 0.9 2.2 0.6 2.4 0.4 2.5 0 2.3z m-7.1-20q0 3.6-2.5 6.1t-6.1 2.5-6-2.5-2.6-6.1 2.6-6 6-2.5 6.1 2.5 2.5 6z"></path></g></svg> <!-- -->todaylg</span><span class="jsx-1833289139"><svg fill="currentColor" preserveAspectRatio="xMidYMid meet" height="18" width="18" viewBox="0 0 40 40" style="vertical-align:middle"><g><path d="m13 10q0-1.2-0.8-2t-2.1-0.9-2 0.9-0.8 2 0.8 2 2 0.9 2.1-0.9 0.8-2z m23.8 12.9q0 1.1-0.8 2l-11 10.9q-0.8 0.9-2 0.9-1.2 0-2-0.9l-16-15.9q-0.8-0.9-1.4-2.3t-0.6-2.6v-9.3q0-1.1 0.8-2t2.1-0.8h9.2q1.2 0 2.7 0.5t2.2 1.5l16 15.9q0.8 0.9 0.8 2.1z"></path></g></svg><a href="/LG-Blog-Gatsby/category/读书流水">读书流水</a></span></p></header><div class="jsx-2925212198 bodytext"><p>新挖个坑咯～总之先读本入门的书瞅瞅吧！有个大致了解再说啦</p>
+<h2>Part 1</h2>
 <p>万里长征的第一步吧。。。也不知道自己能走几步，毕竟底子真是差啊（方程都解不出来的人研究什么WebGL，好好搬砖不行吗？！经常这样想），但是奈何脑子里的骚操作不上3D又没法实现出来，但是效果后面又都是腿都跪麻的数学。。。很难受。。。总之先读本入门的书瞅瞅吧！有个大致了解再说啦！</p>
 <p>先上一张Adobe的图：
 <img src="http://wwwimages.adobe.com/content/dam/acom/en/devnet/flashplayer/articles/how-stage3d-works/fig02.jpg" alt="image"></p>
@@ -1071,10 +1072,508 @@ MAP上的纹理类型</td>
 </tr>
 </tbody>
 </table>
-<p>修改一下纹理坐标与顶点坐标使纹理图像不够大的情况（改一下gl.texParameteri的参数来决定怎么渲染即可）以及多幅纹理的情况（从两个纹理取出纹素颜色来计算最终的片元颜色即可：比如二者分量相乘（遮罩效果）），实例就不上了，jsfiddle跨域问题解决不了也显示不出结果。</p></div><footer><div class="jsx-646394116 author"><div class="jsx-646394116 avatar"><img src="/LG-Blog-Gatsby/static/avatar.421bc1a9.jpg" alt="LG-Blog" class="jsx-646394116"/></div><div class="jsx-646394116 note"><p><strong>todaylg</strong> </p></div></div><div class="jsx-126278577 links"><a href="/LG-Blog-Gatsby/webGL-learning-2/"><svg fill="currentColor" preserveAspectRatio="xMidYMid meet" height="1em" width="1em" viewBox="0 0 40 40" style="vertical-align:middle"><g><path d="m36.4 21.4q0 1.2-0.9 2.1l-14.5 14.5q-0.9 0.8-2 0.8-1.2 0-2-0.8l-1.7-1.7q-0.9-0.8-0.9-2t0.9-2l6.5-6.6h-15.7q-1.1 0-1.9-0.8t-0.7-2v-2.9q0-1.2 0.7-2t1.9-0.9h15.7l-6.5-6.5q-0.9-0.8-0.9-2t0.9-2l1.7-1.7q0.8-0.9 2-0.9 1.2 0 2 0.9l14.5 14.5q0.9 0.8 0.9 2z"></path></g></svg><h4 class="jsx-126278577">初探WebGL(二)<!-- --> <time class="jsx-126278577">2018-03-11<!-- --> </time></h4></a><a href="/LG-Blog-Gatsby/canvas-renderermation/"><svg fill="currentColor" preserveAspectRatio="xMidYMid meet" height="1em" width="1em" viewBox="0 0 40 40" style="vertical-align:middle"><g><path d="m36.3 20v2.9q0 1.1-0.7 2t-1.9 0.8h-15.7l6.5 6.6q0.9 0.8 0.9 2t-0.9 2l-1.7 1.7q-0.8 0.8-2 0.8-1.1 0-2-0.8l-14.5-14.6q-0.9-0.8-0.9-2 0-1.1 0.9-2l14.5-14.5q0.8-0.9 2-0.9 1.2 0 2 0.9l1.7 1.6q0.9 0.9 0.9 2.1t-0.9 2l-6.5 6.5h15.7q1.1 0 1.9 0.9t0.7 2z"></path></g></svg><h4 class="jsx-126278577">初探Canvas2D渲染与数据可视化<!-- --> <time class="jsx-126278577">2017-11-11</time></h4></a></div><div id="post-comments" class="jsx-3595558049 comments"><div><div class="fb-comments" data-href="www.todaylg.com/webGL-learning-1/" data-width="100%"></div></div></div></footer></article></main><footer class="jsx-2344609357 footer"><ul>
+<p>修改一下纹理坐标与顶点坐标使纹理图像不够大的情况（改一下gl.texParameteri的参数来决定怎么渲染即可）以及多幅纹理的情况（从两个纹理取出纹素颜色来计算最终的片元颜色即可：比如二者分量相乘（遮罩效果）），实例就不上了，jsfiddle跨域问题解决不了也显示不出结果。</p>
+<h2>Part 4</h2>
+<p>Welcome to 3D!!</p>
+<p>三维比二维多了一个深度信息(Z轴)，所以为了确定孤独的观测者的状态需要确定三个信息：1.观测的目标的坐标。2.观测者的坐标（视点）。3.上方向（比如你坐着不动头却乱扭，看到的场景也会变）。有了这三个矢量就可以创建出对应的视图矩阵，具体怎么算的我们暂且先不深入：</p>
+<iframe width="100%" height="430" src="//jsfiddle.net/todaylg/35br4q7m/19/embedded/result,js,css,html" allowpaymentrequest allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<p>在代码中我们将创建出来的视图矩阵直接与顶点坐标相乘，简单粗暴。WebGL默认视点(0,0,0)，观测点(0,0,-1),上方向（0,1,0）。</p>
+<p>其实视点是可以不需要移动的，比如视点后移一个单位，是完全等价于把被观察对象向前平移一个单位的，二者本质是一样的，都可以用矩阵来描述。</p>
+<p>而将旋转矩阵、平移矩阵、缩放矩阵和视图矩阵组合（就是矩阵相乘），比如先对三角形进行旋转变换，再怼旋转后的三角形进行与移动视点等效的变换，得到的就是在某个视点观察旋转后的三角形的图像了，而相乘后的矩阵就叫模型视图矩阵。</p>
+<h3>键盘控制移动视点</h3>
+<iframe width="100%" height="430" src="//jsfiddle.net/todaylg/35br4q7m/20/embedded/result,js,css,html" allowpaymentrequest allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<p>但是会发现转着转着会少一个角，这是因为我们没有指定可视范围造成的，即观察者的可视空间。常用的可视空间为正射投影（长方体）、金字塔(透视)投影（四棱锥）。</p>
+<h3>正射投影</h3>
+<p>首先可视空间都是由前后两个矩形表面来确定的，分别是近裁剪面和远裁剪面，前者的四个顶点为(right,top,-near),(-left,top,-near),(-left,-bottom,-near),(right,-bottom,-near)，后者的四个顶点为(right,top,-far),(-left,top,-far),(-left,-bottom,-far),(right,-bottom,-far).</p>
+<p>而正射投影是长方体的可视空间，那么其在xy轴上的坐标都是一样的，也就是需要确定的参数为：left,right,bottom,top,near,far。通过这些参数我们就可以计算得出正射投影矩阵（怎么算先不研究）,左右箭头修改near和far的值：</p>
+<iframe width="100%" height="430" src="//jsfiddle.net/todaylg/35br4q7m/21/embedded/result,js,css,html" allowpaymentrequest allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<p>知道了这个道理我们就可以修复之前缺角的情况了，无非就是把far调远一点,那顶点坐标再乘以一个投影矩阵呗：</p>
+<iframe width="100%" height="430" src="//jsfiddle.net/todaylg/35br4q7m/22/embedded/result,js,css,html" allowpaymentrequest allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<h3>透视投影</h3>
+<p>在正射投影中物体不管距离的远近是多大就多大，但是我们真实世界中很明显物体是近大远小的，这就是透视投影的可视空间了。</p>
+<p>透视投影需要的参数与正射投影不一样，需要确定的是可视空间顶面和底面的夹角fov、近裁剪面的宽高比aspect、near、far的位置四个参数，也是通过这几个参数可以计算出透视投影的矩阵（具体怎么算出来的先不研究）：</p>
+<iframe width="100%" height="430" src="//jsfiddle.net/todaylg/35br4q7m/23/embedded/result,js,css,html" allowpaymentrequest allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<p>将投影矩阵、视图矩阵、模型矩阵相乘可以得到模型试图投影矩阵。。。。上面的例子画了9个三角形，其实我们只需要画三个，剩下的通过变换即可得到:</p>
+<iframe width="100%" height="430" src="//jsfiddle.net/todaylg/35br4q7m/23/embedded/result,js,css,html" allowpaymentrequest allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<h3>前后关系</h3>
+<p>WebGL默认会按照缓冲区中的顺序绘制图形，后面的盖前面的，为了解决前后关系的问题，WebGL提供了隐藏面消除的功能：</p>
+<h3>gl.enable(cap)</h3>
+<hr>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cap</td>
+<td>指定需要开启的功能</td>
+</tr>
+<tr>
+<td></td>
+<td>gl.DEPTH_TEST(隐藏面消除)</td>
+</tr>
+<tr>
+<td></td>
+<td>gl.BLEND(混合)</td>
+</tr>
+<tr>
+<td></td>
+<td>gl.POLYGON
+_
+OFFSET
+_
+FILL(多边形位移)</td>
+</tr>
+</tbody>
+</table>
+<p>gl.clear()除了可以清楚颜色缓冲区，还可以清除深度缓冲区，深度缓冲区就是为了帮助WebGL进行隐藏面的消除，用来存储深度信息的。在绘制任意一帧之前都必须清除深度缓冲区，以消除绘制上一帧时留下的痕迹。</p>
+<p>我们只需要开启应场面消除，在绘制之前清空深度缓冲区，之后就不用在意放入缓冲区的顺序（倒着放入也无所谓）了：</p>
+<iframe width="100%" height="430" src="//jsfiddle.net/todaylg/35br4q7m/24/embedded/result,js,css,html" allowpaymentrequest allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<p>但是当Z轴的值完全一样的时候就会出现深度冲突的情况，因为两个表面过于接近，深度缓冲区的有限精度已经不能区分前后关系了，这时候再开启多边形偏移即可：</p>
+<h3>gl.polygonOffset(factor,units)</h3>
+<hr>
+<p>指定加到每个顶点会之后Z值上的偏移量，偏移量按照公式m x factor+ r x units计算(m表示顶点所在表面相对于观察者视线的角度，r表示硬件能够区分两个Z值之差的最小值)：</p>
+<iframe width="100%" height="430" src="//jsfiddle.net/todaylg/35br4q7m/25/embedded/result,js,css,html" allowpaymentrequest allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<p>先画了一个绿色的三角形，然后通过gl.polygonOffset()设置了多边形偏移参数，使得之后的绘制受到多边形偏移机制影响，再画一个黄色三角形，这样就避免了深度冲突了。</p>
+<h3>画个立方体</h3>
+<p>画立方体有很多种方法，比如一个面用两个三角形拼，6个面就是6x6=36个顶点，或者用gl.TRIANGLE_FAN来画，四个顶点就可以绘制一个四边形，就只需要4x6=24个顶点，一般我们都是使用gl.drawElements()替代gl.drawArrays()来进行绘制，能够避免重复定义顶点，保持顶点数量最小，立方体的话就是8个顶点，每个三角形与顶点列表的三个顶点相关联。</p>
+<h3>gl.drawElements(mode,count,type,offset)</h3>
+<hr>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>mode</td>
+<td>指定绘制方式</td>
+</tr>
+<tr>
+<td>count</td>
+<td>指定绘制顶点数</td>
+</tr>
+<tr>
+<td>type</td>
+<td>指定索引值数据类型</td>
+</tr>
+<tr>
+<td>offset</td>
+<td>指定索引数组中开始绘制的位置</td>
+</tr>
+</tbody>
+</table>
+<p>我们需要将顶点索引写入到缓冲区并绑定到gl.ELEMENT_ARRAY_BUFFER上：</p>
+<iframe width="100%" height="430" src="//jsfiddle.net/todaylg/35br4q7m/26/embedded/result,js,css,html" allowpaymentrequest allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<p>你会发现每个顶点的颜色影响到了三个面，我们只要单独把顶点坐标拎出来即可：</p>
+<iframe width="100%" height="430" src="//jsfiddle.net/todaylg/35br4q7m/27/embedded/result,js,css,html" allowpaymentrequest allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<h2>Part 5</h2>
+<p>OF光呢！！！？？？</p>
+<p>常见的光为以下三种：</p>
+<p>1.平行光。可以用一个方向和一个颜色来定义。</p>
+<p>2.点光源光。可以用一个坐标和颜色来定义。</p>
+<p>3.环境光。只需要颜色即可。</p>
+<p>反射类型分为：</p>
+<p>1.漫反射。漫反射是针对于平行光或者点光源而言的，反射光的颜色取决于入射光的颜色x表面基底色xcos(angle)(angle为入射光与表面形成的入射角，可以根据光线和表面的方向计算得出)</p>
+<p>2.环境反射。环境反射是针对于环境光而言的，反射光的方向可以认为就是入射光的反方向，即取决于入射光颜色x表面基底色。</p>
+<p>如果二者同时存在就直接相加。</p>
+<iframe width="100%" height="420" src="//jsfiddle.net/todaylg/35br4q7m/28/embedded/result,js,css,html" allowpaymentrequest allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<p>再加上环境光：</p>
+<iframe width="100%" height="420" src="//jsfiddle.net/todaylg/35br4q7m/29/embedded/result,js,css,html" allowpaymentrequest allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<p>要是加上变换的话情况就更复杂了，平移还好，不会改变平面的法向量，但是旋转就会了，这时候强大的逆转置矩阵就有声音了，怎么计算经过变换（乘以模型矩阵）后的法向量呢？只要将变换之前的法向量乘以模型矩阵的逆转置矩阵即可。首先逆矩阵是什么，矩阵乘以逆矩阵为单位矩阵，转置就是行列进行调换。（果然全是数学😂。。想放弃治疗了。。😢）</p>
+<iframe width="100%" height="420" src="//jsfiddle.net/todaylg/35br4q7m/30/embedded/result,js,css,html" allowpaymentrequest allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<p>换成点光源光（需要光源的世界坐标了）：</p>
+<p>逐顶点：</p>
+<iframe width="100%" height="420" src="//jsfiddle.net/todaylg/35br4q7m/31/embedded/result,js,css,html" allowpaymentrequest allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<p>逐片元：</p>
+<iframe width="100%" height="420" src="//jsfiddle.net/todaylg/35br4q7m/32/embedded/result,js,css,html" allowpaymentrequest allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<p>动起来：</p>
+<p>环境光：</p>
+<iframe width="100%" height="420" src="//jsfiddle.net/todaylg/35br4q7m/33/embedded/result,js,css,html" allowpaymentrequest allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<p>点光源光：</p>
+<iframe width="100%" height="420" src="//jsfiddle.net/todaylg/35br4q7m/34/embedded/result,js,css,html" allowpaymentrequest allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<h3>initShaders()</h3>
+<p>其作用总的来说就是编译GLSL ES代码，创建和初始化着色器（顶点和片元）：</p>
+<p>1.创建着色器对象（gl.createShader()）</p>
+<p>2.向着色器对象中填充着色器程序的源代码（gl.shaderSource()）</p>
+<p>3.编译着色器（gl.compileShader()）</p>
+<p>4.创建程序对象（gl.createProgram()）</p>
+<p>5.为程序对象分配着色器（gl.attachShader()）</p>
+<p>6.连接程序对象（gl.linkProgram()）</p>
+<p>7.使用程序对象（gl.useProgram()）</p>
+<p>这里的着色器对象用于管理一个顶点着色器或者一个片元着色器，每一个着色器都有一个着色器对象。程序对象是管理着色器对象的容器，在WebGL中一个程序对象必须包含一个顶点着色器和一个片元着色器。所以一般都是两个着色器（顶点加片元）对象和一个程序对象。</p>
+<h3>1.创建着色器对象（gl.createShader()）</h3>
+<p>所有的着色器对象都必须通过调用gl.createShader()来创建。</p>
+<h3>gl.createShader(type)</h3>
+<hr>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>参数取值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td>gl.VERTEX
+_
+SHADER(顶点着色器)或者gl.FRAGMENT
+_
+SHADER(片元着色器)</td>
+</tr>
+</tbody>
+</table>
+<p>有create必有delete，所以gl.deleteShader()函数则是用来删除（不是马上删除，会等到程序对象不再使用该着色器后再删除）着色器对象的。</p>
+<h3>2.向着色器对象中填充着色器程序的源代码（gl.shaderSource()）</h3>
+<h3>gl.shaderSource(shader, source)</h3>
+<hr>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>参数取值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>shader</td>
+<td>指定需要传入代码的着色器对象</td>
+</tr>
+<tr>
+<td>source</td>
+<td>指定字符串形式的代码</td>
+</tr>
+</tbody>
+</table>
+<h3>3.编译着色器（gl.compileShader()）</h3>
+<p>传入源代码之后还需要编译之后才能使用（所以要是更新了源代码想要效果也跟着更新就还需要重新编译）</p>
+<h3>gl.compileShader(shader)</h3>
+<hr>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>参数取值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>shader</td>
+<td>待编译的着色器</td>
+</tr>
+</tbody>
+</table>
+<p>debug的话可以调用gl.getShaderParameter()函数来检查着色器的状态。</p>
+<h3>gl.getShaderParameter(shader, pname)</h3>
+<hr>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>参数取值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>shader</td>
+<td>指定待获取参数的着色器</td>
+</tr>
+<tr>
+<td>shader</td>
+<td>指定待获取参数的类型</td>
+</tr>
+<tr>
+<td></td>
+<td>gl.SHADER_TYPE</td>
+</tr>
+<tr>
+<td></td>
+<td>gl.DELETE_STATUS</td>
+</tr>
+<tr>
+<td></td>
+<td>gl.COMPILE_STATUS</td>
+</tr>
+</tbody>
+</table>
+<p>要是直接编译失败gl.getShaderParameter会返回false，我们可以通过getShaderInfoLog（shader）来查看信息日志</p>
+<h3>4.创建程序对象（gl.createProgram()）</h3>
+<p>之前使用的gl.getAttribLocation和gl.getUniformLocation函数的第一个参数就是这个程序对象。</p>
+<h3>gl.createProgram()</h3>
+<hr>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>参数取值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>无</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>一旦程序对象被创建之后，需要向程序附上两个着色器：</p>
+<h3>5.为程序对象分配着色器（gl.attachShader()）</h3>
+<h3>gl.attachShader(program, shader)</h3>
+<hr>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>参数取值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>program</td>
+<td>指定程序对象</td>
+</tr>
+<tr>
+<td>shader</td>
+<td>指定着色器对象</td>
+</tr>
+</tbody>
+</table>
+<p>同样的gl.detachShader函数用来解除分配给程序对象的着色器。</p>
+<h3>6.连接程序对象（gl.linkProgram()）</h3>
+<p>在为程序对象分配了两个着色器对象后，还需要将顶点着色器和片元着色器连接起来。</p>
+<h3>gl.linkProgram(program)</h3>
+<hr>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>参数取值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>program</td>
+<td>连接指定程序对象中的着色器</td>
+</tr>
+</tbody>
+</table>
+<p>程序对象进行连接操作，目的是保证顶点着色器和片元着色器的varying变量同名同类型且一一对应；顶点着色器对每个varying变量赋了值；顶点着色器和片元着色器中的同名uniform变量也是同类型的（无需一一对应）；着色器中的attribute、uniform、varying变量的个数没有超过着色器的上限。</p>
+<p>查看是否连接成功可以通过调用gl.getProgramPara-meters()函数来实现，如果连接失败了也可以通过调用gl.getProgramInfoLog从信息日志中获取连接出错信息。</p>
+<h3>7.使用程序对象（gl.useProgram()）</h3>
+<p>最后就是通过调用gl.useProgram()来告知WebGL系统绘制时使用哪个程序对象</p>
+<h3>gl.useProgram(program)</h3>
+<hr>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>参数取值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>program</td>
+<td>指定待使用的程序对象</td>
+</tr>
+</tbody>
+</table>
+<p>所以initShaders()函数的内部流程也是这几步。</p>
+<h3>放弃治疗了放弃治疗了。。。。</h3>
+<h2>实例分析</h2>
+<p>这是CodePen上一个大佬的WebGL粒子效果的例子，瞅了瞅发现好像不是那么复杂，决定好好研究下代码，先上个改巴改巴后的最终效果（jsfiddle效果直接出不来。。。所以换成了codepen）：</p>
+<iframe height='307' scrolling='no' title='WebGL_Learning_Day1' src='//codepen.io/todaylg/embed/GOwdWM/?height=307&theme-id=0&default-tab=js,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='https://codepen.io/todaylg/pen/GOwdWM/'>WebGL_Learning_Day1</a> by todaylg (<a href='https://codepen.io/todaylg'>@todaylg</a>) on <a href='https://codepen.io'>CodePen</a>.
+</iframe>
+<p>代码分析：</p>
+<p>首先看到html，其中定义了简单的顶点着色器和片元着色器代码：</p>
+<p>顶点着色器：</p>
+<div class="gatsby-highlight">
+      <pre class="language-javascript"><code class="language-javascript">attribute vec3 vertexPosition;
+uniform mat4 modelViewMatrix;
+uniform mat4 perspectiveMatrix;
+
+void main(void) {
+    gl_Position = perspectiveMatrix * modelViewMatrix * vec4(  vertexPosition, 1.0);
+}</code></pre>
+      </div>
+<p>片元着色器：</p>
+<div class="gatsby-highlight">
+      <pre class="language-javascript"><code class="language-javascript">#ifdef GL_ES
+precision highp float;
+#endif
+void main(void) {
+    gl_FragColor = vec4(0.2, 0.3, 0.4, 1.0);
+    //gl_FragColor = vec4(0.4, 0.2, 0.3, 1.0);
+}</code></pre>
+      </div>
+<p>顶点着色器程序创建了模型矩阵、投影矩阵、3维顶点坐标，为了统一计算把3维顶点坐标换为了四维参与运算得到最终的位置。片元着色器程序则是直接简单粗暴的写死了粒子的颜色。</p>
+<p>转到js：</p>
+<p>loadScene()函数相当于做了initSharder()函数的活，完成了程序对象的创建和使用，之后开启混合模式并且对随机变量进行初始化、金字塔投影矩阵的初始化、模型矩阵的初始化。</p>
+<p>setup()中初始化的rad代表粒子旋转轨迹圆的半径，theta相当于angle，velTheta相当于变换的幅度（角度变换），freq和boldRate不用管，没有用到，randomPosX/Y是整个屏幕内的随机坐标。</p>
+<p>核心方法在draw0/draw1/draw2方法，这几个方法会在一定间隔时间以内循环依次调用。</p>
+<h3>draw0：</h3>
+<hr>
+<div class="gatsby-highlight">
+      <pre class="language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">draw0</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+  <span class="token keyword">var</span> i<span class="token punctuation">,</span> n <span class="token operator">=</span> vertices<span class="token punctuation">.</span>length<span class="token punctuation">,</span> p<span class="token punctuation">,</span> bp<span class="token punctuation">;</span>
+  <span class="token keyword">var</span> px<span class="token punctuation">,</span> py<span class="token punctuation">;</span>
+  <span class="token keyword">var</span> pTheta<span class="token punctuation">;</span>
+  <span class="token keyword">var</span> rad<span class="token punctuation">;</span>
+  <span class="token keyword">var</span> num<span class="token punctuation">;</span>
+  <span class="token keyword">var</span> targetX<span class="token punctuation">,</span> targetY<span class="token punctuation">;</span>
+
+  <span class="token keyword">for</span> <span class="token punctuation">(</span>i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> numLines <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">;</span> i <span class="token operator">+=</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token comment">//因为是线，粒子数量乘以2，然后将多复制出来的一份粒子坐标略做偏移，之后相连，效果就出来了？？？？？并不对i+=2才是导致numLines * 2的原因</span>
+    count <span class="token operator">+=</span> <span class="token number">.3</span><span class="token punctuation">;</span>
+    bp <span class="token operator">=</span> i <span class="token operator">*</span> <span class="token number">3</span><span class="token punctuation">;</span>
+
+    vertices<span class="token punctuation">[</span>bp<span class="token punctuation">]</span> <span class="token operator">=</span> vertices<span class="token punctuation">[</span>bp <span class="token operator">+</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    vertices<span class="token punctuation">[</span>bp <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> vertices<span class="token punctuation">[</span>bp <span class="token operator">+</span> <span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token comment">//确保线起始点一致</span>
+
+    num <span class="token operator">=</span> <span class="token function">parseInt</span><span class="token punctuation">(</span>i <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    targetX <span class="token operator">=</span> randomTargetXArr<span class="token punctuation">[</span>num<span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token comment">//init时的随机位置</span>
+    targetY <span class="token operator">=</span> randomTargetYArr<span class="token punctuation">[</span>num<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+
+    px <span class="token operator">=</span> vertices<span class="token punctuation">[</span>bp <span class="token operator">+</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    px <span class="token operator">+=</span> <span class="token punctuation">(</span>targetX <span class="token operator">-</span> px<span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token punctuation">(</span>Math<span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">.04</span> <span class="token operator">+</span> <span class="token number">.6</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//相较于上一时刻的位置略做偏移</span>
+    vertices<span class="token punctuation">[</span>bp <span class="token operator">+</span> <span class="token number">3</span><span class="token punctuation">]</span> <span class="token operator">=</span> px<span class="token punctuation">;</span><span class="token comment">//所以虽然是线但是两个点的坐标相差不大。</span>
+
+
+    <span class="token comment">//py = (Math.sin(cn) + 1) * .2 * (Math.random() * .5 - .25);</span>
+    py <span class="token operator">=</span> vertices<span class="token punctuation">[</span>bp <span class="token operator">+</span> <span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    py <span class="token operator">+=</span> <span class="token punctuation">(</span>targetY <span class="token operator">-</span> py<span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token punctuation">(</span>Math<span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">.04</span> <span class="token operator">+</span> <span class="token number">.06</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//位置略做偏移</span>
+    vertices<span class="token punctuation">[</span>bp <span class="token operator">+</span> <span class="token number">4</span><span class="token punctuation">]</span> <span class="token operator">=</span> py<span class="token punctuation">;</span>
+
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+      </div>
+<p>这里需要注意因为缓冲区里面只存放顶点的坐标信息，而不带大小、透明度等其他信息，所以gl.drawArray的时候要是画点（即第一个参数传入gl.POINTS），那么粒子亮度很低（因为太小了），视觉效果不好。这里采用的办法是画线，而每次绘制时先同步线的起终点，之后对线的终点做微小的位移，draw0/1/2都是如此。</p>
+<p>draw0最简单，就是把各个坐标朝最开始全屏随机分配的坐标归位回去，也就是回到分散状态的动画效果。</p>
+<h3>draw1</h3>
+<hr>
+<div class="gatsby-highlight">
+      <pre class="language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">draw1</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+  <span class="token keyword">var</span> i<span class="token punctuation">,</span> n <span class="token operator">=</span> vertices<span class="token punctuation">.</span>length<span class="token punctuation">,</span> p<span class="token punctuation">,</span> bp<span class="token punctuation">;</span>
+  <span class="token keyword">var</span> px<span class="token punctuation">,</span> py<span class="token punctuation">;</span>
+  <span class="token keyword">var</span> pTheta<span class="token punctuation">;</span>
+  <span class="token keyword">var</span> rad<span class="token punctuation">;</span>
+  <span class="token keyword">var</span> num<span class="token punctuation">;</span>
+  <span class="token keyword">var</span> targetX<span class="token punctuation">,</span> targetY<span class="token punctuation">;</span>
+
+  <span class="token keyword">for</span> <span class="token punctuation">(</span>i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> numLines <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">;</span> i <span class="token operator">+=</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    count <span class="token operator">+=</span> <span class="token number">.3</span><span class="token punctuation">;</span>
+    bp <span class="token operator">=</span> i <span class="token operator">*</span> <span class="token number">3</span><span class="token punctuation">;</span>
+
+    vertices<span class="token punctuation">[</span>bp<span class="token punctuation">]</span> <span class="token operator">=</span> vertices<span class="token punctuation">[</span>bp <span class="token operator">+</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    vertices<span class="token punctuation">[</span>bp <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> vertices<span class="token punctuation">[</span>bp <span class="token operator">+</span> <span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+    num <span class="token operator">=</span> <span class="token function">parseInt</span><span class="token punctuation">(</span>i <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    pTheta <span class="token operator">=</span> thetaArr<span class="token punctuation">[</span>num<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    rad <span class="token operator">=</span> velRadArr<span class="token punctuation">[</span>num<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+    pTheta <span class="token operator">+=</span> velThetaArr<span class="token punctuation">[</span>num<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    thetaArr<span class="token punctuation">[</span>num<span class="token punctuation">]</span> <span class="token operator">=</span> pTheta<span class="token punctuation">;</span>
+
+    targetX <span class="token operator">=</span> rad <span class="token operator">*</span><span class="token number">2</span><span class="token operator">*</span> Math<span class="token punctuation">.</span><span class="token function">cos</span><span class="token punctuation">(</span>pTheta<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    targetY <span class="token operator">=</span> rad <span class="token operator">*</span><span class="token number">2</span><span class="token operator">*</span> Math<span class="token punctuation">.</span><span class="token function">sin</span><span class="token punctuation">(</span>pTheta<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    px <span class="token operator">=</span> vertices<span class="token punctuation">[</span>bp <span class="token operator">+</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    px <span class="token operator">+=</span> <span class="token punctuation">(</span>targetX <span class="token operator">-</span> px<span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token punctuation">(</span>Math<span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">.1</span> <span class="token operator">+</span> <span class="token number">.1</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//朝方向缓动</span>
+    vertices<span class="token punctuation">[</span>bp <span class="token operator">+</span> <span class="token number">3</span><span class="token punctuation">]</span> <span class="token operator">=</span> px<span class="token punctuation">;</span>
+
+    <span class="token comment">//py = (Math.sin(cn) + 1) * .2 * (Math.random() * .5 - .25);</span>
+    py <span class="token operator">=</span> vertices<span class="token punctuation">[</span>bp <span class="token operator">+</span> <span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    py <span class="token operator">+=</span> <span class="token punctuation">(</span>targetY <span class="token operator">-</span> py<span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token punctuation">(</span>Math<span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">.1</span> <span class="token operator">+</span> <span class="token number">.1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    vertices<span class="token punctuation">[</span>bp <span class="token operator">+</span> <span class="token number">4</span><span class="token punctuation">]</span> <span class="token operator">=</span> py<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+      </div>
+<p>draw1则是朝屏幕中心（WebGL的原点）以rad为半径，每次变换velThetaArr角度的圆为轨迹运动。</p>
+<h3>draw2</h3>
+<hr>
+<div class="gatsby-highlight">
+      <pre class="language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">draw2</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  cn <span class="token operator">+=</span> <span class="token number">.1</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">var</span> i<span class="token punctuation">,</span> n <span class="token operator">=</span> vertices<span class="token punctuation">.</span>length<span class="token punctuation">,</span> p<span class="token punctuation">,</span> bp<span class="token punctuation">;</span>
+  <span class="token keyword">var</span> px<span class="token punctuation">,</span> py<span class="token punctuation">;</span>
+  <span class="token keyword">var</span> pTheta<span class="token punctuation">;</span>
+  <span class="token keyword">var</span> rad<span class="token punctuation">;</span>
+  <span class="token keyword">var</span> num<span class="token punctuation">;</span>
+
+  <span class="token keyword">for</span> <span class="token punctuation">(</span>i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> numLines <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">;</span> i <span class="token operator">+=</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    count <span class="token operator">+=</span> <span class="token number">.3</span><span class="token punctuation">;</span>
+    bp <span class="token operator">=</span> i <span class="token operator">*</span> <span class="token number">3</span><span class="token punctuation">;</span>
+    <span class="token comment">// copy old positions</span>
+
+    vertices<span class="token punctuation">[</span>bp<span class="token punctuation">]</span> <span class="token operator">=</span> vertices<span class="token punctuation">[</span>bp <span class="token operator">+</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    vertices<span class="token punctuation">[</span>bp <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> vertices<span class="token punctuation">[</span>bp <span class="token operator">+</span> <span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+    num <span class="token operator">=</span> <span class="token function">parseInt</span><span class="token punctuation">(</span>i <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    pTheta <span class="token operator">=</span> thetaArr<span class="token punctuation">[</span>num<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+    rad <span class="token operator">=</span> velRadArr<span class="token punctuation">[</span>num<span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token comment">// + Math.cos(pTheta + i * freqArr[i]) *  boldRateArr[num];</span>
+
+    pTheta <span class="token operator">+=</span> velThetaArr<span class="token punctuation">[</span>num<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    thetaArr<span class="token punctuation">[</span>num<span class="token punctuation">]</span> <span class="token operator">=</span> pTheta<span class="token punctuation">;</span>
+
+    px <span class="token operator">=</span> vertices<span class="token punctuation">[</span>bp <span class="token operator">+</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    px <span class="token operator">+=</span> rad <span class="token operator">*</span> Math<span class="token punctuation">.</span><span class="token function">cos</span><span class="token punctuation">(</span>pTheta<span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">0.5</span><span class="token punctuation">;</span><span class="token comment">//cos、sin都会有负值</span>
+    vertices<span class="token punctuation">[</span>bp <span class="token operator">+</span> <span class="token number">3</span><span class="token punctuation">]</span> <span class="token operator">=</span> px<span class="token punctuation">;</span>
+
+
+    <span class="token comment">//py = (Math.sin(cn) + 1) * .2 * (Math.random() * .5 - .25);</span>
+    py <span class="token operator">=</span> vertices<span class="token punctuation">[</span>bp <span class="token operator">+</span> <span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+    py <span class="token operator">+=</span> rad <span class="token operator">*</span> Math<span class="token punctuation">.</span><span class="token function">sin</span><span class="token punctuation">(</span>pTheta<span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">0.5</span><span class="token punctuation">;</span>
+    <span class="token comment">//p *= ( Math.random() -.5);</span>
+    vertices<span class="token punctuation">[</span>bp <span class="token operator">+</span> <span class="token number">4</span><span class="token punctuation">]</span> <span class="token operator">=</span> py<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+      </div>
+<p>draw2的角度变化和draw1是一致的，但是粒子旋转的轨迹圆不在是以屏幕中心为统一坐标，而是分散开来了。</p>
+<p>最后通过timer和draw：</p>
+<div class="gatsby-highlight">
+      <pre class="language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">timer</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  drawType <span class="token operator">=</span> <span class="token punctuation">(</span>drawType <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">%</span> <span class="token number">3</span><span class="token punctuation">;</span>
+
+  <span class="token function">setTimeout</span><span class="token punctuation">(</span>timer<span class="token punctuation">,</span> <span class="token number">1500</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">draw</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">switch</span> <span class="token punctuation">(</span>drawType<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">case</span> <span class="token number">0</span><span class="token punctuation">:</span>
+      <span class="token function">draw1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">break</span><span class="token punctuation">;</span>
+    <span class="token keyword">case</span> <span class="token number">1</span><span class="token punctuation">:</span>
+      <span class="token function">draw2</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">break</span><span class="token punctuation">;</span>
+    <span class="token keyword">case</span> <span class="token number">2</span><span class="token punctuation">:</span>
+      <span class="token function">draw0</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">break</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+      </div>
+<p>在三者之间循环依次调用，效果就完成啦。</p>
+<iframe height='307' scrolling='no' title='WebGL_Learning_Day1' src='//codepen.io/todaylg/embed/GOwdWM/?height=307&theme-id=0&default-tab=result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='https://codepen.io/todaylg/pen/GOwdWM/'>WebGL_Learning_Day1</a> by todaylg (<a href='https://codepen.io/todaylg'>@todaylg</a>) on <a href='https://codepen.io'>CodePen</a>.
+</iframe>
+<h2>Rewrite (18-08-20)</h2>
+<p>打算重新再从顶向下学习一下WebGL，主要目的是补齐相关的图形学知识，这主要是我发现了一本相当相当适合缺知识块的同学入坑的好书：<strong>交互式计算机图形学（基于WebGL的自顶向下方法）</strong>，是一本国外的图形学教材，但是基于的是WebGL，很全面的覆盖了图形学的知识点，感觉要是好好怼完这本书，应该是收获蛮大的。</p>
+<h3>Sierpinski</h3>
+<iframe height='357' scrolling='no' title='Sierpinski' src='//codepen.io/todaylg/embed/gjjgXZ/?height=357&theme-id=0&default-tab=result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='https://codepen.io/todaylg/pen/gjjgXZ/'>Sierpinski</a> by todaylg (<a href='https://codepen.io/todaylg'>@todaylg</a>) on <a href='https://codepen.io'>CodePen</a>.
+</iframe>
+<h3>ParticleLine</h3>
+<iframe height='400' scrolling='no' title='WebGL\_Learning\_Day1' src='//codepen.io/todaylg/embed/GOwdWM/?height=307&theme-id=0&default-tab=result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='https://codepen.io/todaylg/pen/GOwdWM/'>WebGL\_Learning\_Day1</a> by todaylg (<a href='https://codepen.io/todaylg'>@todaylg</a>) on <a href='https://codepen.io'>CodePen</a>.
+</iframe></div><footer><div class="jsx-646394116 author"><div class="jsx-646394116 avatar"><img src="/LG-Blog-Gatsby/static/avatar.421bc1a9.jpg" alt="LG-Blog" class="jsx-646394116"/></div><div class="jsx-646394116 note"><p><strong>todaylg</strong> </p></div></div><div class="jsx-126278577 links"><a href="/LG-Blog-Gatsby/basic-knowledge-mark/"><svg fill="currentColor" preserveAspectRatio="xMidYMid meet" height="1em" width="1em" viewBox="0 0 40 40" style="vertical-align:middle"><g><path d="m36.4 21.4q0 1.2-0.9 2.1l-14.5 14.5q-0.9 0.8-2 0.8-1.2 0-2-0.8l-1.7-1.7q-0.9-0.8-0.9-2t0.9-2l6.5-6.6h-15.7q-1.1 0-1.9-0.8t-0.7-2v-2.9q0-1.2 0.7-2t1.9-0.9h15.7l-6.5-6.5q-0.9-0.8-0.9-2t0.9-2l1.7-1.7q0.8-0.9 2-0.9 1.2 0 2 0.9l14.5 14.5q0.9 0.8 0.9 2z"></path></g></svg><h4 class="jsx-126278577">基础知识备忘（正则、Git、Flex）<!-- --> <time class="jsx-126278577">2018-04-01<!-- --> </time></h4></a><a href="/LG-Blog-Gatsby/Internship-summary/"><svg fill="currentColor" preserveAspectRatio="xMidYMid meet" height="1em" width="1em" viewBox="0 0 40 40" style="vertical-align:middle"><g><path d="m36.3 20v2.9q0 1.1-0.7 2t-1.9 0.8h-15.7l6.5 6.6q0.9 0.8 0.9 2t-0.9 2l-1.7 1.7q-0.8 0.8-2 0.8-1.1 0-2-0.8l-14.5-14.6q-0.9-0.8-0.9-2 0-1.1 0.9-2l14.5-14.5q0.8-0.9 2-0.9 1.2 0 2 0.9l1.7 1.6q0.9 0.9 0.9 2.1t-0.9 2l-6.5 6.5h15.7q1.1 0 1.9 0.9t0.7 2z"></path></g></svg><h4 class="jsx-126278577">实习小结<!-- --> <time class="jsx-126278577">2017-12-18</time></h4></a></div><div id="post-comments" class="jsx-3595558049 comments"><div><div class="fb-comments" data-href="www.todaylg.com/webGL-learning-1/" data-width="100%"></div></div></div></footer></article></main><footer class="jsx-2344609357 footer"><ul>
 <li>© todaylg 2018</li>
 <li>build base on <a href="https://www.gatsbyjs.org/">gatsby</a> and <a href="https://github.com/greglobinski/gatsby-starter-hero-blog">hero-starter</a></li>
-</ul></footer></div><script id="webpack-manifest">/*<![CDATA[*/window.webpackManifest={"231608221292675":"app-cf14134bb19fb134bacf.js","99219681209289":"component---node-modules-gatsby-plugin-offline-app-shell-js-5c4c5a0f7af9dc69d6d7.js","78839606078735":"component---src-templates-category-template-js-ccbdb357ea067077af6d.js","198517197184460":"component---src-templates-post-template-js-12de744ce8a8d00889aa.js","235131596041995":"component---src-templates-page-template-js-277489605b32655c14af.js","162898551421021":"component---src-pages-404-js-67108d2c79133c4984cb.js","118442821920679":"component---src-pages-category-js-bbb34571e9395b2ce79b.js","70144966829960":"component---src-pages-contact-js-db9419e96e03a5c6deba.js","35783957827783":"component---src-pages-index-js-196402a0cfcc6b7ff0e5.js","60335399758886":"path----375e85e38f47004b13cc.js","210333531512890":"path---offline-plugin-app-shell-fallback-a0e39f21c11f6a62c5ab.js","260708919825516":"path---category-miku-07713e3274d0f919cab3.js","119100849440836":"path---category-备忘-12053bbc20df7add03ed.js","50353500245631":"path---category-小结-d86b029e9e0218807368.js","132574017077682":"path---category-废话集-42bf313bfb620ad06bf9.js","117425267913203":"path---category-大结-f7506244c105479edcce.js","147394579921760":"path---blender-2-80-056f2496788b4f0709f6.js","125845644515443":"path---miku-setup-9d4d1054e82f0d1c8363.js","229805551833682":"path---problem-set-1a7c204fc3a932842a3d.js","267524537853082":"path---web-vr-and-web-audio-api-d6bcf2825fb22320d924.js","144342403179678":"path---hello-world-efa06527e539b8b97fdf.js","229955256016373":"path---web-gl-learning-2-73cc803d8fccf202e9a1.js","29578651168118":"path---web-gl-learning-1-b15b38001fb8cecc5417.js","243898797873760":"path---canvas-renderermation-0e2f62ddc2abddc567b9.js","163051810811568":"path---svg-outline-animation-e97733d4d91292275b9f.js","89450997894629":"path---test-5c4db413742bf71a7154.js","254022195166212":"path---404-a0e39f21c11f6a62c5ab.js","115052432080904":"path---category-31fb26f0592adbfd38b1.js","184662623972074":"path---contact-206ac74de0d3aab26f03.js","142629428675168":"path---index-656e2931a67bf6e04b79.js","178698757827068":"path---404-html-a0e39f21c11f6a62c5ab.js","114276838955818":"component---src-layouts-index-js-af2032a96fc50b5bfd12.js"}/*]]>*/</script><script>
+</ul></footer></div><script id="webpack-manifest">/*<![CDATA[*/window.webpackManifest={"231608221292675":"app-f619232aedf3e40805e4.js","99219681209289":"component---node-modules-gatsby-plugin-offline-app-shell-js-5c4c5a0f7af9dc69d6d7.js","78839606078735":"component---src-templates-category-template-js-ccbdb357ea067077af6d.js","198517197184460":"component---src-templates-post-template-js-12de744ce8a8d00889aa.js","235131596041995":"component---src-templates-page-template-js-277489605b32655c14af.js","162898551421021":"component---src-pages-404-js-67108d2c79133c4984cb.js","118442821920679":"component---src-pages-category-js-bbb34571e9395b2ce79b.js","70144966829960":"component---src-pages-contact-js-db9419e96e03a5c6deba.js","35783957827783":"component---src-pages-index-js-196402a0cfcc6b7ff0e5.js","60335399758886":"path----375e85e38f47004b13cc.js","210333531512890":"path---offline-plugin-app-shell-fallback-a0e39f21c11f6a62c5ab.js","260708919825516":"path---category-miku-38dd3bfb2cd02e3f9dd6.js","132574017077682":"path---category-废话集-8dd351e40e0656b0ff5c.js","119100849440836":"path---category-备忘-e67510bac92d0a06ee3e.js","50353500245631":"path---category-小结-0b868b389514a3491038.js","209685623868562":"path---category-读书流水-69e559b2aa31eb3c5abf.js","147394579921760":"path---blender-2-80-70ea9cc688c128fceaa6.js","125845644515443":"path---miku-setup-415bf364c6700aa824a1.js","229805551833682":"path---problem-set-fa920d4c826c4ed531f8.js","267524537853082":"path---web-vr-and-web-audio-api-70cd4a7a1e178b5fd5e8.js","144342403179678":"path---hello-world-1ad91ecf7fcd3ffae9c3.js","165836582822991":"path---basic-knowledge-mark-94b25d41099055ec8de4.js","29578651168118":"path---web-gl-learning-1-9ff8da5466353f523200.js","39973725597277":"path---internship-summary-5004aee43d3fd6be714c.js","243898797873760":"path---canvas-renderermation-a30175485a14fdf0cfc8.js","163051810811568":"path---svg-outline-animation-f1d36b3b6d04d61a7a96.js","89450997894629":"path---test-5c4db413742bf71a7154.js","254022195166212":"path---404-a0e39f21c11f6a62c5ab.js","115052432080904":"path---category-05fb744c97bc35c4cb23.js","184662623972074":"path---contact-206ac74de0d3aab26f03.js","142629428675168":"path---index-b8e123680030b2966a0e.js","178698757827068":"path---404-html-a0e39f21c11f6a62c5ab.js","114276838955818":"component---src-layouts-index-js-af2032a96fc50b5bfd12.js"}/*]]>*/</script><script>
             
   
   if(true) {
@@ -1086,4 +1585,4 @@ MAP上的纹理类型</td>
   if (typeof ga === "function") {
     ga('create', 'undefined', 'auto');
       }
-      </script><script>/*<![CDATA[*/["/LG-Blog-Gatsby/commons-7c4d77f391b491c8192f.js","/LG-Blog-Gatsby/app-cf14134bb19fb134bacf.js","/LG-Blog-Gatsby/path---web-gl-learning-1-b15b38001fb8cecc5417.js","/LG-Blog-Gatsby/component---src-templates-post-template-js-12de744ce8a8d00889aa.js","/LG-Blog-Gatsby/component---src-layouts-index-js-af2032a96fc50b5bfd12.js"].forEach(function(s){document.write('<script src="'+s+'" defer></'+'script>')})/*]]>*/</script></body></html>
+      </script><script>/*<![CDATA[*/["/LG-Blog-Gatsby/commons-7c4d77f391b491c8192f.js","/LG-Blog-Gatsby/app-f619232aedf3e40805e4.js","/LG-Blog-Gatsby/path---web-gl-learning-1-9ff8da5466353f523200.js","/LG-Blog-Gatsby/component---src-templates-post-template-js-12de744ce8a8d00889aa.js","/LG-Blog-Gatsby/component---src-layouts-index-js-af2032a96fc50b5bfd12.js"].forEach(function(s){document.write('<script src="'+s+'" defer></'+'script>')})/*]]>*/</script></body></html>
