@@ -7,6 +7,7 @@ author: todaylg
 
 
 
+
 ---
 
 借着毕设的机会，接触了一下WebVR和Web Audio API，以及通信本行的数字信号处理的知识：[WebVR-Audio-Visualizer](https://github.com/todaylg/WebVR-Audio-Visualizer)
@@ -185,3 +186,5 @@ let getWaveform = ()=> {//实时获取音频时域数据
 详见[WebVR-Audio-Visualizer](https://github.com/todaylg/WebVR-Audio-Visualizer)代码，应用的节奏检测基于时域能量比较和频域能量比较，针对音乐高潮部分节奏点和伴随全曲的节奏点进行检测。
 
 ## To Be Continue
+
+有缘再深究啦（逃。。

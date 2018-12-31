@@ -1,8 +1,9 @@
 ---
 title: MikuMikuMi
-category: "Miku"
+category: "废话集"
 cover: test1.jpg
 author: todaylg
+
 
 
 ---

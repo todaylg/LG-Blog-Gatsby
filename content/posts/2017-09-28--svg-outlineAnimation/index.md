@@ -1,8 +1,10 @@
 ---
-title: 初探SVG动画
+title: SVG描边动画
 category: "小结"
 cover: test6.jpg
 author: todaylg
+
+
 
 
 
