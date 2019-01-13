@@ -41,36 +41,32 @@
       "component---src-layouts-index-js-af2032a96fc50b5bfd12.js.map"
     ],
     "path---category": [
-      "path---category-05fb744c97bc35c4cb23.js",
-      "path---category-05fb744c97bc35c4cb23.js.map"
+      "path---category-8498aae95b3f6913a33e.js",
+      "path---category-8498aae95b3f6913a33e.js.map"
     ],
     "component---src-pages-category-js": [
       "component---src-pages-category-js-bbb34571e9395b2ce79b.js",
       "component---src-pages-category-js-bbb34571e9395b2ce79b.js.map"
     ],
     "path---category-备忘": [
-      "path---category-备忘-e67510bac92d0a06ee3e.js",
-      "path---category-备忘-e67510bac92d0a06ee3e.js.map"
+      "path---category-备忘-bd53bed8b56fc024d9af.js",
+      "path---category-备忘-bd53bed8b56fc024d9af.js.map"
     ],
     "path---miku-setup": [
-      "path---miku-setup-415bf364c6700aa824a1.js",
-      "path---miku-setup-415bf364c6700aa824a1.js.map"
+      "path---miku-setup-f0216a933ea7a1150dc8.js",
+      "path---miku-setup-f0216a933ea7a1150dc8.js.map"
     ],
     "path---category-废话集": [
       "path---category-废话集-8dd351e40e0656b0ff5c.js",
       "path---category-废话集-8dd351e40e0656b0ff5c.js.map"
     ],
     "path---index": [
-      "path---index-b8e123680030b2966a0e.js",
-      "path---index-b8e123680030b2966a0e.js.map"
+      "path---index-4c9cddbb37fe75a5b442.js",
+      "path---index-4c9cddbb37fe75a5b442.js.map"
     ],
     "path---hello-world": [
       "path---hello-world-1ad91ecf7fcd3ffae9c3.js",
       "path---hello-world-1ad91ecf7fcd3ffae9c3.js.map"
-    ],
-    "path---blender-2-80": [
-      "path---blender-2-80-70ea9cc688c128fceaa6.js",
-      "path---blender-2-80-70ea9cc688c128fceaa6.js.map"
     ],
     "component---src-pages-404-js": [
       "component---src-pages-404-js-67108d2c79133c4984cb.js",
@@ -102,6 +98,10 @@
       "component---src-templates-post-template-js-12de744ce8a8d00889aa.js",
       "component---src-templates-post-template-js-12de744ce8a8d00889aa.js.map"
     ],
+    "path---blender-learnopengl": [
+      "path---blender-learnopengl-690aaaed9f50fd6379ec.js",
+      "path---blender-learnopengl-690aaaed9f50fd6379ec.js.map"
+    ],
     "path---category-读书流水": [
       "path---category-读书流水-69e559b2aa31eb3c5abf.js",
       "path---category-读书流水-69e559b2aa31eb3c5abf.js.map"
@@ -115,9 +115,9 @@
       "path---problem-set-fa920d4c826c4ed531f8.js.map"
     ],
     "app": [
-      "app-f619232aedf3e40805e4.js",
+      "app-cce422df16d911a2faa0.js",
       "build-js-styles.css",
-      "app-f619232aedf3e40805e4.js.map",
+      "app-cce422df16d911a2faa0.js.map",
       "build-js-styles.css.map"
     ],
     "component---src-templates-page-template-js": [
@@ -131,10 +131,6 @@
     "path---404": [
       "path---404-a0e39f21c11f6a62c5ab.js",
       "path---404-a0e39f21c11f6a62c5ab.js.map"
-    ],
-    "path---category-miku": [
-      "path---category-miku-38dd3bfb2cd02e3f9dd6.js",
-      "path---category-miku-38dd3bfb2cd02e3f9dd6.js.map"
     ],
     "path---web-vr-and-web-audio-api": [
       "path---web-vr-and-web-audio-api-70cd4a7a1e178b5fd5e8.js",
