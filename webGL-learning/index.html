@@ -1,0 +1,1587 @@
+<!DOCTYPE html><html lang="zh" prefix="og: http://ogp.me/ns#"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="preload" href="/LG-Blog-Gatsby/component---src-layouts-index-js-af2032a96fc50b5bfd12.js" as="script"/><link rel="preload" href="/LG-Blog-Gatsby/component---src-templates-post-template-js-12de744ce8a8d00889aa.js" as="script"/><link rel="preload" href="/LG-Blog-Gatsby/path---web-gl-learning-3dbd255191308f1437b2.js" as="script"/><link rel="preload" href="/LG-Blog-Gatsby/app-9727b012fb07d7e37106.js" as="script"/><link rel="preload" href="/LG-Blog-Gatsby/commons-7c4d77f391b491c8192f.js" as="script"/><title data-react-helmet="true">《WebGL编程指南》读书笔记 - LG-Blog</title><meta data-react-helmet="true" name="description" content="LG-Blog"/><meta data-react-helmet="true" property="og:url" content="www.todaylg.com/webGL-learning/"/><meta data-react-helmet="true" property="og:title" content="《WebGL编程指南》读书笔记 - LG-Blog"/><meta data-react-helmet="true" property="og:description" content="LG-Blog"/><meta data-react-helmet="true" property="og:image" content="[object Object]"/><meta data-react-helmet="true" property="og:type" content="website"/><meta data-react-helmet="true" property="fb:app_id" content=""/><meta data-react-helmet="true" name="twitter:card" content="summary"/><meta data-react-helmet="true" name="twitter:creator" content="WebAMV"/><link rel="manifest" href="/LG-Blog-Gatsby/manifest.webmanifest"/><meta name="theme-color" content="#666"/><link rel="alternate" type="application/rss+xml" href="/LG-Blog-Gatsby/rss.xml"/><style id="__jsx-3982648812">.item.jsx-3982648812,.showItem.jsx-3982648812{background:transparent;-webkit-transition:all 0.5s;-webkit-transition:all 0.5s;transition:all 0.5s;display:-webkit-box;display:-ms-flexbox;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;}
+.item.jsx-3982648812 a,.showItem.jsx-3982648812 a{padding:10px;display:-webkit-box;display:-ms-flexbox;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;}
+.item.jsx-3982648812 svg,.showItem.jsx-3982648812 svg{margin:0 5px 0 0;opacity:0.3;}
+.itemList .hideItem{display:none;}
+@media screen and (min-width:1024px){.item.jsx-3982648812 a{color:#3e3e3c;padding:10px;-webkit-transition:all 0.5s;-webkit-transition:all 0.5s;transition:all 0.5s;border-radius:5px;}.homepage:not(.fixed) .item.jsx-3982648812 a{color:#ffffff;}.item.jsx-3982648812 a:hover{color:#00a5e6;background:#ffffff;background:rgba(255,255,255,0.4);}.item.jsx-3982648812 svg{-webkit-transition:all 0.5s;-webkit-transition:all 0.5s;transition:all 0.5s;}.item.jsx-3982648812:hover svg{fill:#00a5e6;opacity:1;}.hero .item.jsx-3982648812:hover svg svg{fill:green;}.showItem.jsx-3982648812{display:none;}.hiddenItem.jsx-3982648812{text-align:left;padding:5px;}.hiddenItem.jsx-3982648812 a.inHiddenItem{color:#3e3e3c;}.hiddenItem.jsx-3982648812 a.inHiddenItem:hover{color:#00a5e6;}}</style><style id="__jsx-674193961">.menu.jsx-674193961{-webkit-box-align:center;-ms-flex-align:center;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;background:#ffffff;bottom:0;display:-webkit-box;display:-ms-flexbox;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-flex:1;-ms-flex-positive:1;-webkit-box-flex:1;-webkit-flex-grow:1;-ms-flex-positive:1;flex-grow:1;left:0;max-height:50px;padding:0 10px;position:fixed;width:100%;z-index:1;-webkit-transition:all 0.5s;-webkit-transition:all 0.5s;transition:all 0.5s;}
+.itemList.jsx-674193961{display:-webkit-box;display:-ms-flexbox;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;-webkit-flex-wrap:wrap;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-box-pack:center;-ms-flex-pack:center;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;list-style:none;margin:0;padding:0;position:relative;width:100%;}
+@media screen and (max-width:1023px){.menu.jsx-674193961:after{position:absolute;content:"";left:20px;right:20px;top:0;height:1px;background:#00a5e6;}.menu.open.jsx-674193961{padding:20px;}.homepage:not(.fixed) .menu.jsx-674193961{bottom:-100px;}}
+@media screen and (min-width:1024px){.menu.jsx-674193961{border-top:none;background:transparent;display:-webkit-box;display:-ms-flexbox;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;position:relative;-webkit-box-pack:end;-ms-flex-pack:end;-webkit-box-pack:end;-webkit-justify-content:flex-end;-ms-flex-pack:end;justify-content:flex-end;padding-left:50px;-webkit-transition:none;-webkit-transition:none;transition:none;}.itemList.jsx-674193961{-webkit-box-pack:end;-ms-flex-pack:end;-webkit-box-pack:end;-webkit-justify-content:flex-end;-ms-flex-pack:end;justify-content:flex-end;padding:0;}.hiddenItemList.jsx-674193961{list-style:none;margin:0;position:absolute;background:#ffffff;border:1px solid #ecebea;top:48px;right:10px;display:-webkit-box;display:-ms-flexbox;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;-webkit-box-pack:start;-ms-flex-pack:start;-webkit-box-pack:start;-webkit-justify-content:flex-start;-ms-flex-pack:start;justify-content:flex-start;padding:20px;border-radius:5px;border-top-right-radius:0;}.hiddenItemList.jsx-674193961:after{content:"";background:#ffffff;z-index:10;top:-10px;right:-1px;width:44px;height:10px;position:absolute;border-left:1px solid #ecebea;border-right:1px solid #ecebea;}.homepage:not(.fixed) .hiddenItemList.jsx-674193961{border:1px solid transparent;background:#ffffff;background:rgba(255,255,255,0.9);top:50px;}.homepage:not(.fixed) .hiddenItemList.jsx-674193961:after{top:-11px;border-left:1px solid transparent;border-right:1px solid transparent;background:#ffffff;background:rgba(255,255,255,0.9);}.fixed .hiddenItemList.jsx-674193961{top:44px;}}</style><style id="__jsx-3242542942">.header.jsx-3242542942{-webkit-box-align:center;-ms-flex-align:center;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;background-color:#ffffff;display:-webkit-box;display:-ms-flexbox;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;height:80px;position:relative;top:0;width:100%;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;}
+.header.jsx-3242542942 a.logoType{-webkit-box-align:center;-ms-flex-align:center;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;display:-webkit-box;display:-ms-flexbox;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:"column";-webkit-flex-direction:"column";-ms-flex-direction:"column";flex-direction:"column";color:#3e3e3c;}
+.header.jsx-3242542942 a.logoType .logo.jsx-3242542942{-ms-flex-negative:0;-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0;}
+.header.homepage.jsx-3242542942{position:absolute;background-color:transparent;height:100px;;}
+h1.jsx-3242542942{font-size:1.35em;font-weight:400;margin:0 0 5px 0;}
+h2.jsx-3242542942{font-weight:400;font-size:.8em;-webkit-letter-spacing:0;-moz-letter-spacing:0;-ms-letter-spacing:0;letter-spacing:0;margin:0;}
+.logo.jsx-3242542942{border-radius:65% 75%;border:1px solid #eee;display:inline-block;height:44px;margin:0 20px 0 0;overflow:hidden;width:44px;-webkit-transition:all 0.5s;-webkit-transition:all 0.5s;transition:all 0.5s;}
+.homepage.jsx-3242542942 .logo.jsx-3242542942{height:60px;width:60px;}
+.logo.jsx-3242542942 img.jsx-3242542942{width:100%;}
+.sensor.jsx-3242542942{display:block;position:absolute;bottom:0;z-index:1;left:0;right:0;height:1px;top:80px;}
+@media screen and (min-width:600px){.header.jsx-3242542942{padding:40px;}.header.homepage.jsx-3242542942{height:100px;;}}
+@media screen and (max-width:1023px){.header.homepage.jsx-3242542942 .logo.jsx-3242542942{border:none;}.header.homepage.jsx-3242542942 a.logoType,.header.homepage.jsx-3242542942 h1.jsx-3242542942{color:#ffffff;}.header.homepage.jsx-3242542942 h2.jsx-3242542942{color:#dddbda;}}
+@media screen and (min-width:1024px){.header.jsx-3242542942{-webkit-box-align:center;-ms-flex-align:center;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;background-color:#ffffff;background-color:rgba(255,255,255,0);display:-webkit-box;display:-ms-flexbox;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;position:absolute;top:0;width:100%;-webkit-box-pack:justify;-ms-flex-pack:justify;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;-webkit-transition:padding 0.5s;-webkit-transition:padding 0.5s;transition:padding 0.5s;}.header.fixed.jsx-3242542942{height:50px;;background-color:#ffffff;left:0;padding:0 20px;position:fixed;top:0;width:100%;z-index:1;}.header.fixed.jsx-3242542942 h1.jsx-3242542942{margin:0 0 2px 0;}.header.fixed.jsx-3242542942 h2.jsx-3242542942{display:none;}.header.homepage.jsx-3242542942:not(.fixed) a.logoType,.header.homepage.jsx-3242542942:not(.fixed) h1.jsx-3242542942{color:#ffffff;}.header.homepage.jsx-3242542942:not(.fixed) h2.jsx-3242542942{color:#dddbda;}.header.jsx-3242542942 a.logoType{text-align:left;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;-ms-flex-negative:0;-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0;width:auto;}.logo.jsx-3242542942{margin:0 20px 0 0;}.fixed.jsx-3242542942 .logo.jsx-3242542942{height:36px;width:36px;}.header.homepage.jsx-3242542942:not(.fixed) .logo.jsx-3242542942{border:none;}h2.jsx-3242542942{-webkit-animation-duration:0.5s;-webkit-animation-duration:0.5s;animation-duration:0.5s;-webkit-animation-name:h2Entry;-webkit-animation-name:h2Entry-jsx-3242542942;animation-name:h2Entry-jsx-3242542942;}@-webkit-keyframes h2Entry{from.jsx-3242542942{opacity:0;}to.jsx-3242542942{opacity:1;}}@-webkit-keyframes h2Entry-jsx-3242542942{from{opacity:0;}to{opacity:1;}}@keyframes h2Entry-jsx-3242542942{from{opacity:0;}to{opacity:1;}}}</style><style id="__jsx-3306258923">h1.jsx-3306258923{font-size:2.2em;margin:0 0 40px 0;-webkit-animation-name:headlineEntry;-webkit-animation-name:headlineEntry-jsx-3306258923;animation-name:headlineEntry-jsx-3306258923;-webkit-animation-duration:1s;-webkit-animation-duration:1s;animation-duration:1s;}
+h1.jsx-3306258923 span{font-weight:400;display:block;font-size:0.5em;-webkit-letter-spacing:0;-moz-letter-spacing:0;-ms-letter-spacing:0;letter-spacing:0;margin:0 0 5px 0;}
+h1.jsx-3306258923 svg{height:0.75em;fill:#00a5e6;}
+@-webkit-keyframes headlineEntry{from.jsx-3306258923{opacity:0.5;}to.jsx-3306258923{opacity:1;}}
+@-webkit-keyframes headlineEntry-jsx-3306258923{from{opacity:0.5;}to{opacity:1;}}
+@keyframes headlineEntry-jsx-3306258923{from{opacity:0.5;}to{opacity:1;}}
+@media screen and (min-width:600px){h1.jsx-3306258923{font-size:calc(2em * 1.2);}}
+@media screen and (min-width:1024px){h1.jsx-3306258923{font-size:calc(2em * 1.4);}}</style><style id="__jsx-1833289139">.meta.jsx-1833289139{display:-webkit-box;display:-ms-flexbox;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-flow:row wrap;-webkit-flex-flow:row wrap;-ms-flex-flow:row wrap;flex-flow:row wrap;font-size:0.8em;margin:20px 0;background:transparent;}
+.meta.jsx-1833289139 svg{fill:#00a5e6;margin:0 5px 0 0;}
+.meta.jsx-1833289139 span.jsx-1833289139{-webkit-box-align:center;-ms-flex-align:center;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;display:-webkit-box;display:-ms-flexbox;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;margin:5px 10px 5px 0;}
+@media screen and (min-width:600px){.meta.jsx-1833289139{margin:calc(20px * 1.5) 0 20px;}}</style><style id="__jsx-2925212198">.bodytext.jsx-2925212198{-webkit-animation-name:bodytextEntry;-webkit-animation-name:bodytextEntry-jsx-2925212198;animation-name:bodytextEntry-jsx-2925212198;-webkit-animation-duration:1s;-webkit-animation-duration:1s;animation-duration:1s;}
+.bodytext.jsx-2925212198 h2,.bodytext.jsx-2925212198 h3{margin:1.5em 0 1em;}
+.bodytext.jsx-2925212198 h2{line-height:1.2;font-size:1.7em;}
+.bodytext.jsx-2925212198 h3{font-size:1.35em;line-height:1.3;}
+.bodytext.jsx-2925212198 p{font-size:1.1em;line-height:1.6;margin:0 0 1.5em;}
+.bodytext.jsx-2925212198 ul{list-style:circle;margin:0 0 1.5em;padding:0 0 0 1.5em;}
+.bodytext.jsx-2925212198 li{margin:0.7em 0;line-height:1.5;}
+.bodytext.jsx-2925212198 a{font-weight:600;color:#00a5e6;-webkit-text-decoration:underline;text-decoration:underline;}
+.bodytext.jsx-2925212198 a.gatsby-resp-image-link{border:0;display:block;margin:2.5em 0;border-radius:10px;overflow:hidden;border:1px solid #ecebea;}
+.bodytext.jsx-2925212198 code.language-text{background:#ecebea;text-shadow:none;color:inherit;padding:0.1em 0.3em 0.2em;border-radius:0.1em;}
+@-webkit-keyframes bodytextEntry{from.jsx-2925212198{opacity:0;}to.jsx-2925212198{opacity:1;}}
+@-webkit-keyframes bodytextEntry-jsx-2925212198{from{opacity:0;}to{opacity:1;}}
+@keyframes bodytextEntry-jsx-2925212198{from{opacity:0;}to{opacity:1;}}</style><style id="__jsx-646394116">.author.jsx-646394116{margin:40px 0;padding:40px 0;border-top:1px solid #ecebea;border-bottom:1px solid #ecebea;}
+.avatar.jsx-646394116{float:left;border-radius:65% 75%;border:1px solid #ecebea;display:inline-block;height:50px;margin:5px 20px 0 0;overflow:hidden;width:50px;}
+.avatar.jsx-646394116 img.jsx-646394116{width:100%;}
+.note.jsx-646394116{font-size:0.9em;line-height:1.6;}
+@media screen and (min-width:600px){.author.jsx-646394116{display:-webkit-box;display:-ms-flexbox;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;}.avatar.jsx-646394116{-webkit-box-flex:0;-ms-flex:0 0 auto;-webkit-flex:0 0 auto;-ms-flex:0 0 auto;flex:0 0 auto;}}</style><style id="__jsx-126278577">.links.jsx-126278577{display:-webkit-box;display:-ms-flexbox;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;padding:0 20px 40px;border-bottom:1px solid #ecebea;margin:0 0 40px 0;}
+.links.jsx-126278577 a{display:-webkit-box;display:-ms-flexbox;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;}
+.links.jsx-126278577 a:nth-child(2){margin:20px 0 0;}
+.links.jsx-126278577 svg{fill:orange;width:20px;height:20px;-ms-flex-negative:0;-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0;-webkit-box-flex:0;-ms-flex-positive:0;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;margin:0 20px 0 0;}
+h4.jsx-126278577{font-weight:600;margin:0;font-size:1.1em;}
+time.jsx-126278577{color:#969492;display:block;font-weight:400;font-size:0.8em;margin-top:0.5em;}
+@media screen and (min-width:1024px){.links.jsx-126278577{-webkit-box-orient:horizontal;-webkit-box-direction:reverse;-ms-flex-direction:row-reverse;-webkit-flex-direction:row-reverse;-ms-flex-direction:row-reverse;flex-direction:row-reverse;-webkit-box-pack:center;-ms-flex-pack:center;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;}.links.jsx-126278577 a{-ms-flex-preferred-size:50%;-webkit-flex-basis:50%;-ms-flex-preferred-size:50%;flex-basis:50%;}.links.jsx-126278577 a:nth-child(2){margin:0;}.links.jsx-126278577 svg{-webkit-transition:all 0.5s;-webkit-transition:all 0.5s;transition:all 0.5s;margin:0 10px 0 0;}@media (hover:hover){.links.jsx-126278577 a:hover svg{-webkit-transform:scale(1.5);-webkit-transform:scale(1.5);-ms-transform:scale(1.5);transform:scale(1.5);}}}</style><style id="__jsx-3595558049">.comments.jsx-3595558049{margin:0 -8px 20px;}</style><style id="__jsx-1766939654">.article.jsx-1766939654{padding:20px;margin:0 auto;}
+@media screen and (min-width:600px){.article.jsx-1766939654{padding:calc(20px) calc(20px * 2);max-width:650px;}}
+@media screen and (min-width:1024px){.article.jsx-1766939654{padding:calc(20px * 2 + 90px) 0 calc(20px * 2);max-width:700px;}}</style><style id="__jsx-2344609357">.footer.jsx-2344609357{background:#ffffff;padding:20px;padding-top:0;padding-bottom:120px;}
+.footer.jsx-2344609357 ul{list-style:none;text-align:center;padding:0;}
+.footer.jsx-2344609357 ul li{color:#969492;font-size:.8em;padding:2px 10px;position:relative;display:inline-block;}
+.footer.jsx-2344609357 ul li:after{content:"•";position:absolute;right:calc(5px * -1);}
+.footer.jsx-2344609357 ul li:last-child:after{content:"";}
+@media screen and (min-width:1024px){.footer.jsx-2344609357{padding:0 1em 1.5em;}}</style><style id="__jsx-1304903616">main.jsx-1304903616{min-height:80vh;}</style><style id="__jsx-3347019808">html{-webkit-box-sizing:border-box;box-sizing:border-box;}
+*,*:after,*:before{-webkit-box-sizing:inherit;box-sizing:inherit;margin:0;padding:0;}
+body{font-family:Arial, sans-serif;;}
+h1,h2,h3{font-weight:400;line-height:1.1;-webkit-letter-spacing:-0.03em;-moz-letter-spacing:-0.03em;-ms-letter-spacing:-0.03em;letter-spacing:-0.03em;margin:0;}
+h1{-webkit-letter-spacing:-0.04em;-moz-letter-spacing:-0.04em;-ms-letter-spacing:-0.04em;letter-spacing:-0.04em;}
+p{margin:0;}
+strong{font-weight:400;}
+a{-webkit-text-decoration:none;text-decoration:none;color:#666;}
+main{width:auto;display:block;}</style><style id="gatsby-inlined-css">@font-face{font-family:Open Sans;font-style:normal;font-display:swap;font-weight:300;src:local("Open Sans Light "),local("Open Sans-Light"),url(/LG-Blog-Gatsby/static/open-sans-latin-300.60c86674.woff2) format("woff2"),url(/LG-Blog-Gatsby/static/open-sans-latin-300.521d17bc.woff) format("woff")}@font-face{font-family:Open Sans;font-style:italic;font-display:swap;font-weight:300;src:local("Open Sans Light italic"),local("Open Sans-Lightitalic"),url(/LG-Blog-Gatsby/static/open-sans-latin-300italic.06bbd318.woff2) format("woff2"),url(/LG-Blog-Gatsby/static/open-sans-latin-300italic.8a648ff3.woff) format("woff")}@font-face{font-family:Open Sans;font-style:normal;font-display:swap;font-weight:400;src:local("Open Sans Regular "),local("Open Sans-Regular"),url(/LG-Blog-Gatsby/static/open-sans-latin-400.cffb686d.woff2) format("woff2"),url(/LG-Blog-Gatsby/static/open-sans-latin-400.bf2d0783.woff) format("woff")}@font-face{font-family:Open Sans;font-style:italic;font-display:swap;font-weight:400;src:local("Open Sans Regular italic"),local("Open Sans-Regularitalic"),url(/LG-Blog-Gatsby/static/open-sans-latin-400italic.987032ea.woff2) format("woff2"),url(/LG-Blog-Gatsby/static/open-sans-latin-400italic.db70d0b9.woff) format("woff")}@font-face{font-family:Open Sans;font-style:normal;font-display:swap;font-weight:600;src:local("Open Sans SemiBold "),local("Open Sans-SemiBold"),url(/LG-Blog-Gatsby/static/open-sans-latin-600.223a277b.woff2) format("woff2"),url(/LG-Blog-Gatsby/static/open-sans-latin-600.1cd5320f.woff) format("woff")}@font-face{font-family:Open Sans;font-style:italic;font-display:swap;font-weight:600;src:local("Open Sans SemiBold italic"),local("Open Sans-SemiBolditalic"),url(/LG-Blog-Gatsby/static/open-sans-latin-600italic.4950a720.woff2) format("woff2"),url(/LG-Blog-Gatsby/static/open-sans-latin-600italic.318ea1ad.woff) format("woff")}@font-face{font-family:Open Sans;font-style:normal;font-display:swap;font-weight:700;src:local("Open Sans Bold "),local("Open Sans-Bold"),url(/LG-Blog-Gatsby/static/open-sans-latin-700.d08c09f2.woff2) format("woff2"),url(/LG-Blog-Gatsby/static/open-sans-latin-700.623e3205.woff) format("woff")}@font-face{font-family:Open Sans;font-style:italic;font-display:swap;font-weight:700;src:local("Open Sans Bold italic"),local("Open Sans-Bolditalic"),url(/LG-Blog-Gatsby/static/open-sans-latin-700italic.c02f5da6.woff2) format("woff2"),url(/LG-Blog-Gatsby/static/open-sans-latin-700italic.72e19cbb.woff) format("woff")}@font-face{font-family:Open Sans;font-style:normal;font-display:swap;font-weight:800;src:local("Open Sans ExtraBold "),local("Open Sans-ExtraBold"),url(/LG-Blog-Gatsby/static/open-sans-latin-800.aaeffaf2.woff2) format("woff2"),url(/LG-Blog-Gatsby/static/open-sans-latin-800.c6aa0c4a.woff) format("woff")}@font-face{font-family:Open Sans;font-style:italic;font-display:swap;font-weight:800;src:local("Open Sans ExtraBold italic"),local("Open Sans-ExtraBolditalic"),url(/LG-Blog-Gatsby/static/open-sans-latin-800italic.6b3973ff.woff2) format("woff2"),url(/LG-Blog-Gatsby/static/open-sans-latin-800italic.79b58175.woff) format("woff")}code[class*=language-],pre[class*=language-]{color:#f8f8f2;background:none;text-shadow:0 1px rgba(0,0,0,.3);font-family:Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-ms-hyphens:none;hyphens:none}pre[class*=language-]{padding:1em;margin:.5em 0;overflow:auto;border-radius:.3em}:not(pre)>code[class*=language-],pre[class*=language-]{background:#272822}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal}.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#708090}.token.punctuation{color:#f8f8f2}.namespace{opacity:.7}.token.constant,.token.deleted,.token.property,.token.symbol,.token.tag{color:#f92672}.token.boolean,.token.number{color:#ae81ff}.token.attr-name,.token.builtin,.token.char,.token.inserted,.token.selector,.token.string{color:#a6e22e}.language-css .token.string,.style .token.string,.token.entity,.token.operator,.token.url,.token.variable{color:#f8f8f2}.token.atrule,.token.attr-value,.token.function{color:#e6db74}.token.keyword{color:#66d9ef}.token.important,.token.regex{color:#fd971f}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}</style><meta name="apple-mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="#D0E0D8"/><meta name="apple-mobile-web-app-title" content="Lazywill"/><link rel="apple-touch-icon" href="/icons/apple-icon-57x57.png" sizes="57x57"/><link rel="apple-touch-icon" href="/icons/apple-icon-60x60.png" sizes="60x60"/><link rel="apple-touch-icon" href="/icons/apple-icon-72x72.png" sizes="72x72"/><link rel="apple-touch-icon" href="/icons/apple-icon-76x76.png" sizes="76x76"/><link rel="apple-touch-icon" href="/icons/apple-icon-114x114.png" sizes="114x114"/><link rel="apple-touch-icon" href="/icons/apple-icon-120x120.png" sizes="120x120"/><link rel="apple-touch-icon" href="/icons/apple-icon-144x144.png" sizes="144x144"/><link rel="apple-touch-icon" href="/icons/apple-icon-152x152.png" sizes="152x152"/><link rel="apple-touch-icon" href="/icons/apple-icon-180x180.png" sizes="180x180"/><link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png"/><link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png"/><link rel="icon" type="image/png" sizes="96x96" href="/icons/favicon-96x96.png"/></head><body><noscript>You need to enable JavaScript to run this app!</noscript><div id="___gatsby"><header class="jsx-3242542942 header  "><a class="logoType" href="/LG-Blog-Gatsby/"><div class="jsx-3242542942 logo"><img src="/LG-Blog-Gatsby/static/avatar.421bc1a9.jpg" alt="LG-Blog" class="jsx-3242542942"/></div><div class="jsx-3242542942 type"><h1 class="jsx-3242542942">todaylg</h1><h2 class="jsx-3242542942"></h2></div></a><nav rel="js-menu" class="jsx-674193961 menu "><ul class="jsx-674193961 itemList"><li class="jsx-3982648812 item"><a class="" data-slug="/" href="/LG-Blog-Gatsby/"><svg fill="currentColor" preserveAspectRatio="xMidYMid meet" height="1em" width="1em" viewBox="0 0 40 40" style="vertical-align:middle"><g><path d="m32.9 22.1v10.8q0 0.5-0.4 1t-1 0.4h-8.6v-8.6h-5.7v8.6h-8.6q-0.5 0-1-0.4t-0.4-1v-10.8q0 0 0 0t0-0.1l12.9-10.6 12.8 10.6q0 0.1 0 0.1z m5-1.5l-1.4 1.7q-0.2 0.2-0.4 0.2h-0.1q-0.3 0-0.5-0.2l-15.4-12.8-15.5 12.8q-0.2 0.2-0.5 0.2-0.3 0-0.5-0.2l-1.4-1.7q-0.1-0.2-0.1-0.5t0.2-0.5l16.1-13.4q0.7-0.6 1.7-0.6t1.7 0.6l5.4 4.6v-4.4q0-0.3 0.2-0.5t0.5-0.2h4.3q0.3 0 0.5 0.2t0.2 0.5v9.1l4.9 4.1q0.2 0.2 0.3 0.5t-0.2 0.5z"></path></g></svg> <!-- -->Home</a></li><li class="jsx-3982648812 item"><a class="" data-slug="/category/" href="/LG-Blog-Gatsby/category/"><svg fill="currentColor" preserveAspectRatio="xMidYMid meet" height="1em" width="1em" viewBox="0 0 40 40" style="vertical-align:middle"><g><path d="m13 10q0-1.2-0.8-2t-2.1-0.9-2 0.9-0.8 2 0.8 2 2 0.9 2.1-0.9 0.8-2z m23.8 12.9q0 1.1-0.8 2l-11 10.9q-0.8 0.9-2 0.9-1.2 0-2-0.9l-16-15.9q-0.8-0.9-1.4-2.3t-0.6-2.6v-9.3q0-1.1 0.8-2t2.1-0.8h9.2q1.2 0 2.7 0.5t2.2 1.5l16 15.9q0.8 0.9 0.8 2.1z"></path></g></svg> <!-- -->Categories</a></li><li class="jsx-3982648812 item"><a class="" data-slug="/contact/" href="/LG-Blog-Gatsby/contact/"><svg fill="currentColor" preserveAspectRatio="xMidYMid meet" height="1em" width="1em" viewBox="0 0 40 40" style="vertical-align:middle"><g><path d="m40 15.8v17.8q0 1.4-1 2.5t-2.6 1h-32.8q-1.5 0-2.6-1t-1-2.5v-17.8q1 1.1 2.3 2 8 5.5 11 7.7 1.3 0.9 2.1 1.5t2.1 1 2.5 0.6h0q1.2 0 2.5-0.6t2.1-1 2.1-1.5q3.7-2.8 11.1-7.7 1.2-0.9 2.2-1.9z m0-6.5q0 1.7-1.1 3.4t-2.7 2.7q-8.4 5.8-10.5 7.3-0.2 0.1-0.9 0.6t-1.2 0.9-1.2 0.7-1.3 0.6-1.1 0.2h0q-0.5 0-1.1-0.2t-1.3-0.6-1.2-0.7-1.2-0.9-0.9-0.6q-2.1-1.5-5.9-4.1t-4.6-3.2q-1.3-0.9-2.6-2.6t-1.2-3q0-1.8 0.9-2.9t2.7-1.2h32.8q1.5 0 2.5 1.1t1.1 2.5z"></path></g></svg> <!-- -->About</a></li></ul></nav></header><div class="jsx-3242542942 sensor"></div><main class="jsx-1304903616 jsx-3347019808"><article class="jsx-1766939654 article"><header><h1 class="jsx-3306258923">《WebGL编程指南》读书笔记</h1><p class="jsx-1833289139 meta"><span class="jsx-1833289139"><svg fill="currentColor" preserveAspectRatio="xMidYMid meet" height="18" width="18" viewBox="0 0 40 40" style="vertical-align:middle"><g><path d="m4.4 37.1h6.4v-6.4h-6.4v6.4z m7.8 0h7.2v-6.4h-7.2v6.4z m-7.8-7.8h6.4v-7.2h-6.4v7.2z m7.8 0h7.2v-7.2h-7.2v7.2z m-7.8-8.6h6.4v-6.4h-6.4v6.4z m16.4 16.4h7.1v-6.4h-7.1v6.4z m-8.6-16.4h7.2v-6.4h-7.2v6.4z m17.2 16.4h6.4v-6.4h-6.4v6.4z m-8.6-7.8h7.1v-7.2h-7.1v7.2z m-7.9-19.3v-6.4q0-0.3-0.2-0.5t-0.5-0.2h-1.4q-0.3 0-0.5 0.2t-0.2 0.5v6.4q0 0.3 0.2 0.5t0.5 0.2h1.4q0.3 0 0.5-0.2t0.2-0.5z m16.5 19.3h6.4v-7.2h-6.4v7.2z m-8.6-8.6h7.1v-6.4h-7.1v6.4z m8.6 0h6.4v-6.4h-6.4v6.4z m0.7-10.7v-6.4q0-0.3-0.2-0.5t-0.5-0.2h-1.5q-0.3 0-0.5 0.2t-0.2 0.5v6.4q0 0.3 0.2 0.5t0.5 0.2h1.5q0.2 0 0.5-0.2t0.2-0.5z m8.5-1.4v28.5q0 1.2-0.8 2.1t-2 0.8h-31.4q-1.2 0-2.1-0.9t-0.8-2v-28.5q0-1.2 0.8-2t2.1-0.9h2.8v-2.1q0-1.5 1.1-2.6t2.5-1h1.4q1.5 0 2.5 1.1t1.1 2.5v2.1h8.6v-2.1q0-1.5 1-2.6t2.5-1h1.5q1.4 0 2.5 1.1t1 2.5v2.1h2.9q1.1 0 2 0.9t0.8 2z"></path></g></svg> <!-- -->2018-03-10</span><span class="jsx-1833289139"><svg fill="currentColor" preserveAspectRatio="xMidYMid meet" height="18" width="18" viewBox="0 0 40 40" style="vertical-align:middle"><g><path d="m35.9 31.4q0 2.6-1.6 4.2t-4.3 1.5h-19.5q-2.7 0-4.4-1.5t-1.6-4.2q0-1.2 0.1-2.3t0.3-2.5 0.6-2.4 0.9-2.2 1.4-1.8 1.9-1.2 2.5-0.4q0.2 0 1 0.5t1.6 1 2.4 1.1 3 0.5 3-0.5 2.4-1.1 1.7-1 0.9-0.5q1.4 0 2.5 0.4t1.9 1.2 1.4 1.8 0.9 2.2 0.6 2.4 0.4 2.5 0 2.3z m-7.1-20q0 3.6-2.5 6.1t-6.1 2.5-6-2.5-2.6-6.1 2.6-6 6-2.5 6.1 2.5 2.5 6z"></path></g></svg> <!-- -->todaylg</span><span class="jsx-1833289139"><svg fill="currentColor" preserveAspectRatio="xMidYMid meet" height="18" width="18" viewBox="0 0 40 40" style="vertical-align:middle"><g><path d="m13 10q0-1.2-0.8-2t-2.1-0.9-2 0.9-0.8 2 0.8 2 2 0.9 2.1-0.9 0.8-2z m23.8 12.9q0 1.1-0.8 2l-11 10.9q-0.8 0.9-2 0.9-1.2 0-2-0.9l-16-15.9q-0.8-0.9-1.4-2.3t-0.6-2.6v-9.3q0-1.1 0.8-2t2.1-0.8h9.2q1.2 0 2.7 0.5t2.2 1.5l16 15.9q0.8 0.9 0.8 2.1z"></path></g></svg><a href="/LG-Blog-Gatsby/category/读书流水">读书流水</a></span></p></header><div class="jsx-2925212198 bodytext"><p>脑里还是有个挥之不去的3D梦呀~</p>
+<h2>Part 1</h2>
+<p>万里长征的第一步吧。。。也不知道自己能走几步，毕竟底子真是差啊（方程都解不出来的人研究什么WebGL，好好搬砖不行吗？！经常这样想），但是奈何脑子里的骚操作不上3D又没法实现出来，但是效果后面又都是腿都跪麻的数学。。。很难受。。。希望自己能坚持下去吧，总之先从入门的书开始吧~</p>
+<p>先上一张渲染管线的图：
+<img src="http://wwwimages.adobe.com/content/dam/acom/en/devnet/flashplayer/articles/how-stage3d-works/fig02.jpg" alt="image"></p>
+<p>一些基本的概念记下来：</p>
+<p><strong>着色器</strong>：运行在GPU中负责渲染算法的程序。最常用的为顶点着色器和片元着色器。</p>
+<p><strong>GLSL</strong>: openGL Shading Language (Directx为Hight-Level Shading Language(HLSL))</p>
+<p><strong>光栅化</strong>：“连续”的三维场景显示到”离散”（红绿蓝LED）的显示器上所经过的过程。</p>
+<p><strong>片元</strong>：和最终显示在屏幕上的像素很接近，但是是一对一或多对一的关系，片元能否显示为像素还需要经过深度测试、透明度测试等。</p>
+<h2>最短的WebGL程序：清空绘图区</h2>
+<p>说是清空，其实是用黑色填充了绘图区</p>
+<iframe width="100%" height="430" src="//jsfiddle.net/todaylg/35br4q7m/embedded/result,js,css,html" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<p>一般都将上下文取名为gl，因为WebGL基于OpenGL ES，这样命名可以使WebGL与OpenGL ES中的函数名对应（gl.clearColor就相当于glClearColor这样），之后学习OpenGL的时候就能有印象了。</p>
+<p>gl.clearColor()接受的四个参数代表RGBA（0.0~1.0,不是0~255！！），指定一次颜色后会缓存起来直到下一次重新设置颜色才会改变。</p>
+<h4>gl.clearColor()</h4>
+<hr>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>参数取值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>R</td>
+<td>0.0~1.0</td>
+</tr>
+<tr>
+<td>G</td>
+<td>0.0~1.0</td>
+</tr>
+<tr>
+<td>B</td>
+<td>0.0~1.0</td>
+</tr>
+<tr>
+<td>A</td>
+<td>0.0~1.0</td>
+</tr>
+</tbody>
+</table>
+<p>最后的clear()方法传入了一个奇怪的参数：gl.COLOR_BUFFER_BIT。清空绘图区域实际上是清空颜色缓冲区(color buffer)，传参gl.COLOR_BUFFER_BIT就是告诉WebGL清空颜色缓冲区（WebGL还有其他缓冲区：深度缓冲区和模板缓冲区）。</p>
+<h4>gl.clear()</h4>
+<hr>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>参数取值</th>
+<th>作用</th>
+<th>相关函数</th>
+<th>函数默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>buffer</td>
+<td>gl.COLOR
+_
+BUFFER
+_
+BIT</td>
+<td>指定颜色缓冲区</td>
+<td>gl.clearColor(r,g,b,a)</td>
+<td>(0.0,0.0,0.0,0.0)</td>
+</tr>
+<tr>
+<td></td>
+<td>gl.DEPTH
+_
+BUFFER
+_
+BIT</td>
+<td>指定深度缓冲区</td>
+<td>gl.clearDepth(depth)</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td></td>
+<td>gl.STENCIL
+_
+BUFFER
+_
+BIT</td>
+<td>指定模板缓冲区</td>
+<td>gl.clearStencil(s)</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>可以用位操作符OR(|)指定多个缓冲区。</p>
+<h2>画个点</h2>
+<p>着色器出场了。</p>
+<iframe width="100%" height="430" src="//jsfiddle.net/todaylg/35br4q7m/1/embedded/result,js,css,html" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<p>注意着色器程序里分号是不能少的。着色器程序和C一样必须包含一个main函数。</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>变量名</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>vec4</td>
+<td>gl_Position</td>
+<td>四个浮点数组成的矢量，在这里表示顶点的位置</td>
+</tr>
+<tr>
+<td>float</td>
+<td>gl_PointSize</td>
+<td>浮点数，在这里表示点的尺寸(像素数)</td>
+</tr>
+</tbody>
+</table>
+<h4>vec4()</h4>
+<hr>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>返回值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>v0,v1,v2,v3 四个浮点型分量</td>
+<td>由这四个分量组成的vec4对象。</td>
+</tr>
+</tbody>
+</table>
+<p>由4个分量组成的矢量被称为齐次坐标，齐次坐标可以提高处理三维数据的效率，所以很常用。虽然齐次坐标是四维的，但是如果最后一个分量是1.0，那这个齐次坐标就可以表示前面三个分量为其坐标值的那个点。所以需要用齐次坐标表示顶点坐标的时候，最后一个分量直接赋1.0就行。</p>
+<p><strong>齐次坐标：</strong>(x,y,z,w)，等价于三维坐标：(x/w,y/w,z/w)，当w为1的时候就可以当三维坐标来用。齐次坐标的存在使得使用矩阵乘法来描述顶点变换成为了可能。</p>
+<h4>gl.drawArray()</h4>
+<hr>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>参数取值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>mode(指定绘制的方式)</td>
+<td>gl.POINTS</td>
+</tr>
+<tr>
+<td></td>
+<td>gl.LINES</td>
+</tr>
+<tr>
+<td></td>
+<td>gl.LINE_STRIP</td>
+</tr>
+<tr>
+<td></td>
+<td>gl.LINE_LOOP</td>
+</tr>
+<tr>
+<td>first(指定从哪个顶点开始绘制)</td>
+<td>整数型</td>
+</tr>
+<tr>
+<td>count(指定绘制需要用到多少个顶点)</td>
+<td>整数型</td>
+</tr>
+</tbody>
+</table>
+<p>在清空绘制区域之后，可以使用强大的gl.drawArray()来绘制各种图形。gl.drawArray()执行count次，从first开始每次处理一个顶点。顶点着色器执行完后片元着色器开始执行，最后完成绘制。
+3</p>
+<h2>WebGL的坐标系</h2>
+<iframe width="100%" height="430" src="//jsfiddle.net/todaylg/35br4q7m/2/embedded/result,js,css,html" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<p>WebGL坐标系和canvas坐标系不一样，canvas原点在左上角，沿x轴向右为正值，没y轴向下为正值。而WebGL原点在中心，沿x轴向右为正值，没y轴向上为正值，z轴由屏幕向外为正值，即右手坐标系（右手大拇指开始依次x、y、z轴）</p>
+<h2>再画个点</h2>
+<p>WebGL程序由JavaScript和着色器程序一起组成，那二者之间是如何通信的呢？有两种方法可以做到这点：attribute变量和uniform变量，前者用于传输顶点相关的数据，后者用于传输与顶点无关的数据，现在用attrubute来传输顶点的坐标。</p>
+<h4>attrubute</h4>
+<p>attrubute是GLSL ES的变量，用于从外部向顶点着色器传输数据，只有顶点着色器可以使用。就相当于定义这个变量，再把这个变量赋给要给的值，之后向这个变量传递数据就行了。</p>
+<iframe width="100%" height="430" src="//jsfiddle.net/todaylg/35br4q7m/3/embedded/result,js,css,html" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<p>attribute vec4 a_Position;这句代码中的attribute称为存储限定符，表示接下来的变量是一个attribute变量，attribute变量必须是全局变量，数据从外部传给它，声明格式为存储限定符-类型-变量名。</p>
+<h4>gl.getAttribLocation</h4>
+<hr>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>program</td>
+<td>指定包含顶点着色器和片元着色器的着色器程序对象</td>
+</tr>
+<tr>
+<td>name</td>
+<td>指定想要获取其存储地址的attribute变量名称</td>
+</tr>
+</tbody>
+</table>
+<p>参数gl.program先不管，方法会返回指定的attribute变量的存储地址（没有则返回-1）</p>
+<h4>gl.vertexAttrib3f（vertexAttrib+3个参数+float）</h4>
+<hr>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>location</td>
+<td>指定将要修改的attribute变量的存储位置（就是上面那个方法取到的地址）</td>
+</tr>
+<tr>
+<td>v0</td>
+<td>指定填充attribute变量第一个分量的值 (x)</td>
+</tr>
+<tr>
+<td>v1</td>
+<td>指定填充attribute变量第二个分量的值 (y)</td>
+</tr>
+<tr>
+<td>v2</td>
+<td>指定填充attribute变量第三个分量的值 (z)</td>
+</tr>
+</tbody>
+</table>
+<p>其实是有v3的，但是这个方法直接不写默认就会把第四个分量设置为1.0,何乐而不为。</p>
+<p>同理gl.vertexAttrib1f就是只传v0，2f就是v0和v1，4f就是v0,v1,v2,v3.少传的参数除了第四个会填充上1.0以外，其他的都填充0.0。</p>
+<p>现在直接在JavaScript里修改给gl.vertexAttrib3f传的参数值就可以动态修改画出的点的坐标了。同理更改a_PointSize也是这样。再此基础上稍微修改下程序就实现点哪画哪啦：</p>
+<iframe width="100%" height="430" src="//jsfiddle.net/todaylg/35br4q7m/4/embedded/result,js,css,html" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<p>注意和canvas的坐标需要换算一下。</p>
+<h4>uniform</h4>
+<p>要是想动态改变颜色的话那就得上uniform了，步骤和atrribute变量传递是类似的，一个套路。</p>
+<iframe width="100%" height="430" src="//jsfiddle.net/todaylg/35br4q7m/5/embedded/result,js,css,html" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<p>这里的gl.getUniformLocation和gl.getAttribLocation一个意思，差别在于当name不存在时前者返回的是-1而不是null。gl.uniform4f和gl.vertexAttrib3f也是一个套路，同族函数什么的（什么123f）就不赘述了。</p>
+<h2>Part 2</h2>
+<p>早知道线性代数这么有用，当初就好好学啦。。。矩阵来袭！！</p>
+<h2>一次性多画几个点</h2>
+<p>WebGL提供了一个缓冲区对象，可以一次性向着色器传入多个顶点的数据</p>
+<iframe width="100%" height="430" src="//jsfiddle.net/todaylg/35br4q7m/6/embedded/result,js,css,html" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<p>一下出现了很多新的东西，总的来说initVertexBuffers()方法的作用是创建顶点缓冲区对象，并且把多个顶点的数据保存在缓冲区中，然后将缓冲区传给顶点着色器进行绘制。</p>
+<p>整体的流程是：</p>
+<p>1.先创建缓冲区对象(gl.createBuffer())=></p>
+<p>2.绑定缓冲区对象(gl.bindBuffer())=></p>
+<p>3.将数据写入缓冲区对象(gl.bufferData())=></p>
+<p>4.将缓冲区对象分配给一个attribute变量(gl.vertexAttribPointer())=></p>
+<p>5.开启attribute变量（gl.enableVertexAttribArray()）。</p>
+<h3>创建缓冲区对象(gl.createBuffer())</h3>
+<p>调用gl.createBuffer()后会创建一个新的缓冲区对象，方法返回这个新创建的缓冲区对象。相对应的还有一个gl.deleteBuffer(buffer)函数可以删除其创建出来的缓冲区对象。</p>
+<h3>绑定缓冲区对象(gl.bindBuffer())</h3>
+<p>绑定是绑定到哪呢？绑定的这个目标是什么？为什么要绑定这个目标？</p>
+<p>原因是我们不能直接向缓冲区写入数据，而只能向目标写入数据，所以要向缓冲区写数据，就必须先绑定（理解为一个temp变量即可）。</p>
+<p>gl.bindBuffer(target, buffer)</p>
+<hr>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>参数取值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>target</td>
+<td>gl.ARRAY_BUFFER</td>
+<td>表示缓冲区对象中包含了顶点的数据</td>
+</tr>
+<tr>
+<td></td>
+<td>gl.ELEMENT
+_
+ARRAY
+_
+BUFFER</td>
+<td>表示缓冲区对象中包含了顶点的索引值</td>
+</tr>
+<tr>
+<td>buffer</td>
+<td>buffer</td>
+<td>指定之前由gl.createBuffer()返回的待绑定的缓冲区对象</td>
+</tr>
+</tbody>
+</table>
+<p>缓冲区对象中存储着关于顶点的数据（位置坐标）时将其绑定到了gl.ARRAY_BUFFER上。绑定之后我们就可以向缓冲区对象写入数据了。</p>
+<h3>将数据写入缓冲区对象(gl.bufferData())</h3>
+<p>和上面所说的一样，这里写入缓冲区对象其实是写到target再由target写入缓冲区对象的。</p>
+<p>gl.bufferData(target, data, usage)</p>
+<hr>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>参数取值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>target</td>
+<td>gl.ARRAY
+_
+BUFFER或者gl.ELEMENT
+_
+ARRAY_BUFFER</td>
+<td>前面绑定的啥这就是啥</td>
+</tr>
+<tr>
+<td>data</td>
+<td>data</td>
+<td>写入缓冲区对象的数据</td>
+</tr>
+<tr>
+<td>usage</td>
+<td></td>
+<td>表示程序将如何使用存储在缓冲区对象中的数据。这个参数可以帮助WebGL优化，传的不对也没事，就是慢点而已。</td>
+</tr>
+<tr>
+<td></td>
+<td>gl.STATIC_DRAW</td>
+<td>只会向缓冲区对象中写入一次数据，但需要绘制很多次</td>
+</tr>
+<tr>
+<td></td>
+<td>gl.STREAM_DRAW</td>
+<td>只会向缓冲区对象中写入一次数据，然后绘制若干次</td>
+</tr>
+<tr>
+<td></td>
+<td>gl.DYNAMIC_DRAW</td>
+<td>会向缓冲区对象中多次写入数据，并绘制很多次</td>
+</tr>
+</tbody>
+</table>
+<p>这里传入的数据是一个JavaScript的Float32Array对象，使用Float32Array是因为这类特殊数组对大量元素都是同一种类型这种情况进行优化（普通的数组对象里面啥都可以存，没有优化），这类特殊数组称为类型化数组。</p>
+<h3>类型化数组</h3>
+<table>
+<thead>
+<tr>
+<th>数组类型</th>
+<th>每个元素所占字节数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Int8Array</td>
+<td>1</td>
+<td>8位整型数</td>
+</tr>
+<tr>
+<td>Uint8Array</td>
+<td>1</td>
+<td>8位无符号整型数</td>
+</tr>
+<tr>
+<td>Int16Array</td>
+<td>2</td>
+<td>16位整型数</td>
+</tr>
+<tr>
+<td>Uint16Array</td>
+<td>2</td>
+<td>16位无符号整型数</td>
+</tr>
+<tr>
+<td>Int32Array</td>
+<td>4</td>
+<td>32位整型数</td>
+</tr>
+<tr>
+<td>Uint32Array</td>
+<td>4</td>
+<td>32位无符号整型数</td>
+</tr>
+<tr>
+<td>Float32Array</td>
+<td>4</td>
+<td>单精度32位浮点数</td>
+</tr>
+<tr>
+<td>Float64Array</td>
+<td>8</td>
+<td>双精度64位浮点数</td>
+</tr>
+</tbody>
+</table>
+<p>注意类型化数组只能通过new来创建，并且没有push()和pop()方法：</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>get(index)</td>
+<td>获取第index个元素值</td>
+</tr>
+<tr>
+<td>set(index, value)</td>
+<td>设置第index个元素的值为value</td>
+</tr>
+<tr>
+<td>set(array, offset)</td>
+<td>从第offset个元素开始讲数组array中的值填充进去</td>
+</tr>
+<tr>
+<td>length</td>
+<td>数组长度</td>
+</tr>
+<tr>
+<td>BYTES
+_
+PER
+_
+ELEMENT</td>
+<td>数组中每个元素所占的字节数</td>
+</tr>
+</tbody>
+</table>
+<h3>将缓冲区对象分配给一个attribute变量(gl.vertexAttribPointer())</h3>
+<p>之前使用gl.vertexAttrib[1234]f系列函数为attribute变量分配值，但是这个方法只能想其传输一个值。现在则是将整个数组中的值一次性分配给attribute变量。</p>
+<p>gl.vertexAttribPointer(location,size,type,normalized,stride,offset)</p>
+<hr>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>location</td>
+<td>指定待分配attribute变量的存储位置</td>
+</tr>
+<tr>
+<td>size</td>
+<td>指定缓冲区每个顶点的分量个数(1-4)，若size和attribute变量需要的分量有出入，会补全</td>
+</tr>
+<tr>
+<td>type</td>
+<td>指定数据格式</td>
+</tr>
+<tr>
+<td></td>
+<td>gl.UNSIGHNED_BYTE(无符号字节，Uint8Array)</td>
+</tr>
+<tr>
+<td></td>
+<td>gl.SHORT(短整型，Int16Array)</td>
+</tr>
+<tr>
+<td></td>
+<td>gl.UNSIGHNED_SHORT(无符号短整型，Uint16Array)</td>
+</tr>
+<tr>
+<td></td>
+<td>gl.INT(整型，Int32Array)</td>
+</tr>
+<tr>
+<td></td>
+<td>gl.UNSIGNED_INT(无符号整型，Uint32Array)</td>
+</tr>
+<tr>
+<td></td>
+<td>gl.FLOAT(浮点型，Float32Array)</td>
+</tr>
+<tr>
+<td>normalize</td>
+<td>true or false 表明是否将非浮点型的数据归一化到
+[
+0,1
+]
+或
+[
+-1,1
+]
+之间</td>
+</tr>
+<tr>
+<td>stride</td>
+<td>指定相邻两个顶点间的字节数，默认为0</td>
+</tr>
+<tr>
+<td>location</td>
+<td>指定缓冲区对象中的偏移量（attribute变量从缓冲区的何处开始存储的，从开始就存的设为0）</td>
+</tr>
+</tbody>
+</table>
+<p>现在再回到代码去看gl.vertexAttribPointer(a_Position, 2, gl.FLOAT, false, 0, 0);这里的2是因为在缓冲区中只提供了x,y。这样就把整个缓冲区对象分配给了attribute变量了。</p>
+<h3>开启attribute变量（gl.enableVertexAttribArray()）</h3>
+<p>就相当于打开开关一样，为了使顶点着色器能访问缓冲区内的数据，我们需要使用gl.enableVertexAttribArray()来激活attribute变量，使缓冲区对attitude变量的分配生效。</p>
+<p>gl.enableVertexAttribArray(location)就没啥好说的了，传入一个已经分配好的缓冲区attribute变量后就开启了该变量，更应该注意的是这个方法的名字看起来像是处理顶点数组的，其实处理的对象是缓冲区。相对应的gl.disableVertexAttribArray(location)则用于关闭。</p>
+<p>最后调用gl.drawArray(gl.POINTS, 0, n);从缓冲区的第一个坐标开始画起，画n次。总之，心里有个WebGL系统（JS+着色器），也就有了WebGL系统，心里有了缓冲区，也就有了缓冲区。😂</p>
+<h2>Hello Triangle</h2>
+<iframe width="100%" height="430" src="//jsfiddle.net/todaylg/35br4q7m/7/embedded/result,js,css,html" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<p>代码只修改了两行，一行是删除gl_PointSize = 10.0，这句只有在画单个点的时候才起作用；一行则是修改gl.drawArrays的第一个参数为gl.TRIANGLES。这样三角形就画出来了。简单粗暴源自gl.drawArrays()的强大,其代表了WebGL所能绘制的基本图形：</p>
+<table>
+<thead>
+<tr>
+<th>基本图形</th>
+<th>参数mode</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>点</td>
+<td>gl.POINTS</td>
+<td>一些列点，绘制在v0、v1、v2…处</td>
+</tr>
+<tr>
+<td>线段</td>
+<td>gl.LINES</td>
+<td>一些列单独的线段点，绘制在（v0，v1）、（v2，v3）…处</td>
+</tr>
+<tr>
+<td>线条</td>
+<td>gl.LINES_STRIP</td>
+<td>一些列连接的线段点，绘制在（v0，v1）、（v1，v2）…处</td>
+</tr>
+<tr>
+<td>回路</td>
+<td>gl.LINES_LOOP</td>
+<td>一些列连接的线段，相当于gl.LINES_STRIP+（vn,v0）</td>
+</tr>
+<tr>
+<td>三角形</td>
+<td>gl.TRIANGLES</td>
+<td>一些列单独的三角形，绘制在（v0,v1,v2）、(v3,v4,v5)…处，不够三个点就忽略了</td>
+</tr>
+<tr>
+<td>三角带</td>
+<td>gl.TRIANGLES_STRIP</td>
+<td>一些带状的三角形，每个三角形与前一个三角形共享一条边，即绘制在（v0,v1,v2）、(v2,v1,v3)、(v2,v3,v4)…处</td>
+</tr>
+<tr>
+<td>三角扇</td>
+<td>gl.TRIANGLES_FAN</td>
+<td>一些列三角形组成的类似于扇形的图形，绘制在（v0,v1,v2）、(v0,v2,v3)、(v0,v3,v4)…处，不够三个点就忽略了</td>
+</tr>
+</tbody>
+</table>
+<p>WebGL只能绘制点、线段和三角形。但是三角形已经足够构建世界了，如果不够，那就再加几个。</p>
+<h2>Hello Rectangle</h2>
+<p>矩形就是两个三角形，可以用gl.TRIANGLES（6）、gl.TRIANGLES_STRIP（4）、gl.TRIANGLES_FAN（12，4个小三角形）来绘制。</p>
+<iframe width="100%" height="430" src="//jsfiddle.net/todaylg/35br4q7m/8/embedded/result,js,css,html" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<h2>平移、旋转和缩放</h2>
+<h3>平移</h3>
+<p>平移最简单，直接在每个分量上加上对应要改变的值即可，这是一个逐顶点操作而非逐片元操作，所以发生在顶点着色器上：</p>
+<iframe width="100%" height="430" src="//jsfiddle.net/todaylg/35br4q7m/9/embedded/result,js,css,html" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<p>我们使用uniform变量来表示三角形的平移距离，还是老套路，在着色器程序里创建后，在JavaScript代码中获取其存储位置，然后赋值数据，最后再把数据传给着色器。这里gl.uniform4f()最后一个分量之所以是0.0是因为vec4的各个分量相加时原坐标的最后一个分量为1.0，那要保证加出来的坐标最后一个分量也为1.0,那就只好让这个代表位移的vec4最后一个分量为0.0咯。</p>
+<p>注意GLSL ES中的赋值操作只能发生在相同类型的变量之间（没有JavaScript的隐式转换）。这里都是vec4所以可以直接相加。</p>
+<h3>旋转</h3>
+<p>旋转复杂一点，但都在初中数学范畴以内。描述一个旋转操作比如：绕Z轴（z轴坐标不用变了）旋转b角度（角度的正负按照右手法则旋转，大拇指指向轴的正方形，其他手指的方向就是旋转的正方向（正值））。一顿简单的三角函数和差化积得到旋转后xy和旋转前xy的关系：</p>
+<iframe width="100%" height="430" src="//jsfiddle.net/todaylg/35br4q7m/10/embedded/result,js,css,html" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<p>这样每次新的变换就重新求取一个新的关系式来实现是不科学的，所以。。。。。矩阵来袭。。。</p>
+<h3>变换矩阵：旋转</h3>
+<iframe width="100%" height="430" src="//jsfiddle.net/todaylg/35br4q7m/11/embedded/result,js,css,html" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<p>一开始定义的u_xformMatrix类型为mat4类型，也就是4x4矩阵。JavaScript并没有专门的表示矩阵的类型，所以使用的是Float32Array，在数组中存储矩阵的每个元素。这就有牵扯到一个问题，数组是一维的，但是矩阵是二维的。WebGL和OpenGL一样，矩阵元素是按列主序列排列的，也就是aeimbfjncgkodnlp这样来的，而不是按行主序的abcdef…</p>
+<h4>gl.uniformMatrix4fv(location,transpose,array)</h4>
+<hr>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>location</td>
+<td>uniform变量的存储位置</td>
+</tr>
+<tr>
+<td>Transpose</td>
+<td>在WebGL中必须指定为false</td>
+</tr>
+<tr>
+<td>array</td>
+<td>待传输的类型化数组，4x4矩阵按列主序存储在其中</td>
+</tr>
+</tbody>
+</table>
+<p>用变换矩阵进行平移、缩放也都是一个套路：</p>
+<iframe width="100%" height="430" src="//jsfiddle.net/todaylg/35br4q7m/12/embedded/result,js,css,html" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<p>不同于OpenGL提供了一系列有用的函数来帮助我们创建变换矩阵，WebGL没有提供矩阵函数，所以除了手动指定变换矩阵的每个元素外就是使用其他大佬的开源矩阵库了。</p>
+<h2>Part 3</h2>
+<p>要同时得到gl_Position和gl_PointSize的信息的话我们有两种方法：</p>
+<p>一种是再创建一个缓冲区对象，将数据写入缓冲区后分配给再创建的一个新的attribute变量，像这样：</p>
+<iframe width="100%" height="430" src="//jsfiddle.net/todaylg/35br4q7m/13/embedded/result,js,css,html" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<p>另一种则是只使用一个缓冲区对象，但是里面的数据是坐标和尺寸交错尺寸的，这时候读取数据的时候就有讲究了，即gl.vertexAttribPointer()函数的第五个参数stride和第六个参数offset派上用场的时候了：</p>
+<iframe width="100%" height="430" src="//jsfiddle.net/todaylg/35br4q7m/14/embedded/result,js,css,html" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<p>gl.vertexAttribPointer()之前有介绍过了，这里的stride参数代表去指定相邻两个顶点间的字节数，offset代表去指定缓冲区对象中的偏移量（即attribute变量是从缓冲区何处开始存储）直接看代码会好理解很多，就是（再配合size参数）指定了两套读取规则分别把数据读出即可。</p>
+<p>通过从顶点着色器传数据到片元着色器来绘制颜色。之前:</p>
+<div class="gatsby-highlight">
+      <pre class="language-text"><code class="language-text">&#39;uniform vec4 u_FragColor;\n&#39; + 
+  &#39;void main() {\n&#39; +
+  &#39;  gl_FragColor = u_FragColor;\n&#39; +
+  &#39;}\n&#39;;</code></pre>
+      </div>
+<p>通过uniform变量来将颜色信息传入片元着色器，但是uniform是一致的而不是可变的，一个一个顶点传颜色也太蠢了。所以该到varying变量登场了，其作用是从顶点着色器向片元着色器传输数据：</p>
+<iframe width="100%" height="430" src="//jsfiddle.net/todaylg/35br4q7m/15/embedded/result,js,css,html" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<p>只要片元着色器与顶点着色器用命名相同名字的varying变量数据就自动传过去了，将gl.drawArrays(gl.POINTS)改成gl.TRIANGLES，一个渐变的三角形就出现了！</p>
+<iframe width="100%" height="430" src="//jsfiddle.net/todaylg/35br4q7m/16/embedded/result,js,css,html" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<p>贼漂亮，仅仅传了三个点的颜色怎么就能搞出一个渐变的三角形呢？？这是什么情况呢？？为什么我们制定三角形的顶点颜色，WebGL就会自动在三角形表面产生颜色的平滑过渡呢？</p>
+<p>顶点着色器和片元着色器之间有两个步骤：图形装配（将孤立的顶点坐标装配成几何图形，几何图形的类别由gl.drawArrays()函数的第一个参数决定）、光栅化（将装配好的几何图形转化为片元）。</p>
+<p>也就是由孤立的顶点到几何图形（点、线、面）再由几何图形分解为片元这么个过程，光栅化结束后程序就开始逐片元调用片元着色器，对于每个片元，片元着色器计算出该片元的颜色写入颜色缓冲区，最后显示出结果。在笔记一中也画过彩色三角形，当时是直接指定了每一个片元的颜色画出来的,比如我们换换，不是直接指定每一片元的颜色，而是让颜色跟随片元所在位置而有所区别：</p>
+<iframe width="100%" height="430" src="//jsfiddle.net/todaylg/35br4q7m/17/embedded/result,js,css,html" allowpaymentrequest allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<p>其中的gl_FragCoord是WebGL的内置变量，其第一个和第二个分量表示片元在canvas坐标系中的坐标。</p>
+<p>而使用varying变量完成内插则更为方便，根据顶点的颜色，WebGL会自你得改计算出线段上所有片元的颜色并且赋值到片元着色器中的varying
+变量（即从0.0=>1.0、1.0=>0.0这样）。</p>
+<h2>纹理（Texture）</h2>
+<p>纹理映射的作用就是根据纹理图像，将之前光栅化的每个片元涂上合适的颜色，组成纹理图像的像素又称为纹素，每一个纹素的颜色都使用RGB或者RGBA格式编码。</p>
+<p>那这个纹理映射到底是怎么个映射规则呢？首先得知道纹理坐标系统，左下角为（0.0，0.0），右上角为(1.0,1.0)不管多少x多少，都是这样。常常说的uv、st就是指纹理坐标。纹理映射的过程需要顶点着色器和片元着色器的配合：首先在顶点着色器中为每个顶点指点纹理坐标，然后在片元着色器中根据每个片元的纹理坐标从纹理图像中抽取纹素颜色:</p>
+<iframe width="100%" height="430" src="//jsfiddle.net/todaylg/35br4q7m/18/embedded/result,js,css,html" allowpaymentrequest allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<p>jsfiddle跨域的问题，图像加载不了。程序流程：首先顶点着色器中接收到顶点的纹理坐标，光栅化后传递给片元着色器，片元着色器根据片元的纹理坐标从纹理图像中抽取纹素颜色赋给当前片元，设置顶点的纹理坐标，加载纹理图像，加载完成后使用纹理。</p>
+<p>结合程序来看，首先是将顶点坐标和其对应的纹理坐标写入缓冲区分配给变量，之后调用gl.createTexture创建纹理对象，低啊用gl.getUniformLocation从片元着色器获取uniform变量u_Sampler的存储位置，改变量用来接收纹理图像，之后是重头戏配置纹理的函数loadTexture:</p>
+<div class="gatsby-highlight">
+      <pre class="language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">loadTexture</span><span class="token punctuation">(</span>gl<span class="token punctuation">,</span> n<span class="token punctuation">,</span> texture<span class="token punctuation">,</span> u_Sampler<span class="token punctuation">,</span> image<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  gl<span class="token punctuation">.</span><span class="token function">pixelStorei</span><span class="token punctuation">(</span>gl<span class="token punctuation">.</span><span class="token constant">UNPACK_FLIP_Y_WEBGL</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Flip the image's y axis</span>
+  <span class="token comment">// Enable texture unit0</span>
+  gl<span class="token punctuation">.</span><span class="token function">activeTexture</span><span class="token punctuation">(</span>gl<span class="token punctuation">.</span><span class="token constant">TEXTURE0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment">// Bind the texture object to the target</span>
+  gl<span class="token punctuation">.</span><span class="token function">bindTexture</span><span class="token punctuation">(</span>gl<span class="token punctuation">.</span><span class="token constant">TEXTURE_2D</span><span class="token punctuation">,</span> texture<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token comment">// Set the texture parameters</span>
+  gl<span class="token punctuation">.</span><span class="token function">texParameteri</span><span class="token punctuation">(</span>gl<span class="token punctuation">.</span><span class="token constant">TEXTURE_2D</span><span class="token punctuation">,</span> gl<span class="token punctuation">.</span><span class="token constant">TEXTURE_MIN_FILTER</span><span class="token punctuation">,</span> gl<span class="token punctuation">.</span><span class="token constant">LINEAR</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment">// Set the texture image</span>
+  gl<span class="token punctuation">.</span><span class="token function">texImage2D</span><span class="token punctuation">(</span>gl<span class="token punctuation">.</span><span class="token constant">TEXTURE_2D</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> gl<span class="token punctuation">.</span><span class="token constant">RGB</span><span class="token punctuation">,</span> gl<span class="token punctuation">.</span><span class="token constant">RGB</span><span class="token punctuation">,</span> gl<span class="token punctuation">.</span><span class="token constant">UNSIGNED_BYTE</span><span class="token punctuation">,</span> image<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token comment">// Set the texture unit 0 to the sampler</span>
+  gl<span class="token punctuation">.</span><span class="token function">uniform1i</span><span class="token punctuation">(</span>u_Sampler<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  gl<span class="token punctuation">.</span><span class="token function">clear</span><span class="token punctuation">(</span>gl<span class="token punctuation">.</span><span class="token constant">COLOR_BUFFER_BIT</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">// Clear </span>
+
+  gl<span class="token punctuation">.</span><span class="token function">drawArrays</span><span class="token punctuation">(</span>gl<span class="token punctuation">.</span><span class="token constant">TRIANGLE_STRIP</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> n<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Draw the rectangle</span>
+<span class="token punctuation">}</span></code></pre>
+      </div>
+<p>我们一行行看。</p>
+<p>在使用图像之前必须先对其进行Y轴翻转，因为WebGL纹理坐标系统中的t轴方向和PNG/BMP/JPG等格式图片的坐标系统的Y轴方向是相反的：</p>
+<h3>gl.pixedStorei(pname,param)</h3>
+<hr>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>参数取值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pname</td>
+<td>gl.UNPACK
+_
+FLIP
+_
+Y_WEBGL</td>
+<td>对图形进行Y轴翻转，默认为false</td>
+</tr>
+<tr>
+<td></td>
+<td>gl.UNPACK
+_
+PREMULTIPLY
+_
+ALPHA_WEBGL</td>
+<td>将图像RGB颜色值的每一个分量乘以A，默认为false</td>
+</tr>
+<tr>
+<td>param</td>
+<td>指定非0或0</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>翻转之后需要激活纹理单元，默认情况下WebGL至少支持8个纹理单元，一个单元负责管理一张纹理图象，使用纹理单元之前还需要调用gl.activeTexture来激活它：</p>
+<h3>gl.activeTexture(texUnit)</h3>
+<hr>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>参数取值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>textUnit</td>
+<td>指定准备激活的纹理单元：gl.TEXTURE0/1/2/3…</td>
+</tr>
+</tbody>
+</table>
+<p>接下还需要告诉WebGL系统纹理对象使用的是哪种类型的纹理，在操作纹理对象之前我们还需要先绑定它，这和缓冲区很像。WebGL支持两种类型的纹理：gl.TEXTURE_2D（二维纹理）、gl.TEXTURE_CUBE_MAP（立方体纹理）</p>
+<h3>gl.bindTexture(target, texture)</h3>
+<hr>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>参数取值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>target</td>
+<td>gl.TEXTURE
+_
+2D（二维纹理）或gl.TEXTURE
+_
+CUBE_MAP（立方体纹理）</td>
+</tr>
+</tbody>
+</table>
+<p>texture | 表示绑定的纹理单元</p>
+<p>这个方法开启纹理对象的通知将纹理对象绑定到纹理单元（已经用activeTexture激活了）上。</p>
+<p>接下来还需要配置纹理对象的参数，以此来设置纹理图象映射到图形上的具体方法：怎么获取纹素颜色，怎么重复填充</p>
+<h3>gl.texParameteri(target, pname, param)</h3>
+<hr>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>参数取值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>target</td>
+<td>gl.TEXTURE
+_
+2D（二维纹理）或gl.TEXTURE
+_
+CUBE_MAP（立方体纹理）</td>
+</tr>
+<tr>
+<td>pname</td>
+<td>纹理参数</td>
+</tr>
+<tr>
+<td></td>
+<td>gl.TEXTURE
+_
+MAG
+_
+FILTER（纹理放大）默认值：gl.LINEAR</td>
+</tr>
+<tr>
+<td></td>
+<td>gl.TEXTURE
+_
+MIN
+_
+FILTER（纹理缩小）默认值：gl.NEAREST
+_
+MIPMAP
+_
+LINEAR（金字塔纹理，即原始纹理图像的一系列不同分辨率的版本）</td>
+</tr>
+<tr>
+<td></td>
+<td>gl.TEXTURE
+_
+WRAP
+_
+S（纹理水平填充）默认值：gl.REPEAT</td>
+</tr>
+<tr>
+<td></td>
+<td>gl.TEXTURE
+_
+WRAP
+_
+T（纹理垂直填充）默认值：gl.REPEAT</td>
+</tr>
+<tr>
+<td>param</td>
+<td>纹理参数的值</td>
+</tr>
+</tbody>
+</table>
+<p>这个方法吧param的值赋给绑定到目标的纹理对象的pname参数上。pname可以指定4个纹理参数：放大方法（gl.TEXTURE_MAG_FILTER）表示当纹理的绘制范围比纹理本身还大的时候怎么取纹素颜色，缩小方法（gl.TEXTURE_MIN_FILTER）小了的时候取纹素颜色，纹理水平填（gl.TEXTURE_WRAP_S）如何对纹理图像左侧或者右侧的区域进行填充，纹理垂直填充就是上下。</p>
+<p>param由pname的不同也有不同的值可取：</p>
+<p>放大和缩小可取：</p>
+<table>
+<thead>
+<tr>
+<th>取值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gl.LINEAR</td>
+<td>表示使用距离新像素中心最近的四个像素颜色值的加权平均作为新像素的值</td>
+</tr>
+<tr>
+<td>gl.NEAREST</td>
+<td>表示使用原纹理上距离映射后像素(新像素)中心最近(曼哈顿距离)的那个像素的颜色值（就是少了个加权平均）</td>
+</tr>
+</tbody>
+</table>
+<p>而对于水平和垂直填充则可使用:</p>
+<table>
+<thead>
+<tr>
+<th>取值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gl.REPEAT</td>
+<td>平铺式的重复纹理</td>
+</tr>
+<tr>
+<td>gl.MIRRORED_REPEAT</td>
+<td>镜像对称式的重复纹理</td>
+</tr>
+<tr>
+<td>gl.CLAMP
+_
+TO
+_
+EDGE</td>
+<td>使用纹理图形边缘值</td>
+</tr>
+</tbody>
+</table>
+<p>接下来将纹理图像分配给纹理对象：</p>
+<h3>gl.texImage2D(target, level, internalformat, format ,type, image)</h3>
+<hr>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>参数取值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>target</td>
+<td>gl.TEXTURE
+_
+2D（二维纹理）或gl.TEXTURE
+_
+CUBE_MAP（立方体纹理）</td>
+</tr>
+<tr>
+<td>level</td>
+<td>0(该参数为金字塔纹理准备的，不用金字塔纹理的话直接设置为0即可)</td>
+</tr>
+<tr>
+<td>internalformat</td>
+<td>图像的内部格式</td>
+</tr>
+<tr>
+<td>format</td>
+<td>纹理数据的格式（必须与internalformat相同）</td>
+</tr>
+<tr>
+<td></td>
+<td>gl.RGB(比如图像是jpg的)</td>
+</tr>
+<tr>
+<td></td>
+<td>gl.RGBA(比如图像是png的)</td>
+</tr>
+<tr>
+<td></td>
+<td>gl.ALPHA</td>
+</tr>
+<tr>
+<td></td>
+<td>gl.LUMINANCE(灰度图像)</td>
+</tr>
+<tr>
+<td>type</td>
+<td>纹理数据的类型</td>
+</tr>
+<tr>
+<td></td>
+<td>gl.UNSIGNED_BYTE(无符号整型，每个颜色分量占据1字节，一般都用这个，其他是的用来压缩数据的)</td>
+</tr>
+<tr>
+<td></td>
+<td>gl.UNSIGNED
+_
+SHORT
+_
+5
+<em>6</em>
+5(RGB每个分量分布占据5，6，5比特)</td>
+</tr>
+<tr>
+<td></td>
+<td>gl.UNSIGNED
+_
+SHORT
+_
+4
+<em>4</em>
+4_4</td>
+</tr>
+<tr>
+<td></td>
+<td>gl.UNSIGNED
+_
+SHORT
+_
+5
+<em>5</em>
+5_1</td>
+</tr>
+<tr>
+<td>image</td>
+<td>包含纹理图像的Image对象</td>
+</tr>
+</tbody>
+</table>
+<p>这样Image对象中的图像就从JavaScript传入到WebGL系统中，并存储在纹理对象中了,而一旦纹理图像进入了WebGL系统，就必须将其传入片元着色器并映射到图形的表面上去，这时候可以用uniform来表示纹理（因为纹理图像不会随着片元变化），而因为是二维纹理，所以uniform变量的数据类型设为sampler2D</p>
+<table>
+<thead>
+<tr>
+<th>取值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sampler2D</td>
+<td>专用于绑定到gl.TEXTURE_2D上的纹理类型</td>
+</tr>
+<tr>
+<td>samplerCube</td>
+<td>专用于绑定到gl.TEXTURE
+_
+CUBE
+_
+MAP上的纹理类型</td>
+</tr>
+</tbody>
+</table>
+<p>我们在获取了u_Sample的存储地址后将其作为参数传给了loadTexture函数，最后我们必须通过制定纹理单元编号将纹理对象传给u_Sample，也就是gl.uniformi的第二个参数为0。</p>
+<p>终于，片元着色器可以访问到纹理图像了！！</p>
+<p>之后使用老招数varying，通过attribute变量接收顶点的纹理坐标，然后通过varying传到片元着色器，顶点之间片元的纹理坐标也会在光栅化的过程中内插出来，这样就只需要根据片元的纹理坐标从纹理图像上抽取出纹素颜色，然后涂到当前的片元上即可。</p>
+<p>最后的最后，我们只需要在片元着色器中从纹理图像上获取纹素的颜色：</p>
+<h3>texture2D(sampler2D sampler, vec2 coord)</h3>
+<hr>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>参数取值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sampler</td>
+<td>指定纹理单元编号</td>
+</tr>
+<tr>
+<td>coord</td>
+<td>指定纹理坐标</td>
+</tr>
+</tbody>
+</table>
+<p>其返回值的格式由前面的gl.textImage2D()的internalformat参数决定：</p>
+<table>
+<thead>
+<tr>
+<th>internalformat</th>
+<th>返回值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gl.RGB</td>
+<td>(R,G,B,1.0)</td>
+</tr>
+<tr>
+<td>gl.RGBA</td>
+<td>(R,G,B,A)</td>
+</tr>
+<tr>
+<td>gl.ALPHA</td>
+<td>(0.0,0.0,0.0,1.0)</td>
+</tr>
+<tr>
+<td>gl.LUMINANCE</td>
+<td>(L,L,L,1.0)</td>
+</tr>
+<tr>
+<td>gl.LUMINANCE_ALPHA</td>
+<td>(L,L,L,A)</td>
+</tr>
+</tbody>
+</table>
+<p>修改一下纹理坐标与顶点坐标使纹理图像不够大的情况（改一下gl.texParameteri的参数来决定怎么渲染即可）以及多幅纹理的情况（从两个纹理取出纹素颜色来计算最终的片元颜色即可：比如二者分量相乘（遮罩效果）），实例就不上了，jsfiddle跨域问题解决不了也显示不出结果。</p>
+<h2>Part 4</h2>
+<p>Welcome to 3D!!</p>
+<p>三维比二维多了一个深度信息(Z轴)，所以为了确定孤独的观测者的状态需要确定三个信息：1.观测的目标的坐标。2.观测者的坐标（视点）。3.上方向（比如你坐着不动头却乱扭，看到的场景也会变）。有了这三个矢量就可以创建出对应的视图矩阵，具体怎么算的我们暂且先不深入：</p>
+<iframe width="100%" height="430" src="//jsfiddle.net/todaylg/35br4q7m/19/embedded/result,js,css,html" allowpaymentrequest allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<p>在代码中我们将创建出来的视图矩阵直接与顶点坐标相乘，简单粗暴。WebGL默认视点(0,0,0)，观测点(0,0,-1),上方向（0,1,0）。</p>
+<p>其实视点是可以不需要移动的，比如视点后移一个单位，是完全等价于把被观察对象向前平移一个单位的，二者本质是一样的，都可以用矩阵来描述。</p>
+<p>而将旋转矩阵、平移矩阵、缩放矩阵和视图矩阵组合（就是矩阵相乘），比如先对三角形进行旋转变换，再怼旋转后的三角形进行与移动视点等效的变换，得到的就是在某个视点观察旋转后的三角形的图像了，而相乘后的矩阵就叫模型视图矩阵。</p>
+<h3>键盘控制移动视点</h3>
+<iframe width="100%" height="430" src="//jsfiddle.net/todaylg/35br4q7m/20/embedded/result,js,css,html" allowpaymentrequest allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<p>但是会发现转着转着会少一个角，这是因为我们没有指定可视范围造成的，即观察者的可视空间。常用的可视空间为正射投影（长方体）、金字塔(透视)投影（四棱锥）。</p>
+<h3>正射投影</h3>
+<p>首先可视空间都是由前后两个矩形表面来确定的，分别是近裁剪面和远裁剪面，前者的四个顶点为(right,top,-near),(-left,top,-near),(-left,-bottom,-near),(right,-bottom,-near)，后者的四个顶点为(right,top,-far),(-left,top,-far),(-left,-bottom,-far),(right,-bottom,-far).</p>
+<p>而正射投影是长方体的可视空间，那么其在xy轴上的坐标都是一样的，也就是需要确定的参数为：left,right,bottom,top,near,far。通过这些参数我们就可以计算得出正射投影矩阵（怎么算先不研究）,左右箭头修改near和far的值：</p>
+<iframe width="100%" height="430" src="//jsfiddle.net/todaylg/35br4q7m/21/embedded/result,js,css,html" allowpaymentrequest allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<p>知道了这个道理我们就可以修复之前缺角的情况了，无非就是把far调远一点,那顶点坐标再乘以一个投影矩阵呗：</p>
+<iframe width="100%" height="430" src="//jsfiddle.net/todaylg/35br4q7m/22/embedded/result,js,css,html" allowpaymentrequest allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<h3>透视投影</h3>
+<p>在正射投影中物体不管距离的远近是多大就多大，但是我们真实世界中很明显物体是近大远小的，这就是透视投影的可视空间了。</p>
+<p>透视投影需要的参数与正射投影不一样，需要确定的是可视空间顶面和底面的夹角fov、近裁剪面的宽高比aspect、near、far的位置四个参数，也是通过这几个参数可以计算出透视投影的矩阵（具体怎么算出来的先不研究）：</p>
+<iframe width="100%" height="430" src="//jsfiddle.net/todaylg/35br4q7m/23/embedded/result,js,css,html" allowpaymentrequest allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<p>将投影矩阵、视图矩阵、模型矩阵相乘可以得到模型试图投影矩阵。。。。上面的例子画了9个三角形，其实我们只需要画三个，剩下的通过变换即可得到:</p>
+<iframe width="100%" height="430" src="//jsfiddle.net/todaylg/35br4q7m/23/embedded/result,js,css,html" allowpaymentrequest allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<h3>前后关系</h3>
+<p>WebGL默认会按照缓冲区中的顺序绘制图形，后面的盖前面的，为了解决前后关系的问题，WebGL提供了隐藏面消除的功能：</p>
+<h3>gl.enable(cap)</h3>
+<hr>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cap</td>
+<td>指定需要开启的功能</td>
+</tr>
+<tr>
+<td></td>
+<td>gl.DEPTH_TEST(隐藏面消除)</td>
+</tr>
+<tr>
+<td></td>
+<td>gl.BLEND(混合)</td>
+</tr>
+<tr>
+<td></td>
+<td>gl.POLYGON
+_
+OFFSET
+_
+FILL(多边形位移)</td>
+</tr>
+</tbody>
+</table>
+<p>gl.clear()除了可以清楚颜色缓冲区，还可以清除深度缓冲区，深度缓冲区就是为了帮助WebGL进行隐藏面的消除，用来存储深度信息的。在绘制任意一帧之前都必须清除深度缓冲区，以消除绘制上一帧时留下的痕迹。</p>
+<p>我们只需要开启应场面消除，在绘制之前清空深度缓冲区，之后就不用在意放入缓冲区的顺序（倒着放入也无所谓）了：</p>
+<iframe width="100%" height="430" src="//jsfiddle.net/todaylg/35br4q7m/24/embedded/result,js,css,html" allowpaymentrequest allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<p>但是当Z轴的值完全一样的时候就会出现深度冲突的情况，因为两个表面过于接近，深度缓冲区的有限精度已经不能区分前后关系了，这时候再开启多边形偏移即可：</p>
+<h3>gl.polygonOffset(factor,units)</h3>
+<hr>
+<p>指定加到每个顶点会之后Z值上的偏移量，偏移量按照公式m x factor+ r x units计算(m表示顶点所在表面相对于观察者视线的角度，r表示硬件能够区分两个Z值之差的最小值)：</p>
+<iframe width="100%" height="430" src="//jsfiddle.net/todaylg/35br4q7m/25/embedded/result,js,css,html" allowpaymentrequest allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<p>先画了一个绿色的三角形，然后通过gl.polygonOffset()设置了多边形偏移参数，使得之后的绘制受到多边形偏移机制影响，再画一个黄色三角形，这样就避免了深度冲突了。</p>
+<h3>画个立方体</h3>
+<p>画立方体有很多种方法，比如一个面用两个三角形拼，6个面就是6x6=36个顶点，或者用gl.TRIANGLE_FAN来画，四个顶点就可以绘制一个四边形，就只需要4x6=24个顶点，一般我们都是使用gl.drawElements()替代gl.drawArrays()来进行绘制，能够避免重复定义顶点，保持顶点数量最小，立方体的话就是8个顶点，每个三角形与顶点列表的三个顶点相关联。</p>
+<h3>gl.drawElements(mode,count,type,offset)</h3>
+<hr>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>mode</td>
+<td>指定绘制方式</td>
+</tr>
+<tr>
+<td>count</td>
+<td>指定绘制顶点数</td>
+</tr>
+<tr>
+<td>type</td>
+<td>指定索引值数据类型</td>
+</tr>
+<tr>
+<td>offset</td>
+<td>指定索引数组中开始绘制的位置</td>
+</tr>
+</tbody>
+</table>
+<p>我们需要将顶点索引写入到缓冲区并绑定到gl.ELEMENT_ARRAY_BUFFER上：</p>
+<iframe width="100%" height="430" src="//jsfiddle.net/todaylg/35br4q7m/26/embedded/result,js,css,html" allowpaymentrequest allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<p>你会发现每个顶点的颜色影响到了三个面，我们只要单独把顶点坐标拎出来即可：</p>
+<iframe width="100%" height="430" src="//jsfiddle.net/todaylg/35br4q7m/27/embedded/result,js,css,html" allowpaymentrequest allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<h2>Part 5</h2>
+<p>OF光呢！！！？？？</p>
+<p>常见的光为以下三种：</p>
+<p>1.平行光。可以用一个方向和一个颜色来定义。</p>
+<p>2.点光源光。可以用一个坐标和颜色来定义。</p>
+<p>3.环境光。只需要颜色即可。</p>
+<p>反射类型分为：</p>
+<p>1.漫反射。漫反射是针对于平行光或者点光源而言的，反射光的颜色取决于入射光的颜色x表面基底色xcos(angle)(angle为入射光与表面形成的入射角，可以根据光线和表面的方向计算得出)</p>
+<p>2.环境反射。环境反射是针对于环境光而言的，反射光的方向可以认为就是入射光的反方向，即取决于入射光颜色x表面基底色。</p>
+<p>如果二者同时存在就直接相加。</p>
+<iframe width="100%" height="420" src="//jsfiddle.net/todaylg/35br4q7m/28/embedded/result,js,css,html" allowpaymentrequest allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<p>再加上环境光：</p>
+<iframe width="100%" height="420" src="//jsfiddle.net/todaylg/35br4q7m/29/embedded/result,js,css,html" allowpaymentrequest allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<p>要是加上变换的话情况就更复杂了，平移还好，不会改变平面的法向量，但是旋转就会了，这时候强大的逆转置矩阵就有声音了，怎么计算经过变换（乘以模型矩阵）后的法向量呢？只要将变换之前的法向量乘以模型矩阵的逆转置矩阵即可。首先逆矩阵是什么，矩阵乘以逆矩阵为单位矩阵，转置就是行列进行调换。（果然全是数学😂。。想放弃治疗了。。😢）</p>
+<iframe width="100%" height="420" src="//jsfiddle.net/todaylg/35br4q7m/30/embedded/result,js,css,html" allowpaymentrequest allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<p>换成点光源光（需要光源的世界坐标了）：</p>
+<p>逐顶点：</p>
+<iframe width="100%" height="420" src="//jsfiddle.net/todaylg/35br4q7m/31/embedded/result,js,css,html" allowpaymentrequest allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<p>逐片元：</p>
+<iframe width="100%" height="420" src="//jsfiddle.net/todaylg/35br4q7m/32/embedded/result,js,css,html" allowpaymentrequest allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<p>动起来：</p>
+<p>环境光：</p>
+<iframe width="100%" height="420" src="//jsfiddle.net/todaylg/35br4q7m/33/embedded/result,js,css,html" allowpaymentrequest allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<p>点光源光：</p>
+<iframe width="100%" height="420" src="//jsfiddle.net/todaylg/35br4q7m/34/embedded/result,js,css,html" allowpaymentrequest allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<h3>initShaders()</h3>
+<p>其作用总的来说就是编译GLSL ES代码，创建和初始化着色器（顶点和片元）：</p>
+<p>1.创建着色器对象（gl.createShader()）</p>
+<p>2.向着色器对象中填充着色器程序的源代码（gl.shaderSource()）</p>
+<p>3.编译着色器（gl.compileShader()）</p>
+<p>4.创建程序对象（gl.createProgram()）</p>
+<p>5.为程序对象分配着色器（gl.attachShader()）</p>
+<p>6.连接程序对象（gl.linkProgram()）</p>
+<p>7.使用程序对象（gl.useProgram()）</p>
+<p>这里的着色器对象用于管理一个顶点着色器或者一个片元着色器，每一个着色器都有一个着色器对象。程序对象是管理着色器对象的容器，在WebGL中一个程序对象必须包含一个顶点着色器和一个片元着色器。所以一般都是两个着色器（顶点加片元）对象和一个程序对象。</p>
+<h3>1.创建着色器对象（gl.createShader()）</h3>
+<p>所有的着色器对象都必须通过调用gl.createShader()来创建。</p>
+<h3>gl.createShader(type)</h3>
+<hr>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>参数取值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td>gl.VERTEX
+_
+SHADER(顶点着色器)或者gl.FRAGMENT
+_
+SHADER(片元着色器)</td>
+</tr>
+</tbody>
+</table>
+<p>有create必有delete，所以gl.deleteShader()函数则是用来删除（不是马上删除，会等到程序对象不再使用该着色器后再删除）着色器对象的。</p>
+<h3>2.向着色器对象中填充着色器程序的源代码（gl.shaderSource()）</h3>
+<h3>gl.shaderSource(shader, source)</h3>
+<hr>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>参数取值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>shader</td>
+<td>指定需要传入代码的着色器对象</td>
+</tr>
+<tr>
+<td>source</td>
+<td>指定字符串形式的代码</td>
+</tr>
+</tbody>
+</table>
+<h3>3.编译着色器（gl.compileShader()）</h3>
+<p>传入源代码之后还需要编译之后才能使用（所以要是更新了源代码想要效果也跟着更新就还需要重新编译）</p>
+<h3>gl.compileShader(shader)</h3>
+<hr>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>参数取值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>shader</td>
+<td>待编译的着色器</td>
+</tr>
+</tbody>
+</table>
+<p>debug的话可以调用gl.getShaderParameter()函数来检查着色器的状态。</p>
+<h3>gl.getShaderParameter(shader, pname)</h3>
+<hr>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>参数取值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>shader</td>
+<td>指定待获取参数的着色器</td>
+</tr>
+<tr>
+<td>shader</td>
+<td>指定待获取参数的类型</td>
+</tr>
+<tr>
+<td></td>
+<td>gl.SHADER_TYPE</td>
+</tr>
+<tr>
+<td></td>
+<td>gl.DELETE_STATUS</td>
+</tr>
+<tr>
+<td></td>
+<td>gl.COMPILE_STATUS</td>
+</tr>
+</tbody>
+</table>
+<p>要是直接编译失败gl.getShaderParameter会返回false，我们可以通过getShaderInfoLog（shader）来查看信息日志</p>
+<h3>4.创建程序对象（gl.createProgram()）</h3>
+<p>之前使用的gl.getAttribLocation和gl.getUniformLocation函数的第一个参数就是这个程序对象。</p>
+<h3>gl.createProgram()</h3>
+<hr>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>参数取值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>无</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>一旦程序对象被创建之后，需要向程序附上两个着色器：</p>
+<h3>5.为程序对象分配着色器（gl.attachShader()）</h3>
+<h3>gl.attachShader(program, shader)</h3>
+<hr>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>参数取值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>program</td>
+<td>指定程序对象</td>
+</tr>
+<tr>
+<td>shader</td>
+<td>指定着色器对象</td>
+</tr>
+</tbody>
+</table>
+<p>同样的gl.detachShader函数用来解除分配给程序对象的着色器。</p>
+<h3>6.连接程序对象（gl.linkProgram()）</h3>
+<p>在为程序对象分配了两个着色器对象后，还需要将顶点着色器和片元着色器连接起来。</p>
+<h3>gl.linkProgram(program)</h3>
+<hr>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>参数取值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>program</td>
+<td>连接指定程序对象中的着色器</td>
+</tr>
+</tbody>
+</table>
+<p>程序对象进行连接操作，目的是保证顶点着色器和片元着色器的varying变量同名同类型且一一对应；顶点着色器对每个varying变量赋了值；顶点着色器和片元着色器中的同名uniform变量也是同类型的（无需一一对应）；着色器中的attribute、uniform、varying变量的个数没有超过着色器的上限。</p>
+<p>查看是否连接成功可以通过调用gl.getProgramPara-meters()函数来实现，如果连接失败了也可以通过调用gl.getProgramInfoLog从信息日志中获取连接出错信息。</p>
+<h3>7.使用程序对象（gl.useProgram()）</h3>
+<p>最后就是通过调用gl.useProgram()来告知WebGL系统绘制时使用哪个程序对象</p>
+<h3>gl.useProgram(program)</h3>
+<hr>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>参数取值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>program</td>
+<td>指定待使用的程序对象</td>
+</tr>
+</tbody>
+</table>
+<p>所以initShaders()函数的内部流程也是这几步。</p>
+<h3>放弃治疗了放弃治疗了。。。。</h3>
+<h2>实例分析</h2>
+<p>这是CodePen上一个大佬的WebGL粒子效果的例子，瞅了瞅发现好像不是那么复杂，决定好好研究下代码，先上个改巴改巴后的最终效果（jsfiddle效果直接出不来。。。所以换成了codepen）：</p>
+<iframe height='307' scrolling='no' title='WebGL_Learning_Day1' src='//codepen.io/todaylg/embed/GOwdWM/?height=307&theme-id=0&default-tab=js,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='https://codepen.io/todaylg/pen/GOwdWM/'>WebGL_Learning_Day1</a> by todaylg (<a href='https://codepen.io/todaylg'>@todaylg</a>) on <a href='https://codepen.io'>CodePen</a>.
+</iframe>
+<p>代码分析：</p>
+<p>首先看到html，其中定义了简单的顶点着色器和片元着色器代码：</p>
+<p>顶点着色器：</p>
+<div class="gatsby-highlight">
+      <pre class="language-javascript"><code class="language-javascript">attribute vec3 vertexPosition;
+uniform mat4 modelViewMatrix;
+uniform mat4 perspectiveMatrix;
+
+void main(void) {
+    gl_Position = perspectiveMatrix * modelViewMatrix * vec4(  vertexPosition, 1.0);
+}</code></pre>
+      </div>
+<p>片元着色器：</p>
+<div class="gatsby-highlight">
+      <pre class="language-javascript"><code class="language-javascript">#ifdef GL_ES
+precision highp float;
+#endif
+void main(void) {
+    gl_FragColor = vec4(0.2, 0.3, 0.4, 1.0);
+    //gl_FragColor = vec4(0.4, 0.2, 0.3, 1.0);
+}</code></pre>
+      </div>
+<p>顶点着色器程序创建了模型矩阵、投影矩阵、3维顶点坐标，为了统一计算把3维顶点坐标换为了四维参与运算得到最终的位置。片元着色器程序则是直接简单粗暴的写死了粒子的颜色。</p>
+<p>转到js：</p>
+<p>loadScene()函数相当于做了initSharder()函数的活，完成了程序对象的创建和使用，之后开启混合模式并且对随机变量进行初始化、金字塔投影矩阵的初始化、模型矩阵的初始化。</p>
+<p>setup()中初始化的rad代表粒子旋转轨迹圆的半径，theta相当于angle，velTheta相当于变换的幅度（角度变换），freq和boldRate不用管，没有用到，randomPosX/Y是整个屏幕内的随机坐标。</p>
+<p>核心方法在draw0/draw1/draw2方法，这几个方法会在一定间隔时间以内循环依次调用。</p>
+<h3>draw0：</h3>
+<hr>
+<div class="gatsby-highlight">
+      <pre class="language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">draw0</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+  <span class="token keyword">var</span> i<span class="token punctuation">,</span> n <span class="token operator">=</span> vertices<span class="token punctuation">.</span>length<span class="token punctuation">,</span> p<span class="token punctuation">,</span> bp<span class="token punctuation">;</span>
+  <span class="token keyword">var</span> px<span class="token punctuation">,</span> py<span class="token punctuation">;</span>
+  <span class="token keyword">var</span> pTheta<span class="token punctuation">;</span>
+  <span class="token keyword">var</span> rad<span class="token punctuation">;</span>
+  <span class="token keyword">var</span> num<span class="token punctuation">;</span>
+  <span class="token keyword">var</span> targetX<span class="token punctuation">,</span> targetY<span class="token punctuation">;</span>
+
+  <span class="token keyword">for</span> <span class="token punctuation">(</span>i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> numLines <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">;</span> i <span class="token operator">+=</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token comment">//因为是线，粒子数量乘以2，然后将多复制出来的一份粒子坐标略做偏移，之后相连，效果就出来了？？？？？并不对i+=2才是导致numLines * 2的原因</span>
+    count <span class="token operator">+=</span> <span class="token number">.3</span><span class="token punctuation">;</span>
+    bp <span class="token operator">=</span> i <span class="token operator">*</span> <span class="token number">3</span><span class="token punctuation">;</span>
+
+    vertices<span class="token punctuation">[</span>bp<span class="token punctuation">]</span> <span class="token operator">=</span> vertices<span class="token punctuation">[</span>bp <span class="token operator">+</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    vertices<span class="token punctuation">[</span>bp <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> vertices<span class="token punctuation">[</span>bp <span class="token operator">+</span> <span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token comment">//确保线起始点一致</span>
+
+    num <span class="token operator">=</span> <span class="token function">parseInt</span><span class="token punctuation">(</span>i <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    targetX <span class="token operator">=</span> randomTargetXArr<span class="token punctuation">[</span>num<span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token comment">//init时的随机位置</span>
+    targetY <span class="token operator">=</span> randomTargetYArr<span class="token punctuation">[</span>num<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+
+    px <span class="token operator">=</span> vertices<span class="token punctuation">[</span>bp <span class="token operator">+</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    px <span class="token operator">+=</span> <span class="token punctuation">(</span>targetX <span class="token operator">-</span> px<span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token punctuation">(</span>Math<span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">.04</span> <span class="token operator">+</span> <span class="token number">.6</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//相较于上一时刻的位置略做偏移</span>
+    vertices<span class="token punctuation">[</span>bp <span class="token operator">+</span> <span class="token number">3</span><span class="token punctuation">]</span> <span class="token operator">=</span> px<span class="token punctuation">;</span><span class="token comment">//所以虽然是线但是两个点的坐标相差不大。</span>
+
+
+    <span class="token comment">//py = (Math.sin(cn) + 1) * .2 * (Math.random() * .5 - .25);</span>
+    py <span class="token operator">=</span> vertices<span class="token punctuation">[</span>bp <span class="token operator">+</span> <span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    py <span class="token operator">+=</span> <span class="token punctuation">(</span>targetY <span class="token operator">-</span> py<span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token punctuation">(</span>Math<span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">.04</span> <span class="token operator">+</span> <span class="token number">.06</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//位置略做偏移</span>
+    vertices<span class="token punctuation">[</span>bp <span class="token operator">+</span> <span class="token number">4</span><span class="token punctuation">]</span> <span class="token operator">=</span> py<span class="token punctuation">;</span>
+
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+      </div>
+<p>这里需要注意因为缓冲区里面只存放顶点的坐标信息，而不带大小、透明度等其他信息，所以gl.drawArray的时候要是画点（即第一个参数传入gl.POINTS），那么粒子亮度很低（因为太小了），视觉效果不好。这里采用的办法是画线，而每次绘制时先同步线的起终点，之后对线的终点做微小的位移，draw0/1/2都是如此。</p>
+<p>draw0最简单，就是把各个坐标朝最开始全屏随机分配的坐标归位回去，也就是回到分散状态的动画效果。</p>
+<h3>draw1</h3>
+<hr>
+<div class="gatsby-highlight">
+      <pre class="language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">draw1</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+  <span class="token keyword">var</span> i<span class="token punctuation">,</span> n <span class="token operator">=</span> vertices<span class="token punctuation">.</span>length<span class="token punctuation">,</span> p<span class="token punctuation">,</span> bp<span class="token punctuation">;</span>
+  <span class="token keyword">var</span> px<span class="token punctuation">,</span> py<span class="token punctuation">;</span>
+  <span class="token keyword">var</span> pTheta<span class="token punctuation">;</span>
+  <span class="token keyword">var</span> rad<span class="token punctuation">;</span>
+  <span class="token keyword">var</span> num<span class="token punctuation">;</span>
+  <span class="token keyword">var</span> targetX<span class="token punctuation">,</span> targetY<span class="token punctuation">;</span>
+
+  <span class="token keyword">for</span> <span class="token punctuation">(</span>i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> numLines <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">;</span> i <span class="token operator">+=</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    count <span class="token operator">+=</span> <span class="token number">.3</span><span class="token punctuation">;</span>
+    bp <span class="token operator">=</span> i <span class="token operator">*</span> <span class="token number">3</span><span class="token punctuation">;</span>
+
+    vertices<span class="token punctuation">[</span>bp<span class="token punctuation">]</span> <span class="token operator">=</span> vertices<span class="token punctuation">[</span>bp <span class="token operator">+</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    vertices<span class="token punctuation">[</span>bp <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> vertices<span class="token punctuation">[</span>bp <span class="token operator">+</span> <span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+    num <span class="token operator">=</span> <span class="token function">parseInt</span><span class="token punctuation">(</span>i <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    pTheta <span class="token operator">=</span> thetaArr<span class="token punctuation">[</span>num<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    rad <span class="token operator">=</span> velRadArr<span class="token punctuation">[</span>num<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+    pTheta <span class="token operator">+=</span> velThetaArr<span class="token punctuation">[</span>num<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    thetaArr<span class="token punctuation">[</span>num<span class="token punctuation">]</span> <span class="token operator">=</span> pTheta<span class="token punctuation">;</span>
+
+    targetX <span class="token operator">=</span> rad <span class="token operator">*</span><span class="token number">2</span><span class="token operator">*</span> Math<span class="token punctuation">.</span><span class="token function">cos</span><span class="token punctuation">(</span>pTheta<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    targetY <span class="token operator">=</span> rad <span class="token operator">*</span><span class="token number">2</span><span class="token operator">*</span> Math<span class="token punctuation">.</span><span class="token function">sin</span><span class="token punctuation">(</span>pTheta<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    px <span class="token operator">=</span> vertices<span class="token punctuation">[</span>bp <span class="token operator">+</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    px <span class="token operator">+=</span> <span class="token punctuation">(</span>targetX <span class="token operator">-</span> px<span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token punctuation">(</span>Math<span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">.1</span> <span class="token operator">+</span> <span class="token number">.1</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//朝方向缓动</span>
+    vertices<span class="token punctuation">[</span>bp <span class="token operator">+</span> <span class="token number">3</span><span class="token punctuation">]</span> <span class="token operator">=</span> px<span class="token punctuation">;</span>
+
+    <span class="token comment">//py = (Math.sin(cn) + 1) * .2 * (Math.random() * .5 - .25);</span>
+    py <span class="token operator">=</span> vertices<span class="token punctuation">[</span>bp <span class="token operator">+</span> <span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    py <span class="token operator">+=</span> <span class="token punctuation">(</span>targetY <span class="token operator">-</span> py<span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token punctuation">(</span>Math<span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">.1</span> <span class="token operator">+</span> <span class="token number">.1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    vertices<span class="token punctuation">[</span>bp <span class="token operator">+</span> <span class="token number">4</span><span class="token punctuation">]</span> <span class="token operator">=</span> py<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+      </div>
+<p>draw1则是朝屏幕中心（WebGL的原点）以rad为半径，每次变换velThetaArr角度的圆为轨迹运动。</p>
+<h3>draw2</h3>
+<hr>
+<div class="gatsby-highlight">
+      <pre class="language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">draw2</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  cn <span class="token operator">+=</span> <span class="token number">.1</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">var</span> i<span class="token punctuation">,</span> n <span class="token operator">=</span> vertices<span class="token punctuation">.</span>length<span class="token punctuation">,</span> p<span class="token punctuation">,</span> bp<span class="token punctuation">;</span>
+  <span class="token keyword">var</span> px<span class="token punctuation">,</span> py<span class="token punctuation">;</span>
+  <span class="token keyword">var</span> pTheta<span class="token punctuation">;</span>
+  <span class="token keyword">var</span> rad<span class="token punctuation">;</span>
+  <span class="token keyword">var</span> num<span class="token punctuation">;</span>
+
+  <span class="token keyword">for</span> <span class="token punctuation">(</span>i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> numLines <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">;</span> i <span class="token operator">+=</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    count <span class="token operator">+=</span> <span class="token number">.3</span><span class="token punctuation">;</span>
+    bp <span class="token operator">=</span> i <span class="token operator">*</span> <span class="token number">3</span><span class="token punctuation">;</span>
+    <span class="token comment">// copy old positions</span>
+
+    vertices<span class="token punctuation">[</span>bp<span class="token punctuation">]</span> <span class="token operator">=</span> vertices<span class="token punctuation">[</span>bp <span class="token operator">+</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    vertices<span class="token punctuation">[</span>bp <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> vertices<span class="token punctuation">[</span>bp <span class="token operator">+</span> <span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+    num <span class="token operator">=</span> <span class="token function">parseInt</span><span class="token punctuation">(</span>i <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    pTheta <span class="token operator">=</span> thetaArr<span class="token punctuation">[</span>num<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+    rad <span class="token operator">=</span> velRadArr<span class="token punctuation">[</span>num<span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token comment">// + Math.cos(pTheta + i * freqArr[i]) *  boldRateArr[num];</span>
+
+    pTheta <span class="token operator">+=</span> velThetaArr<span class="token punctuation">[</span>num<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    thetaArr<span class="token punctuation">[</span>num<span class="token punctuation">]</span> <span class="token operator">=</span> pTheta<span class="token punctuation">;</span>
+
+    px <span class="token operator">=</span> vertices<span class="token punctuation">[</span>bp <span class="token operator">+</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    px <span class="token operator">+=</span> rad <span class="token operator">*</span> Math<span class="token punctuation">.</span><span class="token function">cos</span><span class="token punctuation">(</span>pTheta<span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">0.5</span><span class="token punctuation">;</span><span class="token comment">//cos、sin都会有负值</span>
+    vertices<span class="token punctuation">[</span>bp <span class="token operator">+</span> <span class="token number">3</span><span class="token punctuation">]</span> <span class="token operator">=</span> px<span class="token punctuation">;</span>
+
+
+    <span class="token comment">//py = (Math.sin(cn) + 1) * .2 * (Math.random() * .5 - .25);</span>
+    py <span class="token operator">=</span> vertices<span class="token punctuation">[</span>bp <span class="token operator">+</span> <span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+    py <span class="token operator">+=</span> rad <span class="token operator">*</span> Math<span class="token punctuation">.</span><span class="token function">sin</span><span class="token punctuation">(</span>pTheta<span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">0.5</span><span class="token punctuation">;</span>
+    <span class="token comment">//p *= ( Math.random() -.5);</span>
+    vertices<span class="token punctuation">[</span>bp <span class="token operator">+</span> <span class="token number">4</span><span class="token punctuation">]</span> <span class="token operator">=</span> py<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+      </div>
+<p>draw2的角度变化和draw1是一致的，但是粒子旋转的轨迹圆不在是以屏幕中心为统一坐标，而是分散开来了。</p>
+<p>最后通过timer和draw：</p>
+<div class="gatsby-highlight">
+      <pre class="language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">timer</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  drawType <span class="token operator">=</span> <span class="token punctuation">(</span>drawType <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">%</span> <span class="token number">3</span><span class="token punctuation">;</span>
+
+  <span class="token function">setTimeout</span><span class="token punctuation">(</span>timer<span class="token punctuation">,</span> <span class="token number">1500</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">draw</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">switch</span> <span class="token punctuation">(</span>drawType<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">case</span> <span class="token number">0</span><span class="token punctuation">:</span>
+      <span class="token function">draw1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">break</span><span class="token punctuation">;</span>
+    <span class="token keyword">case</span> <span class="token number">1</span><span class="token punctuation">:</span>
+      <span class="token function">draw2</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">break</span><span class="token punctuation">;</span>
+    <span class="token keyword">case</span> <span class="token number">2</span><span class="token punctuation">:</span>
+      <span class="token function">draw0</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">break</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+      </div>
+<p>在三者之间循环依次调用，效果就完成啦。</p>
+<iframe height='307' scrolling='no' title='WebGL_Learning_Day1' src='//codepen.io/todaylg/embed/GOwdWM/?height=307&theme-id=0&default-tab=result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='https://codepen.io/todaylg/pen/GOwdWM/'>WebGL_Learning_Day1</a> by todaylg (<a href='https://codepen.io/todaylg'>@todaylg</a>) on <a href='https://codepen.io'>CodePen</a>.
+</iframe>
+<p>其他实例：</p>
+<h3>Sierpinski</h3>
+<iframe height='357' scrolling='no' title='Sierpinski' src='//codepen.io/todaylg/embed/gjjgXZ/?height=357&theme-id=0&default-tab=result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='https://codepen.io/todaylg/pen/gjjgXZ/'>Sierpinski</a> by todaylg (<a href='https://codepen.io/todaylg'>@todaylg</a>) on <a href='https://codepen.io'>CodePen</a>.
+</iframe>
+<h3>重写ParticleLine</h3>
+<iframe height='400' scrolling='no' title='WebGL\_Learning\_Day1' src='//codepen.io/todaylg/embed/GOwdWM/?height=307&theme-id=0&default-tab=result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='https://codepen.io/todaylg/pen/GOwdWM/'>WebGL\_Learning\_Day1</a> by todaylg (<a href='https://codepen.io/todaylg'>@todaylg</a>) on <a href='https://codepen.io'>CodePen</a>.
+</iframe></div><footer><div class="jsx-646394116 author"><div class="jsx-646394116 avatar"><img src="/LG-Blog-Gatsby/static/avatar.421bc1a9.jpg" alt="LG-Blog" class="jsx-646394116"/></div><div class="jsx-646394116 note"><p><strong>todaylg</strong> </p></div></div><div class="jsx-126278577 links"><a href="/LG-Blog-Gatsby/hello-world/"><svg fill="currentColor" preserveAspectRatio="xMidYMid meet" height="1em" width="1em" viewBox="0 0 40 40" style="vertical-align:middle"><g><path d="m36.4 21.4q0 1.2-0.9 2.1l-14.5 14.5q-0.9 0.8-2 0.8-1.2 0-2-0.8l-1.7-1.7q-0.9-0.8-0.9-2t0.9-2l6.5-6.6h-15.7q-1.1 0-1.9-0.8t-0.7-2v-2.9q0-1.2 0.7-2t1.9-0.9h15.7l-6.5-6.5q-0.9-0.8-0.9-2t0.9-2l1.7-1.7q0.8-0.9 2-0.9 1.2 0 2 0.9l14.5 14.5q0.9 0.8 0.9 2z"></path></g></svg><h4 class="jsx-126278577">Hello World!!<!-- --> <time class="jsx-126278577">2018-06-30<!-- --> </time></h4></a><a href="/LG-Blog-Gatsby/Internship-summary/"><svg fill="currentColor" preserveAspectRatio="xMidYMid meet" height="1em" width="1em" viewBox="0 0 40 40" style="vertical-align:middle"><g><path d="m36.3 20v2.9q0 1.1-0.7 2t-1.9 0.8h-15.7l6.5 6.6q0.9 0.8 0.9 2t-0.9 2l-1.7 1.7q-0.8 0.8-2 0.8-1.1 0-2-0.8l-14.5-14.6q-0.9-0.8-0.9-2 0-1.1 0.9-2l14.5-14.5q0.8-0.9 2-0.9 1.2 0 2 0.9l1.7 1.6q0.9 0.9 0.9 2.1t-0.9 2l-6.5 6.5h15.7q1.1 0 1.9 0.9t0.7 2z"></path></g></svg><h4 class="jsx-126278577">实习小结<!-- --> <time class="jsx-126278577">2017-12-18</time></h4></a></div><div id="post-comments" class="jsx-3595558049 comments"><div><div class="fb-comments" data-href="www.todaylg.com/webGL-learning/" data-width="100%"></div></div></div></footer></article></main><footer class="jsx-2344609357 footer"><ul>
+<li>© todaylg 2018</li>
+<li>build base on <a href="https://www.gatsbyjs.org/">gatsby</a> and <a href="https://github.com/greglobinski/gatsby-starter-hero-blog">hero-starter</a></li>
+</ul></footer></div><script id="webpack-manifest">/*<![CDATA[*/window.webpackManifest={"231608221292675":"app-9727b012fb07d7e37106.js","99219681209289":"component---node-modules-gatsby-plugin-offline-app-shell-js-5c4c5a0f7af9dc69d6d7.js","78839606078735":"component---src-templates-category-template-js-ccbdb357ea067077af6d.js","198517197184460":"component---src-templates-post-template-js-12de744ce8a8d00889aa.js","235131596041995":"component---src-templates-page-template-js-277489605b32655c14af.js","162898551421021":"component---src-pages-404-js-67108d2c79133c4984cb.js","118442821920679":"component---src-pages-category-js-bbb34571e9395b2ce79b.js","70144966829960":"component---src-pages-contact-js-db9419e96e03a5c6deba.js","35783957827783":"component---src-pages-index-js-196402a0cfcc6b7ff0e5.js","60335399758886":"path----375e85e38f47004b13cc.js","210333531512890":"path---offline-plugin-app-shell-fallback-a0e39f21c11f6a62c5ab.js","132574017077682":"path---category-废话集-f8c32bea377b2831e9c2.js","83483526085762":"path---category-基础备忘-6645d0810331b271e95f.js","50353500245631":"path---category-小结-73b0c68b8b1110d70547.js","65682829073851":"path---category-闲谈-dbce788beb58fe65a6fe.js","209685623868562":"path---category-读书流水-10fa1fdb8e83cd0216f9.js","125845644515443":"path---miku-setup-73c7b25fef0c510d3875.js","11215086174978":"path---vim-8f29223eecb524527384.js","267524537853082":"path---web-vr-and-web-audio-api-9e269c338234637dbb1d.js","144342403179678":"path---hello-world-1aa5b1f733108c6f365d.js","113821988229980":"path---web-gl-learning-3dbd255191308f1437b2.js","39973725597277":"path---internship-summary-e51f349cee0e99878e10.js","243898797873760":"path---canvas-renderermation-dc590b57b10dea01c37b.js","163051810811568":"path---svg-outline-animation-cba9fff75f381086d108.js","58306188335287":"path---mac-fix-d53a5134a468c77f5bc7.js","259355818038776":"path---sass-a40176fb59079c360409.js","223536413932413":"path---flex-750247902e334a83e4f6.js","16183777268280":"path---git-2c795c102463107b0243.js","270622037223623":"path---regexp-65653c1a406aa9156089.js","172035752148395":"path---http-936735c57d53ef643e72.js","40778976189138":"path---javascript-data-structure-cefc302f91643aeff088.js","89450997894629":"path---test-5c4db413742bf71a7154.js","254022195166212":"path---404-a0e39f21c11f6a62c5ab.js","115052432080904":"path---category-91028b314f8f32ac4da1.js","184662623972074":"path---contact-206ac74de0d3aab26f03.js","142629428675168":"path---index-2c5de8bb0fdc1f3ed701.js","178698757827068":"path---404-html-a0e39f21c11f6a62c5ab.js","114276838955818":"component---src-layouts-index-js-af2032a96fc50b5bfd12.js"}/*]]>*/</script><script>
+            
+  
+  if(true) {
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  }
+  if (typeof ga === "function") {
+    ga('create', 'undefined', 'auto');
+      }
+      </script><script>/*<![CDATA[*/["/LG-Blog-Gatsby/commons-7c4d77f391b491c8192f.js","/LG-Blog-Gatsby/app-9727b012fb07d7e37106.js","/LG-Blog-Gatsby/path---web-gl-learning-3dbd255191308f1437b2.js","/LG-Blog-Gatsby/component---src-templates-post-template-js-12de744ce8a8d00889aa.js","/LG-Blog-Gatsby/component---src-layouts-index-js-af2032a96fc50b5bfd12.js"].forEach(function(s){document.write('<script src="'+s+'" defer></'+'script>')})/*]]>*/</script></body></html>

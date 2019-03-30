@@ -1,0 +1,283 @@
+<!DOCTYPE html><html lang="zh" prefix="og: http://ogp.me/ns#"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="preload" href="/LG-Blog-Gatsby/component---src-layouts-index-js-af2032a96fc50b5bfd12.js" as="script"/><link rel="preload" href="/LG-Blog-Gatsby/component---src-templates-post-template-js-12de744ce8a8d00889aa.js" as="script"/><link rel="preload" href="/LG-Blog-Gatsby/path---http-936735c57d53ef643e72.js" as="script"/><link rel="preload" href="/LG-Blog-Gatsby/app-9727b012fb07d7e37106.js" as="script"/><link rel="preload" href="/LG-Blog-Gatsby/commons-7c4d77f391b491c8192f.js" as="script"/><title data-react-helmet="true">《图解HTTP》读书笔记 - LG-Blog</title><meta data-react-helmet="true" name="description" content="LG-Blog"/><meta data-react-helmet="true" property="og:url" content="www.todaylg.com/http/"/><meta data-react-helmet="true" property="og:title" content="《图解HTTP》读书笔记 - LG-Blog"/><meta data-react-helmet="true" property="og:description" content="LG-Blog"/><meta data-react-helmet="true" property="og:image" content="[object Object]"/><meta data-react-helmet="true" property="og:type" content="website"/><meta data-react-helmet="true" property="fb:app_id" content=""/><meta data-react-helmet="true" name="twitter:card" content="summary"/><meta data-react-helmet="true" name="twitter:creator" content="WebAMV"/><link rel="manifest" href="/LG-Blog-Gatsby/manifest.webmanifest"/><meta name="theme-color" content="#666"/><link rel="alternate" type="application/rss+xml" href="/LG-Blog-Gatsby/rss.xml"/><style id="__jsx-3982648812">.item.jsx-3982648812,.showItem.jsx-3982648812{background:transparent;-webkit-transition:all 0.5s;-webkit-transition:all 0.5s;transition:all 0.5s;display:-webkit-box;display:-ms-flexbox;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;}
+.item.jsx-3982648812 a,.showItem.jsx-3982648812 a{padding:10px;display:-webkit-box;display:-ms-flexbox;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;}
+.item.jsx-3982648812 svg,.showItem.jsx-3982648812 svg{margin:0 5px 0 0;opacity:0.3;}
+.itemList .hideItem{display:none;}
+@media screen and (min-width:1024px){.item.jsx-3982648812 a{color:#3e3e3c;padding:10px;-webkit-transition:all 0.5s;-webkit-transition:all 0.5s;transition:all 0.5s;border-radius:5px;}.homepage:not(.fixed) .item.jsx-3982648812 a{color:#ffffff;}.item.jsx-3982648812 a:hover{color:#00a5e6;background:#ffffff;background:rgba(255,255,255,0.4);}.item.jsx-3982648812 svg{-webkit-transition:all 0.5s;-webkit-transition:all 0.5s;transition:all 0.5s;}.item.jsx-3982648812:hover svg{fill:#00a5e6;opacity:1;}.hero .item.jsx-3982648812:hover svg svg{fill:green;}.showItem.jsx-3982648812{display:none;}.hiddenItem.jsx-3982648812{text-align:left;padding:5px;}.hiddenItem.jsx-3982648812 a.inHiddenItem{color:#3e3e3c;}.hiddenItem.jsx-3982648812 a.inHiddenItem:hover{color:#00a5e6;}}</style><style id="__jsx-674193961">.menu.jsx-674193961{-webkit-box-align:center;-ms-flex-align:center;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;background:#ffffff;bottom:0;display:-webkit-box;display:-ms-flexbox;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-flex:1;-ms-flex-positive:1;-webkit-box-flex:1;-webkit-flex-grow:1;-ms-flex-positive:1;flex-grow:1;left:0;max-height:50px;padding:0 10px;position:fixed;width:100%;z-index:1;-webkit-transition:all 0.5s;-webkit-transition:all 0.5s;transition:all 0.5s;}
+.itemList.jsx-674193961{display:-webkit-box;display:-ms-flexbox;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;-webkit-flex-wrap:wrap;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-box-pack:center;-ms-flex-pack:center;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;list-style:none;margin:0;padding:0;position:relative;width:100%;}
+@media screen and (max-width:1023px){.menu.jsx-674193961:after{position:absolute;content:"";left:20px;right:20px;top:0;height:1px;background:#00a5e6;}.menu.open.jsx-674193961{padding:20px;}.homepage:not(.fixed) .menu.jsx-674193961{bottom:-100px;}}
+@media screen and (min-width:1024px){.menu.jsx-674193961{border-top:none;background:transparent;display:-webkit-box;display:-ms-flexbox;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;position:relative;-webkit-box-pack:end;-ms-flex-pack:end;-webkit-box-pack:end;-webkit-justify-content:flex-end;-ms-flex-pack:end;justify-content:flex-end;padding-left:50px;-webkit-transition:none;-webkit-transition:none;transition:none;}.itemList.jsx-674193961{-webkit-box-pack:end;-ms-flex-pack:end;-webkit-box-pack:end;-webkit-justify-content:flex-end;-ms-flex-pack:end;justify-content:flex-end;padding:0;}.hiddenItemList.jsx-674193961{list-style:none;margin:0;position:absolute;background:#ffffff;border:1px solid #ecebea;top:48px;right:10px;display:-webkit-box;display:-ms-flexbox;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;-webkit-box-pack:start;-ms-flex-pack:start;-webkit-box-pack:start;-webkit-justify-content:flex-start;-ms-flex-pack:start;justify-content:flex-start;padding:20px;border-radius:5px;border-top-right-radius:0;}.hiddenItemList.jsx-674193961:after{content:"";background:#ffffff;z-index:10;top:-10px;right:-1px;width:44px;height:10px;position:absolute;border-left:1px solid #ecebea;border-right:1px solid #ecebea;}.homepage:not(.fixed) .hiddenItemList.jsx-674193961{border:1px solid transparent;background:#ffffff;background:rgba(255,255,255,0.9);top:50px;}.homepage:not(.fixed) .hiddenItemList.jsx-674193961:after{top:-11px;border-left:1px solid transparent;border-right:1px solid transparent;background:#ffffff;background:rgba(255,255,255,0.9);}.fixed .hiddenItemList.jsx-674193961{top:44px;}}</style><style id="__jsx-3242542942">.header.jsx-3242542942{-webkit-box-align:center;-ms-flex-align:center;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;background-color:#ffffff;display:-webkit-box;display:-ms-flexbox;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;height:80px;position:relative;top:0;width:100%;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;}
+.header.jsx-3242542942 a.logoType{-webkit-box-align:center;-ms-flex-align:center;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;display:-webkit-box;display:-ms-flexbox;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:"column";-webkit-flex-direction:"column";-ms-flex-direction:"column";flex-direction:"column";color:#3e3e3c;}
+.header.jsx-3242542942 a.logoType .logo.jsx-3242542942{-ms-flex-negative:0;-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0;}
+.header.homepage.jsx-3242542942{position:absolute;background-color:transparent;height:100px;;}
+h1.jsx-3242542942{font-size:1.35em;font-weight:400;margin:0 0 5px 0;}
+h2.jsx-3242542942{font-weight:400;font-size:.8em;-webkit-letter-spacing:0;-moz-letter-spacing:0;-ms-letter-spacing:0;letter-spacing:0;margin:0;}
+.logo.jsx-3242542942{border-radius:65% 75%;border:1px solid #eee;display:inline-block;height:44px;margin:0 20px 0 0;overflow:hidden;width:44px;-webkit-transition:all 0.5s;-webkit-transition:all 0.5s;transition:all 0.5s;}
+.homepage.jsx-3242542942 .logo.jsx-3242542942{height:60px;width:60px;}
+.logo.jsx-3242542942 img.jsx-3242542942{width:100%;}
+.sensor.jsx-3242542942{display:block;position:absolute;bottom:0;z-index:1;left:0;right:0;height:1px;top:80px;}
+@media screen and (min-width:600px){.header.jsx-3242542942{padding:40px;}.header.homepage.jsx-3242542942{height:100px;;}}
+@media screen and (max-width:1023px){.header.homepage.jsx-3242542942 .logo.jsx-3242542942{border:none;}.header.homepage.jsx-3242542942 a.logoType,.header.homepage.jsx-3242542942 h1.jsx-3242542942{color:#ffffff;}.header.homepage.jsx-3242542942 h2.jsx-3242542942{color:#dddbda;}}
+@media screen and (min-width:1024px){.header.jsx-3242542942{-webkit-box-align:center;-ms-flex-align:center;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;background-color:#ffffff;background-color:rgba(255,255,255,0);display:-webkit-box;display:-ms-flexbox;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;position:absolute;top:0;width:100%;-webkit-box-pack:justify;-ms-flex-pack:justify;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;-webkit-transition:padding 0.5s;-webkit-transition:padding 0.5s;transition:padding 0.5s;}.header.fixed.jsx-3242542942{height:50px;;background-color:#ffffff;left:0;padding:0 20px;position:fixed;top:0;width:100%;z-index:1;}.header.fixed.jsx-3242542942 h1.jsx-3242542942{margin:0 0 2px 0;}.header.fixed.jsx-3242542942 h2.jsx-3242542942{display:none;}.header.homepage.jsx-3242542942:not(.fixed) a.logoType,.header.homepage.jsx-3242542942:not(.fixed) h1.jsx-3242542942{color:#ffffff;}.header.homepage.jsx-3242542942:not(.fixed) h2.jsx-3242542942{color:#dddbda;}.header.jsx-3242542942 a.logoType{text-align:left;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;-ms-flex-negative:0;-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0;width:auto;}.logo.jsx-3242542942{margin:0 20px 0 0;}.fixed.jsx-3242542942 .logo.jsx-3242542942{height:36px;width:36px;}.header.homepage.jsx-3242542942:not(.fixed) .logo.jsx-3242542942{border:none;}h2.jsx-3242542942{-webkit-animation-duration:0.5s;-webkit-animation-duration:0.5s;animation-duration:0.5s;-webkit-animation-name:h2Entry;-webkit-animation-name:h2Entry-jsx-3242542942;animation-name:h2Entry-jsx-3242542942;}@-webkit-keyframes h2Entry{from.jsx-3242542942{opacity:0;}to.jsx-3242542942{opacity:1;}}@-webkit-keyframes h2Entry-jsx-3242542942{from{opacity:0;}to{opacity:1;}}@keyframes h2Entry-jsx-3242542942{from{opacity:0;}to{opacity:1;}}}</style><style id="__jsx-3306258923">h1.jsx-3306258923{font-size:2.2em;margin:0 0 40px 0;-webkit-animation-name:headlineEntry;-webkit-animation-name:headlineEntry-jsx-3306258923;animation-name:headlineEntry-jsx-3306258923;-webkit-animation-duration:1s;-webkit-animation-duration:1s;animation-duration:1s;}
+h1.jsx-3306258923 span{font-weight:400;display:block;font-size:0.5em;-webkit-letter-spacing:0;-moz-letter-spacing:0;-ms-letter-spacing:0;letter-spacing:0;margin:0 0 5px 0;}
+h1.jsx-3306258923 svg{height:0.75em;fill:#00a5e6;}
+@-webkit-keyframes headlineEntry{from.jsx-3306258923{opacity:0.5;}to.jsx-3306258923{opacity:1;}}
+@-webkit-keyframes headlineEntry-jsx-3306258923{from{opacity:0.5;}to{opacity:1;}}
+@keyframes headlineEntry-jsx-3306258923{from{opacity:0.5;}to{opacity:1;}}
+@media screen and (min-width:600px){h1.jsx-3306258923{font-size:calc(2em * 1.2);}}
+@media screen and (min-width:1024px){h1.jsx-3306258923{font-size:calc(2em * 1.4);}}</style><style id="__jsx-1833289139">.meta.jsx-1833289139{display:-webkit-box;display:-ms-flexbox;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-flow:row wrap;-webkit-flex-flow:row wrap;-ms-flex-flow:row wrap;flex-flow:row wrap;font-size:0.8em;margin:20px 0;background:transparent;}
+.meta.jsx-1833289139 svg{fill:#00a5e6;margin:0 5px 0 0;}
+.meta.jsx-1833289139 span.jsx-1833289139{-webkit-box-align:center;-ms-flex-align:center;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;display:-webkit-box;display:-ms-flexbox;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;margin:5px 10px 5px 0;}
+@media screen and (min-width:600px){.meta.jsx-1833289139{margin:calc(20px * 1.5) 0 20px;}}</style><style id="__jsx-2925212198">.bodytext.jsx-2925212198{-webkit-animation-name:bodytextEntry;-webkit-animation-name:bodytextEntry-jsx-2925212198;animation-name:bodytextEntry-jsx-2925212198;-webkit-animation-duration:1s;-webkit-animation-duration:1s;animation-duration:1s;}
+.bodytext.jsx-2925212198 h2,.bodytext.jsx-2925212198 h3{margin:1.5em 0 1em;}
+.bodytext.jsx-2925212198 h2{line-height:1.2;font-size:1.7em;}
+.bodytext.jsx-2925212198 h3{font-size:1.35em;line-height:1.3;}
+.bodytext.jsx-2925212198 p{font-size:1.1em;line-height:1.6;margin:0 0 1.5em;}
+.bodytext.jsx-2925212198 ul{list-style:circle;margin:0 0 1.5em;padding:0 0 0 1.5em;}
+.bodytext.jsx-2925212198 li{margin:0.7em 0;line-height:1.5;}
+.bodytext.jsx-2925212198 a{font-weight:600;color:#00a5e6;-webkit-text-decoration:underline;text-decoration:underline;}
+.bodytext.jsx-2925212198 a.gatsby-resp-image-link{border:0;display:block;margin:2.5em 0;border-radius:10px;overflow:hidden;border:1px solid #ecebea;}
+.bodytext.jsx-2925212198 code.language-text{background:#ecebea;text-shadow:none;color:inherit;padding:0.1em 0.3em 0.2em;border-radius:0.1em;}
+@-webkit-keyframes bodytextEntry{from.jsx-2925212198{opacity:0;}to.jsx-2925212198{opacity:1;}}
+@-webkit-keyframes bodytextEntry-jsx-2925212198{from{opacity:0;}to{opacity:1;}}
+@keyframes bodytextEntry-jsx-2925212198{from{opacity:0;}to{opacity:1;}}</style><style id="__jsx-646394116">.author.jsx-646394116{margin:40px 0;padding:40px 0;border-top:1px solid #ecebea;border-bottom:1px solid #ecebea;}
+.avatar.jsx-646394116{float:left;border-radius:65% 75%;border:1px solid #ecebea;display:inline-block;height:50px;margin:5px 20px 0 0;overflow:hidden;width:50px;}
+.avatar.jsx-646394116 img.jsx-646394116{width:100%;}
+.note.jsx-646394116{font-size:0.9em;line-height:1.6;}
+@media screen and (min-width:600px){.author.jsx-646394116{display:-webkit-box;display:-ms-flexbox;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;}.avatar.jsx-646394116{-webkit-box-flex:0;-ms-flex:0 0 auto;-webkit-flex:0 0 auto;-ms-flex:0 0 auto;flex:0 0 auto;}}</style><style id="__jsx-126278577">.links.jsx-126278577{display:-webkit-box;display:-ms-flexbox;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;padding:0 20px 40px;border-bottom:1px solid #ecebea;margin:0 0 40px 0;}
+.links.jsx-126278577 a{display:-webkit-box;display:-ms-flexbox;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;}
+.links.jsx-126278577 a:nth-child(2){margin:20px 0 0;}
+.links.jsx-126278577 svg{fill:orange;width:20px;height:20px;-ms-flex-negative:0;-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0;-webkit-box-flex:0;-ms-flex-positive:0;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;margin:0 20px 0 0;}
+h4.jsx-126278577{font-weight:600;margin:0;font-size:1.1em;}
+time.jsx-126278577{color:#969492;display:block;font-weight:400;font-size:0.8em;margin-top:0.5em;}
+@media screen and (min-width:1024px){.links.jsx-126278577{-webkit-box-orient:horizontal;-webkit-box-direction:reverse;-ms-flex-direction:row-reverse;-webkit-flex-direction:row-reverse;-ms-flex-direction:row-reverse;flex-direction:row-reverse;-webkit-box-pack:center;-ms-flex-pack:center;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;}.links.jsx-126278577 a{-ms-flex-preferred-size:50%;-webkit-flex-basis:50%;-ms-flex-preferred-size:50%;flex-basis:50%;}.links.jsx-126278577 a:nth-child(2){margin:0;}.links.jsx-126278577 svg{-webkit-transition:all 0.5s;-webkit-transition:all 0.5s;transition:all 0.5s;margin:0 10px 0 0;}@media (hover:hover){.links.jsx-126278577 a:hover svg{-webkit-transform:scale(1.5);-webkit-transform:scale(1.5);-ms-transform:scale(1.5);transform:scale(1.5);}}}</style><style id="__jsx-3595558049">.comments.jsx-3595558049{margin:0 -8px 20px;}</style><style id="__jsx-1766939654">.article.jsx-1766939654{padding:20px;margin:0 auto;}
+@media screen and (min-width:600px){.article.jsx-1766939654{padding:calc(20px) calc(20px * 2);max-width:650px;}}
+@media screen and (min-width:1024px){.article.jsx-1766939654{padding:calc(20px * 2 + 90px) 0 calc(20px * 2);max-width:700px;}}</style><style id="__jsx-2344609357">.footer.jsx-2344609357{background:#ffffff;padding:20px;padding-top:0;padding-bottom:120px;}
+.footer.jsx-2344609357 ul{list-style:none;text-align:center;padding:0;}
+.footer.jsx-2344609357 ul li{color:#969492;font-size:.8em;padding:2px 10px;position:relative;display:inline-block;}
+.footer.jsx-2344609357 ul li:after{content:"•";position:absolute;right:calc(5px * -1);}
+.footer.jsx-2344609357 ul li:last-child:after{content:"";}
+@media screen and (min-width:1024px){.footer.jsx-2344609357{padding:0 1em 1.5em;}}</style><style id="__jsx-1304903616">main.jsx-1304903616{min-height:80vh;}</style><style id="__jsx-3347019808">html{-webkit-box-sizing:border-box;box-sizing:border-box;}
+*,*:after,*:before{-webkit-box-sizing:inherit;box-sizing:inherit;margin:0;padding:0;}
+body{font-family:Arial, sans-serif;;}
+h1,h2,h3{font-weight:400;line-height:1.1;-webkit-letter-spacing:-0.03em;-moz-letter-spacing:-0.03em;-ms-letter-spacing:-0.03em;letter-spacing:-0.03em;margin:0;}
+h1{-webkit-letter-spacing:-0.04em;-moz-letter-spacing:-0.04em;-ms-letter-spacing:-0.04em;letter-spacing:-0.04em;}
+p{margin:0;}
+strong{font-weight:400;}
+a{-webkit-text-decoration:none;text-decoration:none;color:#666;}
+main{width:auto;display:block;}</style><style id="gatsby-inlined-css">@font-face{font-family:Open Sans;font-style:normal;font-display:swap;font-weight:300;src:local("Open Sans Light "),local("Open Sans-Light"),url(/LG-Blog-Gatsby/static/open-sans-latin-300.60c86674.woff2) format("woff2"),url(/LG-Blog-Gatsby/static/open-sans-latin-300.521d17bc.woff) format("woff")}@font-face{font-family:Open Sans;font-style:italic;font-display:swap;font-weight:300;src:local("Open Sans Light italic"),local("Open Sans-Lightitalic"),url(/LG-Blog-Gatsby/static/open-sans-latin-300italic.06bbd318.woff2) format("woff2"),url(/LG-Blog-Gatsby/static/open-sans-latin-300italic.8a648ff3.woff) format("woff")}@font-face{font-family:Open Sans;font-style:normal;font-display:swap;font-weight:400;src:local("Open Sans Regular "),local("Open Sans-Regular"),url(/LG-Blog-Gatsby/static/open-sans-latin-400.cffb686d.woff2) format("woff2"),url(/LG-Blog-Gatsby/static/open-sans-latin-400.bf2d0783.woff) format("woff")}@font-face{font-family:Open Sans;font-style:italic;font-display:swap;font-weight:400;src:local("Open Sans Regular italic"),local("Open Sans-Regularitalic"),url(/LG-Blog-Gatsby/static/open-sans-latin-400italic.987032ea.woff2) format("woff2"),url(/LG-Blog-Gatsby/static/open-sans-latin-400italic.db70d0b9.woff) format("woff")}@font-face{font-family:Open Sans;font-style:normal;font-display:swap;font-weight:600;src:local("Open Sans SemiBold "),local("Open Sans-SemiBold"),url(/LG-Blog-Gatsby/static/open-sans-latin-600.223a277b.woff2) format("woff2"),url(/LG-Blog-Gatsby/static/open-sans-latin-600.1cd5320f.woff) format("woff")}@font-face{font-family:Open Sans;font-style:italic;font-display:swap;font-weight:600;src:local("Open Sans SemiBold italic"),local("Open Sans-SemiBolditalic"),url(/LG-Blog-Gatsby/static/open-sans-latin-600italic.4950a720.woff2) format("woff2"),url(/LG-Blog-Gatsby/static/open-sans-latin-600italic.318ea1ad.woff) format("woff")}@font-face{font-family:Open Sans;font-style:normal;font-display:swap;font-weight:700;src:local("Open Sans Bold "),local("Open Sans-Bold"),url(/LG-Blog-Gatsby/static/open-sans-latin-700.d08c09f2.woff2) format("woff2"),url(/LG-Blog-Gatsby/static/open-sans-latin-700.623e3205.woff) format("woff")}@font-face{font-family:Open Sans;font-style:italic;font-display:swap;font-weight:700;src:local("Open Sans Bold italic"),local("Open Sans-Bolditalic"),url(/LG-Blog-Gatsby/static/open-sans-latin-700italic.c02f5da6.woff2) format("woff2"),url(/LG-Blog-Gatsby/static/open-sans-latin-700italic.72e19cbb.woff) format("woff")}@font-face{font-family:Open Sans;font-style:normal;font-display:swap;font-weight:800;src:local("Open Sans ExtraBold "),local("Open Sans-ExtraBold"),url(/LG-Blog-Gatsby/static/open-sans-latin-800.aaeffaf2.woff2) format("woff2"),url(/LG-Blog-Gatsby/static/open-sans-latin-800.c6aa0c4a.woff) format("woff")}@font-face{font-family:Open Sans;font-style:italic;font-display:swap;font-weight:800;src:local("Open Sans ExtraBold italic"),local("Open Sans-ExtraBolditalic"),url(/LG-Blog-Gatsby/static/open-sans-latin-800italic.6b3973ff.woff2) format("woff2"),url(/LG-Blog-Gatsby/static/open-sans-latin-800italic.79b58175.woff) format("woff")}code[class*=language-],pre[class*=language-]{color:#f8f8f2;background:none;text-shadow:0 1px rgba(0,0,0,.3);font-family:Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-ms-hyphens:none;hyphens:none}pre[class*=language-]{padding:1em;margin:.5em 0;overflow:auto;border-radius:.3em}:not(pre)>code[class*=language-],pre[class*=language-]{background:#272822}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal}.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#708090}.token.punctuation{color:#f8f8f2}.namespace{opacity:.7}.token.constant,.token.deleted,.token.property,.token.symbol,.token.tag{color:#f92672}.token.boolean,.token.number{color:#ae81ff}.token.attr-name,.token.builtin,.token.char,.token.inserted,.token.selector,.token.string{color:#a6e22e}.language-css .token.string,.style .token.string,.token.entity,.token.operator,.token.url,.token.variable{color:#f8f8f2}.token.atrule,.token.attr-value,.token.function{color:#e6db74}.token.keyword{color:#66d9ef}.token.important,.token.regex{color:#fd971f}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}</style><meta name="apple-mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="#D0E0D8"/><meta name="apple-mobile-web-app-title" content="Lazywill"/><link rel="apple-touch-icon" href="/icons/apple-icon-57x57.png" sizes="57x57"/><link rel="apple-touch-icon" href="/icons/apple-icon-60x60.png" sizes="60x60"/><link rel="apple-touch-icon" href="/icons/apple-icon-72x72.png" sizes="72x72"/><link rel="apple-touch-icon" href="/icons/apple-icon-76x76.png" sizes="76x76"/><link rel="apple-touch-icon" href="/icons/apple-icon-114x114.png" sizes="114x114"/><link rel="apple-touch-icon" href="/icons/apple-icon-120x120.png" sizes="120x120"/><link rel="apple-touch-icon" href="/icons/apple-icon-144x144.png" sizes="144x144"/><link rel="apple-touch-icon" href="/icons/apple-icon-152x152.png" sizes="152x152"/><link rel="apple-touch-icon" href="/icons/apple-icon-180x180.png" sizes="180x180"/><link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png"/><link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png"/><link rel="icon" type="image/png" sizes="96x96" href="/icons/favicon-96x96.png"/></head><body><noscript>You need to enable JavaScript to run this app!</noscript><div id="___gatsby"><header class="jsx-3242542942 header  "><a class="logoType" href="/LG-Blog-Gatsby/"><div class="jsx-3242542942 logo"><img src="/LG-Blog-Gatsby/static/avatar.421bc1a9.jpg" alt="LG-Blog" class="jsx-3242542942"/></div><div class="jsx-3242542942 type"><h1 class="jsx-3242542942">todaylg</h1><h2 class="jsx-3242542942"></h2></div></a><nav rel="js-menu" class="jsx-674193961 menu "><ul class="jsx-674193961 itemList"><li class="jsx-3982648812 item"><a class="" data-slug="/" href="/LG-Blog-Gatsby/"><svg fill="currentColor" preserveAspectRatio="xMidYMid meet" height="1em" width="1em" viewBox="0 0 40 40" style="vertical-align:middle"><g><path d="m32.9 22.1v10.8q0 0.5-0.4 1t-1 0.4h-8.6v-8.6h-5.7v8.6h-8.6q-0.5 0-1-0.4t-0.4-1v-10.8q0 0 0 0t0-0.1l12.9-10.6 12.8 10.6q0 0.1 0 0.1z m5-1.5l-1.4 1.7q-0.2 0.2-0.4 0.2h-0.1q-0.3 0-0.5-0.2l-15.4-12.8-15.5 12.8q-0.2 0.2-0.5 0.2-0.3 0-0.5-0.2l-1.4-1.7q-0.1-0.2-0.1-0.5t0.2-0.5l16.1-13.4q0.7-0.6 1.7-0.6t1.7 0.6l5.4 4.6v-4.4q0-0.3 0.2-0.5t0.5-0.2h4.3q0.3 0 0.5 0.2t0.2 0.5v9.1l4.9 4.1q0.2 0.2 0.3 0.5t-0.2 0.5z"></path></g></svg> <!-- -->Home</a></li><li class="jsx-3982648812 item"><a class="" data-slug="/category/" href="/LG-Blog-Gatsby/category/"><svg fill="currentColor" preserveAspectRatio="xMidYMid meet" height="1em" width="1em" viewBox="0 0 40 40" style="vertical-align:middle"><g><path d="m13 10q0-1.2-0.8-2t-2.1-0.9-2 0.9-0.8 2 0.8 2 2 0.9 2.1-0.9 0.8-2z m23.8 12.9q0 1.1-0.8 2l-11 10.9q-0.8 0.9-2 0.9-1.2 0-2-0.9l-16-15.9q-0.8-0.9-1.4-2.3t-0.6-2.6v-9.3q0-1.1 0.8-2t2.1-0.8h9.2q1.2 0 2.7 0.5t2.2 1.5l16 15.9q0.8 0.9 0.8 2.1z"></path></g></svg> <!-- -->Categories</a></li><li class="jsx-3982648812 item"><a class="" data-slug="/contact/" href="/LG-Blog-Gatsby/contact/"><svg fill="currentColor" preserveAspectRatio="xMidYMid meet" height="1em" width="1em" viewBox="0 0 40 40" style="vertical-align:middle"><g><path d="m40 15.8v17.8q0 1.4-1 2.5t-2.6 1h-32.8q-1.5 0-2.6-1t-1-2.5v-17.8q1 1.1 2.3 2 8 5.5 11 7.7 1.3 0.9 2.1 1.5t2.1 1 2.5 0.6h0q1.2 0 2.5-0.6t2.1-1 2.1-1.5q3.7-2.8 11.1-7.7 1.2-0.9 2.2-1.9z m0-6.5q0 1.7-1.1 3.4t-2.7 2.7q-8.4 5.8-10.5 7.3-0.2 0.1-0.9 0.6t-1.2 0.9-1.2 0.7-1.3 0.6-1.1 0.2h0q-0.5 0-1.1-0.2t-1.3-0.6-1.2-0.7-1.2-0.9-0.9-0.6q-2.1-1.5-5.9-4.1t-4.6-3.2q-1.3-0.9-2.6-2.6t-1.2-3q0-1.8 0.9-2.9t2.7-1.2h32.8q1.5 0 2.5 1.1t1.1 2.5z"></path></g></svg> <!-- -->About</a></li></ul></nav></header><div class="jsx-3242542942 sensor"></div><main class="jsx-1304903616 jsx-3347019808"><article class="jsx-1766939654 article"><header><h1 class="jsx-3306258923">《图解HTTP》读书笔记</h1><p class="jsx-1833289139 meta"><span class="jsx-1833289139"><svg fill="currentColor" preserveAspectRatio="xMidYMid meet" height="18" width="18" viewBox="0 0 40 40" style="vertical-align:middle"><g><path d="m4.4 37.1h6.4v-6.4h-6.4v6.4z m7.8 0h7.2v-6.4h-7.2v6.4z m-7.8-7.8h6.4v-7.2h-6.4v7.2z m7.8 0h7.2v-7.2h-7.2v7.2z m-7.8-8.6h6.4v-6.4h-6.4v6.4z m16.4 16.4h7.1v-6.4h-7.1v6.4z m-8.6-16.4h7.2v-6.4h-7.2v6.4z m17.2 16.4h6.4v-6.4h-6.4v6.4z m-8.6-7.8h7.1v-7.2h-7.1v7.2z m-7.9-19.3v-6.4q0-0.3-0.2-0.5t-0.5-0.2h-1.4q-0.3 0-0.5 0.2t-0.2 0.5v6.4q0 0.3 0.2 0.5t0.5 0.2h1.4q0.3 0 0.5-0.2t0.2-0.5z m16.5 19.3h6.4v-7.2h-6.4v7.2z m-8.6-8.6h7.1v-6.4h-7.1v6.4z m8.6 0h6.4v-6.4h-6.4v6.4z m0.7-10.7v-6.4q0-0.3-0.2-0.5t-0.5-0.2h-1.5q-0.3 0-0.5 0.2t-0.2 0.5v6.4q0 0.3 0.2 0.5t0.5 0.2h1.5q0.2 0 0.5-0.2t0.2-0.5z m8.5-1.4v28.5q0 1.2-0.8 2.1t-2 0.8h-31.4q-1.2 0-2.1-0.9t-0.8-2v-28.5q0-1.2 0.8-2t2.1-0.9h2.8v-2.1q0-1.5 1.1-2.6t2.5-1h1.4q1.5 0 2.5 1.1t1.1 2.5v2.1h8.6v-2.1q0-1.5 1-2.6t2.5-1h1.5q1.4 0 2.5 1.1t1 2.5v2.1h2.9q1.1 0 2 0.9t0.8 2z"></path></g></svg> <!-- -->2017-06-25</span><span class="jsx-1833289139"><svg fill="currentColor" preserveAspectRatio="xMidYMid meet" height="18" width="18" viewBox="0 0 40 40" style="vertical-align:middle"><g><path d="m35.9 31.4q0 2.6-1.6 4.2t-4.3 1.5h-19.5q-2.7 0-4.4-1.5t-1.6-4.2q0-1.2 0.1-2.3t0.3-2.5 0.6-2.4 0.9-2.2 1.4-1.8 1.9-1.2 2.5-0.4q0.2 0 1 0.5t1.6 1 2.4 1.1 3 0.5 3-0.5 2.4-1.1 1.7-1 0.9-0.5q1.4 0 2.5 0.4t1.9 1.2 1.4 1.8 0.9 2.2 0.6 2.4 0.4 2.5 0 2.3z m-7.1-20q0 3.6-2.5 6.1t-6.1 2.5-6-2.5-2.6-6.1 2.6-6 6-2.5 6.1 2.5 2.5 6z"></path></g></svg> <!-- -->todaylg</span><span class="jsx-1833289139"><svg fill="currentColor" preserveAspectRatio="xMidYMid meet" height="18" width="18" viewBox="0 0 40 40" style="vertical-align:middle"><g><path d="m13 10q0-1.2-0.8-2t-2.1-0.9-2 0.9-0.8 2 0.8 2 2 0.9 2.1-0.9 0.8-2z m23.8 12.9q0 1.1-0.8 2l-11 10.9q-0.8 0.9-2 0.9-1.2 0-2-0.9l-16-15.9q-0.8-0.9-1.4-2.3t-0.6-2.6v-9.3q0-1.1 0.8-2t2.1-0.8h9.2q1.2 0 2.7 0.5t2.2 1.5l16 15.9q0.8 0.9 0.8 2.1z"></path></g></svg><a href="/LG-Blog-Gatsby/category/读书流水">读书流水</a></span></p></header><div class="jsx-2925212198 bodytext"><p>通信工程搞软件真是举步维艰。。。唯一值得兴奋一点的是这学期好歹学个有用的计算机通信与网络（计网）然而毕竟是通信的计网。。老师从物理层讲到传输层就往后的就基本没涉及了。。。用了大概30分钟提了提了TCP/IP。。。这尼玛。。结果还是得自己来呀。。。准备先补本基础的书，这是第一本的笔记。既然身为通信人，还是好好研究研究通信吧。</p>
+<p>在开始读书笔记之前，先提问一个有意思的问题：当你在浏览器的地址栏输入URL按下回车之后都发生了啥？</p>
+<p>这个问题在github上就有比较详细的解答：<a href="https://github.com/alex/what-happens-when%5C">https://github.com/alex/what-happens-when\</a>](<a href="https://github.com/alex/what-happens-when">https://github.com/alex/what-happens-when</a></p>
+<p>回答中将期间的每个过程都做了简要的介绍，但也因为是简要介绍所以没有对整个过程有完整详细的说明，突然出现的一些专有名词也是吓得我瑟瑟发抖。。。所以之后的相关笔记都会结合着这个问题做相关的讨论。OK，AV GO~</p>
+<h2>Web及网络基础</h2>
+<hr>
+<p>计算机与网络设备需要通信，双方就必须按照统一的标准来。不同的硬件、操作系统之间的通信都需要一种规则，而我们就把这种规则称为 <strong>协议(protocol)</strong> ,在理解HTTP之前我们得先了解一下TCP/IP协议族，通常使用的网络就是在TCP/IP协议族的基础上运作的，HTTP属于他内部的一个子集。当接收端的服务器在链路层接收到数据，按序往上层发送，一直到应用层。当传输到应用层才能算真正接收到由客户端发送过来的HTTP请求。</p>
+<h3>与HTTP关系密切的协议</h3>
+<p>IP、TCP、DNS与HTTP可谓是密不可分：</p>
+<h4>1.负责传输的IP协议</h4>
+<p>IP（Internet Protocol）位于网络层（几乎所有使用网络的系统都会用到IP协议），简要来说其作用是把各种数据包传送给对方，而你传送总得需要一个地址，所以必不可缺的两个重要条件：IP地址以及MAC地址。IP地址指明了节点被分配到的地址，MAC地址则是网卡所属的固定地址，二者可以配对（IP地址可变但是MAC地址一般都是不变的了）。而IP间的通信由依赖于MAC地址，因为通信的双方基本不会在同一局域网（LAN）内，通常需要经过多台计算机和网络设备中转才能连接到对方。而进行中转的时候，会利用下一站中转设备的MAC地址来搜索下一个中转目标。ARP（Address Resolution Protocol）就是用以解析地址的协议，它可以根据通信方的IP地址反查出对应的MAC地址，其中中转过程用到的路由选择机制可以理解为寄快递，你填了个目标地址，剩下的过程集散中心会自动判断。</p>
+<h4>2.确保可靠性的TCP协议</h4>
+<p>TCP位于传输层，提供可靠的字节流服务（将大块数据分割成以报文段为单位的数据包方便传输，并且能够确认数据是否到达），为了确认数据是否到达目标处，TCP采用三次握手、四次挥手的策略。</p>
+<h3>3.负责域名解析的DNS服务</h3>
+<p>提供域名到IP地址之间的解析服务，这个就没啥好说的了</p>
+<h4>URI</h4>
+<p>地址栏的URL（Uniform Resource Locator,统一资源定位符）就是URI（Uniform Resource Identifier,统一资源标识符）子集，URI表示由某个协议方案表示的资源定位标识符，即用字符串标识某一互联网资源，而URL表示资源的地点（互联网上所处的位置），URL其格式：首先是协议类型（比如http、https等）、登录信息（可选，没见过。。。）、服务器地址（或者是DNS能解析的名称）、服务器端口号（没有就用默认端口号）、带层次的文件路径、查询字符串、片段标识符。</p>
+<p>二者关系：locators are also identifiers, so every URL is also a URI, but there are URIs which are not URLs</p>
+<h2>简单的HTTP协议</h2>
+<hr>
+<p>进入正题啦，HTTP协议用于客户端和服务器之间通信，也就是如果两台计算机使用HTTP协议进行通信，那么在一条通信线路上必然有一端是客户端，另一端是服务器端（虽然有时候角色可能会互换）。二者通过请求和响应的交换达成通信。那请求报文与响应报文里是什么情况？</p>
+<p>光说不练假把式呀，抓个包便一目了然，抓包工具推荐三：Wireshark、Charles、Fiddler。我原来是用Wireshark的，界面简洁功能罗列清晰，但是比较伤的是不提供修改请求的功能，所以我转而用了下Fiddler，但是Fiddler没得Mac版的（Mono不算），最后换成了Charles，这个嗷嗷好用的，搁这推荐一下（其实用Chrome devtool network也可以直接看报文）。</p>
+<p>请求报文由请求方法、请求URL、协议版本。可选的请求首部字段和内容实体构成。响应报文一般由协议版本、状态码、用以解释状态码的原因语句，可选的 响应首部字段以及实体主体构成。稍后会对报文中的内容做详细的解释。</p>
+<p>需要注意的是HTTP是不保存状态的协议，对于发送过的请求或响应都不做持久化处理，为了实现期望的保持状态的功能，于是引入了Cookie技术。</p>
+<h3>HTTP方法</h3>
+<h4>Get</h4>
+<p>Get方法用来请求访问已被URI识别的资源，指定的资源经服务器端解析后返回响应内容。</p>
+<h4>Post，</h4>
+<p>Post方法用来传输实体的主体（虽然Get方法也可以传，但是一般不用Get传）</p>
+<h4>Put</h4>
+<p>Put方法用来传输文件（像FTP一样），要求在请求报文的主体中包含文件内容，然后保存到请求URL指定的位置。（由于HTTP/1.1的Put方法不带验证机制，任何人都可以上传文件，存在安全性问题，一般不用这个方法）。</p>
+<h4>Head，</h4>
+<p>Head方法和Get方法一样，只是不返回报文主体部分，用于确认URI的有效性及资源更新的日期时间等。</p>
+<h4>Delete</h4>
+<p>Delete方法用来删除文件，是与Put相反的方法，但是也是一样存在安全性的问题所以一般不用（除非自己在应用程序中添加验证）。</p>
+<h4>Option</h4>
+<p>Option方法用来查询针对请求URI指定的资源支持的方法，比如CORS会先发一个Options请求。</p>
+<h4>Trace</h4>
+<p>Trace方法用来确认连接过程中发生的一系列操作（基本不用，容易引发XST（Cross-Site Tracing,跨站追踪攻击））。</p>
+<h4>Connect</h4>
+<p>Connect方法要求在与代理服务器通信时建立隧道，实现用隧道协议进行TCP通信（主要用于SSL、TLS协议把通信内容加密后经网络隧道传输）。</p>
+<p>其实一般只接触到Get、Post，剩下的方法很少用到了。</p>
+<h3>持久连接</h3>
+<p>在HTTP协议的初始版本中，每进行一次HTTP通信就要断开一次TCP连接，增加了通信量的开销。为了解决这个问题，HTTP/1.1和一部分的HTTP/1.0想出了持久连接的方法，也称为HTTP keep-alive或者HTTP connection reuse，持久连接的特点是，只要任一一端没有明确提出断开连接，则保持TCP连接状态（旨在建立一次TCP连接后进行多次请求和响应的交互，减轻服务器端的负载）。在HTTP/1,1中，所有的连接默认都是持久连接。持久连接使得多数请求得以管线化发送成为了可能，从前发送请求后需要等待并收到响应才能发送下一个请求。管线化技术出现后，不用等待响应也可直接发送下一个请求。</p>
+<h3>Cookie</h3>
+<p>Cookie会根据从服务器端发送的响应报文内的一个叫做Set-Cookie的首部字段信息通知客户端保存Cookie，当下次客户端再往该服务器发送请求的时候，客户端会自动在请求报文中加入Cookie值后发送出去，服务器端发现客户端发送过来的Cookie后会去检查究竟是哪一个客户端发来的连接请求，然后对比服务器上的记录，最后得到之前的状态信息。</p>
+<h2>HTTP报文内的HTTP信息</h2>
+<hr>
+<p>HTTP报文大致可分为报文首部和报文主体两块，两者由最初出现的空行（CR（回车）+LF（换行））来划分，通常不一定要有报文主体。</p>
+<p>请求报文的报文首部一般含有：请求行、请求首部字段、通用首部字段、实体首部字段。</p>
+<p>响应报文则是：状态行、响应首部字段、通用首部字段、实体首部字段。</p>
+<h4>提升传输速率</h4>
+<p>压缩传输的内容编码。比如gzip（GNU zip）、compress（Unix系统的标准压缩）、deflate（zlib）、identity（不进行编码）。</p>
+<p>分割发送的分块传输编码。通过把数据分割成多块，能够让浏览器逐步显示页面，这种把实体主体分块的功能称为分块传输编码。</p>
+<h4>发送多种数据的多部分对象集合</h4>
+<p>发邮件的时候我们可以在邮件里面写入文字并添加多份附件，这是因为采用了MIME（Multipurpose Internet Mail Extensions，多用途英特网邮件拓展）机制，它允许邮件处理文本、图片、视频等多个不同类型的数据，而在MIME拓展中会使用一种称为多部分对象集合的方法来容纳不同类型的数据。相应的，HTTP协议中也采纳了多部分对象集合，发送的一份报文主体内可包含有多类型实体。通常在图片或文本文件上传时使用。多部分对象集合包含的对象如下：</p>
+<ul>
+<li>
+<p>multipart/form-data:在Web表单文件上传时使用</p>
+</li>
+<li>
+<p>multipart/byteranges:状态码206（部分内容）响应报文包含了多个范围的内容时使用。</p>
+</li>
+</ul>
+<p>在HTTP报文中会用多部分对象集合时，需要再首部字段里加上Content-type。</p>
+<h3>获取部分内容的范围请求</h3>
+<p>在以前，下载过程遇到网络中断的状况就必须从头开始。为了解决这个问题，需要一种可恢复的机制（即在断点恢复下载而不是从头再来一遍）。</p>
+<p>要实现该功能需要指定下载的实体范围。像这样指定范围发送的请求称为范围请求（Range Request）。执行范围请求时，会用到首部字段Range来知道资源的byte范围：Range：bytes=-3000，5001-10000 。针对范围请求，响应会返回状态码为206 Partial Content的响应报文。另外，对于多重范围的范围请求，响应会在首部字段Conyent-type标明multipart/byteranges后返回响应报文。如果服务器端无法响应范围请求，则会返回状态码200 OK和完整的实体内容。</p>
+<h2>返回结果的HTTP状态码</h2>
+<hr>
+<p>这个很关键啊，不知道为啥，经常考这个，首先是大体的分类：</p>
+<table>
+<thead>
+<tr>
+<th align="center">状态码</th>
+<th align="center">名称</th>
+<th align="center">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">1XX</td>
+<td align="center">Informational（信息状态码）</td>
+<td align="center">接收的请求正在处理</td>
+</tr>
+<tr>
+<td align="center">2XX</td>
+<td align="center">Success（成功状态码）</td>
+<td align="center">请求正常处理完毕</td>
+</tr>
+<tr>
+<td align="center">3XX</td>
+<td align="center">Redirection（重定向状态码）</td>
+<td align="center">需要进行附加操作以完成请求</td>
+</tr>
+<tr>
+<td align="center">4XX</td>
+<td align="center">ClientErr（客户端错误状态码）</td>
+<td align="center">服务器无法处理请求</td>
+</tr>
+<tr>
+<td align="center">5XX</td>
+<td align="center">ServerError（服务器错误状态码）</td>
+<td align="center">服务器处理请求出错</td>
+</tr>
+</tbody>
+</table>
+<p>比较具有代表性的有以下14个：</p>
+<table>
+<thead>
+<tr>
+<th align="center">状态码</th>
+<th align="center">名称</th>
+<th align="center">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">200</td>
+<td align="center">OK</td>
+<td align="center">表示从客户端发来的请求被正常处理了</td>
+</tr>
+<tr>
+<td align="center">204</td>
+<td align="center">NO Content</td>
+<td align="center">表示服务器接收的请求已被成功处理，但在返回的响应报文中不含实体的主体部分（浏览器页面不发生更新，即对客户端不需要发送新信息的情况）</td>
+</tr>
+<tr>
+<td align="center">206</td>
+<td align="center">Partical Content</td>
+<td align="center">该状态码表示客户端进行了范围请求，而服务器成功返回了这部分的GET请求</td>
+</tr>
+<tr>
+<td align="center">301</td>
+<td align="center">Moved Permanently</td>
+<td align="center">永久性重定向。该状态码表示请求的资源已被分配了新的URI，以后应使用资源限制所指的URI。也就是说，如果已经把资源对应的URI保存为书签了，这时应按Location首部字段提升的URI重新保存</td>
+</tr>
+<tr>
+<td align="center">302</td>
+<td align="center">See Other</td>
+<td align="center">临时性重定向（将来还有可能改变，不会像301那样去更新书签）。该状态码表示请求的资源已被分配了新的URI，希望用户本次能使用新的URI访问。</td>
+</tr>
+<tr>
+<td align="center">303</td>
+<td align="center">OK</td>
+<td align="center">303状态码和302有着相同的功能，但是303状态码明确表示客户端应当采用GET方法获取资源，这点与302状态码有区别（标准是这么规定的，但是几乎所有浏览器遇到301、302、303状态码返回时都会把Post改成Get）</td>
+</tr>
+<tr>
+<td align="center">304</td>
+<td align="center">Not Modified</td>
+<td align="center">该状态码表示客户端发送附带条件的请求时，服务器端允许请求访问资源，但未满足条件的情况。304状态码返回的时候，不包含任何响应的主体部分。304虽然被划在3XX类别中，但是和重定向没有太大关系。（硬要说的话也算是重定向到本地文件吧）</td>
+</tr>
+<tr>
+<td align="center">307</td>
+<td align="center">Temporary Redirect</td>
+<td align="center">临时性重定向，该状态码与302 Found有着相同的含义，尽管302标准禁止Post转换为Get，但是实际使用中大家并不遵守，但是307会遵守浏览器标准，不会从Post编程Get。</td>
+</tr>
+<tr>
+<td align="center">400</td>
+<td align="center">Bad Request</td>
+<td align="center">>该状态码表示请求报文中存在语法错误，当错误发生时需要修改请求的内容后再次发送请求。另外，浏览器会像200 OK一样对待该状态码。</td>
+</tr>
+<tr>
+<td align="center">401</td>
+<td align="center">Unauthorized</td>
+<td align="center">该状态码表示发送的请求需要有通过HTTP认证的认证信息，浏览器初次（多次发送请求服务端会认为用户认证失败）接收到401响应会弹出认证用的对话窗口。</td>
+</tr>
+<tr>
+<td align="center">404</td>
+<td align="center">Not Found</td>
+<td align="center">该状态码表明服务器上无法找到请求的资源（也可以在服务器端拒绝请求且不想说明原因的时候使用）</td>
+</tr>
+<tr>
+<td align="center">500</td>
+<td align="center">Internal Server Error</td>
+<td align="center">该状态码表示服务器端在执行请求时发生了错误，也可能是Web应用存在的bug或临时的故障</td>
+</tr>
+<tr>
+<td align="center">503</td>
+<td align="center">Service Unavailable</td>
+<td align="center">表明服务器暂时处于超负载或正在进行停机维护，现在无法处理请求。</td>
+</tr>
+</tbody>
+</table>
+<h2>与HTTP协作的Web服务器</h2>
+<hr>
+<p>HTTP/1.1规范允许一台HTTP服务器搭建多个Web站点。比如提供Web托管服务的运营商，可以使用一台服务器为多位客户服务，也可以以每位客户持有的域名运行各自不同的网站。这是因为使用了虚拟主机的功能（物理层面只有一台服务器，但是只要使用虚拟主机的功能就可以假想已有多台服务器），在相同的IP地址下，由于虚拟主机可以寄存多个不同主机名和域名的Web网站，因此在发送HTTP请求时，必须在Host首部内完整指定主机名或域名的URI。</p>
+<h3>通信数据转发程序</h3>
+<ul>
+<li>
+<p>1.代理：代理是一种有转发功能的应用程序，位于服务器端与客户端之间，相当于中间人（代理服务器转发请求或响应时，会追加Via首部信息）。</p>
+</li>
+<li>
+<p>2.网关：网关是转发其他服务器通信数据的服务器，接收从客户端发送来的请求时，它就像自己拥有资源的源服务器一样对请求进行处理。有时客户端可能都不会察觉，自己的通信目标是一个网关。</p>
+</li>
+<li>
+<p>3.隧道：隧道是在相隔甚远的客户端和服务器两者之间进行中转，并保持双发通信连接的应用程序。</p>
+</li>
+</ul>
+<p>使用代理的好处是利用缓存技术减少网络带宽的流量。代理有多种使用方法，按两种基准分类。一种是否使用缓存，一种是否会修改报文。缓存代理转发响应时，缓存代理会预先将资源的副本（缓存）保存在代理服务器上，当代理再次接受到对相同资源的请求时，就可以不从源服务器哪里获取资源，而是将之前缓存的资源作为响应返回。另一种则是透明代理，转发请求或响应时不对报文做任何加工的代理类型被称为透明代理，反之则是非透明代理</p>
+<p>使用网关的好处则是可以提高通信的安全性，网关的工作机制和代理很类似，但是网关能使通信线路上的服务器提供非HTTP协议服务。因为可以在客户端与网关之间的通信线路上加密以确保连接的安全，比如网关可以连接数据库，使用SQL语句查询数据。又或者在Web购物网站上进行信用卡结算时，网关可以和信用卡结算系统联动。</p>
+<p>使用隧道的目的是确保客户端与服务器进行安全的通信，且隧道本身是透明的，客户端不用关心隧道的存在。</p></div><footer><div class="jsx-646394116 author"><div class="jsx-646394116 avatar"><img src="/LG-Blog-Gatsby/static/avatar.421bc1a9.jpg" alt="LG-Blog" class="jsx-646394116"/></div><div class="jsx-646394116 note"><p><strong>todaylg</strong> </p></div></div><div class="jsx-126278577 links"><a href="/LG-Blog-Gatsby/regexp/"><svg fill="currentColor" preserveAspectRatio="xMidYMid meet" height="1em" width="1em" viewBox="0 0 40 40" style="vertical-align:middle"><g><path d="m36.4 21.4q0 1.2-0.9 2.1l-14.5 14.5q-0.9 0.8-2 0.8-1.2 0-2-0.8l-1.7-1.7q-0.9-0.8-0.9-2t0.9-2l6.5-6.6h-15.7q-1.1 0-1.9-0.8t-0.7-2v-2.9q0-1.2 0.7-2t1.9-0.9h15.7l-6.5-6.5q-0.9-0.8-0.9-2t0.9-2l1.7-1.7q0.8-0.9 2-0.9 1.2 0 2 0.9l14.5 14.5q0.9 0.8 0.9 2z"></path></g></svg><h4 class="jsx-126278577">正则表达式基础<!-- --> <time class="jsx-126278577">2017-07-11<!-- --> </time></h4></a><a href="/LG-Blog-Gatsby/javascript-data-structure/"><svg fill="currentColor" preserveAspectRatio="xMidYMid meet" height="1em" width="1em" viewBox="0 0 40 40" style="vertical-align:middle"><g><path d="m36.3 20v2.9q0 1.1-0.7 2t-1.9 0.8h-15.7l6.5 6.6q0.9 0.8 0.9 2t-0.9 2l-1.7 1.7q-0.8 0.8-2 0.8-1.1 0-2-0.8l-14.5-14.6q-0.9-0.8-0.9-2 0-1.1 0.9-2l14.5-14.5q0.8-0.9 2-0.9 1.2 0 2 0.9l1.7 1.6q0.9 0.9 0.9 2.1t-0.9 2l-6.5 6.5h15.7q1.1 0 1.9 0.9t0.7 2z"></path></g></svg><h4 class="jsx-126278577">《JavaScript数据结构与算法》读书笔记<!-- --> <time class="jsx-126278577">2017-05-17</time></h4></a></div><div id="post-comments" class="jsx-3595558049 comments"><div><div class="fb-comments" data-href="www.todaylg.com/http/" data-width="100%"></div></div></div></footer></article></main><footer class="jsx-2344609357 footer"><ul>
+<li>© todaylg 2018</li>
+<li>build base on <a href="https://www.gatsbyjs.org/">gatsby</a> and <a href="https://github.com/greglobinski/gatsby-starter-hero-blog">hero-starter</a></li>
+</ul></footer></div><script id="webpack-manifest">/*<![CDATA[*/window.webpackManifest={"231608221292675":"app-9727b012fb07d7e37106.js","99219681209289":"component---node-modules-gatsby-plugin-offline-app-shell-js-5c4c5a0f7af9dc69d6d7.js","78839606078735":"component---src-templates-category-template-js-ccbdb357ea067077af6d.js","198517197184460":"component---src-templates-post-template-js-12de744ce8a8d00889aa.js","235131596041995":"component---src-templates-page-template-js-277489605b32655c14af.js","162898551421021":"component---src-pages-404-js-67108d2c79133c4984cb.js","118442821920679":"component---src-pages-category-js-bbb34571e9395b2ce79b.js","70144966829960":"component---src-pages-contact-js-db9419e96e03a5c6deba.js","35783957827783":"component---src-pages-index-js-196402a0cfcc6b7ff0e5.js","60335399758886":"path----375e85e38f47004b13cc.js","210333531512890":"path---offline-plugin-app-shell-fallback-a0e39f21c11f6a62c5ab.js","132574017077682":"path---category-废话集-f8c32bea377b2831e9c2.js","83483526085762":"path---category-基础备忘-6645d0810331b271e95f.js","50353500245631":"path---category-小结-73b0c68b8b1110d70547.js","65682829073851":"path---category-闲谈-dbce788beb58fe65a6fe.js","209685623868562":"path---category-读书流水-10fa1fdb8e83cd0216f9.js","125845644515443":"path---miku-setup-73c7b25fef0c510d3875.js","11215086174978":"path---vim-8f29223eecb524527384.js","267524537853082":"path---web-vr-and-web-audio-api-9e269c338234637dbb1d.js","144342403179678":"path---hello-world-1aa5b1f733108c6f365d.js","113821988229980":"path---web-gl-learning-3dbd255191308f1437b2.js","39973725597277":"path---internship-summary-e51f349cee0e99878e10.js","243898797873760":"path---canvas-renderermation-dc590b57b10dea01c37b.js","163051810811568":"path---svg-outline-animation-cba9fff75f381086d108.js","58306188335287":"path---mac-fix-d53a5134a468c77f5bc7.js","259355818038776":"path---sass-a40176fb59079c360409.js","223536413932413":"path---flex-750247902e334a83e4f6.js","16183777268280":"path---git-2c795c102463107b0243.js","270622037223623":"path---regexp-65653c1a406aa9156089.js","172035752148395":"path---http-936735c57d53ef643e72.js","40778976189138":"path---javascript-data-structure-cefc302f91643aeff088.js","89450997894629":"path---test-5c4db413742bf71a7154.js","254022195166212":"path---404-a0e39f21c11f6a62c5ab.js","115052432080904":"path---category-91028b314f8f32ac4da1.js","184662623972074":"path---contact-206ac74de0d3aab26f03.js","142629428675168":"path---index-2c5de8bb0fdc1f3ed701.js","178698757827068":"path---404-html-a0e39f21c11f6a62c5ab.js","114276838955818":"component---src-layouts-index-js-af2032a96fc50b5bfd12.js"}/*]]>*/</script><script>
+            
+  
+  if(true) {
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  }
+  if (typeof ga === "function") {
+    ga('create', 'undefined', 'auto');
+      }
+      </script><script>/*<![CDATA[*/["/LG-Blog-Gatsby/commons-7c4d77f391b491c8192f.js","/LG-Blog-Gatsby/app-9727b012fb07d7e37106.js","/LG-Blog-Gatsby/path---http-936735c57d53ef643e72.js","/LG-Blog-Gatsby/component---src-templates-post-template-js-12de744ce8a8d00889aa.js","/LG-Blog-Gatsby/component---src-layouts-index-js-af2032a96fc50b5bfd12.js"].forEach(function(s){document.write('<script src="'+s+'" defer></'+'script>')})/*]]>*/</script></body></html>
