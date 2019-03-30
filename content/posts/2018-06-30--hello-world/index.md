@@ -1,9 +1,8 @@
 ---
 title: Hello World!!
-category: "废话集"
-cover: test1.jpg
+category: "闲谈"
+cover: bg.jpg
 author: todaylg
-
 ---
 
 伴随着学生机的到期，又迎来了一次新的"Hello World"，博客从Wordpress=>自己整=>Hexo=>Gatsby，在这曲折的更换过程中我越来越认识到**没钱**就老老实实弄静态页的真理。

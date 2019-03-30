@@ -1,16 +1,14 @@
 ---
 title: 初探WebVR与Web Audio API
 category: "小结"
-cover: test1.png
+cover: bg.jpg
 author: todaylg
-
-
-
-
 
 ---
 
-借着毕设的机会，接触了一下WebVR和Web Audio API，以及通信本行的数字信号处理的知识：[WebVR-Audio-Visualizer](https://github.com/todaylg/WebVR-Audio-Visualizer)
+借着毕设的机会，接触了一下WebVR和Web Audio API，以及通信本行的数字信号处理的知识：
+
+老样子，先上结果：[WebVR-Audio-Visualizer](https://github.com/todaylg/WebVR-Audio-Visualizer)
 
 当年在DPS和高数课上流的口水化成了如今流下的泪水。。。内心不尽五味杂陈，**技多不压身**属实是有道理的呀，学的时候觉得没有用，用的时候才后悔没好好学，人家毕业扔课本，我却寄课本：高数、DSP、从隔壁计科借过来的四大门课本，缺的东西属实有点忒多了。。。
 
@@ -71,10 +69,10 @@ Oculus
 
 **那到底WebVR是个啥呢？**
 
-一图胜前言：
+上图：
 
 <div style="text-align: center">  
-<img style="width:600px;" src="http://pazg80lq8.bkt.clouddn.com/WebVR%20Intro.png">  
+<img style="width:600px;" src="https://raw.githubusercontent.com/todaylg/LG-Blog-Gatsby/master/content/posts/2018-07-01--webVR-and-web-audio-api/WebVR1.png">  
 </div>
 
 正如之前介绍的，当前VR设备种类繁多，生态圈处于支离破碎的状态，各个VR设备拥有各自的生态，比如应用商店、控制器等等，各个VR设备、操作系统之间又有着不同的开发规范，给用户及开发者的跨终端体验都带来了极大的不便。WebVR便孕育而出了，其最早由Mozilla所倡导，现由W3C组织来制定，如今已经成为了一种通用开放标准，它提供了统一的JavaScript API，使开发者可以获取VR设备的输入信息。跨终端不再需要付出庞大的工作量，只需要你的VR设备上装有一个支持WebVR的浏览器，是不是美滋滋。
@@ -92,7 +90,7 @@ Oculus
 WebVR开发依赖于WebGL，所以一般WebVR框架都是基于Three.js的。国外主要由谷歌和Facebook对WebVR生态布局，Facebook和火狐都开发了自己的WebVR框架，即[React VR](https://github.com/facebook/react-360)和[A-Frame](https://github.com/aframevr/aframe)。其中当数A-Frame最为知名，这次使用的也是A-Frame框架，值得一提的是他的可视化调试面板是相当的牛，感觉都快整出Unity的感觉了。
 
 <div style="text-align: center">  
-<img style="width:600px;" src="http://pazg80lq8.bkt.clouddn.com/%E6%8E%A7%E5%88%B6%E9%9D%A2%E6%9D%BF.png">  
+<img style="width:600px;" src="https://raw.githubusercontent.com/todaylg/LG-Blog-Gatsby/master/content/posts/2018-07-01--webVR-and-web-audio-api/WebVR2.png">  
 </div>
 
 因为只实际使用了A-Frame这一个框架，所以在此就不进行框架对比了。A-Frame使用下来文档完善且例子丰富，还是非常容易上手的，并且其和Unity有点像的实体-组件开发架构也提高了拓展性和可维护性。但是说到底不管什么WebVR框架，吃的还是开发者WebGL以及Three.js的功底，因为框架只不过是为开发者提供了一些简单常用物体的封装，当需要实现一些稍微复杂的效果还是得上Three.js甚至WebGL。这块自己是缺东西的，所以毕设中使用到的3D物体要么是框架自带封装，要么就是从官方例子那扒过来的😂😂😂。。。
@@ -104,7 +102,7 @@ WebVR开发依赖于WebGL，所以一般WebVR框架都是基于Three.js的。国
 在音频上下文中的各个音频节点通过输入输出相互连接，形成一个链，即代表了整个音频数据的处理流程。一个通过Web Audio API处理音频的基本流程如下图所示：
 
 <div style="text-align: center">  
-<img style="width:200px;" src="http://pazg80lq8.bkt.clouddn.com/Web%20Audio%20API%20%E6%B5%81%E7%A8%8B.png">  
+<img style="width:200px;" src="https://raw.githubusercontent.com/todaylg/LG-Blog-Gatsby/master/content/posts/2018-07-01--webVR-and-web-audio-api/WebVR3.png">  
 </div>
 
 开发者在Web Audio API中处理音频文件首先需要创建音频上下文（AudioContext），处理音频的过程都将在音频上下文中进行。之后在音频上下文中创建音频源，可以是audio元素或者是音频流。通过连接不同的效果节点，对音频数据进行不同效果的加工处理，如混响、滤波等。最后连接一个输出节点，比如麦克风，扬声器等等，再经过音频渲染进行最终的效果输出。
@@ -179,12 +177,18 @@ let getWaveform = ()=> {//实时获取音频时域数据
 }
 ```
 
-翻阅W3C规范会发现Web Audio API的很多规定参数都是个迷。。。比如实时取得的频域数据数组大小为什么规定为FFT大小的一半？猜想是浏览器底层实现FFT时为了防止频谱泄露使用了加窗函数（一般取50%)?包括Web Audio API 的卷积运算（Convolution）功能实现环境音效的模拟。在声学中，回声可以用源声音与一个反映各种反射效应的波形的卷积表示（具体怎么实现的呢？）而要验证则需要看浏览器的实现代码。。。所以现在还是老老实实先放一放吧。
+翻阅W3C规范会发现Web Audio API的很多规定参数都是个迷。。。比如实时取得的频域数据数组大小为什么规定为FFT大小的一半？猜想是浏览器底层实现FFT时为了防止频谱泄露使用了加窗函数（一般取50%)?包括Web Audio API 的卷积运算（Convolution）功能实现环境音效的模拟。在声学中，回声可以用源声音与一个反映各种反射效应的波形的卷积表示（具体怎么实现的呢？）而要验证则需要看浏览器的实现代码。。。所以现在还是老老实实先放一放吧。。
 
 ## 节奏检测
 
-详见[WebVR-Audio-Visualizer](https://github.com/todaylg/WebVR-Audio-Visualizer)代码，应用的节奏检测基于时域能量比较和频域能量比较，针对音乐高潮部分节奏点和伴随全曲的节奏点进行检测。
+详见提取出来的库：[BeatDetector](https://github.com/todaylg/BeatDetector)
 
-## To Be Continue
+应用的节奏检测基于时域能量比较和频域能量比较，针对音乐高潮部分节奏点和伴随全曲的节奏点进行检测。
 
-有缘再深究啦（逃。。
+
+
+## 总结
+
+其实这次对Web3D以及音频处理的研究深度还是挺浅面的，毕竟时间有点赶，划水痕迹还是挺明显的哈哈，不过好在顺利毕业啦~
+
+希望以后还有机会更深入的学习和研究两者吧，毕竟这可是真正的“视听盛宴”所需要的两个核心技术。

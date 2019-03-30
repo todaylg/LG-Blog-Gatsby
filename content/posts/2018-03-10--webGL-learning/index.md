@@ -1,18 +1,18 @@
 ---
 title: 《WebGL编程指南》读书笔记
 category: "读书流水"
-cover: test0.png
+cover: bg.jpg
 author: todaylg
 ---
-新挖个坑咯～总之先读本入门的书瞅瞅吧！有个大致了解再说啦
+脑里还是有个挥之不去的3D梦呀~
 ## Part 1
 
-万里长征的第一步吧。。。也不知道自己能走几步，毕竟底子真是差啊（方程都解不出来的人研究什么WebGL，好好搬砖不行吗？！经常这样想），但是奈何脑子里的骚操作不上3D又没法实现出来，但是效果后面又都是腿都跪麻的数学。。。很难受。。。总之先读本入门的书瞅瞅吧！有个大致了解再说啦！
+万里长征的第一步吧。。。也不知道自己能走几步，毕竟底子真是差啊（方程都解不出来的人研究什么WebGL，好好搬砖不行吗？！经常这样想），但是奈何脑子里的骚操作不上3D又没法实现出来，但是效果后面又都是腿都跪麻的数学。。。很难受。。。希望自己能坚持下去吧，总之先从入门的书开始吧~
 
-先上一张Adobe的图：
+先上一张渲染管线的图：
 ![image](http://wwwimages.adobe.com/content/dam/acom/en/devnet/flashplayer/articles/how-stage3d-works/fig02.jpg)
 
-一些基本的概念记上来：
+一些基本的概念记下来：
 
 **着色器**：运行在GPU中负责渲染算法的程序。最常用的为顶点着色器和片元着色器。
 
@@ -28,7 +28,7 @@ author: todaylg
 
 <iframe width="100%" height="430" src="//jsfiddle.net/todaylg/35br4q7m/embedded/result,js,css,html" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
 
-一般都将上下文取名为gl，因为WebGL基于OpenGL ES，这样命名可以使WebGL与OpenGL ES中的函数名对应（gl.clearColor就相当于glClearColor这样）。
+一般都将上下文取名为gl，因为WebGL基于OpenGL ES，这样命名可以使WebGL与OpenGL ES中的函数名对应（gl.clearColor就相当于glClearColor这样），之后学习OpenGL的时候就能有印象了。
 
 gl.clearColor()接受的四个参数代表RGBA（0.0~1.0,不是0~255！！），指定一次颜色后会缓存起来直到下一次重新设置颜色才会改变。
 
@@ -1049,16 +1049,14 @@ function draw() {
 <iframe height='307' scrolling='no' title='WebGL_Learning_Day1' src='//codepen.io/todaylg/embed/GOwdWM/?height=307&theme-id=0&default-tab=result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='https://codepen.io/todaylg/pen/GOwdWM/'>WebGL_Learning_Day1</a> by todaylg (<a href='https://codepen.io/todaylg'>@todaylg</a>) on <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-## Rewrite (18-08-20)
-
-打算重新再从顶向下学习一下WebGL，主要目的是补齐相关的图形学知识，这主要是我发现了一本相当相当适合缺知识块的同学入坑的好书：**交互式计算机图形学（基于WebGL的自顶向下方法）**，是一本国外的图形学教材，但是基于的是WebGL，很全面的覆盖了图形学的知识点，感觉要是好好怼完这本书，应该是收获蛮大的。
+其他实例：
 
 ### Sierpinski
 
 <iframe height='357' scrolling='no' title='Sierpinski' src='//codepen.io/todaylg/embed/gjjgXZ/?height=357&theme-id=0&default-tab=result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='https://codepen.io/todaylg/pen/gjjgXZ/'>Sierpinski</a> by todaylg (<a href='https://codepen.io/todaylg'>@todaylg</a>) on <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-### ParticleLine
+### 重写ParticleLine
 
 <iframe height='400' scrolling='no' title='WebGL\_Learning\_Day1' src='//codepen.io/todaylg/embed/GOwdWM/?height=307&theme-id=0&default-tab=result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='https://codepen.io/todaylg/pen/GOwdWM/'>WebGL\_Learning\_Day1</a> by todaylg (<a href='https://codepen.io/todaylg'>@todaylg</a>) on <a href='https://codepen.io'>CodePen</a>.
 </iframe>
