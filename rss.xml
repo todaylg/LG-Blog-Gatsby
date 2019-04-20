@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[LG-Blog]]></title><description><![CDATA[LG-Blog]]></description><link>www.todaylg.com</link><generator>RSS for Node</generator><lastBuildDate>Sat, 20 Apr 2019 18:05:32 GMT</lastBuildDate><item><title><![CDATA[LGL]]></title><description><![CDATA[前言 转眼间2018年就过去了，自己也结束了通信生涯正式变为了“社畜”。7月份拿到毕业证回到公司后，便是深陷各种业务需求，平时回到寒舍便是早已筋疲力竭，周末再补觉续命+打打游戏，一年下来积累沉淀得相比于学生时代是少之又少，实为惭愧。 游戏戒是不可能戒了，还没经住毒瘤同事和G…]]></description><link>www.todaylg.com/lgl/</link><guid isPermaLink="false">www.todaylg.com/lgl/</guid><content:encoded>&lt;h2&gt;前言&lt;/h2&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[LG-Blog]]></title><description><![CDATA[LG-Blog]]></description><link>www.todaylg.com</link><generator>RSS for Node</generator><lastBuildDate>Sat, 20 Apr 2019 18:11:06 GMT</lastBuildDate><item><title><![CDATA[LGL]]></title><description><![CDATA[前言 转眼间2018年就过去了，自己也结束了通信生涯正式变为了“社畜”。7月份拿到毕业证回到公司后，便是深陷各种业务需求，平时回到寒舍便是早已筋疲力竭，周末再补觉续命+打打游戏，一年下来积累沉淀得相比于学生时代是少之又少，实为惭愧。 游戏戒是不可能戒了，还没经住毒瘤同事和G…]]></description><link>www.todaylg.com/lgl/</link><guid isPermaLink="false">www.todaylg.com/lgl/</guid><content:encoded>&lt;h2&gt;前言&lt;/h2&gt;
 &lt;p&gt;转眼间2018年就过去了，自己也结束了通信生涯正式变为了“社畜”。7月份拿到毕业证回到公司后，便是深陷各种业务需求，平时回到寒舍便是早已筋疲力竭，周末再补觉续命+打打游戏，一年下来积累沉淀得相比于学生时代是少之又少，实为惭愧。&lt;/p&gt;
 &lt;p&gt;游戏戒是不可能戒了，还没经住毒瘤同事和G胖眼神的安利与诱惑，Switch、Steam游戏还买了一堆，成为了又一位海拉鲁大陆观光团成员。。。&lt;/p&gt;
 &lt;p&gt;虽说多玩点游戏增长下画面渲染的见识总是好的嘛（逃。。）&lt;/p&gt;
@@ -648,6 +648,7 @@ P &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&qu
       &lt;/div&gt;
 &lt;p&gt;推导过程还可参考：&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;http://www.360doc.com/content/14/1028/10/19175681_420522154.shtml&quot;&gt;http://www.360doc.com/content/14/1028/10/19175681_420522154.shtml&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;待补部分介绍：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li class=&quot;task-list-item&quot;&gt;
 &lt;p&gt;&lt;input type=&quot;checkbox&quot; disabled&gt; Renderer: 渲染队列&lt;/p&gt;
