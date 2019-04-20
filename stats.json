@@ -40,6 +40,10 @@
       "component---src-pages-contact-js-db9419e96e03a5c6deba.js",
       "component---src-pages-contact-js-db9419e96e03a5c6deba.js.map"
     ],
+    "path---lgl": [
+      "path---lgl-3c4c62c1ed17175d762a.js",
+      "path---lgl-3c4c62c1ed17175d762a.js.map"
+    ],
     "component---src-templates-category-template-js": [
       "component---src-templates-category-template-js-ccbdb357ea067077af6d.js",
       "component---src-templates-category-template-js-ccbdb357ea067077af6d.js.map"
@@ -65,24 +69,24 @@
       "component---src-layouts-index-js-af2032a96fc50b5bfd12.js.map"
     ],
     "path---category": [
-      "path---category-91028b314f8f32ac4da1.js",
-      "path---category-91028b314f8f32ac4da1.js.map"
+      "path---category-62b6b1f534b29cdec997.js",
+      "path---category-62b6b1f534b29cdec997.js.map"
     ],
     "component---src-pages-category-js": [
       "component---src-pages-category-js-bbb34571e9395b2ce79b.js",
       "component---src-pages-category-js-bbb34571e9395b2ce79b.js.map"
     ],
     "path---miku-setup": [
-      "path---miku-setup-73c7b25fef0c510d3875.js",
-      "path---miku-setup-73c7b25fef0c510d3875.js.map"
+      "path---miku-setup-c1f95580e3854c1598bf.js",
+      "path---miku-setup-c1f95580e3854c1598bf.js.map"
     ],
     "path---category-废话集": [
       "path---category-废话集-f8c32bea377b2831e9c2.js",
       "path---category-废话集-f8c32bea377b2831e9c2.js.map"
     ],
     "path---index": [
-      "path---index-2c5de8bb0fdc1f3ed701.js",
-      "path---index-2c5de8bb0fdc1f3ed701.js.map"
+      "path---index-619dfd663c7ff442d7ff.js",
+      "path---index-619dfd663c7ff442d7ff.js.map"
     ],
     "path---hello-world": [
       "path---hello-world-1aa5b1f733108c6f365d.js",
@@ -126,14 +130,18 @@
       "path---offline-plugin-app-shell-fallback-a0e39f21c11f6a62c5ab.js",
       "path---offline-plugin-app-shell-fallback-a0e39f21c11f6a62c5ab.js.map"
     ],
+    "path---category-lgl": [
+      "path---category-lgl-3458a0d70ed2d6a17692.js",
+      "path---category-lgl-3458a0d70ed2d6a17692.js.map"
+    ],
     "path---flex": [
       "path---flex-750247902e334a83e4f6.js",
       "path---flex-750247902e334a83e4f6.js.map"
     ],
     "app": [
-      "app-9727b012fb07d7e37106.js",
+      "app-1e8135f6b360fb21833f.js",
       "build-js-styles.css",
-      "app-9727b012fb07d7e37106.js.map",
+      "app-1e8135f6b360fb21833f.js.map",
       "build-js-styles.css.map"
     ],
     "component---src-templates-page-template-js": [
