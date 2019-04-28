@@ -41,8 +41,8 @@
       "component---src-pages-contact-js-db9419e96e03a5c6deba.js.map"
     ],
     "path---lgl": [
-      "path---lgl-5ea23ace3d5b0c865725.js",
-      "path---lgl-5ea23ace3d5b0c865725.js.map"
+      "path---lgl-4d569a7873a16bb975b0.js",
+      "path---lgl-4d569a7873a16bb975b0.js.map"
     ],
     "component---src-templates-category-template-js": [
       "component---src-templates-category-template-js-ccbdb357ea067077af6d.js",
@@ -60,6 +60,10 @@
       "component---node-modules-gatsby-plugin-offline-app-shell-js-5c4c5a0f7af9dc69d6d7.js",
       "component---node-modules-gatsby-plugin-offline-app-shell-js-5c4c5a0f7af9dc69d6d7.js.map"
     ],
+    "path---video-alpha": [
+      "path---video-alpha-4689635e3fb3dfcfdfba.js",
+      "path---video-alpha-4689635e3fb3dfcfdfba.js.map"
+    ],
     "path---web-gl-learning": [
       "path---web-gl-learning-3dbd255191308f1437b2.js",
       "path---web-gl-learning-3dbd255191308f1437b2.js.map"
@@ -69,8 +73,8 @@
       "component---src-layouts-index-js-af2032a96fc50b5bfd12.js.map"
     ],
     "path---category": [
-      "path---category-62b6b1f534b29cdec997.js",
-      "path---category-62b6b1f534b29cdec997.js.map"
+      "path---category-bd33973fbbf37e7e1226.js",
+      "path---category-bd33973fbbf37e7e1226.js.map"
     ],
     "component---src-pages-category-js": [
       "component---src-pages-category-js-bbb34571e9395b2ce79b.js",
@@ -85,8 +89,8 @@
       "path---category-废话集-f8c32bea377b2831e9c2.js.map"
     ],
     "path---index": [
-      "path---index-619dfd663c7ff442d7ff.js",
-      "path---index-619dfd663c7ff442d7ff.js.map"
+      "path---index-31f04f613a7f6b285646.js",
+      "path---index-31f04f613a7f6b285646.js.map"
     ],
     "path---hello-world": [
       "path---hello-world-1aa5b1f733108c6f365d.js",
@@ -131,17 +135,17 @@
       "path---offline-plugin-app-shell-fallback-a0e39f21c11f6a62c5ab.js.map"
     ],
     "path---category-lgl": [
-      "path---category-lgl-3458a0d70ed2d6a17692.js",
-      "path---category-lgl-3458a0d70ed2d6a17692.js.map"
+      "path---category-lgl-050172a971f52bb8d346.js",
+      "path---category-lgl-050172a971f52bb8d346.js.map"
     ],
     "path---flex": [
       "path---flex-750247902e334a83e4f6.js",
       "path---flex-750247902e334a83e4f6.js.map"
     ],
     "app": [
-      "app-1e8135f6b360fb21833f.js",
+      "app-e322c2c15dd88e463ebe.js",
       "build-js-styles.css",
-      "app-1e8135f6b360fb21833f.js.map",
+      "app-e322c2c15dd88e463ebe.js.map",
       "build-js-styles.css.map"
     ],
     "component---src-templates-page-template-js": [

@@ -1,4 +1,290 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[LG-Blog]]></title><description><![CDATA[LG-Blog]]></description><link>www.todaylg.com</link><generator>RSS for Node</generator><lastBuildDate>Sat, 20 Apr 2019 18:11:06 GMT</lastBuildDate><item><title><![CDATA[LGL]]></title><description><![CDATA[前言 转眼间2018年就过去了，自己也结束了通信生涯正式变为了“社畜”。7月份拿到毕业证回到公司后，便是深陷各种业务需求，平时回到寒舍便是早已筋疲力竭，周末再补觉续命+打打游戏，一年下来积累沉淀得相比于学生时代是少之又少，实为惭愧。 游戏戒是不可能戒了，还没经住毒瘤同事和G…]]></description><link>www.todaylg.com/lgl/</link><guid isPermaLink="false">www.todaylg.com/lgl/</guid><content:encoded>&lt;h2&gt;前言&lt;/h2&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[LG-Blog]]></title><description><![CDATA[LG-Blog]]></description><link>www.todaylg.com</link><generator>RSS for Node</generator><lastBuildDate>Sun, 28 Apr 2019 09:45:57 GMT</lastBuildDate><item><title><![CDATA[Web动效通用实现方案探究]]></title><description><![CDATA[前言 在平时的工作中我们会遇到一些动画师设计的动效需要在Web实现，大多数情况下我们使用CSS3就可以搞定了，但对于一些复杂的动效（比如粒子效果）用我们就得另寻他法了。那在考虑性能与完成效果的前提下，我们该哪种方案复现这些复杂的动效呢？ 方案对比 动态图片（gif） 使用gif…]]></description><link>www.todaylg.com/video-alpha/</link><guid isPermaLink="false">www.todaylg.com/video-alpha/</guid><content:encoded>&lt;h3&gt;前言&lt;/h3&gt;
+&lt;p&gt;在平时的工作中我们会遇到一些动画师设计的动效需要在Web实现，大多数情况下我们使用CSS3就可以搞定了，但对于一些复杂的动效（比如粒子效果）用我们就得另寻他法了。那在考虑性能与完成效果的前提下，我们该哪种方案复现这些复杂的动效呢？&lt;/p&gt;
+&lt;h3&gt;方案对比&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;动态图片（gif）&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;使用gif图自然是我们想到的第一个解决方法，但是其缺陷在于应用于一些场景时会导致导出的gif图大小过大：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;动效时长若较长时&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;需要考虑移动端IOS或PC Retina屏时（即画质有要求时）&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;序列帧动画&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;我们还可以使用 animation + sprite 的方式实现序列帧动画，比如：&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot;&gt;
+      &lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;test &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  animation&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; testAnimation &lt;span class=&quot;token number&quot;&gt;0.2&lt;/span&gt;s forwards &lt;span class=&quot;token number&quot;&gt;1.5&lt;/span&gt;s&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+@keyframes testAnimation&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token number&quot;&gt;0.000&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; background&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;position&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;token number&quot;&gt;6.667&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; background&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;position&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;168&lt;/span&gt;px &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;token number&quot;&gt;13.333&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; background&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;position&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;336&lt;/span&gt;px &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;token number&quot;&gt;20.000&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; background&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;position&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;504&lt;/span&gt;px &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;token number&quot;&gt;26.667&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; background&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;position&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;672&lt;/span&gt;px &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;token number&quot;&gt;33.333&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; background&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;position&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;840&lt;/span&gt;px &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;token number&quot;&gt;40.000&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; background&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;position&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1008&lt;/span&gt;px &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;token number&quot;&gt;46.667&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; background&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;position&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1176&lt;/span&gt;px &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;token number&quot;&gt;53.333&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; background&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;position&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1344&lt;/span&gt;px &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;token number&quot;&gt;60.000&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; background&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;position&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1512&lt;/span&gt;px &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;token number&quot;&gt;66.667&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; background&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;position&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1680&lt;/span&gt;px &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;token number&quot;&gt;73.333&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; background&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;position&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1848&lt;/span&gt;px &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;token number&quot;&gt;80.000&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; background&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;position&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;2016&lt;/span&gt;px &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;token number&quot;&gt;86.667&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; background&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;position&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;2184&lt;/span&gt;px &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;token number&quot;&gt;93.333&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; background&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;position&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;2352&lt;/span&gt;px &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;token number&quot;&gt;100.000&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; background&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;position&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;p&gt;这个方法的缺陷同样也是在文件大小上，实测在保证基本帧数的情况下，导出的雪碧图较之gif图还要更大。。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Lottie/SVGA&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;可以先参考[这篇](&lt;a href=&quot;https://www.jianshu.com/p/60d28d7bab48&quot;&gt;https://www.jianshu.com/p/60d28d7bab48&lt;/a&gt;文章，文章有较为详细的介绍Lottie与SVGA，这里不再赘述。Lottie的主要缺点在部分属性以及AE效果插件的不支持，而SVGA实测导出的动画资源还是过大，Web播放需要较长的预加载。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Scene Loader&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;动画师在3D建模软件中制作动画场景 =&gt; 导出附带动画参数的模型格式 =&gt; 模型格式Loader =&gt; Web中还原场景。&lt;/p&gt;
+&lt;p&gt;此方法动画师的制作成本很高，且最后导出的模型文件大小也会很大。 （当然也可以让动画师只提供纹理素材，其他全由我们自己写，这样制作依旧很高，只不过是转到了开发这边。）&lt;/p&gt;
+&lt;p&gt;总结：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&quot;left&quot;&gt;方案&lt;/th&gt;
+&lt;th align=&quot;left&quot;&gt;制作成本&lt;/th&gt;
+&lt;th&gt;性能&lt;/th&gt;
+&lt;th&gt;还原效果&lt;/th&gt;
+&lt;th&gt;文件体积&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;动态图&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;低&lt;/td&gt;
+&lt;td&gt;中&lt;/td&gt;
+&lt;td&gt;全还原&lt;/td&gt;
+&lt;td&gt;大&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;序列帧&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;低&lt;/td&gt;
+&lt;td&gt;中&lt;/td&gt;
+&lt;td&gt;全还原&lt;/td&gt;
+&lt;td&gt;大&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;Lottie&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;中（依赖AE）&lt;/td&gt;
+&lt;td&gt;优&lt;/td&gt;
+&lt;td&gt;部分插件效果不支持&lt;/td&gt;
+&lt;td&gt;小&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;SVGA&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;中（依赖AE、Animate CC）&lt;/td&gt;
+&lt;td&gt;优&lt;/td&gt;
+&lt;td&gt;全还原&lt;/td&gt;
+&lt;td&gt;中&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;Scene Loader&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;高（依赖Blender/3DMax/Maya等）&lt;/td&gt;
+&lt;td&gt;中&lt;/td&gt;
+&lt;td&gt;全还原&lt;/td&gt;
+&lt;td&gt;大&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;那还有没有更好的解决方案呢？&lt;/p&gt;
+&lt;p&gt;我们知道视频的体积和编解码效率都要优于图片，我们以视频为切入点，探讨通过播放视频的方式复现动效的方法。&lt;/p&gt;
+&lt;h3&gt;Video实现方案&lt;/h3&gt;
+&lt;p&gt;通过播放Video来复现动效，首先需要解决如何支持动效中的透明度的问题。mp4并不支持Alpha通道，&lt;a href=&quot;https://lsvih.com/2017/06/30/%E5%9C%A8html%E4%B8%AD%E4%BD%BF%E7%94%A8%E8%83%8C%E6%99%AF%E9%80%8F%E6%98%8E%E7%9A%84video%E8%A7%86%E9%A2%91/&quot;&gt;webM&lt;/a&gt;的视频格式虽然支持Alpha通道，但是其堪忧的&lt;a href=&quot;https://caniuse.com/#search=webM&quot;&gt;兼容性&lt;/a&gt;（特别是移动端）让人不得不另寻他法。&lt;/p&gt;
+&lt;p&gt;好在早有珠玉在前，透明视频的处理方法可以参考&lt;a href=&quot;http://dopro.io/animation-solution-alpha-video.html&quot;&gt;这篇&lt;/a&gt;文章。简而言之就是通过划定区域的方法分别对Video的RGB&lt;/p&gt;
+&lt;p&gt;及Alpha通道进行提取，最后在进行拼合。&lt;/p&gt;
+&lt;p&gt;这里总结下基于该文章实践及拓展过程中遇到的一些问题和解决方案。&lt;/p&gt;
+&lt;h3&gt;多量动效&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;canvas2D：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;文章介绍了单个动效复现的步骤及方法，但是对于需要同时出现多个动效的情况（比如每次位置随机且多数量的烟花动效），需要进行一些优化处理：&lt;/p&gt;
+&lt;p&gt;因为若是每次动效渲染都经过一遍对Video的RGB、Alpha通道的提取及拼合的过程（drawImageData =&gt; getImageData =&gt; putImageData），当同时展示的动效数量较多时会导致CPU占用过高。&lt;/p&gt;
+&lt;p&gt;瓶颈既然是在&lt;strong&gt;每个效果都需要走一遍Video处理流程&lt;/strong&gt;造成的，那在首次处理Video的时候缓存拼合RGBA后的imageData数据，再次展示该动效时直接使用对应缓存的数据即可：&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot;&gt;
+      &lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;//首次播放视频缓存Canvas帧数据&lt;/span&gt;
+video&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function-variable function&quot;&gt;oncanplay&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+ video&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;play&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+ &lt;span class=&quot;token function&quot;&gt;drawVideo&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+video&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function-variable function&quot;&gt;onended&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+ &lt;span class=&quot;token function&quot;&gt;cancelAnimationFrame&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;rafId&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;drawVideo&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+ rafId &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;requestAnimationFrame&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;update&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+ &lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;token function-variable function&quot;&gt;update&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+ &lt;span class=&quot;token operator&quot;&gt;...&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;//省略拼合RGBA色值数据(image)的过程&lt;/span&gt;
+ firDrawCanvasContext&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;putImageData&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;image&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; showWidth&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; showHeight&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+ &lt;span class=&quot;token comment&quot;&gt;//保存帧数据&lt;/span&gt;
+ imgCacheDataArray&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;firDrawCanvas&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;toDataURL&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;png&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+ &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot;&gt;//重复绘制时直接使用缓存数据（以Pixi为例）&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; app &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;PIXI&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;Application&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+ width&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; showWidth&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+ height&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; showHeight&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+ transparent&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;true&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+document&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;body&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;appendChild&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;app&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;view&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;drawCanvasFromCache&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+ &lt;span class=&quot;token comment&quot;&gt;//构建Group&lt;/span&gt;
+ &lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; spriteGroup &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;PIXI&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;extras&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;AnimatedSprite&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;fromImages&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;imgCacheDataArray&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+ &lt;span class=&quot;token operator&quot;&gt;...&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;//设置此Group的缩放大小及位置信息&lt;/span&gt;
+ spriteGroup&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;animationSpeed &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0.3&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;token comment&quot;&gt;//保持与Video帧率一致&lt;/span&gt;
+ spriteGroup&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;play&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+ app&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;stage&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;addChild&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;spriteGroup&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;p&gt;缓存的办法可以省掉播放重复动画资源时绘制及提取的过程，缺陷在于每种不同的动画都需要对应保存整个视频动画每一帧的色值数据，后期动效数量上升后，需要关心内存/本地存储的占用量问题。但不失为Canvas2D渲染下切实可行的办法。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;WebGL：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;使用WebGL完成动效复现的话，就可以借助GPU来进一步优化性能。&lt;/p&gt;
+&lt;p&gt;在不顾及&lt;a href=&quot;https://caniuse.com/#search=webgl&quot;&gt;兼容性&lt;/a&gt;的情况下，显然这个解决方案会更好。&lt;/p&gt;
+&lt;p&gt;将Video RGB及Alpha通道的提取与拼合部分直接在片元着色器中完成，实现也并不复杂，只需要变换一下采样Texture时的UV坐标（RGB值采样上半部分，Alpha值采样下半部分）即可：&lt;/p&gt;
+&lt;p&gt;需要注意纹理坐标系的原点(0,0)位于左下角，取值在[0,1]之间。我们将上半部分的采样坐标传入着色器用于采样RGB值，下半部分的采样坐标可通过上半部分采样坐标减去vec2(0, 0.5)得到，从而采样Alpha值。&lt;/p&gt;
+&lt;p&gt;相关JS代码：&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot;&gt;
+      &lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;// 上半部分纹理坐标&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; uvCoord &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Float32Array&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0.5&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0.5&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;token comment&quot;&gt;//即(0,1)、(1,1)、(0,0.5)、(1,0.5)四个坐标&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; videoGeometry &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Plane&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;gl&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+videoGeometry&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;addAttribute&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;topUv&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+ size&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+ data&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; uvCoord
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;p&gt;相关Shader代码：&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot;&gt;
+      &lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; vertex &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token template-string&quot;&gt;&lt;span class=&quot;token string&quot;&gt;`#version 300 es
+precision highp float;
+precision highp int;
+
+in vec2 uv;
+in vec3 position;
+
+in vec2 topUv;
+
+uniform mat4 modelViewMatrix;
+uniform mat4 projectionMatrix;
+
+out vec2 vUv;
+
+void main() {
+ vUv = topUv;
+ gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+}
+`&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; fragment &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token template-string&quot;&gt;&lt;span class=&quot;token string&quot;&gt;`#version 300 es
+precision highp float;
+precision highp int;
+
+uniform sampler2D tMap;
+
+in vec2 vUv;
+
+out vec4 FragColor;
+
+void main() {
+ vec3 rgbColor = texture(tMap, vUv).rgb;
+ float alphaColor = texture(tMap, vUv - vec2(0, 0.5)).r;
+ FragColor = vec4(rgbColor, alphaColor);
+}
+`&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;default&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;vertex&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; fragment&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;h4&gt;WebGL Renderer&lt;/h4&gt;
+&lt;p&gt;实际接入到项目中最好引入一个WebGL Renderer。&lt;/p&gt;
+&lt;p&gt;裸写只针对一个动效的话还好。。但是考虑到后面的扩展性，要么自己从WebGL API开始封装，要么就是引入一个开源Renderer了。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;框架&lt;/th&gt;
+&lt;th&gt;大小&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Pixi.min.js(V4.8.5)&lt;/td&gt;
+&lt;td&gt;428 kb&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Three.min.js(V104)&lt;/td&gt;
+&lt;td&gt;558 kb&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Claygl.min.js(V1.03)&lt;/td&gt;
+&lt;td&gt;413 kb&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;strong&gt;引入Pixi&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;引入Pixi应该是这种场景下的最优解，可以简化当前Canvas 2D渲染的同时，又提供了WebGL的渲染支持，接入和改造成本也相对较小。&lt;/p&gt;
+&lt;p&gt;但是实践通过Pixi的Filter实现自定义Shader的过程中，发现其并不支持自定义顶点变量(attribute)的传入：&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot;&gt;
+      &lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;//SpriteRenderer中render的方法&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;flush&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+ &lt;span class=&quot;token operator&quot;&gt;...&lt;/span&gt;
+ &lt;span class=&quot;token comment&quot;&gt;// build the vao object that will render..&lt;/span&gt;
+ &lt;span class=&quot;token comment&quot;&gt;// 创建VAO之后写死了传入Sprite的三个attribute变量，没有封装和暴露添加自定义attribute的方法&lt;/span&gt;
+ &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; vao &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;renderer&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;createVao&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+ &lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;addIndex&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;indexBuffer&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+ &lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;addAttribute&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;vertexBuffer&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; attrs&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;aVertexPosition&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; gl&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token constant&quot;&gt;FLOAT&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;vertByteSize&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+ &lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;addAttribute&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;vertexBuffer&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; attrs&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;aTextureCoord&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; gl&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token constant&quot;&gt;UNSIGNED_SHORT&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;vertByteSize&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+ &lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;addAttribute&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;vertexBuffer&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; attrs&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;aColor&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; gl&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token constant&quot;&gt;UNSIGNED_BYTE&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;vertByteSize&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+ &lt;span class=&quot;token operator&quot;&gt;...&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;p&gt;我们需要将上半部分的UV坐标从顶点着色器传送至片元着色器，但是Pixi又没有暴露自由添加顶点变量的方法，所以我们只能：&lt;/p&gt;
+&lt;p&gt;1.改造Pixi：由固定的几个顶点变量输入改为读取传参并遍历的方式输入顶点变量，并添加一个特定处理RGBA拼合的Filter。&lt;/p&gt;
+&lt;p&gt;2.不修改PIxi的前提下，可尝试一些妖路子：比如重写掉Pixi提供的封装好的Filter的Shader，并且在顶点着色器中直接将当前顶点映射的纹理坐标直接暴力的除以2，得到下半部分的映射纹理坐标，代码如下：&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot;&gt;
+      &lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; vertex &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token template-string&quot;&gt;&lt;span class=&quot;token string&quot;&gt;`
+ attribute vec2 aVertexPosition;
+ attribute vec2 aTextureCoord;
+ uniform mat3 projectionMatrix;
+ varying vec2 vTextureCoord;
+ void main(void)
+ {
+ vTextureCoord = vec2(aTextureCoord.x, aTextureCoord.y/2.0);
+ gl_Position = vec4((projectionMatrix * vec3(aVertexPosition, 1.0)).xy, 0.0, 1.0);
+ }
+`&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; fragment &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token template-string&quot;&gt;&lt;span class=&quot;token string&quot;&gt;`
+ varying vec2 vTextureCoord;
+ uniform sampler2D uSampler;
+ void main(void)
+ {
+ vec3 rgbColor = texture2D(uSampler, vTextureCoord).rgb;
+ float alphaColor = texture2D(uSampler, vTextureCoord + vec2(0, 0.5)).r;
+ gl_FragColor = vec4(rgbColor, alphaColor);
+ }
+ `&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;videoPlay&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+ &lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; texture &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; Texture&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;fromVideo&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;videoPath&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+ &lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; videoSprite &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Sprite&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;texture&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+ &lt;span class=&quot;token comment&quot;&gt;//以改写AlphaFilter为例&lt;/span&gt;
+ &lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; myFilter &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Filters&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;AlphaFilter&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;uvCoord&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+ &lt;span class=&quot;token comment&quot;&gt;//覆盖原Shader&lt;/span&gt;
+ myFilter&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;vertexSrc &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; vertex&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+ myFilter&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;fragmentSrc &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; fragment&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+ videoSprite&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;filters &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;myFilter&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+ videoSprite&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;width &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; showWidth&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+ videoSprite&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;height &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; showHeight&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+ app&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;stage&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;addChild&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;videoSprite&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;p&gt;实测这样暴力的处理方法在最后的采样坐标上会和理论数值有所偏差（0.5 =&gt; 0.477）//Todo 具体原因还没研究明白，并且实现过程丑陋不堪，不建议使用&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;引入其他的3D框架&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;引入一个3D后实现过程倒是没啥问题了。只是如果单纯只是为了写一个Shader而引入Three.js或者Claygl之类的这种大而全的3D框架，有种杀鸡用牛刀的感觉。&lt;/p&gt;
+&lt;p&gt;所以这时候，&lt;a href=&quot;https://github.com/todaylg/LGL&quot;&gt;LGL&lt;/a&gt; 就可以了解一下啦~&lt;/p&gt;</content:encoded></item><item><title><![CDATA[LGL]]></title><description><![CDATA[前言 转眼间2018年就过去了，自己也结束了通信生涯正式变为了“社畜”。7月份拿到毕业证回到公司后，便是深陷各种业务需求，平时回到寒舍便是早已筋疲力竭，周末再补觉续命+打打游戏，一年下来积累沉淀得相比于学生时代是少之又少，实为惭愧。 游戏戒是不可能戒了，还没经住毒瘤同事和G…]]></description><link>www.todaylg.com/lgl/</link><guid isPermaLink="false">www.todaylg.com/lgl/</guid><content:encoded>&lt;h2&gt;前言&lt;/h2&gt;
 &lt;p&gt;转眼间2018年就过去了，自己也结束了通信生涯正式变为了“社畜”。7月份拿到毕业证回到公司后，便是深陷各种业务需求，平时回到寒舍便是早已筋疲力竭，周末再补觉续命+打打游戏，一年下来积累沉淀得相比于学生时代是少之又少，实为惭愧。&lt;/p&gt;
 &lt;p&gt;游戏戒是不可能戒了，还没经住毒瘤同事和G胖眼神的安利与诱惑，Switch、Steam游戏还买了一堆，成为了又一位海拉鲁大陆观光团成员。。。&lt;/p&gt;
 &lt;p&gt;虽说多玩点游戏增长下画面渲染的见识总是好的嘛（逃。。）&lt;/p&gt;
