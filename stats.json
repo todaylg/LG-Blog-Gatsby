@@ -21,8 +21,8 @@
       "path---javascript-data-structure-cefc302f91643aeff088.js.map"
     ],
     "path---category-小结": [
-      "path---category-小结-73b0c68b8b1110d70547.js",
-      "path---category-小结-73b0c68b8b1110d70547.js.map"
+      "path---category-小结-77ea817da3c17308b775.js",
+      "path---category-小结-77ea817da3c17308b775.js.map"
     ],
     "path---mac-fix": [
       "path---mac-fix-d53a5134a468c77f5bc7.js",
@@ -41,8 +41,8 @@
       "component---src-pages-contact-js-db9419e96e03a5c6deba.js.map"
     ],
     "path---lgl": [
-      "path---lgl-4d569a7873a16bb975b0.js",
-      "path---lgl-4d569a7873a16bb975b0.js.map"
+      "path---lgl-9b372b7f13d08bee7ff8.js",
+      "path---lgl-9b372b7f13d08bee7ff8.js.map"
     ],
     "component---src-templates-category-template-js": [
       "component---src-templates-category-template-js-ccbdb357ea067077af6d.js",
@@ -61,8 +61,8 @@
       "component---node-modules-gatsby-plugin-offline-app-shell-js-5c4c5a0f7af9dc69d6d7.js.map"
     ],
     "path---video-alpha": [
-      "path---video-alpha-4689635e3fb3dfcfdfba.js",
-      "path---video-alpha-4689635e3fb3dfcfdfba.js.map"
+      "path---video-alpha-8892d02621124d39fb42.js",
+      "path---video-alpha-8892d02621124d39fb42.js.map"
     ],
     "path---web-gl-learning": [
       "path---web-gl-learning-3dbd255191308f1437b2.js",
@@ -73,8 +73,8 @@
       "component---src-layouts-index-js-af2032a96fc50b5bfd12.js.map"
     ],
     "path---category": [
-      "path---category-bd33973fbbf37e7e1226.js",
-      "path---category-bd33973fbbf37e7e1226.js.map"
+      "path---category-1cbc49ca9d28e976a140.js",
+      "path---category-1cbc49ca9d28e976a140.js.map"
     ],
     "component---src-pages-category-js": [
       "component---src-pages-category-js-bbb34571e9395b2ce79b.js",
@@ -84,13 +84,17 @@
       "path---miku-setup-c1f95580e3854c1598bf.js",
       "path---miku-setup-c1f95580e3854c1598bf.js.map"
     ],
+    "path---problem-record": [
+      "path---problem-record-d5c84ea94ac01c376bff.js",
+      "path---problem-record-d5c84ea94ac01c376bff.js.map"
+    ],
     "path---category-废话集": [
       "path---category-废话集-f8c32bea377b2831e9c2.js",
       "path---category-废话集-f8c32bea377b2831e9c2.js.map"
     ],
     "path---index": [
-      "path---index-31f04f613a7f6b285646.js",
-      "path---index-31f04f613a7f6b285646.js.map"
+      "path---index-0415b8e4f5c2b5842b59.js",
+      "path---index-0415b8e4f5c2b5842b59.js.map"
     ],
     "path---hello-world": [
       "path---hello-world-1aa5b1f733108c6f365d.js",
@@ -135,17 +139,17 @@
       "path---offline-plugin-app-shell-fallback-a0e39f21c11f6a62c5ab.js.map"
     ],
     "path---category-lgl": [
-      "path---category-lgl-050172a971f52bb8d346.js",
-      "path---category-lgl-050172a971f52bb8d346.js.map"
+      "path---category-lgl-3458a0d70ed2d6a17692.js",
+      "path---category-lgl-3458a0d70ed2d6a17692.js.map"
     ],
     "path---flex": [
       "path---flex-750247902e334a83e4f6.js",
       "path---flex-750247902e334a83e4f6.js.map"
     ],
     "app": [
-      "app-e322c2c15dd88e463ebe.js",
+      "app-f6900aae4e697c6a0ca1.js",
       "build-js-styles.css",
-      "app-e322c2c15dd88e463ebe.js.map",
+      "app-f6900aae4e697c6a0ca1.js.map",
       "build-js-styles.css.map"
     ],
     "component---src-templates-page-template-js": [
