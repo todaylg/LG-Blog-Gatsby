@@ -19,6 +19,7 @@ module.exports = {
   manifestBackgroundColor: "white",
   manifestThemeColor: "#666",
   manifestDisplay: "standalone",
+  gravatarImgMd5: "",
   // social
   authorSocialLinks: [
     { name: "github", url: "https://github.com/todaylg" },

@@ -1,24 +1,10 @@
 import React from "react";
-import errorImg from "../images/png/404.png";
 
-const NotFoundPage = () => {
-  return (
-    <React.Fragment>
-      <div className="NotFound">
-      </div>
-       {/* --- STYLES --- */}
-       <style jsx>{`
-        position: absolute;
-        top:0;
-        left:0;
-        bottom:0;
-        right:0;
-        background:url(${errorImg}) top center no-repeat;
-        background-size:cover;
-      `}</style>
-    </React.Fragment>
-    
-  );
-}
+const NotFoundPage = () => (
+  <div>
+    <h1>NOT FOUND</h1>
+    <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
+  </div>
+);
 
 export default NotFoundPage;

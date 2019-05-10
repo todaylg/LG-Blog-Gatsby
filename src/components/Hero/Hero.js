@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import yzImg from "../../images/png/玉子.png";
-import bzImg from "../../images/png/饼藏.png";
+import yzImg from "../../images/png/yz.png";
+import bzImg from "../../images/png/bz.png";
 
 const Hero = props => {
   const { backgrounds, theme } = props;

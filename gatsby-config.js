@@ -1,8 +1,9 @@
 require("dotenv").config();
 const config = require("./content/meta/config");
+const transformer = require("./src/utils/algolia");
 
 const query = `{
-  allMarkdownRemark(filter: {fileAbsolutePath: {regex: "/posts|pages/[0-9]+.*--/"}}) {
+  allMarkdownRemark( filter: { fields: { slug: { ne: null } } }) {
     edges {
       node {
         objectID: fileAbsolutePath
@@ -23,7 +24,9 @@ const query = `{
 const queries = [
   {
     query,
-    transformer: ({ data }) => data.allMarkdownRemark.edges.map(({ node }) => node)
+    transformer: ({ data }) => {
+      return data.allMarkdownRemark.edges.reduce(transformer, []);
+    }
   }
 ];
 
@@ -33,15 +36,26 @@ module.exports = {
     title: config.siteTitle,
     description: config.siteDescription,
     siteUrl: config.siteUrl,
-    pathPrefix: config.pathPrefix,
+    algolia: {
+      appId: process.env.ALGOLIA_APP_ID ? process.env.ALGOLIA_APP_ID : "",
+      searchOnlyApiKey: process.env.ALGOLIA_SEARCH_ONLY_API_KEY
+        ? process.env.ALGOLIA_SEARCH_ONLY_API_KEY
+        : "",
+      indexName: process.env.ALGOLIA_INDEX_NAME ? process.env.ALGOLIA_INDEX_NAME : ""
+    },
     facebook: {
       appId: process.env.FB_APP_ID ? process.env.FB_APP_ID : ""
     }
   },
   plugins: [
-    `gatsby-plugin-react-next`,
-    // `gatsby-plugin-styled-jsx`, // the plugin's code is inserted directly to gatsby-node.js and gatsby-ssr.js files
-    // 'gatsby-plugin-styled-jsx-postcss', // as above
+    `gatsby-plugin-styled-jsx`, // the plugin's code is inserted directly to gatsby-node.js and gatsby-ssr.js files
+    `gatsby-plugin-styled-jsx-postcss`, // as above
+    {
+      resolve: `gatsby-plugin-layout`,
+      options: {
+        component: require.resolve(`./src/layouts/`)
+      }
+    },
     // {
     //   resolve: `gatsby-plugin-algolia`,
     //   options: {
@@ -100,7 +114,27 @@ module.exports = {
           },
           `gatsby-remark-prismjs`,
           `gatsby-remark-copy-linked-files`,
-          `gatsby-remark-smartypants`
+          `gatsby-remark-smartypants`,
+          {
+            resolve: "gatsby-remark-emojis",
+            options: {
+              // Deactivate the plugin globally (default: true)
+              active: true,
+              // Add a custom css class
+              class: "emoji-icon",
+              // Select the size (available size: 16, 24, 32, 64)
+              size: 64,
+              // Add custom styles
+              styles: {
+                display: "inline",
+                margin: "0",
+                "margin-top": "1px",
+                position: "relative",
+                top: "5px",
+                width: "25px"
+              }
+            }
+          }
         ]
       }
     },
@@ -184,6 +218,7 @@ module.exports = {
               return allMarkdownRemark.edges.map(edge => {
                 return Object.assign({}, edge.node.frontmatter, {
                   description: edge.node.excerpt,
+                  date: edge.node.fields.prefix,
                   url: site.siteMetadata.siteUrl + edge.node.fields.slug,
                   guid: site.siteMetadata.siteUrl + edge.node.fields.slug,
                   custom_elements: [{ "content:encoded": edge.node.html }]
@@ -195,7 +230,15 @@ module.exports = {
                 allMarkdownRemark(
                   limit: 1000,
                   sort: { order: DESC, fields: [fields___prefix] },
-                  filter: { id: { regex: "//posts//" } }
+                  filter: {
+                    fields: {
+                      prefix: { ne: null },
+                      slug: { ne: null }
+                    },
+                    frontmatter: {
+                      author: { ne: null }
+                    }
+                  }
                 ) {
                   edges {
                     node {

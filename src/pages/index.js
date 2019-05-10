@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import React from "react";
-
+import { graphql } from "gatsby";
 import { ThemeContext } from "../layouts";
 import Blog from "../components/Blog";
 import Hero from "../components/Hero";
@@ -8,6 +8,10 @@ import Seo from "../components/Seo";
 
 class IndexPage extends React.Component {
   separator = React.createRef();
+
+  scrollToContent = e => {
+    this.separator.current.scrollIntoView({ block: "start", behavior: "smooth" });
+  };
 
   render() {
     const {
@@ -38,7 +42,7 @@ class IndexPage extends React.Component {
       <React.Fragment>
         <ThemeContext.Consumer>
           {theme => (
-            <Hero backgrounds={backgrounds} theme={theme} />
+            <Hero scrollToContent={this.scrollToContent} backgrounds={backgrounds} theme={theme} />
           )}
         </ThemeContext.Consumer>
 
@@ -68,7 +72,7 @@ IndexPage.propTypes = {
 export default IndexPage;
 
 //eslint-disable-next-line no-undef
-export const guery = graphql`
+export const query = graphql`
   query IndexQuery {
     posts: allMarkdownRemark(
       filter: { fileAbsolutePath: { regex: "//posts/[0-9]+.*--/" } }
@@ -88,8 +92,8 @@ export const guery = graphql`
             cover {
               children {
                 ... on ImageSharp {
-                  sizes(maxWidth: 800, maxHeight: 360) {
-                    ...GatsbyImageSharpSizes_withWebp
+                  fluid(maxWidth: 800, maxHeight: 360) {
+                    ...GatsbyImageSharpFluid_withWebp
                   }
                 }
               }
@@ -105,20 +109,22 @@ export const guery = graphql`
         }
       }
     }
-    bgDesktop: imageSharp(id: { regex: "/background/" }) {
+    bgDesktop: imageSharp(fluid: { originalName: { regex: "/background/" } }) {
       resize(width: 1200, quality: 90, cropFocus: CENTER) {
         src
       }
     }
-    bgTablet: imageSharp(id: { regex: "/background/" }) {
+    bgTablet: imageSharp(fluid: { originalName: { regex: "/background/" } }) {
       resize(width: 800, height: 1100, quality: 90, cropFocus: CENTER) {
         src
       }
     }
-    bgMobile: imageSharp(id: { regex: "/background/" }) {
+    bgMobile: imageSharp(fluid: { originalName: { regex: "/background/" } }) {
       resize(width: 450, height: 850, quality: 90, cropFocus: CENTER) {
         src
       }
     }
   }
 `;
+
+//background
