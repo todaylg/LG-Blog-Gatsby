@@ -29,15 +29,13 @@ const PostTemplate = props => {
               post={post}
               next={next}
               prev={prev}
-              authornote={authorNote}
-              facebook={facebook}
               theme={theme}
             />
           </Article>
         )}
       </ThemeContext.Consumer>
 
-      <Seo data={post} facebook={facebook} />
+      <Seo data={post} />
     </React.Fragment>
   );
 };

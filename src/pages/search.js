@@ -27,13 +27,12 @@ const SearchPage = props => {
             <div className="icon">
               <AlgoliaIcon />
             </div>
-
             <Search algolia={algolia} theme={theme} />
           </Article>
         )}
       </ThemeContext.Consumer>
 
-      <Seo facebook={facebook} />
+      <Seo/>
 
       {/* --- STYLES --- */}
       <style jsx>{`

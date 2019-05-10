@@ -40,7 +40,6 @@ const Meta = props => {
           span {
             align-items: center;
             display: flex;
-            text-transform: uppercase;
             margin: ${theme.space.xs} ${theme.space.s} ${theme.space.xs} 0;
           }
         }

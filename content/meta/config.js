@@ -3,7 +3,7 @@ module.exports = {
   shortSiteTitle: "LG-Blog", // <title> ending for posts and pages
   siteDescription: "LG-Blog",
   siteUrl: "www.todaylg.com",
-  pathPrefix: "",
+  pathPrefix: "/LG-Blog-Gatsby/",
   siteImage: "",
   siteLanguage: "zh",
   // author
