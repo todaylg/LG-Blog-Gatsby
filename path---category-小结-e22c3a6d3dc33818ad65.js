@@ -1,2 +1,0 @@
-webpackJsonp([50353500245631],{378:function(e,t){e.exports={data:{allMarkdownRemark:{totalCount:1,edges:[{node:{fields:{slug:"/webvr/"},excerpt:" 借着毕设的机会，学习了一下WebVR和Web Audio API的相关知识.",timeToRead:1,frontmatter:{title:"初探WebVR",category:"小结"}}}]},site:{siteMetadata:{facebook:{appId:""}}}},pathContext:{category:"小结"}}}});
-//# sourceMappingURL=path---category-小结-e22c3a6d3dc33818ad65.js.map
