@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[LG-Blog]]></title><description><![CDATA[LG-Blog]]></description><link>www.todaylg.com</link><generator>RSS for Node</generator><lastBuildDate>Fri, 10 May 2019 14:21:21 GMT</lastBuildDate><item><title><![CDATA[日常采坑记录]]></title><description><![CDATA[日常工作和学习过程中的一些踩坑记录~ 踩坑总结： 兼容性： IE IE8不支持transform、background-color IE9不支持transition、animation、linear-gradient IE不支持animation变化伪类content…]]></description><link>www.todaylg.com/problem-record/</link><guid isPermaLink="false">www.todaylg.com/problem-record/</guid><pubDate>Sat, 04 May 2019 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;日常工作和学习过程中的一些踩坑记录~&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[LG-Blog]]></title><description><![CDATA[LG-Blog]]></description><link>www.todaylg.com</link><generator>RSS for Node</generator><lastBuildDate>Sun, 19 May 2019 08:17:55 GMT</lastBuildDate><item><title><![CDATA[日常采坑记录]]></title><description><![CDATA[日常工作和学习过程中的一些踩坑记录~ 踩坑总结： 兼容性： IE IE8不支持transform、background-color IE9不支持transition、animation、linear-gradient IE不支持animation变化伪类content…]]></description><link>www.todaylg.com/problem-record/</link><guid isPermaLink="false">www.todaylg.com/problem-record/</guid><pubDate>Sat, 04 May 2019 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;日常工作和学习过程中的一些踩坑记录~&lt;/p&gt;
 &lt;h2&gt;踩坑总结：&lt;/h2&gt;
 &lt;h3&gt;兼容性：&lt;/h3&gt;
 &lt;p&gt;&lt;strong&gt;IE&lt;/strong&gt;&lt;/p&gt;
@@ -411,7 +411,7 @@ void main() {
 &lt;p&gt;转行任务是十分艰巨呀。。&lt;/p&gt;
 &lt;p&gt;最后还是决定即使照是葫芦画瓢也好，学着搂一个自己的渲染器，这样也能算是较为系统的一步步补全相关图形学知识。&lt;/p&gt;
 &lt;p&gt;老样子，先上瓢：&lt;a href=&quot;https://github.com/todaylg/LGL&quot;&gt;LGL&lt;/a&gt;（名字就不提了哈哈）&lt;/p&gt;
-&lt;p&gt;葫芦主要是&lt;a href=&quot;https://github.com/oframe/ogl&quot;&gt;ogl&lt;/a&gt;和&lt;a href=&quot;https://github.com/mrdoob/three.js&quot;&gt;three.js&lt;/a&gt;，Three.js自不必多说，已经是Web3D框架的代表了吧。ogl则是一个低抽象级的小型WebGL库，语法直接使用的ES6+，麻雀虽小但是五脏俱全，非常适合用来学习取经。&lt;/p&gt;
+&lt;p&gt;葫芦主要是&lt;a href=&quot;https://github.com/oframe/ogl&quot;&gt;ogl&lt;/a&gt;和&lt;a href=&quot;https://github.com/mrdoob/three.js&quot;&gt;three.js&lt;/a&gt;，Three.js自不必多说，已经是Web3D框架的代表了吧。ogl则是一个低抽象级的小型WebGL库，语法直接使用的ES6+，麻雀虽小但是五脏俱全，非常适合用来学习取经，并且正好其还处于beta版本，缺的功能后面也正好直接补上。&lt;/p&gt;
 &lt;h2&gt;LGL整体结构&lt;/h2&gt;
 &lt;p&gt;分为Core、Math、Extras三个大模块，Core与Math为核心功能，Extras为封装的一些扩展功能。&lt;/p&gt;
 &lt;p&gt;Core目前包含以下模块：&lt;/p&gt;
@@ -815,7 +815,7 @@ document&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;body&lt;sp
 
 document&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;body&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;removeChild&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;div&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;之后再对读取出的字符串进行格式转化。&lt;/p&gt;
-&lt;h3&gt;模块划分&lt;/h3&gt;
+&lt;h2&gt;模块划分&lt;/h2&gt;
 &lt;p&gt;Math模块基于 &lt;a href=&quot;https://github.com/toji/gl-matrix&quot;&gt;gl-Matrix&lt;/a&gt; (column-major format)进行封装，对外暴露向量（Vec2、Vec3、Vec4）、矩阵（Mat3、Mat4）、欧拉角（Euler）、四元数（Quat）的一些基本运算方法。&lt;/p&gt;
 &lt;p&gt;没啥好说的，具体到每个方法的计算方法可以直接查看文档。&lt;/p&gt;
 &lt;h2&gt;Core&lt;/h2&gt;
@@ -823,12 +823,23 @@ document&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;body&lt;sp
 &lt;p&gt;Core模块依赖Math模块，对WebGL API进行了封装和抽象。&lt;/p&gt;
 &lt;p&gt;对外暴露的API与Three.js有一些类似的地方，最大的区别在于Core部分不提供默认和可选的材质，即完全分离开了Shader部分。&lt;/p&gt;
 &lt;p&gt;这样做的好处显而易见，Core只用专注于控制物体的渲染队列即可，而不用耦合进各式各样的Shader片段。弊端也同样显而易见，需要自己为每个场景编写全部Shader，使用成本无疑高了很多。&lt;/p&gt;
-&lt;h4&gt;Transform&lt;/h4&gt;
+&lt;h3&gt;Transform&lt;/h3&gt;
 &lt;p&gt;Thansform相当于Three.js中的Object3D，是在场景中具体显示物体的基类，包含了基本的比如位置(Position)旋转(Rotate)缩放(Scale)等信息，提供了父子(Child/Parent)关系的抽象。&lt;/p&gt;
 &lt;p&gt;渲染框架基本都会提供父子对象的抽象，这样的好处是啥呢？&lt;/p&gt;
 &lt;p&gt;要到Renderer的遍历才够详细&lt;/p&gt;
-&lt;h4&gt;Camera&lt;/h4&gt;
-&lt;p&gt;确定相机的定位的计算需要得到VRP（Voew-Reference Point，观察参考点）、VPN（View-Plane Normal，观察平面法向量）、VUP（View-Up Vector，观察正向向量）三个值。&lt;/p&gt;
+&lt;h3&gt;Camera&lt;/h3&gt;
+&lt;p&gt;确定相机的定位的计算需要得到&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;VRP（Voew-Reference Point，观察参考点）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;VPN（View-Plane Normal，观察平面法向量）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;VUP（View-Up Vector，观察正向向量）&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;&lt;strong&gt;LookAt&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;相机的位置称为视点（eye point），相机的方向指向一个点称为参考点（at point），这两个点确定了VPN和VRP。VRP自然就是视点，VPN则是视点和参考点相减再归一化即可得到。最后我们只需要再对照相机指定想要观察的正向（VUP）就OK了，所以lookAt函数一般暴露的API为：&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;javascript&quot;&gt;&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt; &lt;span class=&quot;token comment&quot;&gt;/**
@@ -994,53 +1005,348 @@ P &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&qu
 &lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;推导过程还可参考：&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;http://www.360doc.com/content/14/1028/10/19175681_420522154.shtml&quot;&gt;http://www.360doc.com/content/14/1028/10/19175681_420522154.shtml&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;待补部分介绍：&lt;/p&gt;
+&lt;h3&gt;Renderer&lt;/h3&gt;
+&lt;p&gt;因为没有任何内置材质，这里Renderer只负责管理渲染队列及根据配置项初始化gl上下文。&lt;/p&gt;
+&lt;p&gt;优先获取WebGL2的gl绘图上下文，若不支持WebGL2.0则尝试加载相关&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API/Using_Extensions&quot;&gt;扩展&lt;/a&gt;：&lt;/p&gt;
 &lt;ul&gt;
-&lt;li class=&quot;task-list-item&quot;&gt;
-&lt;p&gt;&lt;input type=&quot;checkbox&quot; disabled&gt; Renderer: 渲染队列&lt;/p&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/API/OES_texture_float&quot;&gt;OES&lt;em&gt;texture&lt;/em&gt;float&lt;/a&gt;：纹素坐标支持浮点类型&lt;/p&gt;
 &lt;/li&gt;
-&lt;li class=&quot;task-list-item&quot;&gt;
-&lt;p&gt;&lt;input type=&quot;checkbox&quot; disabled&gt; Program：WebGL API 封装简介&lt;/p&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/API/OES_texture_float_linear&quot;&gt;OES&lt;em&gt;texture&lt;/em&gt;float_linear&lt;/a&gt;：纹理过滤支持浮点类型的线性过滤&lt;/p&gt;
 &lt;/li&gt;
-&lt;li class=&quot;task-list-item&quot;&gt;
-&lt;p&gt;&lt;input type=&quot;checkbox&quot; disabled&gt; Geometry： 几何数据读取抽象封装简介&lt;/p&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/API/OES_texture_half_float&quot;&gt;OES&lt;em&gt;texture&lt;/em&gt;half_float&lt;/a&gt;：纹素坐标支持16位（32/2）浮点类型数据&lt;/p&gt;
 &lt;/li&gt;
-&lt;li class=&quot;task-list-item&quot;&gt;
-&lt;p&gt;&lt;input type=&quot;checkbox&quot; disabled&gt; Texture：材质相关API即技术简介&lt;/p&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/API/OES_element_index_uint&quot;&gt;OES&lt;em&gt;element&lt;/em&gt;index_uint&lt;/a&gt;：渲染图元(&lt;code class=&quot;language-text&quot;&gt;gl.drawElements&lt;/code&gt;)的数据支持无符号整型&lt;/p&gt;
 &lt;/li&gt;
-&lt;li class=&quot;task-list-item&quot;&gt;
-&lt;p&gt;&lt;input type=&quot;checkbox&quot; disabled&gt; Mesh： 抽象简介&lt;/p&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/API/OES_standard_derivatives&quot;&gt;OES&lt;em&gt;standard&lt;/em&gt;derivatives&lt;/a&gt;：在GLSL中添加方法：&lt;code class=&quot;language-text&quot;&gt;dFdx&lt;/code&gt;,&lt;code class=&quot;language-text&quot;&gt;dFdy&lt;/code&gt;和&lt;code class=&quot;language-text&quot;&gt;fwidth&lt;/code&gt;&lt;/p&gt;
 &lt;/li&gt;
-&lt;li class=&quot;task-list-item&quot;&gt;
-&lt;p&gt;&lt;input type=&quot;checkbox&quot; disabled&gt; RenderTarget： 几个Buffer的原理和作用&lt;/p&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/API/EXT_sRGB&quot;&gt;EXT_sRGB&lt;/a&gt;：纹理及帧缓存支持&lt;a href=&quot;https://baike.baidu.com/item/sRGB/1350619?fr=aladdin&quot;&gt;sRGB&lt;/a&gt;颜色格式&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/API/WEBGL_depth_texture&quot;&gt;WEBGL&lt;em&gt;depth&lt;/em&gt;texture&lt;/a&gt;：定义2D深度和深度模板纹理 //Todo&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/API/ANGLE_instanced_arrays&quot;&gt;ANGLE&lt;em&gt;instanced&lt;/em&gt;arrays&lt;/a&gt;：使用实例化渲染绘制多个相似物体&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/API/OES_vertex_array_object&quot;&gt;OES&lt;em&gt;vertex&lt;/em&gt;array_object&lt;/a&gt;：支持VAO&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
+&lt;p&gt;&lt;a href=&quot;http://johnnymao.com/2016/03/07/GC/&quot;&gt;深度缓冲与画家算法&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;总而言之：画家算法是按照物体（多边形）的深度进行排序，而Z-buffer算法是按照图像每一个像素进行排序。&lt;/p&gt;
+&lt;p&gt;渲染队列绘制的顺序：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;1.先绘制所有不透明的物体。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;2.对所有透明的物体排序。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;3.按物体的z值排序绘制所有透明的物体。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;drawCall中再更新scene及camera的矩阵信息&lt;/p&gt;
+&lt;h3&gt;Program&lt;/h3&gt;
+&lt;p&gt;Program负责绑定并更新传入的uniform变量、创建及编译程序对象。&lt;/p&gt;
+&lt;h3&gt;Geometry&lt;/h3&gt;
+&lt;p&gt;Geometry负责绑定及更新传入的attribute变量、创建基本的几何对象、计算几何体的边界数据。&lt;/p&gt;
+&lt;p&gt;绘制多个物体时可开启&lt;a href=&quot;https://learnopengl-cn.github.io/04%20Advanced%20OpenGL/10%20Instancing/&quot;&gt;实例化&lt;/a&gt;&lt;/p&gt;
+&lt;h3&gt;Texture&lt;/h3&gt;
+&lt;p&gt;Texture根据传入配置创建对应的材质对象。&lt;/p&gt;
+&lt;p&gt;对应参数可参考：&lt;a href=&quot;https://learnopengl-cn.github.io/01%20Getting%20started/06%20Textures/&quot;&gt;https://learnopengl-cn.github.io/01%20Getting%20started/06%20Textures/&lt;/a&gt;&lt;/p&gt;
+&lt;h3&gt;Mesh&lt;/h3&gt;
+&lt;p&gt;Mesh是对Program和Geometry添加的一层封装，每次drawCall时将Camera的矩阵数据同步至Program的uniform中，最后再调用Geometry的draw方法同步attribute变量并完成绘制。&lt;/p&gt;
+&lt;h3&gt;RenderTarget&lt;/h3&gt;
+&lt;p&gt;RenderTarget对&lt;a href=&quot;https://learnopengl-cn.github.io/04%20Advanced%20OpenGL/05%20Framebuffers/&quot;&gt;帧缓存对象(Framebuffers)&lt;/a&gt; 的创建进行了封装&lt;/p&gt;
 &lt;h2&gt;Extras&lt;/h2&gt;
 &lt;hr&gt;
+&lt;h3&gt;Orbit&lt;/h3&gt;
+&lt;p&gt;Orbit通过监听Web中的鼠标几个事件动态变化Camera的轨道位置：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;contextmenu&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;直接屏蔽原生的右键点击事件：&lt;code class=&quot;language-text&quot;&gt;e.preventDefault();&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;mousedown&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;需要实现：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;左键点击按住控制旋转&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;中键点击按住控制推拉&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;右键点击按住控制位移&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;在触发mousedown事件时记录鼠标此时的在屏幕中的位置（clientX/Y），并开始监听mousemove和mouseup事件，分别用于处理具体的相机轨道位置变化和结束后删除mousemove和mouseup的事件监听。&lt;/p&gt;
+&lt;p&gt;那最核心的计算是如何实现的呢？&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://zh.wikipedia.org/wiki/%E7%90%83%E5%BA%A7%E6%A8%99%E7%B3%BB&quot;&gt;球坐标系-wiki&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;假设P（x，y，z）为空间内一点，则点P也可用这样三个有次序的数(r，θ，φ)来确定，其中：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;r为原点O与点P间的距离（radius）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;φ为有向线段OP与z轴正向的夹角（phi）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;θ为从正z轴来看自x轴按逆时针方向转到OM所转过的角，M为点P在xOy面上的投影（theta）&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;Tips1：需要注意我们的世界坐标y轴是朝上的，而非百科里z轴是朝上的。&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;Tips2：φ与θ的符号标记在数学中与物理中正好相反（可见wiki）&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;直角坐标系与球坐标系的转换即为(画个图加上基本的三角函数即可得)：&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;javascript&quot;&gt;&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;radius &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; Math&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;sqrt&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;x &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; x &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; y &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; y &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; z &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; z&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+theta &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; Math&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;atan2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;x&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; z&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+phi &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;  Math&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;acos&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;Math&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;min&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;Math&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;max&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;y &lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt; radius&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Tips: &lt;a href=&quot;https://zh.wikipedia.org/wiki/Atan2&quot;&gt;atan2&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;所以可以知道：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;X轴的旋转即为theta的变化&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Y轴的旋转即为phi的变化&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Z轴的推拉即为radius的变化&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;具体的实现代码：&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;javascript&quot;&gt;&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;/**
+* Handle left click + mouse move event =&gt; 旋转
+
+*/&lt;/span&gt;
+
+&lt;span class=&quot;token function&quot;&gt;handleMoveRotate&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;x&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; y&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+
+    tempVec2a&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;x&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; y&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+    tempVec2b&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;sub&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;tempVec2a&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; rotateStart&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;multiply&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;rotateSpeed&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;//计算变化向量&lt;/span&gt;
+
+    &lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; el &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;element &lt;span class=&quot;token operator&quot;&gt;===&lt;/span&gt; document &lt;span class=&quot;token operator&quot;&gt;?&lt;/span&gt; document&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;body &lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;element&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;sphericalDelta&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;theta &lt;span class=&quot;token operator&quot;&gt;-=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; Math&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token constant&quot;&gt;PI&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; tempVec2b&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;x &lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt; el&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;clientHeight&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;//换算成变换的弧度&lt;/span&gt;
+
+    &lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;sphericalDelta&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;phi &lt;span class=&quot;token operator&quot;&gt;-=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; Math&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token constant&quot;&gt;PI&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; tempVec2b&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;y &lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt; el&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;clientHeight&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+    rotateStart&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;copy&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;tempVec2a&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;//重置变换点&lt;/span&gt;
+
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+
+&lt;span class=&quot;token comment&quot;&gt;/**
+
+* Handle midlle click + mouse move event =&gt; 推拉
+
+*/&lt;/span&gt;
+
+&lt;span class=&quot;token function&quot;&gt;handleMouseMoveDolly&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;e&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+
+    tempVec2a&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;e&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;clientX&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; e&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;clientY&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+    tempVec2b&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;sub&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;tempVec2a&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; dollyStart&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;tempVec2b&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;y &lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// Up scroll&lt;/span&gt;
+
+        &lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;dolly&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;getZoomScale&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;zoomSpeed&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;tempVec2b&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;y &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// Dwon scroll&lt;/span&gt;
+
+        &lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;dolly&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;getZoomScale&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;zoomSpeed&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+    dollyStart&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;copy&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;tempVec2a&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;token function&quot;&gt;dolly&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;dollyScale&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;sphericalDelta&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;radius &lt;span class=&quot;token operator&quot;&gt;/=&lt;/span&gt; dollyScale&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;//变换radius&lt;/span&gt;
+
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;wheel&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;中键的滚轮控制放大/缩小也就是变化radius，只不过添加了一个速度因子&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;javascript&quot;&gt;&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;/**
+* Handle mourse wheel event
+
+*/&lt;/span&gt;
+
+&lt;span class=&quot;token function&quot;&gt;onMouseWheel&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;e&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+
+    &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; enabled&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; enableZoom&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; state &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;!&lt;/span&gt;enabled &lt;span class=&quot;token operator&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;!&lt;/span&gt;enableZoom &lt;span class=&quot;token operator&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;state &lt;span class=&quot;token operator&quot;&gt;!==&lt;/span&gt; &lt;span class=&quot;token constant&quot;&gt;STATE&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token constant&quot;&gt;NONE&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; state &lt;span class=&quot;token operator&quot;&gt;!==&lt;/span&gt; &lt;span class=&quot;token constant&quot;&gt;STATE&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token constant&quot;&gt;ROTATE&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+    e&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;preventDefault&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+    e&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;stopPropagation&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+
+    &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;e&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;deltaY &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+
+        &lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;dolly&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;getZoomScale&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;zoomSpeed&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;e&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;deltaY &lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+
+        &lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;dolly&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;getZoomScale&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;zoomSpeed&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;唯一不同的是右键的位移效果：&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;javascript&quot;&gt;&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;/**
+* Handle right click + mouse move event
+
+*/&lt;/span&gt;
+
+&lt;span class=&quot;token function&quot;&gt;handleMovePan&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;x&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; y&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+
+    tempVec2a&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;x&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; y&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+    tempVec2b&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;sub&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;tempVec2a&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; panStart&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;multiply&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;panSpeed&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;//计算变化向量&lt;/span&gt;
+
+    &lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;pan&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;tempVec2b&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;x&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; tempVec2b&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;y&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+    panStart&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;copy&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;tempVec2a&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;token function&quot;&gt;pan&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;deltaX&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; deltaY&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+
+    &lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; element&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; camera &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; el &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; element &lt;span class=&quot;token operator&quot;&gt;===&lt;/span&gt; document &lt;span class=&quot;token operator&quot;&gt;?&lt;/span&gt; document&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;body &lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; element&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token comment&quot;&gt;// perspective&lt;/span&gt;
+
+    tempVec3&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;copy&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;camera&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;position&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;sub&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;target&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; targetDistance &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; tempVec3&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;distance&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token comment&quot;&gt;// half of the fov is center to top of screen&lt;/span&gt;
+
+    targetDistance &lt;span class=&quot;token operator&quot;&gt;*=&lt;/span&gt; Math&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;tan&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;camera&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;fov &lt;span class=&quot;token operator&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;45&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; Math&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token constant&quot;&gt;PI&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;180.0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;//投影高度&lt;/span&gt;
+
+    &lt;span class=&quot;token comment&quot;&gt;// we use only clientHeight here so aspect ratio does not distort speed&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;panLeft&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;deltaX &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; targetDistance &lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt; el&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;clientHeight&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; camera&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;matrix&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;//高度比值&lt;/span&gt;
+
+    &lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;panUp&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;deltaY &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; targetDistance &lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt; el&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;clientHeight&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; camera&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;matrix&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;token function&quot;&gt;panLeft&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;distance&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; m&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+
+    tempVec3&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;m&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; m&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; m&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;token comment&quot;&gt;//X&lt;/span&gt;
+
+    tempVec3&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;multiply&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;distance&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;panDelta&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;tempVec3&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;token function&quot;&gt;panUp&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;distance&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; m&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+
+    tempVec3&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;m&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; m&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; m&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;token comment&quot;&gt;//Y&lt;/span&gt;
+
+    tempVec3&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;multiply&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;distance&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;panDelta&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;tempVec3&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;移动端对&lt;code class=&quot;language-text&quot;&gt;touchstart/touchend/touchmove&lt;/code&gt;事件的处理方法也是同理，就不再赘述了。&lt;/p&gt;
+&lt;h3&gt;Base Primitives&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Plane&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;根据传入参数决定面几何体横向与纵向组成块数，然后计算顶点的position、normal、uv、index信息：&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;javascript&quot;&gt;&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;buildPlane&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;position&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; normal&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; uv&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; index&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; width&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; height&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; depth &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; wSegs&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; hSegs&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+
+        u &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; v &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; w &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+        uDir &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; vDir &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+        i &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; ii &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; io &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; i&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; segW &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; width &lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt; wSegs&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; segH &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; height &lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt; hSegs&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+        &lt;span class=&quot;token keyword&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; iy &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; iy &lt;span class=&quot;token operator&quot;&gt;&amp;lt;=&lt;/span&gt; hSegs&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; iy&lt;span class=&quot;token operator&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; y &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; iy &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; segH &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt; height &lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;//y = [-h/2,h/2]&lt;/span&gt;
+            &lt;span class=&quot;token keyword&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; ix &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; ix &lt;span class=&quot;token operator&quot;&gt;&amp;lt;=&lt;/span&gt; wSegs&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; ix&lt;span class=&quot;token operator&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; x &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; ix &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; segW &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt; width &lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;//x = [-w/2,w/2]&lt;/span&gt;
+
+                position&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;i &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; u&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; x &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; uDir&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+                position&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;i &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; v&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; y &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; vDir&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// eg:leftTopfirPos = [-w/2,h/2]&lt;/span&gt;
+                position&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;i &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; w&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; depth &lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+                normal&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;i &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; u&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+                normal&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;i &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; v&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+                normal&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;i &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; w&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; depth &lt;span class=&quot;token operator&quot;&gt;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+                uv&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;i &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; ix &lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt; wSegs&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+                uv&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;i &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt; iy &lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt; hSegs&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+                i&lt;span class=&quot;token operator&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+                &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;iy &lt;span class=&quot;token operator&quot;&gt;===&lt;/span&gt; hSegs &lt;span class=&quot;token operator&quot;&gt;||&lt;/span&gt; ix &lt;span class=&quot;token operator&quot;&gt;===&lt;/span&gt; wSegs&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;continue&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+                &lt;span class=&quot;token comment&quot;&gt;//indices(two triangle)&lt;/span&gt;
+                &lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; indicesWSegs &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;wSegs &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+                &lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; a &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; io &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; ix &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; iy &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; indicesWSegs&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;//iy * indicesWSegs =&gt; a rows&lt;/span&gt;
+                &lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; b &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; io &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; ix &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;iy &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; indicesWSegs&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+                &lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; c &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; io &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;ix &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;iy &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; indicesWSegs&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+                &lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; d &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; io &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;ix &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; iy &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; indicesWSegs&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+                index&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;ii &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; a&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+                index&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;ii &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;6&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; b&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+                index&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;ii &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;6&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; d&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+                index&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;ii &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;6&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; b&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+                index&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;ii &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;6&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; c&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+                index&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;ii &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;6&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; d&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+                ii&lt;span class=&quot;token operator&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;Cube&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Cube则是直接拼合六块Plane即可：&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;javascript&quot;&gt;&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt; &lt;span class=&quot;token comment&quot;&gt;// left, right&lt;/span&gt;
+ Plane&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;buildPlane&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;position&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; normal&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; uv&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; index&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; depth&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; height&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; width&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; dSegs&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; hSegs&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; i&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; ii&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;//ZYX&lt;/span&gt;
+
+Plane&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;buildPlane&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;position&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; normal&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; uv&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; index&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; depth&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; height&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;width&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; dSegs&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; hSegs&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; i &lt;span class=&quot;token operator&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;dSegs &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;hSegs &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; ii &lt;span class=&quot;token operator&quot;&gt;+=&lt;/span&gt; dSegs &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; hSegs&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+
+&lt;span class=&quot;token comment&quot;&gt;// top, bottom&lt;/span&gt;
+
+Plane&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;buildPlane&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;position&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; normal&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; uv&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; index&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; width&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; depth&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; height&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; dSegs&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; hSegs&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; i &lt;span class=&quot;token operator&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;dSegs &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;hSegs &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; ii &lt;span class=&quot;token operator&quot;&gt;+=&lt;/span&gt; dSegs &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; hSegs&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;//XZY&lt;/span&gt;
+
+Plane&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;buildPlane&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;position&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; normal&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; uv&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; index&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; width&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; depth&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;height&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; dSegs&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; hSegs&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; i &lt;span class=&quot;token operator&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;wSegs &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;dSegs &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; ii &lt;span class=&quot;token operator&quot;&gt;+=&lt;/span&gt; wSegs &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; dSegs&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+
+&lt;span class=&quot;token comment&quot;&gt;// front, back&lt;/span&gt;
+
+Plane&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;buildPlane&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;position&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; normal&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; uv&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; index&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; width&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; height&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;depth&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; wSegs&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; hSegs&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; i &lt;span class=&quot;token operator&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;wSegs &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;dSegs &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; ii &lt;span class=&quot;token operator&quot;&gt;+=&lt;/span&gt; wSegs &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; dSegs&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;//XYZ&lt;/span&gt;
+
+Plane&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;buildPlane&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;position&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; normal&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; uv&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; index&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; width&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; height&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; depth&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; wSegs&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; hSegs&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; i &lt;span class=&quot;token operator&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;wSegs &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;hSegs &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; ii &lt;span class=&quot;token operator&quot;&gt;+=&lt;/span&gt; wSegs &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; hSegs&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;Sphere&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Sphere根据φ（phi）与θ（theta）的数值及横向与纵向组成块数计算坐标：&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;javascript&quot;&gt;&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;//画个图+三角函数&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; x &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;radius &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; Math&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;sin&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;tStart &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; v &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; tLength&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; Math&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;cos&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;pStart &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; u &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; pLength&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; y &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; radius &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; Math&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;cos&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;tStart &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; v &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; tLength&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; z &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; radius &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; Math&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;sin&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;tStart &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; v &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; tLength&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; Math&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;sin&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;pStart &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; u &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; pLength&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;ToAdd:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li class=&quot;task-list-item&quot;&gt;
-&lt;p&gt;&lt;input type=&quot;checkbox&quot; disabled&gt; Orbit；轨道计算的数学原理&lt;/p&gt;
+&lt;p&gt;&lt;input type=&quot;checkbox&quot; disabled&gt; Text：字体渲染的方法&lt;/p&gt;
 &lt;/li&gt;
 &lt;li class=&quot;task-list-item&quot;&gt;
-&lt;p&gt;&lt;input type=&quot;checkbox&quot; disabled&gt; Plane：面几何体的顶点计算原理&lt;/p&gt;
+&lt;p&gt;&lt;input type=&quot;checkbox&quot; disabled&gt; Post：后期处理&lt;/p&gt;
 &lt;/li&gt;
 &lt;li class=&quot;task-list-item&quot;&gt;
-&lt;p&gt;&lt;input type=&quot;checkbox&quot; disabled&gt; Cube：立方体的顶点计算原理&lt;/p&gt;
-&lt;/li&gt;
-&lt;li class=&quot;task-list-item&quot;&gt;
-&lt;p&gt;&lt;input type=&quot;checkbox&quot; disabled&gt; Sphere： 球体的顶点计算原理&lt;/p&gt;
-&lt;/li&gt;
-&lt;li class=&quot;task-list-item&quot;&gt;
-&lt;p&gt;&lt;input type=&quot;checkbox&quot; disabled&gt; Torus： 圆环几何体的顶点计算原理&lt;/p&gt;
-&lt;/li&gt;
-&lt;li class=&quot;task-list-item&quot;&gt;
-&lt;p&gt;&lt;input type=&quot;checkbox&quot; disabled&gt; Text：渲染字体的方法（位图及高采样啥的）&lt;/p&gt;
-&lt;/li&gt;
-&lt;li class=&quot;task-list-item&quot;&gt;
-&lt;p&gt;&lt;input type=&quot;checkbox&quot; disabled&gt; Post：后期处理的概念及封装简介&lt;/p&gt;
-&lt;/li&gt;
-&lt;li class=&quot;task-list-item&quot;&gt;
-&lt;p&gt;&lt;input type=&quot;checkbox&quot; disabled&gt; glTF：数据格式及Parser（单拆一篇文章）&lt;/p&gt;
+&lt;p&gt;&lt;input type=&quot;checkbox&quot; disabled&gt; glTFLoader：这个单拆一篇文章&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;</content:encoded></item><item><title><![CDATA[MikuMikuMi]]></title><description><![CDATA[中了Miku的毒。。。希望明年公主殿下的生日可以搂一个炫酷的页面给她~Web3D搂起啊！！]]></description><link>www.todaylg.com/miku-setup/</link><guid isPermaLink="false">www.todaylg.com/miku-setup/</guid><pubDate>Fri, 31 Aug 2018 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;中了Miku的毒。。。希望明年公主殿下的生日可以搂一个炫酷的页面给她~Web3D搂起啊！！&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Vim基础]]></title><description><![CDATA[Vim基本操作备忘 自己用的场景还是偏少，所以命令根本记不住。。。备忘把常用的简单指令记一下。 基本移动 h j k l ⬅️ ⬇️ ⬆️ ➡️ H 本屏首行 L 本屏末行 o 这一行的最前处 $ 这一行的最末尾 G 移动到整个文档最后一行 gg 移动到整个文档首行，相当于1g…]]></description><link>www.todaylg.com/vim/</link><guid isPermaLink="false">www.todaylg.com/vim/</guid><pubDate>Sat, 07 Jul 2018 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;Vim基本操作备忘&lt;/h2&gt;
 &lt;p&gt;自己用的场景还是偏少，所以命令根本记不住。。。备忘把常用的简单指令记一下。&lt;/p&gt;
