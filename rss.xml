@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[LG-Blog]]></title><description><![CDATA[LG-Blog]]></description><link>www.todaylg.com</link><generator>RSS for Node</generator><lastBuildDate>Wed, 22 May 2019 19:35:46 GMT</lastBuildDate><item><title><![CDATA[日常踩坑小记]]></title><description><![CDATA[存放日常工作和学习过程中的一些踩坑记录~ 踩坑总结： 兼容性： IE IE8不支持transform、background-color IE9不支持transition、animation、linear-gradient IE不支持animation变化伪类content…]]></description><link>www.todaylg.com/problem-record/</link><guid isPermaLink="false">www.todaylg.com/problem-record/</guid><pubDate>Sat, 04 May 2019 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;存放日常工作和学习过程中的一些踩坑记录~&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[LG-Blog]]></title><description><![CDATA[LG-Blog]]></description><link>www.todaylg.com</link><generator>RSS for Node</generator><lastBuildDate>Wed, 22 May 2019 19:43:13 GMT</lastBuildDate><item><title><![CDATA[日常踩坑小记]]></title><description><![CDATA[存放日常工作和学习过程中的一些踩坑记录~ 踩坑总结： 兼容性： IE IE8不支持transform、background-color IE9不支持transition、animation、linear-gradient IE不支持animation变化伪类content…]]></description><link>www.todaylg.com/problem-record/</link><guid isPermaLink="false">www.todaylg.com/problem-record/</guid><pubDate>Sat, 04 May 2019 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;存放日常工作和学习过程中的一些踩坑记录~&lt;/p&gt;
 &lt;h2&gt;踩坑总结：&lt;/h2&gt;
 &lt;h3&gt;兼容性：&lt;/h3&gt;
 &lt;p&gt;&lt;strong&gt;IE&lt;/strong&gt;&lt;/p&gt;
@@ -169,11 +169,12 @@
 &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;这个方法的缺陷同样也是在文件大小上，实测在保证基本帧数的情况下，导出的雪碧图较之gif图还要更大。。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Lottie/SVGA&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;可以先参考[这篇](&lt;a href=&quot;https://www.jianshu.com/p/60d28d7bab48&quot;&gt;https://www.jianshu.com/p/60d28d7bab48&lt;/a&gt;文章，文章有较为详细的介绍Lottie与SVGA，这里不再赘述。Lottie的主要缺点在部分属性以及AE效果插件的不支持，而SVGA实测导出的动画资源还是过大，Web播放需要较长的预加载。&lt;/p&gt;
+&lt;p&gt;可以先参考&lt;a href=&quot;https://www.jianshu.com/p/60d28d7bab48&quot;&gt;这篇&lt;/a&gt;文章，文章有较为详细的介绍Lottie与SVGA，这里不再赘述。Lottie的主要缺点在部分属性以及AE效果插件的不支持，而SVGA实测导出的动画资源还是过大，Web播放需要较长的预加载。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Scene Loader&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;动画师在3D建模软件中制作动画场景 =&gt; 导出附带动画参数的模型格式 =&gt; 模型格式Loader =&gt; Web中还原场景。&lt;/p&gt;
 &lt;p&gt;此方法动画师的制作成本很高，且最后导出的模型文件大小也会很大。 （当然也可以让动画师只提供纹理素材，其他全由我们自己写，这样制作依旧很高，只不过是转到了开发这边。）&lt;/p&gt;
 &lt;p&gt;总结：&lt;/p&gt;
+&lt;hr&gt;
 &lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
@@ -222,6 +223,7 @@
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
+&lt;hr&gt;
 &lt;p&gt;那还有没有更好的解决方案呢？&lt;/p&gt;
 &lt;p&gt;我们知道视频的体积和编解码效率都要优于图片，我们以视频为切入点，探讨通过播放视频的方式复现动效的方法。&lt;/p&gt;
 &lt;h3&gt;Video实现方案&lt;/h3&gt;
@@ -231,7 +233,7 @@
 &lt;p&gt;这里总结下基于该文章实践及拓展过程中遇到的一些问题和解决方案。&lt;/p&gt;
 &lt;h3&gt;多量动效&lt;/h3&gt;
 &lt;p&gt;&lt;strong&gt;canvas2D：&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;文章介绍了单个动效复现的步骤及方法，但是对于需要同时出现多个动效的情况（比如每次位置随机且多数量的烟花动效），需要进行一些优化处理：&lt;/p&gt;
+&lt;p&gt;上面那篇文章介绍了单个动效复现的步骤及方法，但是对于需要同时出现多个动效的情况（比如每次位置随机且多数量的烟花动效），需要进行一些优化处理：&lt;/p&gt;
 &lt;p&gt;因为若是每次动效渲染都经过一遍对Video的RGB、Alpha通道的提取及拼合的过程（drawImageData =&gt; getImageData =&gt; putImageData），当同时展示的动效数量较多时会导致CPU占用过高。&lt;/p&gt;
 &lt;p&gt;瓶颈既然是在&lt;strong&gt;每个效果都需要走一遍Video处理流程&lt;/strong&gt;造成的，那在首次处理Video的时候缓存拼合RGBA后的imageData数据，再次展示该动效时直接使用对应缓存的数据即可：&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;javascript&quot;&gt;&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;//首次播放视频缓存Canvas帧数据&lt;/span&gt;
@@ -325,6 +327,7 @@ void main() {
 &lt;h4&gt;WebGL Renderer&lt;/h4&gt;
 &lt;p&gt;实际接入到项目中最好引入一个WebGL Renderer。&lt;/p&gt;
 &lt;p&gt;裸写只针对一个动效的话还好。。但是考虑到后面的扩展性，要么自己从WebGL API开始封装，要么就是引入一个开源Renderer了。&lt;/p&gt;
+&lt;hr&gt;
 &lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
@@ -347,6 +350,7 @@ void main() {
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
+&lt;hr&gt;
 &lt;p&gt;&lt;strong&gt;引入Pixi&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;引入Pixi应该是这种场景下的最优解，可以简化当前Canvas 2D渲染的同时，又提供了WebGL的渲染支持，接入和改造成本也相对较小。&lt;/p&gt;
 &lt;p&gt;但是实践通过Pixi的Filter实现自定义Shader的过程中，发现其并不支持自定义顶点变量(attribute)的传入：&lt;/p&gt;
