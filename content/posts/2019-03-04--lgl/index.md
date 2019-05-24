@@ -3,7 +3,6 @@ title: "LGL"
 category: "LGL"
 cover: bg.png
 author: todaylg
-
 ---
 
 ## 前言
@@ -20,7 +19,7 @@ author: todaylg
 
 老样子，先上瓢：[LGL](https://github.com/todaylg/LGL)（名字就不提了哈哈）
 
-葫芦主要是[ogl](https://github.com/oframe/ogl)和[three.js](https://github.com/mrdoob/three.js)，Three.js自不必多说，已经是Web3D框架的代表了吧。ogl则是一个低抽象级的小型WebGL库，语法直接使用的ES6+，麻雀虽小但是五脏俱全，非常适合用来学习取经。
+葫芦主要是[ogl](https://github.com/oframe/ogl)和[three.js](https://github.com/mrdoob/three.js)，Three.js自不必多说，已经是Web3D框架的代表了吧。ogl则是一个低抽象级的小型WebGL库，语法直接使用的ES6+，麻雀虽小但是五脏俱全，非常适合用来学习取经，并且正好其还处于beta版本，缺的功能后面也正好直接补上。
 
 ## LGL整体结构
 
@@ -548,7 +547,7 @@ document.body.removeChild(div);
 
 之后再对读取出的字符串进行格式转化。
 
-### 模块划分
+## 模块划分
 
 Math模块基于 [gl-Matrix](https://github.com/toji/gl-matrix) (column-major format)进行封装，对外暴露向量（Vec2、Vec3、Vec4）、矩阵（Mat3、Mat4）、欧拉角（Euler）、四元数（Quat）的一些基本运算方法。
 
@@ -564,7 +563,7 @@ Core模块依赖Math模块，对WebGL API进行了封装和抽象。
 
 这样做的好处显而易见，Core只用专注于控制物体的渲染队列即可，而不用耦合进各式各样的Shader片段。弊端也同样显而易见，需要自己为每个场景编写全部Shader，使用成本无疑高了很多。
 
-#### Transform
+### Transform
 
 Thansform相当于Three.js中的Object3D，是在场景中具体显示物体的基类，包含了基本的比如位置(Position)旋转(Rotate)缩放(Scale)等信息，提供了父子(Child/Parent)关系的抽象。
 
@@ -572,9 +571,15 @@ Thansform相当于Three.js中的Object3D，是在场景中具体显示物体的�
 
 要到Renderer的遍历才够详细
 
-#### Camera
+### Camera
 
-确定相机的定位的计算需要得到VRP（Voew-Reference Point，观察参考点）、VPN（View-Plane Normal，观察平面法向量）、VUP（View-Up Vector，观察正向向量）三个值。
+确定相机的定位的计算需要得到
+
+* VRP（Voew-Reference Point，观察参考点）
+
+* VPN（View-Plane Normal，观察平面法向量）
+
+* VUP（View-Up Vector，观察正向向量）
 
 **LookAt**
 
@@ -774,36 +779,383 @@ P = [
 
 [http://www.360doc.com/content/14/1028/10/19175681_420522154.shtml](http://www.360doc.com/content/14/1028/10/19175681_420522154.shtml)
 
-待补部分介绍：
+### Renderer
 
-- [ ] Renderer: 渲染队列
+因为没有任何内置材质，这里Renderer只负责管理渲染队列及根据配置项初始化gl上下文。
 
-- [ ] Program：WebGL API 封装简介
+优先获取WebGL2的gl绘图上下文，若不支持WebGL2.0则尝试加载相关[扩展](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API/Using_Extensions)：
 
-- [ ] Geometry： 几何数据读取抽象封装简介
+* [OES_texture_float](https://developer.mozilla.org/en-US/docs/Web/API/OES_texture_float)：纹素坐标支持浮点类型
 
-- [ ] Texture：材质相关API即技术简介
+* [OES_texture_float_linear](https://developer.mozilla.org/en-US/docs/Web/API/OES_texture_float_linear)：纹理过滤支持浮点类型的线性过滤
 
-- [ ] Mesh： 抽象简介
+* [OES_texture_half_float](https://developer.mozilla.org/en-US/docs/Web/API/OES_texture_half_float)：纹素坐标支持16位（32/2）浮点类型数据
 
-- [ ] RenderTarget： 几个Buffer的原理和作用
+* [OES_element_index_uint](https://developer.mozilla.org/en-US/docs/Web/API/OES_element_index_uint)：渲染图元(`gl.drawElements`)的数据支持无符号整型
+
+* [OES_standard_derivatives](https://developer.mozilla.org/en-US/docs/Web/API/OES_standard_derivatives)：在GLSL中添加方法：`dFdx`,`dFdy`和`fwidth`
+
+* [EXT_sRGB](https://developer.mozilla.org/en-US/docs/Web/API/EXT_sRGB)：纹理及帧缓存支持[sRGB](https://baike.baidu.com/item/sRGB/1350619?fr=aladdin)颜色格式
+
+* [WEBGL_depth_texture](https://developer.mozilla.org/en-US/docs/Web/API/WEBGL_depth_texture)：定义2D深度和深度模板纹理 //Todo
+
+* [ANGLE_instanced_arrays](https://developer.mozilla.org/en-US/docs/Web/API/ANGLE_instanced_arrays)：使用实例化渲染绘制多个相似物体
+
+* [OES_vertex_array_object](https://developer.mozilla.org/en-US/docs/Web/API/OES_vertex_array_object)：支持VAO
+
+[深度缓冲与画家算法](http://johnnymao.com/2016/03/07/GC/)
+
+总而言之：画家算法是按照物体（多边形）的深度进行排序，而Z-buffer算法是按照图像每一个像素进行排序。
+
+渲染队列绘制的顺序：
+
+* 1.先绘制所有不透明的物体。
+
+* 2.对所有透明的物体排序。
+
+* 3.按物体的z值排序绘制所有透明的物体。
+
+drawCall中再更新scene及camera的矩阵信息
+
+### Program
+
+Program负责绑定并更新传入的uniform变量、创建及编译程序对象。
+
+### Geometry
+
+Geometry负责绑定及更新传入的attribute变量、创建基本的几何对象、计算几何体的边界数据。
+
+绘制多个物体时可开启[实例化](https://learnopengl-cn.github.io/04%20Advanced%20OpenGL/10%20Instancing/)
+
+### Texture
+
+Texture根据传入配置创建对应的材质对象。
+
+对应参数可参考：[https://learnopengl-cn.github.io/01%20Getting%20started/06%20Textures/](https://learnopengl-cn.github.io/01%20Getting%20started/06%20Textures/)
+
+### Mesh
+
+Mesh是对Program和Geometry添加的一层封装，每次drawCall时将Camera的矩阵数据同步至Program的uniform中，最后再调用Geometry的draw方法同步attribute变量并完成绘制。
+
+### RenderTarget
+
+RenderTarget对[帧缓存对象(Framebuffers)](https://learnopengl-cn.github.io/04%20Advanced%20OpenGL/05%20Framebuffers/) 的创建进行了封装
 
 ## Extras
 
 ---
 
-- [ ] Orbit；轨道计算的数学原理
+### Orbit
 
-- [ ] Plane：面几何体的顶点计算原理
+Orbit通过监听Web中的鼠标几个事件动态变化Camera的轨道位置：
 
-- [ ] Cube：立方体的顶点计算原理
+**contextmenu**
 
-- [ ] Sphere： 球体的顶点计算原理
+直接屏蔽原生的右键点击事件：`e.preventDefault();`
 
-- [ ] Torus： 圆环几何体的顶点计算原理
+**mousedown**
 
-- [ ] Text：渲染字体的方法（位图及高采样啥的）
+需要实现：
 
-- [ ] Post：后期处理的概念及封装简介
+* 左键点击按住控制旋转
 
-- [ ] glTF：数据格式及Parser（单拆一篇文章）
+* 中键点击按住控制推拉
+
+* 右键点击按住控制位移
+
+在触发mousedown事件时记录鼠标此时的在屏幕中的位置（clientX/Y），并开始监听mousemove和mouseup事件，分别用于处理具体的相机轨道位置变化和结束后删除mousemove和mouseup的事件监听。
+
+那最核心的计算是如何实现的呢？
+
+[球坐标系-wiki](https://zh.wikipedia.org/wiki/%E7%90%83%E5%BA%A7%E6%A8%99%E7%B3%BB)
+
+假设P（x，y，z）为空间内一点，则点P也可用这样三个有次序的数(r，θ，φ)来确定，其中：
+
+* r为原点O与点P间的距离（radius）
+
+* φ为有向线段OP与z轴正向的夹角（phi）
+
+* θ为从正z轴来看自x轴按逆时针方向转到OM所转过的角，M为点P在xOy面上的投影（theta）
+
+`Tips1：需要注意我们的世界坐标y轴是朝上的，而非百科里z轴是朝上的。`
+
+`Tips2：φ与θ的符号标记在数学中与物理中正好相反（可见wiki）`
+
+直角坐标系与球坐标系的转换即为(画个图加上基本的三角函数即可得)：
+
+```javascript
+radius = Math.sqrt(x * x + y * y + z * z);
+theta = Math.atan2(x, z);
+phi =  Math.acos(Math.min(Math.max(y / radius, -1), 1));
+```
+
+Tips: [atan2](https://zh.wikipedia.org/wiki/Atan2)
+
+所以可以知道：
+
+* X轴的旋转即为theta的变化
+
+* Y轴的旋转即为phi的变化
+
+* Z轴的推拉即为radius的变化
+
+具体的实现代码：
+
+```javascript
+/**
+* Handle left click + mouse move event => 旋转
+
+*/
+
+handleMoveRotate(x, y) {
+
+    tempVec2a.set(x, y);
+
+    tempVec2b.sub(tempVec2a, rotateStart).multiply(this.rotateSpeed); //计算变化向量
+
+    let el = this.element === document ? document.body : this.element;
+
+    this.sphericalDelta.theta -= 2 * Math.PI * tempVec2b.x / el.clientHeight; //换算成变换的弧度
+
+    this.sphericalDelta.phi -= 2 * Math.PI * tempVec2b.y / el.clientHeight;
+
+    rotateStart.copy(tempVec2a); //重置变换点
+
+}
+
+
+/**
+
+* Handle midlle click + mouse move event => 推拉
+
+*/
+
+handleMouseMoveDolly(e) {
+
+    tempVec2a.set(e.clientX, e.clientY);
+
+    tempVec2b.sub(tempVec2a, dollyStart);
+
+    if (tempVec2b.y > 0) { // Up scroll
+
+        this.dolly(getZoomScale(this.zoomSpeed));
+
+    } else if (tempVec2b.y < 0) { // Dwon scroll
+
+        this.dolly(1 / getZoomScale(this.zoomSpeed));
+
+    }
+
+    dollyStart.copy(tempVec2a);
+
+}
+
+dolly(dollyScale) {
+    this.sphericalDelta.radius /= dollyScale; //变换radius
+
+}
+```
+
+**wheel**
+
+中键的滚轮控制放大/缩小也就是变化radius，只不过添加了一个速度因子
+
+```javascript
+/**
+* Handle mourse wheel event
+
+*/
+
+onMouseWheel(e) {
+
+    const { enabled, enableZoom, state } = this;
+
+    if (!enabled || !enableZoom || (state !== STATE.NONE && state !== STATE.ROTATE)) return;
+
+    e.preventDefault();
+
+    e.stopPropagation();
+
+
+    if (e.deltaY < 0) {
+
+        this.dolly(1 / getZoomScale(this.zoomSpeed));
+
+    } else if (e.deltaY > 0) {
+
+        this.dolly(getZoomScale(this.zoomSpeed));
+
+    }
+
+}
+```
+
+唯一不同的是右键的位移效果：
+
+```javascript
+/**
+* Handle right click + mouse move event
+
+*/
+
+handleMovePan(x, y) {
+
+    tempVec2a.set(x, y);
+
+    tempVec2b.sub(tempVec2a, panStart).multiply(this.panSpeed); //计算变化向量
+
+    this.pan(tempVec2b.x, tempVec2b.y);
+
+    panStart.copy(tempVec2a);
+
+}
+
+pan(deltaX, deltaY) {
+
+    let { element, camera } = this;
+
+    let el = element === document ? document.body : element;
+    // perspective
+
+    tempVec3.copy(camera.position).sub(this.target);
+
+    let targetDistance = tempVec3.distance();
+    // half of the fov is center to top of screen
+
+    targetDistance *= Math.tan(((camera.fov || 45) / 2) * Math.PI / 180.0); //投影高度
+
+    // we use only clientHeight here so aspect ratio does not distort speed
+    this.panLeft(deltaX * 2 * targetDistance / el.clientHeight, camera.matrix); //高度比值
+
+    this.panUp(deltaY * 2 * targetDistance / el.clientHeight, camera.matrix);
+
+};
+
+panLeft(distance, m) {
+
+    tempVec3.set(m[0], m[1], m[2]);//X
+
+    tempVec3.multiply(-distance);
+
+    this.panDelta.add(tempVec3);
+
+}
+
+panUp(distance, m) {
+
+    tempVec3.set(m[4], m[5], m[6]);//Y
+
+    tempVec3.multiply(distance);
+
+    this.panDelta.add(tempVec3);
+
+}
+```
+
+移动端对`touchstart/touchend/touchmove`事件的处理方法也是同理，就不再赘述了。
+
+
+
+### Base Primitives
+
+**Plane**
+
+根据传入参数决定面几何体横向与纵向组成块数，然后计算顶点的position、normal、uv、index信息：
+
+```javascript
+static buildPlane(position, normal, uv, index, width, height, depth = 0, wSegs, hSegs,
+
+        u = 0, v = 1, w = 2,
+        uDir = 1, vDir = -1,
+        i = 0, ii = 0
+    ) {
+        const io = i;
+        const segW = width / wSegs;
+        const segH = height / hSegs;
+
+        for (let iy = 0; iy <= hSegs; iy++) {
+            let y = iy * segH - height / 2; //y = [-h/2,h/2]
+            for (let ix = 0; ix <= wSegs; ix++) {
+                let x = ix * segW - width / 2; //x = [-w/2,w/2]
+
+                position[i * 3 + u] = x * uDir;
+                position[i * 3 + v] = y * vDir; // eg:leftTopfirPos = [-w/2,h/2]
+                position[i * 3 + w] = depth / 2;
+
+                normal[i * 3 + u] = 0;
+                normal[i * 3 + v] = 0;
+                normal[i * 3 + w] = depth >= 0 ? 1 : -1;
+
+                uv[i * 2] = ix / wSegs;
+                uv[i * 2 + 1] = 1 - iy / hSegs;
+
+                i++;
+
+                if (iy === hSegs || ix === wSegs) continue;
+
+                //indices(two triangle)
+                let indicesWSegs = (wSegs + 1);
+                let a = io + ix + iy * indicesWSegs; //iy * indicesWSegs => a rows
+                let b = io + ix + (iy + 1) * indicesWSegs;
+                let c = io + (ix + 1) + (iy + 1) * indicesWSegs;
+                let d = io + (ix + 1) + iy * indicesWSegs;
+
+                index[ii * 6] = a;
+                index[ii * 6 + 1] = b;
+                index[ii * 6 + 2] = d;
+
+                index[ii * 6 + 3] = b;
+                index[ii * 6 + 4] = c;
+                index[ii * 6 + 5] = d;
+
+                ii++;
+            }
+        }
+    }
+```
+
+**Cube**
+
+Cube则是直接拼合六块Plane即可：
+
+```javascript
+ // left, right
+ Plane.buildPlane(position, normal, uv, index, depth, height, width, dSegs, hSegs, 2, 1, 0, -1, -1, i, ii); //ZYX
+
+Plane.buildPlane(position, normal, uv, index, depth, height, -width, dSegs, hSegs, 2, 1, 0, 1, -1, i += (dSegs + 1) * (hSegs + 1), ii += dSegs * hSegs);
+
+
+// top, bottom
+
+Plane.buildPlane(position, normal, uv, index, width, depth, height, dSegs, hSegs, 0, 2, 1, 1, 1, i += (dSegs + 1) * (hSegs + 1), ii += dSegs * hSegs); //XZY
+
+Plane.buildPlane(position, normal, uv, index, width, depth, -height, dSegs, hSegs, 0, 2, 1, 1, -1, i += (wSegs + 1) * (dSegs + 1), ii += wSegs * dSegs);
+
+
+// front, back
+
+Plane.buildPlane(position, normal, uv, index, width, height, -depth, wSegs, hSegs, 0, 1, 2, -1, -1, i += (wSegs + 1) * (dSegs + 1), ii += wSegs * dSegs); //XYZ
+
+Plane.buildPlane(position, normal, uv, index, width, height, depth, wSegs, hSegs, 0, 1, 2, 1, -1, i += (wSegs + 1) * (hSegs + 1), ii += wSegs * hSegs);
+
+```
+
+**Sphere**
+
+Sphere根据φ（phi）与θ（theta）的数值及横向与纵向组成块数计算坐标：
+
+```javascript
+//画个图+三角函数
+let x = -radius * Math.sin(tStart + v * tLength) * Math.cos(pStart + u * pLength);
+let y = radius * Math.cos(tStart + v * tLength);
+
+let z = radius * Math.sin(tStart + v * tLength) * Math.sin(pStart + u * pLength);
+```
+
+ToAdd:
+
+- [ ] Text：字体渲染的方法
+
+- [ ] Post：后期处理
+
+- [ ] glTFLoader：这个单拆一篇文章

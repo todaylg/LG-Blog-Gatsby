@@ -1,11 +1,11 @@
 ---
-title: 日常采坑记录
+title: 日常踩坑小记
 category: "小结"
 cover: bg.jpg
 author: todaylg
 ---
 
-日常工作和学习过程中的一些踩坑记录~
+存放日常工作和学习过程中的一些踩坑记录~
 
 ## 踩坑总结：
 

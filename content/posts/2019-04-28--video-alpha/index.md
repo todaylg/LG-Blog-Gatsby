@@ -53,7 +53,7 @@ author: todaylg
 
 **Lottie/SVGA**
 
-可以先参考[这篇]([https://www.jianshu.com/p/60d28d7bab48](https://www.jianshu.com/p/60d28d7bab48)文章，文章有较为详细的介绍Lottie与SVGA，这里不再赘述。Lottie的主要缺点在部分属性以及AE效果插件的不支持，而SVGA实测导出的动画资源还是过大，Web播放需要较长的预加载。
+可以先参考[这篇](https://www.jianshu.com/p/60d28d7bab48)文章，文章有较为详细的介绍Lottie与SVGA，这里不再赘述。Lottie的主要缺点在部分属性以及AE效果插件的不支持，而SVGA实测导出的动画资源还是过大，Web播放需要较长的预加载。
 
 **Scene Loader**
 
@@ -63,6 +63,8 @@ author: todaylg
 
 总结：
 
+---
+
 | 方案           | 制作成本                     | 性能  | 还原效果      | 文件体积 |
 |:------------ |:------------------------ | --- | --------- | ---- |
 | 动态图          | 低                        | 中   | 全还原       | 大    |
@@ -70,6 +72,8 @@ author: todaylg
 | Lottie       | 中（依赖AE）                  | 优   | 部分插件效果不支持 | 小    |
 | SVGA         | 中（依赖AE、Animate CC）       | 优   | 全还原       | 中    |
 | Scene Loader | 高（依赖Blender/3DMax/Maya等） | 中   | 全还原       | 大    |
+
+---
 
 那还有没有更好的解决方案呢？
 
@@ -89,7 +93,7 @@ author: todaylg
 
 **canvas2D：**
 
-文章介绍了单个动效复现的步骤及方法，但是对于需要同时出现多个动效的情况（比如每次位置随机且多数量的烟花动效），需要进行一些优化处理：
+上面那篇文章介绍了单个动效复现的步骤及方法，但是对于需要同时出现多个动效的情况（比如每次位置随机且多数量的烟花动效），需要进行一些优化处理：
 
 因为若是每次动效渲染都经过一遍对Video的RGB、Alpha通道的提取及拼合的过程（drawImageData => getImageData => putImageData），当同时展示的动效数量较多时会导致CPU占用过高。
 
@@ -206,11 +210,15 @@ export default {vertex, fragment};
 
 裸写只针对一个动效的话还好。。但是考虑到后面的扩展性，要么自己从WebGL API开始封装，要么就是引入一个开源Renderer了。
 
+---
+
 | 框架                   | 大小     |
 | -------------------- | ------ |
 | Pixi.min.js(V4.8.5)  | 428 kb |
 | Three.min.js(V104)   | 558 kb |
 | Claygl.min.js(V1.03) | 413 kb |
+
+---
 
 **引入Pixi**
 
