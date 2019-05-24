@@ -1,4 +1,216 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[LG-Blog]]></title><description><![CDATA[LG-Blog]]></description><link>www.todaylg.com</link><generator>RSS for Node</generator><lastBuildDate>Wed, 22 May 2019 19:43:13 GMT</lastBuildDate><item><title><![CDATA[日常踩坑小记]]></title><description><![CDATA[存放日常工作和学习过程中的一些踩坑记录~ 踩坑总结： 兼容性： IE IE8不支持transform、background-color IE9不支持transition、animation、linear-gradient IE不支持animation变化伪类content…]]></description><link>www.todaylg.com/problem-record/</link><guid isPermaLink="false">www.todaylg.com/problem-record/</guid><pubDate>Sat, 04 May 2019 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;存放日常工作和学习过程中的一些踩坑记录~&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[LG-Blog]]></title><description><![CDATA[LG-Blog]]></description><link>www.todaylg.com</link><generator>RSS for Node</generator><lastBuildDate>Fri, 24 May 2019 16:36:14 GMT</lastBuildDate><item><title><![CDATA[glTF学习笔记]]></title><description><![CDATA[当想要构建包含复杂模型的场景时，如何从建模工具导出的模型文件中解析并复原模型就成了必须要解决的一个问题。 首先需要了解一下各种三维文件的格式： 三维文件格式知多少 glTF无疑是应用于Web平台的首选格式，作为一个WebGL Renderer的LGL…]]></description><link>www.todaylg.com/glTF-record/glTF学习笔记/</link><guid isPermaLink="false">www.todaylg.com/glTF-record/glTF学习笔记/</guid><pubDate>Sat, 25 May 2019 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;当想要构建包含复杂模型的场景时，如何从建模工具导出的模型文件中解析并复原模型就成了必须要解决的一个问题。&lt;/p&gt;
+&lt;p&gt;首先需要了解一下各种三维文件的格式：&lt;a href=&quot;https://www.bgteach.com/article/132&quot;&gt;三维文件格式知多少&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;glTF无疑是应用于Web平台的首选格式，作为一个WebGL Renderer的LGL，可以没有其他格式的Loader，但是glTFLoader还是要想办法搞出来的：&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/todaylg/glTFLoader&quot;&gt;glTFLoader of LGL&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;当前Animation和Extension还不支持，在实践过程中又踩了几块之前没有学习到的知识，总结备忘一波：&lt;/p&gt;
+&lt;h2&gt;glTF&lt;/h2&gt;
+&lt;p&gt;正如上面格式介绍的文章中有对glTF的介绍，glTF是由&lt;a href=&quot;https://github.com/KhronosGroup/glTF/blob/master/specification/2.0/README.md&quot;&gt;Khronos Group设计与设定&lt;/a&gt;的，设计目的在于为3D建模工具和应用间提供一个高效率传输、易拓展、具有互通性的&lt;strong&gt;3D内容格式规范&lt;/strong&gt;，并且当前已得到了广泛的认可与支持（&lt;a href=&quot;https://zhuanlan.zhihu.com/p/37735460&quot;&gt;Apple除外&lt;/a&gt;）。&lt;/p&gt;
+&lt;h3&gt;节点数据结构&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&quot;https://github.com/KhronosGroup/glTF/raw/master/specification/2.0/figures/dictionary-objects.png&quot; alt=&quot;image&quot;&gt;&lt;/p&gt;
+&lt;p&gt;glTF资源由三部分组成：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;包含完整场景描述的json格式文件（&lt;code class=&quot;language-text&quot;&gt;.gltf&lt;/code&gt;）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;包含几何、动画数据以及其他缓冲数据的二进制文件（&lt;code class=&quot;language-text&quot;&gt;.bin&lt;/code&gt;）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;纹理图片文件（&lt;code class=&quot;language-text&quot;&gt;.jpg``.png&lt;/code&gt;）&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;即需要通过对.glTF的解析，获取到整个场景的完整组成及层级信息，并且按照划分的读取区域从.bin文件中读取出对应的具体数据，纹理图片则通过加载图片获取。最终Loader使用具体数据并依照层级关系重新复现场景。&lt;/p&gt;
+&lt;p&gt;上层的各个节点之间通过数组索引的方式建立联接，最底层的buffer、image节点则通过URI引入资源。&lt;/p&gt;
+&lt;p&gt;以buffer =&gt; bufferViews =&gt; accessors这条链路为例：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;每个buffer会通过URI联接到二进制的数据文件(.bin)上，并从原始数据块中分割指定的长度（由byteLength参数决定）。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;每个bufferView则指向一个buffer，由byteOffset和byteLength定义出属于这个bufferView的buffer数据部分，并指定buffer target（&lt;a href=&quot;https://developer.mozilla.org/zh-CN/docs/Web/API/WebGLRenderingContext/bindBuffer&quot;&gt;bindBuffer&lt;/a&gt;）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;每个accessors定义了如何解析每个bufferViews，比如附加的byteOffset指的是读取bufferView的起始位置，type、componentType决定了数据类型及排列方式。（&lt;a href=&quot;https://developer.mozilla.org/zh-CN/docs/Web/API/WebGLRenderingContext/VertexAttribPointer&quot;&gt;VertexAttribPointer&lt;/a&gt;）&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;至于上层节点之间层级关系的构建，其实就是各自节点获取各自节点的依赖引用节点后进行实现，这里就不再赘述了。&lt;/p&gt;
+&lt;h3&gt;Physically Based Rendering（PBR）&lt;/h3&gt;
+&lt;p&gt;关于PBR的WebGL实现其实已经有现成的例子：&lt;a href=&quot;https://github.com/KhronosGroup/glTF-Sample-Viewer&quot;&gt;glTF-Sample-Viewer&lt;/a&gt;，但是鲁迅先生可能曾经说过：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;白嫖没有问题，但是至少要知道白嫖的是个什么东西。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;秉持着这样的学术精神，我们还是有必要了解一下PBR是个啥。&lt;/p&gt;
+&lt;p&gt;关于PBR的理论知识可以参考下面的几篇文章：&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://learnopengl.com/PBR/Theory&quot;&gt;https://learnopengl.com/PBR/Theory&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://zhuanlan.zhihu.com/p/61962884&quot;&gt;https://zhuanlan.zhihu.com/p/61962884&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://zhuanlan.zhihu.com/p/53086060&quot;&gt;https://zhuanlan.zhihu.com/p/53086060&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;正如第三篇文章的脑图，PBR设计的知识非常的广且多，想要非常深入的理解并不容易。&lt;/p&gt;
+&lt;p&gt;不过第一篇文章的PBR部分堪称新手之友了，形象的描述了公式各部分的作用，同时又隐藏掉了公式的推导和计算细节，并且还提供了各部分的实现的实例代码。所以只需要有一个大致了解的话，仔细读第一篇文章+翻源码就完事啦~&lt;/p&gt;
+&lt;p&gt;最主要的是反射方程：&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;Lo(p,ωo)=∫Ω fr(p,ωi,ωo) Li(p,ωi) n⋅ωi dωi&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;表示累积在半球领域Ω（以p点法线为中心）内，入射(光)角为ωi的入射光在点p上对反射(观察)角wo的所有出射辐射量总和Lo（受fr的影响）。&lt;/p&gt;
+&lt;p&gt;把公式拆分：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;fr(p,ωi,ωo)：双向反射分布函数(BRDF - Bidirectional Reflective Distribution Function) &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Li(p,ωi)：入射光&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;n⋅ωi ：Lambert漫反射的点乘&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;BRDF(双向反射分布函数)&lt;/strong&gt;:&lt;/p&gt;
+&lt;p&gt;作用为：近似的求出每束光线对一个给定了材质属性的平面上最终反射出来的光线所作出的贡献程度，即入射方向到出射方向光的反射比例。&lt;/p&gt;
+&lt;p&gt;由漫反射及镜面反射两部分组成：&lt;code class=&quot;language-text&quot;&gt;fr=kd*flambert+ks*fcook−torrance&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;漫反射：&lt;code class=&quot;language-text&quot;&gt;flambert=c/π&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;镜面反射：&lt;code class=&quot;language-text&quot;&gt;DFG/4(ωo⋅n)(ωi⋅n)&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;保证能量守恒：&lt;code class=&quot;language-text&quot;&gt;kd = 1- ks&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;lambert&lt;/strong&gt;：&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;glsl&quot;&gt;&lt;pre class=&quot;language-glsl&quot;&gt;&lt;code class=&quot;language-glsl&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;vec3&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;diffuse&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;PBRInfo pbrInputs&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; pbrInputs&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;diffuseColor &lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt; M_PI&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;D-法线分布函数(Normal Distribution Function)&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;估算在受到表面粗糙度的影响下，取向方向与中间向量一致的微平面的数量。这是用来估算微平面的主要函数。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;glsl&quot;&gt;&lt;pre class=&quot;language-glsl&quot;&gt;&lt;code class=&quot;language-glsl&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;//Trowbridge-Reitz GGX&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;float&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;microfacetDistribution&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;PBRInfo pbrInputs&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;float&lt;/span&gt; roughnessSq &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; pbrInputs&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;alphaRoughness &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; pbrInputs&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;alphaRoughness&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;float&lt;/span&gt; f &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;pbrInputs&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;NdotH &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; roughnessSq &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt; pbrInputs&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;NdotH&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; pbrInputs&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;NdotH &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1.0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; roughnessSq &lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;M_PI &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; f &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; f&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;F-菲涅尔方程(Fresnel Rquation)&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;菲涅尔方程描述的是在不同的表面角下表面所反射的光线所占的比率。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;glsl&quot;&gt;&lt;pre class=&quot;language-glsl&quot;&gt;&lt;code class=&quot;language-glsl&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;//Fresnel-Schlick近似(Fresnel-Schlick Approximation)&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;float&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;geometricOcclusion&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;PBRInfo pbrInputs&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;float&lt;/span&gt; NdotL &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; pbrInputs&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;NdotL&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;float&lt;/span&gt; NdotV &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; pbrInputs&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;NdotV&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;float&lt;/span&gt; r &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; pbrInputs&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;alphaRoughness&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;token keyword&quot;&gt;float&lt;/span&gt; attenuationL &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;2.0&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; NdotL &lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;NdotL &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;sqrt&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;r &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; r &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1.0&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt; r &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; r&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;NdotL &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; NdotL&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;float&lt;/span&gt; attenuationV &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;2.0&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; NdotV &lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;NdotV &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;sqrt&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;r &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; r &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1.0&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt; r &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; r&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;NdotV &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; NdotV&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; attenuationL &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; attenuationV&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;G-几何函数(Geometry Function)&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;描述了微平面自成阴影的属性。当一个平面相对比较粗糙的时候，平面表面上的微平面有可能挡住其他的微平面从而减少表面所反射的光线。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;glsl&quot;&gt;&lt;pre class=&quot;language-glsl&quot;&gt;&lt;code class=&quot;language-glsl&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;//Smith’s Schlick-GGX&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;vec3&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;specularReflection&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;PBRInfo pbrInputs&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; pbrInputs&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;reflectance0 &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;pbrInputs&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;reflectance90 &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt; pbrInputs&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;reflectance0&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;pow&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;clamp&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1.0&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt; pbrInputs&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;VdotH&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0.0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1.0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;5.0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;最后结果即为：&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;glsl&quot;&gt;&lt;pre class=&quot;language-glsl&quot;&gt;&lt;code class=&quot;language-glsl&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;vec3&lt;/span&gt; diffuseContrib &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1.0&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt; F&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;diffuse&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;pbrInputs&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;vec3&lt;/span&gt; specContrib &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; F &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; G &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; D &lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;4.0&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; NdotL &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; NdotV&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot;&gt;// Obtain final intensity as reflectance (BRDF) scaled by the energy of the light (cosine law)&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;vec3&lt;/span&gt; color &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; NdotL &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; u_LightColor &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;diffuseContrib &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; specContrib&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;IBL（Image Based Lighting）&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;对于环境光照的因素，采样的是IBL，即基于图像的照明，相当于一个无限大的球面光源在照射场景。&lt;/p&gt;
+&lt;p&gt;IBL也由漫反射及镜面反射两部分组成，但是为了追求实时渲染的快速计算，需要做一些预计算，最终在实时渲染中只需要通过简单的纹理采样即可得到结果。&lt;/p&gt;
+&lt;p&gt;详细的原理可以参考这篇&lt;a href=&quot;https://zhuanlan.zhihu.com/p/66518450&quot;&gt;文章&lt;/a&gt;的解释&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;glsl&quot;&gt;&lt;pre class=&quot;language-glsl&quot;&gt;&lt;code class=&quot;language-glsl&quot;&gt;&lt;span class=&quot;token preprocessor builtin&quot;&gt;#ifdef&lt;/span&gt; USE_IBL
+&lt;span class=&quot;token keyword&quot;&gt;vec3&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;getIBLContribution&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;PBRInfo pbrInputs&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;vec3&lt;/span&gt; n&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;vec3&lt;/span&gt; reflection&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token comment&quot;&gt;//预计算贴图tLUT&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;vec3&lt;/span&gt; brdf &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;SRGBtoLINEAR&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;texture&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;tLUT&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;vec2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;pbrInputs&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;NdotV&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1.0&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt; pbrInputs&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;perceptualRoughness&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;rgb&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token comment&quot;&gt;// CubeMap&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;vec3&lt;/span&gt; diffuseLight &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;SRGBtoLINEAR&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;texture&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;tEnvDiffuse&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; n&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;rgb&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;vec3&lt;/span&gt; specularLight &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;SRGBtoLINEAR&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;texture&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;tEnvSpecular&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; reflection&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;rgb&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+
+    &lt;span class=&quot;token keyword&quot;&gt;vec3&lt;/span&gt; diffuse &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; diffuseLight &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; pbrInputs&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;diffuseColor&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;vec3&lt;/span&gt; specular &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; specularLight &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;pbrInputs&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;specularColor &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; brdf&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;x &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; brdf&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;y&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+
+    &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; diffuse &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; specular&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;token preprocessor builtin&quot;&gt;#endif&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;最后将其他贴图的结果也进行累加：&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;glsl&quot;&gt;&lt;pre class=&quot;language-glsl&quot;&gt;&lt;code class=&quot;language-glsl&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;// Calculate lighting contribution from image based lighting source (IBL)&lt;/span&gt;
+&lt;span class=&quot;token preprocessor builtin&quot;&gt;#ifdef&lt;/span&gt; USE_IBL
+
+    color &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;getIBLContribution&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;pbrInputs&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; n&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; reflection&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;token preprocessor builtin&quot;&gt;#endif&lt;/span&gt;
+
+
+&lt;span class=&quot;token comment&quot;&gt;// Apply optional PBR terms for additional (optional) shading&lt;/span&gt;
+&lt;span class=&quot;token comment&quot;&gt;// AO MAP&lt;/span&gt;
+&lt;span class=&quot;token preprocessor builtin&quot;&gt;#ifdef&lt;/span&gt; HAS_OCCLUSIONMAP
+
+    &lt;span class=&quot;token keyword&quot;&gt;float&lt;/span&gt; ao &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;texture&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;u_OcclusionSampler&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; vUv&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;r&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+    color &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;mix&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;color&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; color &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; ao&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; u_OcclusionStrength&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;token preprocessor builtin&quot;&gt;#endif&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot;&gt;//EMISSIVE MAP&lt;/span&gt;
+&lt;span class=&quot;token preprocessor builtin&quot;&gt;#ifdef&lt;/span&gt; HAS_EMISSIVEMAP
+
+    &lt;span class=&quot;token keyword&quot;&gt;vec3&lt;/span&gt; emissive &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;SRGBtoLINEAR&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;texture&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;u_EmissiveSampler&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; vUv&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;rgb &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; u_EmissiveFactor&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+    color &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; emissive&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;token preprocessor builtin&quot;&gt;#endif&lt;/span&gt;
+
+FragColor &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;vec4&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;color&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; baseColor&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;a&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;就得到最终的结果啦，白嫖Shader并接入LGL后的结果：&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://todaylg.com/glTFLoader/examples/&quot;&gt;http://todaylg.com/glTFLoader/examples/&lt;/a&gt;&lt;/p&gt;
+&lt;h3&gt;Skinning&lt;/h3&gt;
+&lt;p&gt;Skinning即蒙皮，表示将三维网格顶点联系至骨骼的过程。在此过程中，顶点需要获取其关联关节的关节矩阵，再根据蒙皮权重计算出蒙皮矩阵，从而变换顶点的位置和法线信息。&lt;/p&gt;
+&lt;p&gt;那如何在顶点着色器中获取到对应的关节矩阵呢？白嫖了一眼Three.js之后才恍然大悟，直接把所有关节矩阵保存为texture作为uniform属性，在顶点着色器中再根据绑定的skinIndex读取出来：&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;javascript&quot;&gt;&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;boneTexture &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Texture&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;gl&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    image&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;boneMatrices&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+
+    generateMipmaps&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+
+    type&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;gl&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token constant&quot;&gt;FLOAT&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+
+    internalFormat&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;gl&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;renderer&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;isWebgl2 &lt;span class=&quot;token operator&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;gl&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token constant&quot;&gt;RGBA16F&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;gl&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token constant&quot;&gt;RGBA&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+
+    flipY&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+
+    width&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; size&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;glsl&quot;&gt;&lt;pre class=&quot;language-glsl&quot;&gt;&lt;code class=&quot;language-glsl&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;uniform&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;sampler2D&lt;/span&gt; boneTexture&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;uniform&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;int&lt;/span&gt; boneTextureSize&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;mat4&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;getBoneMatrix&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;float&lt;/span&gt; i&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;float&lt;/span&gt; j &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; i &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;4.0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;float&lt;/span&gt; x &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;mod&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;j&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;float&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;boneTextureSize&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;//所在行&lt;/span&gt;
+
+    &lt;span class=&quot;token keyword&quot;&gt;float&lt;/span&gt; y &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;floor&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;j &lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;float&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;boneTextureSize&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;//所在列&lt;/span&gt;
+
+
+    &lt;span class=&quot;token keyword&quot;&gt;float&lt;/span&gt; dx &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1.0&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;float&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;boneTextureSize&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;float&lt;/span&gt; dy &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1.0&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;float&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;boneTextureSize&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+    y &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; dy &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;y &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0.5&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;token keyword&quot;&gt;vec4&lt;/span&gt; v1 &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;texture2D&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;boneTexture&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;vec2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;dx &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;x &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0.5&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; y&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;//转换回UV范围内坐标&lt;/span&gt;
+
+    &lt;span class=&quot;token keyword&quot;&gt;vec4&lt;/span&gt; v2 &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;texture2D&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;boneTexture&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;vec2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;dx &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;x &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1.5&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; y&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;vec4&lt;/span&gt; v3 &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;texture2D&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;boneTexture&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;vec2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;dx &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;x &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;2.5&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; y&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;vec4&lt;/span&gt; v4 &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;texture2D&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;boneTexture&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;vec2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;dx &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;x &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;3.5&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; y&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; 
+
+
+    &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;mat4&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;v1&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; v2&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; v3&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; v4&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;// TODO:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li class=&quot;task-list-item&quot;&gt;
+&lt;p&gt;&lt;input type=&quot;checkbox&quot; disabled&gt; Animation&lt;/p&gt;
+&lt;/li&gt;
+&lt;li class=&quot;task-list-item&quot;&gt;
+&lt;p&gt;&lt;input type=&quot;checkbox&quot; disabled&gt; Extension&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[日常踩坑小记]]></title><description><![CDATA[存放日常工作和学习过程中的一些踩坑记录~ 踩坑总结： 兼容性： IE IE8不支持transform、background-color IE9不支持transition、animation、linear-gradient IE不支持animation变化伪类content…]]></description><link>www.todaylg.com/problem-record/</link><guid isPermaLink="false">www.todaylg.com/problem-record/</guid><pubDate>Sat, 04 May 2019 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;存放日常工作和学习过程中的一些踩坑记录~&lt;/p&gt;
 &lt;h2&gt;踩坑总结：&lt;/h2&gt;
 &lt;h3&gt;兼容性：&lt;/h3&gt;
 &lt;p&gt;&lt;strong&gt;IE&lt;/strong&gt;&lt;/p&gt;
