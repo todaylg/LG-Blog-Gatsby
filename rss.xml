@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[LG-Blog]]></title><description><![CDATA[LG-Blog]]></description><link>www.todaylg.com</link><generator>RSS for Node</generator><lastBuildDate>Fri, 24 May 2019 16:36:14 GMT</lastBuildDate><item><title><![CDATA[glTF学习笔记]]></title><description><![CDATA[当想要构建包含复杂模型的场景时，如何从建模工具导出的模型文件中解析并复原模型就成了必须要解决的一个问题。 首先需要了解一下各种三维文件的格式： 三维文件格式知多少 glTF无疑是应用于Web平台的首选格式，作为一个WebGL Renderer的LGL…]]></description><link>www.todaylg.com/glTF-record/glTF学习笔记/</link><guid isPermaLink="false">www.todaylg.com/glTF-record/glTF学习笔记/</guid><pubDate>Sat, 25 May 2019 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;当想要构建包含复杂模型的场景时，如何从建模工具导出的模型文件中解析并复原模型就成了必须要解决的一个问题。&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[LG-Blog]]></title><description><![CDATA[LG-Blog]]></description><link>www.todaylg.com</link><generator>RSS for Node</generator><lastBuildDate>Wed, 29 May 2019 12:08:54 GMT</lastBuildDate><item><title><![CDATA[glTF学习笔记]]></title><description><![CDATA[当想要构建包含复杂模型的场景时，如何从建模工具导出的模型文件中解析并复原模型就成了必须要解决的一个问题。 首先需要了解一下各种三维文件的格式： 三维文件格式知多少 glTF无疑是应用于Web平台的首选格式，作为一个WebGL Renderer的LGL…]]></description><link>www.todaylg.com/glTF-record/glTF学习笔记/</link><guid isPermaLink="false">www.todaylg.com/glTF-record/glTF学习笔记/</guid><pubDate>Sat, 25 May 2019 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;当想要构建包含复杂模型的场景时，如何从建模工具导出的模型文件中解析并复原模型就成了必须要解决的一个问题。&lt;/p&gt;
 &lt;p&gt;首先需要了解一下各种三维文件的格式：&lt;a href=&quot;https://www.bgteach.com/article/132&quot;&gt;三维文件格式知多少&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;glTF无疑是应用于Web平台的首选格式，作为一个WebGL Renderer的LGL，可以没有其他格式的Loader，但是glTFLoader还是要想办法搞出来的：&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://github.com/todaylg/glTFLoader&quot;&gt;glTFLoader of LGL&lt;/a&gt;&lt;/p&gt;
@@ -163,7 +163,28 @@ FragColor &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span c
 &lt;p&gt;&lt;a href=&quot;http://todaylg.com/glTFLoader/examples/&quot;&gt;http://todaylg.com/glTFLoader/examples/&lt;/a&gt;&lt;/p&gt;
 &lt;h3&gt;Skinning&lt;/h3&gt;
 &lt;p&gt;Skinning即蒙皮，表示将三维网格顶点联系至骨骼的过程。在此过程中，顶点需要获取其关联关节的关节矩阵，再根据蒙皮权重计算出蒙皮矩阵，从而变换顶点的位置和法线信息。&lt;/p&gt;
-&lt;p&gt;那如何在顶点着色器中获取到对应的关节矩阵呢？白嫖了一眼Three.js之后才恍然大悟，直接把所有关节矩阵保存为texture作为uniform属性，在顶点着色器中再根据绑定的skinIndex读取出来：&lt;/p&gt;
+&lt;p&gt;首先是如何计算关节矩阵？&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/KhronosGroup/glTF-Tutorials/blob/master/gltfTutorial/gltfTutorial_020_Skins.md&quot;&gt;规范&lt;/a&gt;中其实给出了计算方法的式子：&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;javascript&quot;&gt;&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;token function&quot;&gt;jointMatrix&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;j&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;
+  globalTransformOfNodeThatTheMeshIsAttachedTo&lt;span class=&quot;token operator&quot;&gt;^&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;
+  &lt;span class=&quot;token function&quot;&gt;globalTransformOfJointNode&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;j&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;
+  &lt;span class=&quot;token function&quot;&gt;inverseBindMatrixForJoint&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;j&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;关键是要注意到顶点绑定到关节位置后，在其关节空间中是不变的。所以要计算当前姿势下顶点的位置，可以：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;1.把先顶点于模型空间的绑定姿势位置转化为关节空间（即乘以inverseBindMatrixForJoint(j)），&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;2.再把关节移动到当前姿势（即乘以globalTransformOfJointNode(j)）&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;因为经过1和2两个步骤以后顶点已经是在模型空间的位置了（即相当于乘过了modelMatrix），如果之后计算Position时还要乘MVP矩阵，那就需要先再还原至关节空间（即乘以globalTransformOfNodeThatTheMeshIsAttachedTo^-1），当然如果在Shader中不乘Model矩阵的话，这步就可以直接省略了。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;glsl&quot;&gt;&lt;pre class=&quot;language-glsl&quot;&gt;&lt;code class=&quot;language-glsl&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;vec4&lt;/span&gt; Pos &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;vec4&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;position&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1.0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;vec4&lt;/span&gt; transformed &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; skinMatrix &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; Pos&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+gl_Position &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; projectionMatrix &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; viewMatrix &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; transformed&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;//model already calculate in boneMatrix&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;那如何在顶点着色器中获取到对应的关节矩阵呢？&lt;/p&gt;
+&lt;p&gt;自然是以uniform传入啦，这里有意思的是翻了下Three.js的实现，其没有直接传一个Float32Array，而是把所有关节矩阵保存为texture（4*RGBA =&gt; Mat4）然后在顶点着色器中再根据绑定的skinIndex计算坐标之后，把矩阵读取出来：&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;javascript&quot;&gt;&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;boneTexture &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Texture&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;gl&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
     image&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;boneMatrices&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
 
@@ -202,13 +223,108 @@ FragColor &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span c
 
     &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;mat4&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;v1&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; v2&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; v3&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; v4&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
 &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;// TODO:&lt;/p&gt;
+&lt;p&gt;以Texture替代直接传入矩阵数组，这样其实是多了一手操作，是因为会有兼容性的原因？还是会有性能优化？//Todo 需要验证一下。&lt;/p&gt;
+&lt;h3&gt;Animation&lt;/h3&gt;
+&lt;p&gt;glTF总通过一个单独的animations字段来存储动画信息，比如：&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;json&quot;&gt;&lt;pre class=&quot;language-json&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;&lt;span class=&quot;token property&quot;&gt;&quot;animations&quot;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+
+       &lt;span class=&quot;token property&quot;&gt;&quot;channels&quot;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;
+
+          &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+
+             &lt;span class=&quot;token property&quot;&gt;&quot;sampler&quot;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+
+             &lt;span class=&quot;token property&quot;&gt;&quot;target&quot;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+
+                &lt;span class=&quot;token property&quot;&gt;&quot;node&quot;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;  // =&gt; 要进行动画的节点
+
+                &lt;span class=&quot;token property&quot;&gt;&quot;path&quot;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;rotation&quot;&lt;/span&gt; // =&gt; 所进行的动画类型（translation、rotation、scale、weight）
+
+             &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+           &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+       &lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+
+       &lt;span class=&quot;token property&quot;&gt;&quot;samplers&quot;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;
+
+          &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+
+             &lt;span class=&quot;token property&quot;&gt;&quot;input&quot;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; // =&gt; KeyTime 动画的时间帧
+
+             &lt;span class=&quot;token property&quot;&gt;&quot;interpolation&quot;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;LINEAR&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; // =&gt; 两帧之间的插值方法
+
+             &lt;span class=&quot;token property&quot;&gt;&quot;output&quot;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt; // =&gt; 具体的动画帧数据（从accessors取）
+
+          &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+       &lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+
+    &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;通过解析数据便可以构建一条动画处理链路：&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;AnimationChannel&lt;/code&gt; =&gt; &lt;code class=&quot;language-text&quot;&gt;Animation&lt;/code&gt; =&gt; &lt;code class=&quot;language-text&quot;&gt;AnimationSystem&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;每个动画节点挂载一个Animation实例，每个Animation实例挂载一个或多个AnimationChannel（因为一个节点还可能同时进行多种类型的动画，比如translation和rotation），每个AnimationChannel则保存具体的动画数据。&lt;/p&gt;
+&lt;p&gt;AnimationSystem保存所有的动画节点，负责整体动画播放的控制，通过回调暴露到最外层：&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;javascript&quot;&gt;&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;loader&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;load&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt; animationModel&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; gltf &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; glTF &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; gltf&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;scene&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;token comment&quot;&gt;// Animation&lt;/span&gt;
+
+    animationSys &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; gltf&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;animations&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt; animationSys &lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+
+         animationSys&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;speed &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0.5&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;//控制动画速度&lt;/span&gt;
+
+    &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+    scene&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;addChild&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;glTF&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+ &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;token function&quot;&gt;requestAnimationFrame&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;update&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; deltaTime &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; lastTime &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; Date&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;now&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;update&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+
+    deltaTime &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;Date&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;now&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt; lastTime&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1000&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+    lastTime &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; Date&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;now&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;animationSys&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; animationSys&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;update&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;deltaTime&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;//更新动画&lt;/span&gt;
+
+    renderer&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;render&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; scene&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; camera &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;token function&quot;&gt;requestAnimationFrame&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;update&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;AnimationSystem通过遍历保存的Animation中的逐个AnimationChannel进行动画的数据的更新：&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;javascript&quot;&gt;&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;token function&quot;&gt;update&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;dt&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; animation &lt;span class=&quot;token keyword&quot;&gt;of&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;group&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+
+        &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;dt &lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0.016&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; dt &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0.016&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+        &lt;span class=&quot;token keyword&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; channel &lt;span class=&quot;token keyword&quot;&gt;of&lt;/span&gt; animation&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;channels&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+
+            &lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;playStep&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;animation&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; channel&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; dt&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+        &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;//Todo &lt;/p&gt;
 &lt;ul&gt;
 &lt;li class=&quot;task-list-item&quot;&gt;
-&lt;p&gt;&lt;input type=&quot;checkbox&quot; disabled&gt; Animation&lt;/p&gt;
+&lt;p&gt;&lt;input type=&quot;checkbox&quot; disabled&gt; Morph Target的weight动画&lt;/p&gt;
 &lt;/li&gt;
 &lt;li class=&quot;task-list-item&quot;&gt;
-&lt;p&gt;&lt;input type=&quot;checkbox&quot; disabled&gt; Extension&lt;/p&gt;
+&lt;p&gt;&lt;input type=&quot;checkbox&quot; disabled&gt; 支持多种插值方法&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;</content:encoded></item><item><title><![CDATA[日常踩坑小记]]></title><description><![CDATA[存放日常工作和学习过程中的一些踩坑记录~ 踩坑总结： 兼容性： IE IE8不支持transform、background-color IE9不支持transition、animation、linear-gradient IE不支持animation变化伪类content…]]></description><link>www.todaylg.com/problem-record/</link><guid isPermaLink="false">www.todaylg.com/problem-record/</guid><pubDate>Sat, 04 May 2019 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;存放日常工作和学习过程中的一些踩坑记录~&lt;/p&gt;
 &lt;h2&gt;踩坑总结：&lt;/h2&gt;
