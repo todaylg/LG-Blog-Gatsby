@@ -1,6 +1,6 @@
 ---
 title: 初探Canvas2D渲染与数据可视化
-category: "小结"
+category: "大结"
 cover: bg.jpg
 author: todaylg
 

@@ -1,6 +1,6 @@
 ---
 title: 初探WebVR与Web Audio API
-category: "小结"
+category: "大结"
 cover: bg.jpg
 author: todaylg
 

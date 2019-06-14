@@ -1,6 +1,6 @@
 ---
 title: "Web动效通用实现方案探究"
-category: "小结"
+category: "大结"
 cover: bg.jpg
 author: todaylg
 

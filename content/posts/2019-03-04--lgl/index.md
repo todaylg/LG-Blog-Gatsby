@@ -1,6 +1,6 @@
 ---
 title: "LGL"
-category: "LGL"
+category: "大结"
 cover: bg.png
 author: todaylg
 ---

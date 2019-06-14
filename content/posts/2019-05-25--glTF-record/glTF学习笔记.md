@@ -1,8 +1,9 @@
 ---
 title: glTF学习笔记
-category: "小结"
+category: "大结"
 cover: bg.jpg
 author: todaylg
+
 
 ---
 
@@ -226,7 +227,35 @@ FragColor = vec4(color, baseColor.a);
 
 Skinning即蒙皮，表示将三维网格顶点联系至骨骼的过程。在此过程中，顶点需要获取其关联关节的关节矩阵，再根据蒙皮权重计算出蒙皮矩阵，从而变换顶点的位置和法线信息。
 
-那如何在顶点着色器中获取到对应的关节矩阵呢？白嫖了一眼Three.js之后才恍然大悟，直接把所有关节矩阵保存为texture作为uniform属性，在顶点着色器中再根据绑定的skinIndex读取出来：
+首先是如何计算关节矩阵？
+
+[规范](https://github.com/KhronosGroup/glTF-Tutorials/blob/master/gltfTutorial/gltfTutorial_020_Skins.md)中其实给出了计算方法的式子：
+
+```javascript
+jointMatrix(j) =
+  globalTransformOfNodeThatTheMeshIsAttachedTo^-1 *
+  globalTransformOfJointNode(j) *
+  inverseBindMatrixForJoint(j);
+```
+
+关键是要注意到顶点绑定到关节位置后，在其关节空间中是不变的。所以要计算当前姿势下顶点的位置，可以：
+
+* 1.把先顶点于模型空间的绑定姿势位置转化为关节空间（即乘以inverseBindMatrixForJoint(j)），
+
+* 2.再把关节移动到当前姿势（即乘以globalTransformOfJointNode(j)）
+
+因为经过1和2两个步骤以后顶点已经是在模型空间的位置了（即相当于乘过了modelMatrix），如果之后计算Position时还要乘MVP矩阵，那就需要先再还原至关节空间（即乘以globalTransformOfNodeThatTheMeshIsAttachedTo^-1），当然如果在Shader中不乘Model矩阵的话，这步就可以直接省略了。
+
+```glsl
+vec4 Pos = vec4(position, 1.0);
+vec4 transformed = skinMatrix * Pos;
+
+gl_Position = projectionMatrix * viewMatrix * transformed; //model already calculate in boneMatrix
+```
+
+那如何在顶点着色器中获取到对应的关节矩阵呢？
+
+自然是以uniform传入啦，这里有意思的是翻了下Three.js的实现，其没有直接传一个Float32Array，而是把所有关节矩阵保存为texture（4*RGBA => Mat4）然后在顶点着色器中再根据绑定的skinIndex计算坐标之后，把矩阵读取出来：
 
 ```javascript
 this.boneTexture = new Texture(this.gl, {
@@ -272,8 +301,124 @@ mat4 getBoneMatrix(const in float i) {
 }
 ```
 
-// TODO:
+以Texture替代直接传入矩阵数组，这样其实是多了一手操作，是因为会有兼容性的原因？还是会有性能优化？//Todo 需要验证一下。
 
-- [ ] Animation
+### Animation
 
-- [ ] Extension
+glTF总通过一个单独的animations字段来存储动画信息，比如：
+
+```json
+"animations" : [
+    {
+
+       "channels" : [
+
+          {
+
+             "sampler" : 0,
+
+             "target" : {
+
+                "node" : 0,  // => 要进行动画的节点
+
+                "path" : "rotation" // => 所进行的动画类型（translation、rotation、scale、weight）
+
+             }
+
+           }
+
+       ],
+
+       "samplers" : [
+
+          {
+
+             "input" : 0, // => KeyTime 动画的时间帧
+
+             "interpolation" : "LINEAR", // => 两帧之间的插值方法
+
+             "output" : 1 // => 具体的动画帧数据（从accessors取）
+
+          }
+
+       ]
+
+    }
+]
+```
+
+实现动画模块无非就是将数据与相应节点实例的属性进行关联。
+
+Three.js中的动画处理模块较为复杂，属性和数据的绑定（animation/PropertyBinding）建立的一套专用的规则，头一下就被搞大了。。
+
+这里动画模块的实现参考了[Ashes](https://github.com/but0n/Ashes)的实现，数据和属性的关联依赖对象引用的关系直接进行修改同步，简单粗暴有效：
+
+通过解析数据便可以构建一条动画处理链路：
+
+`AnimationChannel` => `Animation` => `AnimationSystem`
+
+每个动画节点挂载一个Animation实例，每个Animation实例挂载一个或多个AnimationChannel（因为一个节点还可能同时进行多种类型的动画，比如同时translation和rotation），每个AnimationChannel则保存具体的动画数据。
+
+AnimationSystem保存所有的动画节点，负责整体动画播放的控制，通过回调暴露到最外层：
+
+```javascript
+loader.load( animationModel, null, gltf => {
+    let glTF = gltf.scene;
+
+    // Animation
+
+    animationSys = gltf.animations;
+
+    if ( animationSys ){
+
+         animationSys.speed = 0.5; //控制动画速度
+
+    }
+
+    scene.addChild(glTF);
+
+ });
+
+requestAnimationFrame(update);
+
+let deltaTime = 0;
+
+let lastTime = Date.now();
+
+function update() {
+
+    deltaTime = (Date.now() - lastTime)/1000;
+
+    lastTime = Date.now();
+
+    if(animationSys) animationSys.update(deltaTime); //更新动画
+
+    renderer.render({ scene, camera });
+
+    requestAnimationFrame(update);
+
+}
+```
+
+在drawCall中AnimationSystem通过遍历保存的Animation中的逐个AnimationChannel进行动画的数据的更新：
+
+```javascript
+update(dt) {
+    for (let animation of this.group) {
+
+        if (dt > 0.016) dt = 0.016;
+
+        for (let channel of animation.channels) {
+
+            this.playStep(animation, channel, dt);
+
+        }
+
+    }
+
+}
+```
+
+Todo：
+
+- [ ] 支持多种插值函数
