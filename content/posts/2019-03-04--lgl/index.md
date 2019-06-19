@@ -3,6 +3,7 @@ title: "LGL"
 category: "大结"
 cover: bg.png
 author: todaylg
+
 ---
 
 ## 前言
@@ -779,6 +780,92 @@ P = [
 
 [http://www.360doc.com/content/14/1028/10/19175681_420522154.shtml](http://www.360doc.com/content/14/1028/10/19175681_420522154.shtml)
 
+**视锥体裁剪（Frustum Culling）**
+
+视锥体裁剪即在渲染前通过计算物体是否在视锥体内，从而决定该物体是否需要绘制的过程。
+
+基本介绍和原理可参考下列文章：
+
+[http://blog.hakugyokurou.net/?p=760](http://blog.hakugyokurou.net/?p=760)
+
+[http://gad.qq.com/program/translateview/7190998](http://gad.qq.com/program/translateview/7190998)
+
+[https://zhuanlan.zhihu.com/p/66407205](https://zhuanlan.zhihu.com/p/66407205)
+
+具体实现采用边界球的方法：
+
+```javascript
+let maxRadiusSq = 0;
+//遍历所有顶点获取到中心的最大距离（即边界球半径）
+for (let i = 0, l = array.length; i < l; i += 3) {
+    tempVec3.fromArray(array, i);
+    maxRadiusSq = Math.max(maxRadiusSq, this.bounds.center.squaredDistance(tempVec3));
+}
+this.bounds.radius = Math.sqrt(maxRadiusSq);
+```
+
+边界中心的计算方法：
+
+```javascript
+for (let i = 0, l = array.length; i < l; i += 3) {
+    const x = array[i];
+    const y = array[i + 1];
+    const z = array[i + 2];
+    min.x = Math.min(x, min.x);
+    min.y = Math.min(y, min.y);
+    min.z = Math.min(z, min.z);
+    max.x = Math.max(x, max.x);
+    max.y = Math.max(y, max.y);
+    max.z = Math.max(z, max.z);
+}
+scale.sub(max, min);
+center.add(min, max).divide(2);
+```
+
+最后Camera按照边界判断是否需要剔除：
+
+```javascript
+frustumIntersectsSphere(center, radius) {
+    const normal = tempVec3b;
+  	//遍历视锥体的六个面
+  	//若物体中心在视锥体六个面之后(<-radius)，则不在视锥体内
+    for (let i = 0; i < 6; i++) {
+        const plane = this.frustum[i];
+        const distance = normal.copy(plane).dot(center) + plane.constant;
+        if (distance < -radius) return false;
+    }
+    return true;
+}
+```
+
+六个面(Frustum planes)的计算方法：
+
+计算原理可参考：
+
+[https://www.cnblogs.com/mavaL/articles/1920553.html](https://www.cnblogs.com/mavaL/articles/1920553.html)
+
+```javascript
+updateFrustum() {
+    if (!this.frustum) {
+        this.frustum = [new Vec3(), new Vec3(), new Vec3(), new Vec3(), new Vec3(), new Vec3()];
+    }
+    const m = this.projectionViewMatrix;
+  //各平面方程
+    this.frustum[0].set(m[3] - m[0], m[7] - m[4], m[11] - m[8]).constant = m[15] - m[12]; // -x
+    this.frustum[1].set(m[3] + m[0], m[7] + m[4], m[11] + m[8]).constant = m[15] + m[12]; // +x
+    this.frustum[2].set(m[3] + m[1], m[7] + m[5], m[11] + m[9]).constant = m[15] + m[13]; // +y
+    this.frustum[3].set(m[3] - m[1], m[7] - m[5], m[11] - m[9]).constant = m[15] - m[13]; // -y
+    this.frustum[4].set(m[3] - m[2], m[7] - m[6], m[11] - m[10]).constant = m[15] - m[14]; // +z (far)
+    this.frustum[5].set(m[3] + m[2], m[7] + m[6], m[11] + m[10]).constant = m[15] + m[14]; // -z (near)
+
+    for (let i = 0; i < 6; i++) {
+        const invLen = 1.0 / this.frustum[i].distance();
+        this.frustum[i].multiply(invLen);
+        this.frustum[i].constant *= invLen;
+    }
+}
+```
+
 ### Renderer
 
 因为没有任何内置材质，这里Renderer只负责管理渲染队列及根据配置项初始化gl上下文。
@@ -825,7 +912,9 @@ Program负责绑定并更新传入的uniform变量、创建及编译程序对象
 
 Geometry负责绑定及更新传入的attribute变量、创建基本的几何对象、计算几何体的边界数据。
 
-绘制多个物体时可开启[实例化](https://learnopengl-cn.github.io/04%20Advanced%20OpenGL/10%20Instancing/)
+封装[索引缓冲对象（IBO）](https://learnopengl-cn.github.io/01%20Getting%20started/04%20Hello%20Triangle/)及[实例化（Instancing）](https://learnopengl-cn.github.io/04%20Advanced%20OpenGL/10%20Instancing/)
+
+使用实例化时直接按照attribute属性使用即可
 
 ### Texture
 
@@ -1054,8 +1143,6 @@ panUp(distance, m) {
 
 移动端对`touchstart/touchend/touchmove`事件的处理方法也是同理，就不再赘述了。
 
-
-
 ### Base Primitives
 
 **Plane**
@@ -1137,7 +1224,6 @@ Plane.buildPlane(position, normal, uv, index, width, depth, -height, dSegs, hSeg
 Plane.buildPlane(position, normal, uv, index, width, height, -depth, wSegs, hSegs, 0, 1, 2, -1, -1, i += (wSegs + 1) * (dSegs + 1), ii += wSegs * dSegs); //XYZ
 
 Plane.buildPlane(position, normal, uv, index, width, height, depth, wSegs, hSegs, 0, 1, 2, 1, -1, i += (wSegs + 1) * (hSegs + 1), ii += wSegs * hSegs);
-
 ```
 
 **Sphere**
