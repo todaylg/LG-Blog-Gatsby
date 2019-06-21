@@ -42,7 +42,6 @@ class Layout extends React.Component {
       window.addEventListener("resize", this.resizeThrottler, false);
     }
   }
-
   resizeThrottler = () => {
     return timeoutThrottlerHandler(this.timeouts, "resize", 100, this.resizeHandler);
   };

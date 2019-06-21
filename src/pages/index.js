@@ -4,10 +4,24 @@ import { graphql } from "gatsby";
 import { ThemeContext } from "../layouts";
 import Blog from "../components/Blog";
 import Hero from "../components/Hero";
+import ScrollTop from "../components/ScrollTop";
 import Seo from "../components/Seo";
+import VisibilitySensor from "react-visibility-sensor";
 
 class IndexPage extends React.Component {
   separator = React.createRef();
+
+  state = {
+    fixed: false
+  };
+
+  visibilitySensorChange = val => {
+    if (val) {
+      this.setState({ fixed: false });
+    } else {
+      this.setState({ fixed: true });
+    }
+  };
 
   scrollToContent = e => {
     this.separator.current.scrollIntoView({ block: "start", behavior: "smooth" });
@@ -31,7 +45,7 @@ class IndexPage extends React.Component {
         }
       }
     } = this.props;
-
+    const { fixed } = this.state;
     const backgrounds = {
       desktop,
       tablet,
@@ -40,24 +54,37 @@ class IndexPage extends React.Component {
 
     return (
       <React.Fragment>
+        <VisibilitySensor onChange={this.visibilitySensorChange}>
+          <div className="sensor" />
+        </VisibilitySensor>
+        
         <ThemeContext.Consumer>
           {theme => (
-            <Hero scrollToContent={this.scrollToContent} backgrounds={backgrounds} theme={theme} />
+            <Hero fixed={fixed} scrollToContent={this.scrollToContent} backgrounds={backgrounds} theme={theme} />
           )}
         </ThemeContext.Consumer>
-
         <hr ref={this.separator} />
 
         <ThemeContext.Consumer>
-          {theme => <Blog posts={posts} theme={theme} />}
+          {theme => <Blog fixed={fixed} posts={posts} theme={theme} />}
         </ThemeContext.Consumer>
-
+        <ScrollTop></ScrollTop>
         <Seo />
 
         <style jsx>{`
           hr {
             margin: 0;
             border: 0;
+          }
+          .sensor {
+            display: block;
+            position: absolute;
+            bottom: 0;
+            z-index: 1;
+            left: 0;
+            right: 0;
+            height: 1px;
+            top: 30px;
           }
         `}</style>
       </React.Fragment>
