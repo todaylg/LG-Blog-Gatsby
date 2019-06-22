@@ -15,7 +15,6 @@ class Hero extends React.Component {
     fixed: PropTypes.bool
   };
   preLoadImg(ref, imgSrc){
-    console.log(ref);
     let tempImg = new Image();
     tempImg.onload = (e) => {
       ref.setAttribute('src',imgSrc);
