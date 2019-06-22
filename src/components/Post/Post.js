@@ -7,6 +7,7 @@ import Headline from "../Article/Headline";
 import Bodytext from "../Article/Bodytext";
 import Meta from "./Meta";
 import NextPrev from "./NextPrev";
+import ScrollTop from '../ScrollTop';
 
 const Post = props => {
   const {
@@ -28,6 +29,7 @@ const Post = props => {
         <Meta prefix={prefix} author={author} category={category} theme={theme} />
       </header>
       <Bodytext html={html} theme={theme} />
+      <ScrollTop></ScrollTop>
       <footer>
         <NextPrev next={nextPost} prev={prevPost} theme={theme} />
       </footer>

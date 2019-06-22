@@ -39,7 +39,7 @@ class Blog extends React.Component {
           }
           .main.bgFixed{
             opacity:1;
-	          transform:translateY(-500px);
+	          transform:translateY(-600px);
           }
           ul {
             list-style: none;
