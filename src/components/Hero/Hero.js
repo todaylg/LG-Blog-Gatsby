@@ -14,14 +14,26 @@ class Hero extends React.Component {
     theme: PropTypes.object.isRequired,
     fixed: PropTypes.bool
   };
-
+  preLoadImg(ref, imgSrc){
+    console.log(ref);
+    let tempImg = new Image();
+    tempImg.onload = (e) => {
+      ref.setAttribute('src',imgSrc);
+      ref.classList.add('loadFin');
+    }
+    tempImg.src = imgSrc;
+  }
+  componentDidMount(){
+    this.preLoadImg(this.refs['yz'],yzImg);
+    this.preLoadImg(this.refs['bz'],bzImg);
+  }
   render() {
     const { backgrounds, theme, fixed } = this.props;
     return (
       <React.Fragment>
         <section className={`hero ${fixed?'bgFixed':''}`}>
-          <img id="yz" src={yzImg} />
-          <img id='bz' src={bzImg} />
+          <img id="yz" ref="yz"/>
+          <img id='bz' ref="bz"/>
         </section>
         {/* --- STYLES --- */}
         <style jsx>{`
@@ -77,7 +89,7 @@ class Hero extends React.Component {
             opacity: 0;
 		        transform: translateY(-100%) scale(.9);
           }
-          #yz{
+          #yz.loadFin{
             width: 35%;
             position: absolute;
             bottom: 0;
@@ -86,7 +98,7 @@ class Hero extends React.Component {
             transform:translateX(-10px);
             animation:yzImgMove 2.5s ease-in normal 1 forwards;
           }
-          #bz{
+          #bz.loadFin{
             width: 42%;
             position: absolute;
             bottom: 0;
