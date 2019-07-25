@@ -3,7 +3,6 @@ title: Post-Processing学习笔记
 category: "小结"
 cover: bg.jpg
 author: todaylg
-
 ---
 
 Post Processing Effect指的是后期处理效果，这些效果的实现是基于已经渲染的场景之上的，即通过将场景以纹理形式渲染到一个覆盖全屏的四边形上，再对纹理图形进行处理：
@@ -207,7 +206,7 @@ void main(void) {
 }
 ```
 
-MTR在WebGL1.0依赖[WEBGL\_draw\_buffers扩展](https://developer.mozilla.org/zh-CN/docs/Web/API/WEBGL_draw_buffers)的支持，在WebGL2.0原生支持：[drawBuffers](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/drawBuffers)，但是以当前最新版本的Chrome测试，浏览器还并没有实现支持。。
+MTR在WebGL1.0依赖[WEBGL\_draw\_buffers扩展](https://developer.mozilla.org/zh-CN/docs/Web/API/WEBGL_draw_buffers)的支持，在WebGL2.0原生支持：[drawBuffers](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/drawBuffers)
 
 **亮部提取：**
 
@@ -378,7 +377,7 @@ let uniformsProp = {
 
 变换UV坐标模拟多种扰乱效果：
 
-``` glsl
+```glsl
 float rand(vec2 co){
     return fract(sin(dot(co.xy ,vec2(12.9898,78.233))) * 43758.5453);//magic
 }
@@ -388,8 +387,8 @@ void main() {
     float xs = floor(gl_FragCoord.x / 0.5);
     float ys = floor(gl_FragCoord.y / 0.5);
     vec4 normal = texture (perturbationMap, p*random*random);
-  	// 1.block effect 块状随机扰乱
-  	// Y轴
+      // 1.block effect 块状随机扰乱
+      // Y轴
     if(p.y<distortion_x+col_s && p.y>distortion_x-col_s*random) {
         if(seed_x>0.){
             p.y = 1. - (p.y + distortion_y);
@@ -397,7 +396,7 @@ void main() {
             p.y = distortion_y;
         }
     }
-	// X轴
+    // X轴
     if(p.x<distortion_y+col_s && p.x>distortion_y-col_s*random) {
         if(seed_y>0.){
             p.x=distortion_x;
@@ -421,16 +420,113 @@ void main() {
 }
 ```
 
+### Vignette
+
+Vignette效果是根据当前片元的采样UV坐标与UV中心坐标的距离，对屏幕的颜色进行插值影响：
+
+```javascript
+vec4 mainImage(const in vec4 inputColor, const in vec2 uv) {
+	const vec2 center = vec2(0.5);
+	vec3 color = inputColor.rgb;
+	#ifdef ESKIL
+  // Enable Eskil's vignette technique
+		vec2 coord = (uv - center) * vec2(offset);
+		color = mix(color, vec3(1.0 - darkness), dot(coord, coord));
+	#else
+		float d = distance(uv, center);
+		color *= smoothstep(0.8, offset * 0.799, d * (darkness + offset));//边缘
+ 		//smoothstep(edge0, edge1, x):
+		//t = clamp((x - edge0) / (edge1 - edge0), 0.0, 1.0);
+    //return t * t * (3.0 - 2.0 * t);
+	#endif
+	return vec4(color, inputColor.a);
+}
+
+void main() {
+  vec4 textureColor = texture( tMap, vUv );
+  FragColor =  mainImage(textureColor, vUv);
+}
+```
+
+### Depth of Field（DOF）
+
+DOF的效果旨在模仿相机的[景深](https://capbone.com/depth-of-field-and-aperture-focal-distance/)概念，根据一个阀值范围和物体相对与相机的深度，对屏幕颜色进行模糊处理：
+
+```javascript
+vec4 calculateBokeh(const in vec4 inputColor, const in vec2 uv, const in float depth, sampler2D inputBuffer) {
+	vec2 aspectCorrection = vec2(1.0, aspect);
+	float focusNear = clamp(focus - dof, 0.0, 1.0);
+	float focusFar = clamp(focus + dof, 0.0, 1.0);
+	// Calculate a DoF mask.
+	float low = step(depth, focusNear);
+	float high = step(focusFar, depth);
+
+	float factor = (depth - focusNear) * low + (depth - focusFar) * high;
+	vec2 dofBlur = vec2(clamp(factor * aperture, -maxBlur, maxBlur));
+
+	vec2 dofblur9 = dofBlur * 0.9;
+	vec2 dofblur7 = dofBlur * 0.7;
+	vec2 dofblur4 = dofBlur * 0.4;
+
+	vec4 color = inputColor;
+	color += texture(inputBuffer, uv + (vec2( 0.0,   0.4 ) * aspectCorrection) * dofBlur);
+	color += texture(inputBuffer, uv + (vec2( 0.15,  0.37) * aspectCorrection) * dofBlur);
+	color += texture(inputBuffer, uv + (vec2( 0.29,  0.29) * aspectCorrection) * dofBlur);
+	color += texture(inputBuffer, uv + (vec2(-0.37,  0.15) * aspectCorrection) * dofBlur);
+	color += texture(inputBuffer, uv + (vec2( 0.40,  0.0 ) * aspectCorrection) * dofBlur);
+	color += texture(inputBuffer, uv + (vec2( 0.37, -0.15) * aspectCorrection) * dofBlur);
+	color += texture(inputBuffer, uv + (vec2( 0.29, -0.29) * aspectCorrection) * dofBlur);
+	color += texture(inputBuffer, uv + (vec2(-0.15, -0.37) * aspectCorrection) * dofBlur);
+	color += texture(inputBuffer, uv + (vec2( 0.0,  -0.4 ) * aspectCorrection) * dofBlur);
+	color += texture(inputBuffer, uv + (vec2(-0.15,  0.37) * aspectCorrection) * dofBlur);
+	color += texture(inputBuffer, uv + (vec2(-0.29,  0.29) * aspectCorrection) * dofBlur);
+	color += texture(inputBuffer, uv + (vec2( 0.37,  0.15) * aspectCorrection) * dofBlur);
+	color += texture(inputBuffer, uv + (vec2(-0.4,   0.0 ) * aspectCorrection) * dofBlur);
+	color += texture(inputBuffer, uv + (vec2(-0.37, -0.15) * aspectCorrection) * dofBlur);
+	color += texture(inputBuffer, uv + (vec2(-0.29, -0.29) * aspectCorrection) * dofBlur);
+	color += texture(inputBuffer, uv + (vec2( 0.15, -0.37) * aspectCorrection) * dofBlur);
+
+	color += texture(inputBuffer, uv + (vec2( 0.15,  0.37) * aspectCorrection) * dofblur9);
+	color += texture(inputBuffer, uv + (vec2(-0.37,  0.15) * aspectCorrection) * dofblur9);
+	color += texture(inputBuffer, uv + (vec2( 0.37, -0.15) * aspectCorrection) * dofblur9);
+	color += texture(inputBuffer, uv + (vec2(-0.15, -0.37) * aspectCorrection) * dofblur9);
+	color += texture(inputBuffer, uv + (vec2(-0.15,  0.37) * aspectCorrection) * dofblur9);
+	color += texture(inputBuffer, uv + (vec2( 0.37,  0.15) * aspectCorrection) * dofblur9);
+	color += texture(inputBuffer, uv + (vec2(-0.37, -0.15) * aspectCorrection) * dofblur9);
+	color += texture(inputBuffer, uv + (vec2( 0.15, -0.37) * aspectCorrection) * dofblur9);
+
+	color += texture(inputBuffer, uv + (vec2( 0.29,  0.29) * aspectCorrection) * dofblur7);
+	color += texture(inputBuffer, uv + (vec2( 0.40,  0.0 ) * aspectCorrection) * dofblur7);
+	color += texture(inputBuffer, uv + (vec2( 0.29, -0.29) * aspectCorrection) * dofblur7);
+	color += texture(inputBuffer, uv + (vec2( 0.0,  -0.4 ) * aspectCorrection) * dofblur7);
+	color += texture(inputBuffer, uv + (vec2(-0.29,  0.29) * aspectCorrection) * dofblur7);
+	color += texture(inputBuffer, uv + (vec2(-0.4,   0.0 ) * aspectCorrection) * dofblur7);
+	color += texture(inputBuffer, uv + (vec2(-0.29, -0.29) * aspectCorrection) * dofblur7);
+	color += texture(inputBuffer, uv + (vec2( 0.0,   0.4 ) * aspectCorrection) * dofblur7);
+
+	color += texture(inputBuffer, uv + (vec2( 0.29,  0.29) * aspectCorrection) * dofblur4);
+	color += texture(inputBuffer, uv + (vec2( 0.4,   0.0 ) * aspectCorrection) * dofblur4);
+	color += texture(inputBuffer, uv + (vec2( 0.29, -0.29) * aspectCorrection) * dofblur4);
+	color += texture(inputBuffer, uv + (vec2( 0.0,  -0.4 ) * aspectCorrection) * dofblur4);
+	color += texture(inputBuffer, uv + (vec2(-0.29,  0.29) * aspectCorrection) * dofblur4);
+	color += texture(inputBuffer, uv + (vec2(-0.4,   0.0 ) * aspectCorrection) * dofblur4);
+	color += texture(inputBuffer, uv + (vec2(-0.29, -0.29) * aspectCorrection) * dofblur4);
+	color += texture(inputBuffer, uv + (vec2( 0.0,   0.4 ) * aspectCorrection) * dofblur4);
+
+	return color / 41.0;
+}
+```
+
 Todo：
 
 - [ ] ToneMapping
 
-- [ ] Vignette
+- [x] Vignette
 
 - [ ] LensFlare
 
 - [ ] ReProjection
 
-- [ ] Depth of Field（DOF）
+- [x] Depth of Field（DOF）
 
 - [ ] Motion Blur

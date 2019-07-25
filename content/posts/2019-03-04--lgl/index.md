@@ -4,6 +4,7 @@ category: "大结"
 cover: bg.png
 author: todaylg
 
+
 ---
 
 ## 前言
@@ -827,8 +828,8 @@ center.add(min, max).divide(2);
 ```javascript
 frustumIntersectsSphere(center, radius) {
     const normal = tempVec3b;
-  	//遍历视锥体的六个面
-  	//若物体中心在视锥体六个面之后(<-radius)，则不在视锥体内
+      //遍历视锥体的六个面
+      //若物体中心在视锥体六个面之后(<-radius)，则不在视锥体内
     for (let i = 0; i < 6; i++) {
         const plane = this.frustum[i];
         const distance = normal.copy(plane).dot(center) + plane.constant;
@@ -1242,6 +1243,6 @@ ToAdd:
 
 - [ ] Text：字体渲染的方法
 
-- [ ] Post：后期处理
+- [x] Post：后期处理
 
-- [ ] glTFLoader：这个单拆一篇文章
+- [x] glTFLoader：这个单拆一篇文章

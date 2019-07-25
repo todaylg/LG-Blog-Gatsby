@@ -3,8 +3,6 @@ title: glTF学习笔记
 category: "大结"
 cover: bg.jpg
 author: todaylg
-
-
 ---
 
 当想要构建包含复杂模型的场景时，如何从建模工具导出的模型文件中解析并复原模型就成了必须要解决的一个问题。
@@ -15,7 +13,7 @@ glTF无疑是应用于Web平台的首选格式，作为一个WebGL Renderer的LG
 
 [glTFLoader of LGL](https://github.com/todaylg/glTFLoader)
 
-当前Animation和Extension还不支持，在实践过程中又踩了几块之前没有学习到的知识，总结备忘一波：
+当前~~Animation和~~Extension还不支持，在实践过程中又踩了几块之前没有学习到的知识，总结备忘一波：
 
 ## glTF
 
@@ -421,4 +419,6 @@ update(dt) {
 
 Todo：
 
+- [x] Animation
+- [ ] Extension
 - [ ] 支持多种插值函数
