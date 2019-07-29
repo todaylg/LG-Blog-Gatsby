@@ -5,6 +5,7 @@ cover: bg.png
 author: todaylg
 
 
+
 ---
 
 给场景添加上shadow可以大大提高场景的真实感，所以讲道理关于Shadow的实现还是要学习一波的～
@@ -158,14 +159,6 @@ float readPerspectiveDepth(sampler2D depthSampler, vec2 coord, float near, float
     viewZ = viewZToOrthographicDepth(viewZ, near, far);
     return viewZ;
 }
-
-float readCubeMapDepth(samplerCube depthSampler, vec3 coord, float near, float far ) {
-    float fragCoordZ = texture(depthSampler, coord).r; // Screen Space [0,1]
-    float z = fragCoordZ * 2.0 - 1.0; // Clip Space [-1,1]
-    float viewZ = perspectiveDepthToViewZ(fragCoordZ, near, far); // View Space
-    viewZ = viewZToOrthographicDepth(viewZ, near, far); // linear
-    return viewZ;
-}
 ```
 
 **CubeDepthTexture：**
@@ -179,7 +172,6 @@ this.gl.bindTexture(gl.TEXTURE_CUBE_MAP, cubeTexture);
 ...//设置Texture参数
 //渲染每个面:
 for (let i = 0; i < 6; i++) {
-
     this.gl.framebufferTexture2D(depthBuffer.target, this.gl.DEPTH_ATTACHMENT, this.gl.TEXTURE_CUBE_MAP_POSITIVE_X + i, light.depthTexture.texture, 0);
     renderScene();
 }
@@ -333,26 +325,44 @@ vec3 CalcPointLight(PointLight pointLight, vec3 normal){
 }
 ```
 
-点光源的阴影依赖CubeDepthTexture，其他的大同小异：
+点光源的阴影依赖CubeDepthTexture，在渲染深度贴的时候写入片元与光源的线性距离作为深度值：
+
+``` glsl
+void main() {
+    #ifdef POINT_SHADOW
+        // get distance between fragment and light source
+        float lightDistance = length(vFragPos - lightPos);
+        // map to [0;1] range by dividing by far_plane
+        lightDistance = lightDistance / far;
+        // write this as modified depth
+        gl_FragDepth = lightDistance;
+    #endif
+    // gl_FragDepth = gl_FragCoord.z;
+}
+```
+
+渲染点阴影的时候再直接进行比较：
 
 ```glsl
-float pointShadowMaskCal(samplerCube shadowMap, vec4 fragPosLightSpace, PointLight pointLight) {
 
+float readCubeMapDepth(samplerCube depthSampler, vec3 coord, float far ) {
+    float distanceZ = texture(depthSampler, coord).r; // Screen Space [0,1]
+    // (0=>1) => (0=>far)
+    distanceZ +=  0.0002; // bias
+    distanceZ *= far;
+    return distanceZ;
+}
+float pointShadowMaskCal(samplerCube shadowMap, PointLight pointLight) {
     // Get vector between fragment position and light position
     vec3 fragToLight = vFragPos - pointLight.lightPos; //View Space
-    float currentDepth = length(fragToLight);
-    // get linear depth: (0=>1)
-    float closestDepth = readCubeMapDepth(shadowMap, fragToLight, pointLight.lightCameraNear, pointLight.lightCameraFar);
-    // bias
-    closestDepth +=  0.0002;
-    // (0=>1) => (0=>far)
-    closestDepth *= pointLight.lightCameraFar;
+    float currentDepth = length(fragToLight);//View Distance
+    float closestDepth = readCubeMapDepth(shadowMap, fragToLight, pointLight.lightCameraFar);
     float shadow = step(currentDepth, closestDepth);
     return shadow;
 }
 ```
 
-最后再将各个光源结果累加：
+最后再将各个光源结果累加即可得到结果：
 
 ```glsl
 void main() {
