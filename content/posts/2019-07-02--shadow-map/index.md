@@ -4,8 +4,6 @@ category: "小结"
 cover: bg.png
 author: todaylg
 
-
-
 ---
 
 给场景添加上shadow可以大大提高场景的真实感，所以讲道理关于Shadow的实现还是要学习一波的～
@@ -18,7 +16,7 @@ author: todaylg
 
 总结一波实践Shadow Map的涉及的一些原理以及实践接入LGL过程中所遇到的问题：
 
-[实践Example](http://todaylg.com/LGL/examples/?src=shadowMap_DirSpot.html)
+[实践Example](http://todaylg.com/LGL/examples/?src=shadowMap_Spot.html)
 
 ## ShadowMap
 
@@ -327,7 +325,7 @@ vec3 CalcPointLight(PointLight pointLight, vec3 normal){
 
 点光源的阴影依赖CubeDepthTexture，在渲染深度贴的时候写入片元与光源的线性距离作为深度值：
 
-``` glsl
+```glsl
 void main() {
     #ifdef POINT_SHADOW
         // get distance between fragment and light source

@@ -5,6 +5,7 @@ cover: bg.jpg
 author: todaylg
 
 
+
 ---
 
 ## Flex布局基础
@@ -17,9 +18,9 @@ Flex即弹性布局(Flexible Box)，父元素设置为flex布局后，子元素�
 
 **理解flex最重要的个人觉得就是理解主轴(X轴)和副轴(Y轴)啦**,设想有了x和y轴，在二维(即平面)中还有什么布局是不能实现的呢？当然，也会有一些特殊的布局要求（比如倒序等等），这些再结合flex容器的一些属性，那么也是非常轻松的解决了
 
-#### 属性
+## 属性
 
-##### 容器(Box)属性
+### 容器(Box)属性
 
 1.Flex-direction
 
@@ -92,7 +93,7 @@ space-around：每条轴线两侧的间隔都相等。
 row nowrap(defalut)
 ```
 
-##### Item的属性
+### Item的属性
 
 1.order
 
