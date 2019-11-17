@@ -1,4 +1,54 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[LG-Blog]]></title><description><![CDATA[LG-Blog]]></description><link>www.todaylg.com</link><generator>RSS for Node</generator><lastBuildDate>Sat, 31 Aug 2019 07:08:26 GMT</lastBuildDate><item><title><![CDATA[《Mathematics for 3D Game Programming and Computer Graphics》读书笔记 (上)]]></title><description><![CDATA[学习的过程中深感自己的地基不够牢固，决定补习巩固一波基础知识。 这本书涵盖了图形学相关的各方面数学知识，希望通过阅读这本书籍能补回丢掉的数学知识，也可以提高自己英语书籍的 疯狂查词典 阅读能力。 本着实践为主的目的，尽量能实践的就搂个Example…]]></description><link>www.todaylg.com/math-base-1/</link><guid isPermaLink="false">www.todaylg.com/math-base-1/</guid><pubDate>Wed, 24 Jul 2019 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;学习的过程中深感自己的地基不够牢固，决定补习巩固一波基础知识。&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[LG-Blog]]></title><description><![CDATA[LG-Blog]]></description><link>www.todaylg.com</link><generator>RSS for Node</generator><lastBuildDate>Sun, 17 Nov 2019 10:54:24 GMT</lastBuildDate><item><title><![CDATA[Sakura是怎样炼成的]]></title><description><![CDATA[平常在动漫里其实可以非常高频的看到各种伴随樱花的场景，而这些场景又都美得一批，每每看到这些场景让人都不由自主的连连称奇、拍案叫绝、惊为天人、振聋发聩、大呼过瘾 从此对 Sakura 有了执念。 其实有许多大牛前辈早已在 Web 中进行了实现： 有使用 Canvas2D…]]></description><link>www.todaylg.com/sakura/</link><guid isPermaLink="false">www.todaylg.com/sakura/</guid><pubDate>Mon, 11 Nov 2019 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;平常在动漫里其实可以非常高频的看到各种伴随樱花的场景，而这些场景又都美得一批，每每看到这些场景让人都不由自主的连连称奇、拍案叫绝、惊为天人、振聋发聩、大呼过瘾&lt;/p&gt;
+&lt;img src=&quot;https://raw.githubusercontent.com/todaylg/LG_Parallax/master/images/BG%20_bg.png&quot; style=&quot;width:100%&quot;&gt;
+&lt;p&gt;从此对 Sakura 有了执念。&lt;/p&gt;
+&lt;p&gt;其实有许多大牛前辈早已在 Web 中进行了实现：&lt;/p&gt;
+&lt;p&gt;有使用&lt;strong&gt;Canvas2D&lt;/strong&gt;的：比如路人女主的&lt;a href=&quot;https://www.saenai.tv/&quot;&gt;官网&lt;/a&gt;在第二季还未开播的时候，网站的入场就使用的是大量樱花飘过的场景(可惜如今的官网已经改版掉了)，类似现在官网上这个&lt;a href=&quot;https://www.saenai.tv/misakiten/&quot;&gt;页面&lt;/a&gt;的效果(基于&lt;a href=&quot;https://github.com/VincentGarreau/particles.js&quot;&gt;particles.js&lt;/a&gt;)，实现的原理其实就是若干张樱花图片作为素材(ctx.drawImage)+位移计算。&lt;/p&gt;
+&lt;p&gt;可惜效果和性能上都差强人意。&lt;/p&gt;
+&lt;p&gt;当然也有上&lt;strong&gt;WebGL&lt;/strong&gt;的：比如直接建模一个简单樱花模型的&lt;a href=&quot;https://yiwenl.github.io/Sketches/exps/32&quot;&gt;这个页面&lt;/a&gt;，模型+instance其实已经能获得不错的效果与性能了：&lt;a href=&quot;http://todaylg.com/LGL/examples/?src=instance.html&quot;&gt;LGL-instance&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;但是要说最狠的，那还得是CodePen 上的&lt;a href=&quot;https://codepen.io/FrankFitzGerald/pen/LAbfm&quot;&gt;Sakura Animation using WebGL&lt;/a&gt;，完全没有使用任何图片素材，效果全部通过Shader计算及绘制。&lt;/p&gt;
+&lt;p&gt;白嫖这个牛皮的效果其实很久了，可惜当年水平太垃圾，压根看不懂，只能瞎改几个数值凑凑效果。&lt;/p&gt;
+&lt;p&gt;时过境迁，现在终于是能看个一知半解了，作为一名秉持着&lt;strong&gt;“白嫖也要知其所以然”&lt;/strong&gt;学术精神的白学家，效果分析只会迟到而不会不来，所以讲道理必须补一波“Sakura是怎样炼成的”，上Three.js从头搂一个专用的Sakura效果岂不美滋滋：&lt;/p&gt;
+&lt;iframe
+     src=&quot;https://codesandbox.io/embed/sakura-tm298?fontsize=14&amp;hidenavigation=1&amp;theme=dark&quot;
+     style=&quot;width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;&quot;
+     title=&quot;Sakura&quot;
+     allow=&quot;geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb&quot;
+     sandbox=&quot;allow-modals allow-forms allow-popups allow-scripts allow-same-origin&quot;
+&gt;&lt;/iframe&gt;
+&lt;h2&gt;Shape&lt;/h2&gt;
+&lt;p&gt;前面也提到了这是一个纯 WebGL 效果，没有使用素材图片，所以首先最基础的一步自然是 Sakura 的形状绘制。&lt;/p&gt;
+&lt;p&gt;直接通过片元着色器绘制一些图案其实并不罕见，比如：&lt;a href=&quot;https://www.shadertoy.com/&quot;&gt;shadertoy&lt;/a&gt;、&lt;a href=&quot;http://glslsandbox.com/&quot;&gt;glslsandbox&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;所以我们哗啦一下就画出一个椭圆了！&lt;/p&gt;
+&lt;iframe height=&quot;300&quot; style=&quot;width: 100%;&quot; scrolling=&quot;no&quot; title=&quot;Threejs-Sakura-Step1:Ellipse&quot; src=&quot;https://codepen.io/todaylg/embed/NWWBdgj?height=300&amp;theme-id=default&amp;default-tab=js,result&quot; frameborder=&quot;no&quot; allowtransparency=&quot;true&quot; allowfullscreen=&quot;true&quot;&gt;
+  See the Pen &lt;a href=&apos;https://codepen.io/todaylg/pen/NWWBdgj&apos;&gt;Threejs-Sakura-Step1:Ellipse&lt;/a&gt; by todaylg
+  (&lt;a href=&apos;https://codepen.io/todaylg&apos;&gt;@todaylg&lt;/a&gt;) on &lt;a href=&apos;https://codepen.io&apos;&gt;CodePen&lt;/a&gt;.
+&lt;/iframe&gt;
+&lt;p&gt;旋转一些角度并且通过透明度裁剪一下哗啦就可以画出基本形状了！&lt;/p&gt;
+&lt;iframe height=&quot;300&quot; style=&quot;width: 100%;&quot; scrolling=&quot;no&quot; title=&quot;Threejs-Sakura-Step2:Sakura Shape&quot; src=&quot;https://codepen.io/todaylg/embed/yLLxweg?height=300&amp;theme-id=default&amp;default-tab=js,result&quot; frameborder=&quot;no&quot; allowtransparency=&quot;true&quot; allowfullscreen=&quot;true&quot;&gt;
+  See the Pen &lt;a href=&apos;https://codepen.io/todaylg/pen/yLLxweg&apos;&gt;Threejs-Sakura-Step2:Sakura Shape&lt;/a&gt; by todaylg
+  (&lt;a href=&apos;https://codepen.io/todaylg&apos;&gt;@todaylg&lt;/a&gt;) on &lt;a href=&apos;https://codepen.io&apos;&gt;CodePen&lt;/a&gt;.
+&lt;/iframe&gt;
+&lt;h2&gt;Vertex Animation&lt;/h2&gt;
+&lt;p&gt;2D 扩展到 3D，添加上各个轴向的一些随机旋转，哗啦一下就旋转起来了！&lt;/p&gt;
+&lt;iframe height=&quot;300&quot; style=&quot;width: 100%;&quot; scrolling=&quot;no&quot; title=&quot;Threejs-Sakura-Step3:Vertex Animation&quot; src=&quot;https://codepen.io/todaylg/embed/OJJoYxa?height=300&amp;theme-id=default&amp;default-tab=js,result&quot; frameborder=&quot;no&quot; allowtransparency=&quot;true&quot; allowfullscreen=&quot;true&quot;&gt;
+  See the Pen &lt;a href=&apos;https://codepen.io/todaylg/pen/OJJoYxa&apos;&gt;Threejs-Sakura-Step3:Vertex Animation&lt;/a&gt; by todaylg
+  (&lt;a href=&apos;https://codepen.io/todaylg&apos;&gt;@todaylg&lt;/a&gt;) on &lt;a href=&apos;https://codepen.io&apos;&gt;CodePen&lt;/a&gt;.
+&lt;/iframe&gt;
+&lt;h2&gt;Particle&lt;/h2&gt;
+&lt;p&gt;粒子化哗啦一下数量就多了：&lt;/p&gt;
+&lt;iframe height=&quot;300&quot; style=&quot;width: 100%;&quot; scrolling=&quot;no&quot; title=&quot;Threejs-Sakura-Step4:Particle&quot; src=&quot;https://codepen.io/todaylg/embed/mddQmbW?height=300&amp;theme-id=default&amp;default-tab=js,result&quot; frameborder=&quot;no&quot; allowtransparency=&quot;true&quot; allowfullscreen=&quot;true&quot;&gt;
+  See the Pen &lt;a href=&apos;https://codepen.io/todaylg/pen/mddQmbW&apos;&gt;Threejs-Sakura-Step4:Particle&lt;/a&gt; by todaylg
+  (&lt;a href=&apos;https://codepen.io/todaylg&apos;&gt;@todaylg&lt;/a&gt;) on &lt;a href=&apos;https://codepen.io&apos;&gt;CodePen&lt;/a&gt;.
+&lt;/iframe&gt;
+&lt;h2&gt;Light/PostProcessing&lt;/h2&gt;
+&lt;p&gt;再加个简单的方向光和辉光、暗角的后处理，窃个 Megumi 的素材图，哗啦一下美爆了好吧！Rua！！（图片跨域的原因此处用的 codesandbox，速度会慢些）&lt;/p&gt;
+&lt;iframe
+     src=&quot;https://codesandbox.io/embed/sakura-tm298?fontsize=14&amp;hidenavigation=1&amp;theme=dark&quot;
+     style=&quot;width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;&quot;
+     title=&quot;Sakura&quot;
+     allow=&quot;geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb&quot;
+     sandbox=&quot;allow-modals allow-forms allow-popups allow-scripts allow-same-origin&quot;
+&gt;&lt;/iframe&gt;</content:encoded></item><item><title><![CDATA[《Mathematics for 3D Game Programming and Computer Graphics》读书笔记 (上)]]></title><description><![CDATA[学习的过程中深感自己的地基不够牢固，决定补习巩固一波基础知识。 这本书涵盖了图形学相关的各方面数学知识，希望通过阅读这本书籍能补回丢掉的数学知识，也可以提高自己英语书籍的 疯狂查词典 阅读能力。 本着实践为主的目的，尽量能实践的就搂个Example…]]></description><link>www.todaylg.com/math-base-1/</link><guid isPermaLink="false">www.todaylg.com/math-base-1/</guid><pubDate>Wed, 24 Jul 2019 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;学习的过程中深感自己的地基不够牢固，决定补习巩固一波基础知识。&lt;/p&gt;
 &lt;p&gt;这本书涵盖了图形学相关的各方面数学知识，希望通过阅读这本书籍能补回丢掉的数学知识，也可以提高自己英语书籍的&lt;del&gt;疯狂查词典&lt;/del&gt;阅读能力。&lt;/p&gt;
 &lt;p&gt;本着实践为主的目的，尽量能实践的就搂个Example，慢慢整吧～&lt;/p&gt;
 &lt;p&gt;公式编辑使用&lt;a href=&quot;https://blog.csdn.net/qingdujun/article/details/80805613&quot;&gt;LateX&lt;/a&gt;，在线预览可在&lt;a href=&quot;https://www.codecogs.com/latex/eqneditor.php?lang=zh-cn&quot;&gt;这里&lt;/a&gt;，养成好习惯从现在开始，强烈推荐。&lt;/p&gt;
@@ -3605,9 +3655,9 @@ Plane&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span clas
 &lt;td align=&quot;left&quot;&gt;&lt;strong&gt;保存完走&lt;/strong&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
-&lt;/table&gt;</content:encoded></item><item><title><![CDATA[初探WebVR与Web Audio API]]></title><description><![CDATA[借着毕设的机会，接触了一下WebVR和Web Audio API，以及通信本行的数字信号处理的知识： 老样子，先上结果： WebVR-Audio-Visualizer 当年在DPS…]]></description><link>www.todaylg.com/webVR-and-web-audio-api/</link><guid isPermaLink="false">www.todaylg.com/webVR-and-web-audio-api/</guid><pubDate>Sun, 01 Jul 2018 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;借着毕设的机会，接触了一下WebVR和Web Audio API，以及通信本行的数字信号处理的知识：&lt;/p&gt;
+&lt;/table&gt;</content:encoded></item><item><title><![CDATA[初探WebVR与Web Audio API]]></title><description><![CDATA[借着毕设的机会，接触了一下WebVR和Web Audio API，以及通信本行的数字信号处理的知识： 老样子，先上结果： WebVR-Audio-Visualizer 当年在DSP…]]></description><link>www.todaylg.com/webVR-and-web-audio-api/</link><guid isPermaLink="false">www.todaylg.com/webVR-and-web-audio-api/</guid><pubDate>Sun, 01 Jul 2018 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;借着毕设的机会，接触了一下WebVR和Web Audio API，以及通信本行的数字信号处理的知识：&lt;/p&gt;
 &lt;p&gt;老样子，先上结果：&lt;a href=&quot;https://github.com/todaylg/WebVR-Audio-Visualizer&quot;&gt;WebVR-Audio-Visualizer&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;当年在DPS和高数课上流的口水化成了如今流下的泪水。。。内心不尽五味杂陈，&lt;strong&gt;技多不压身&lt;/strong&gt;属实是有道理的呀，学的时候觉得没有用，用的时候才后悔没好好学，人家毕业扔课本，我却寄课本：高数、DSP、从隔壁计科借过来的四大门课本，缺的东西属实有点忒多了。。。&lt;/p&gt;
+&lt;p&gt;当年在DSP和高数课上流的口水化成了如今流下的泪水。。。内心不尽五味杂陈，&lt;strong&gt;技多不压身&lt;/strong&gt;属实是有道理的呀，学的时候觉得没有用，用的时候才后悔没好好学，人家毕业扔课本，我却寄课本：高数、DSP、从隔壁计科借过来的四大门课本，缺的东西属实有点忒多了。。。&lt;/p&gt;
 &lt;p&gt;总结一句精辟的话：排除两个前提条件（起步早、天赋高）的前提下，本科阶段跨离自己本专业自学转软件方向最大的两个问题在于&lt;strong&gt;知识体系的完整程度&lt;/strong&gt;和&lt;strong&gt;研究深度&lt;/strong&gt;。这些问题只能靠自己后面用时间给填回来，希望自己继续加油吧！&lt;/p&gt;
 &lt;p&gt;回到正题，因为涉及的新东西有点多，所以小结拆分为3个部分，分别介绍&lt;strong&gt;WebVR&lt;/strong&gt;、&lt;strong&gt;Web Audio API&lt;/strong&gt;、&lt;strong&gt;音乐节奏检测&lt;/strong&gt;。走你～&lt;/p&gt;
 &lt;h2&gt;WebVR&lt;/h2&gt;
