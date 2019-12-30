@@ -177,7 +177,7 @@ export { autoDetectRenderer } from './autoDetectRenderer';
 
 而穿插在其中的Texture比较复杂，十分懵逼。。感觉好像缺图形学的知识了。。所以瞟一眼得了先。。最原始的是BasicTexture类，根据不同的资源又有VideoBaseTexture这种处理具体类型资源的辅助类，最后RenderTexture根据WebGL和Canvas又会有RenderTarget类和CanvasBuffer类。。。。。额O__O "…还是不看了😂
 
-**TODO：Tips(2019.3.30):**新文章链接（RGBA动画）
+**(From：2019.12.31):真是菜鸡。。。** 
 
 对了！我们主要研究的是图形，所以重点瞅瞅这个Graphics，Pixi渲染图形也支持WebGL简直美滋滋，正和我们意，具体到代码就是数学家与矩阵的狂欢了。。
 

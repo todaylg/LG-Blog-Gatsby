@@ -8,7 +8,8 @@ author: todaylg
 Post Processing Effect指的是后期处理效果，这些效果的实现是基于已经渲染的场景之上的，即通过将场景以纹理形式渲染到一个覆盖全屏的四边形上，再对纹理图形进行处理：
 
 ```javascript
-// 一个覆盖全屏的大三角形，保持屏幕内的UV坐标映射仍为0 => 1，画图即可知。此法性能优于使用四边形。
+// 一个覆盖全屏的大三角形，保持屏幕内的UV坐标映射仍为0 => 1，画图即可知。
+// 此法性能优于使用四边形。（From RTR4）
 this.geometry = new Geometry(gl, {
 
     position: { size: 3, data: new Float32Array([-1, -1, 0, 3, -1, 0, -1, 3, 0]) },

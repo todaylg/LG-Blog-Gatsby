@@ -14,8 +14,9 @@ author: todaylg
 
 首先需要知道SVG大概是啥，SVG即可缩放矢量图形（Scalable Vector Graphics),是一种用XML定义的语言，用来描述二维矢量图形，并且已是W3C标准，所以它也可以和CSS、DOM协同工作。SVG的属性和元素有茫茫多，详细的可以瞅瞅[MDN](https://developer.mozilla.org/zh-CN/docs/Web/SVG)，这里首先需要注意**stroke**属性，因为描边动画与这小子关系很大,简单的先瞅瞅吧：
 
-| stroke            | 表示描边颜色（为啥不直接叫stroke-color??!）                                  |
+| 属性            | 作用 |
 | ----------------- |:--------------------------------------------------------------:|
+| stroke            | 表示描边颜色（为啥不直接叫stroke-color??!）                                  |
 | stroke-width      | 表示描边粗细                                                         |
 | stroke-linecap    | 表示描边两边端点的表现方式 stroke-linejoin 表示描边转角的地方的表现方式                   |
 | stoke-miterlimit  | 这个属性有点复杂，表示在两描边相交(必须是锐角)的地方的表现方式，其值代表斜切长度/描边宽度的最大值，超出的直接表现为切除。 |

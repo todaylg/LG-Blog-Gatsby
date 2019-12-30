@@ -53,7 +53,7 @@ author: todaylg
 
 **Lottie/SVGA**
 
-可以先参考[这篇](https://www.jianshu.com/p/60d28d7bab48)文章，文章有较为详细的介绍Lottie与SVGA，这里不再赘述。Lottie的主要缺点在部分属性以及AE效果插件的不支持，而SVGA实测导出的动画资源还是过大，Web播放需要较长的预加载。
+可以参考[这篇](https://www.jianshu.com/p/60d28d7bab48)文章，文章有较为详细的介绍Lottie与SVGA，不再赘述。
 
 **Scene Loader**
 
@@ -83,9 +83,7 @@ author: todaylg
 
 通过播放Video来复现动效，首先需要解决如何支持动效中的透明度的问题。mp4并不支持Alpha通道，[webM](https://lsvih.com/2017/06/30/%E5%9C%A8html%E4%B8%AD%E4%BD%BF%E7%94%A8%E8%83%8C%E6%99%AF%E9%80%8F%E6%98%8E%E7%9A%84video%E8%A7%86%E9%A2%91/)的视频格式虽然支持Alpha通道，但是其堪忧的[兼容性](https://caniuse.com/#search=webM)（特别是移动端）让人不得不另寻他法。
 
-好在早有珠玉在前，透明视频的处理方法可以参考[这篇](http://dopro.io/animation-solution-alpha-video.html)文章。简而言之就是通过划定区域的方法分别对Video的RGB
-
-及Alpha通道进行提取，最后在进行拼合。
+好在早有珠玉在前，透明视频的处理方法可以参考[这篇](http://dopro.io/animation-solution-alpha-video.html)文章。简而言之就是通过划定区域的方法分别对Video的RGB及Alpha通道进行提取，最后在进行拼合。
 
 这里总结下基于该文章实践及拓展过程中遇到的一些问题和解决方案。
 

@@ -1,11 +1,9 @@
 ---
-title: Vim基础
+title: Vim快捷键备忘
 category: "基础备忘"
 cover: bg.jpg
 author: todaylg
 ---
-
-## Vim基本操作备忘
 
 自己用的场景还是偏少，所以命令根本记不住。。。备忘把常用的简单指令记一下。
 

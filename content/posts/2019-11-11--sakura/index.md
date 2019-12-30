@@ -23,8 +23,7 @@ author: todaylg
 
 白嫖这个牛皮的效果其实很久了，可惜当年水平太垃圾，压根看不懂，只能瞎改几个数值凑凑效果。
 
-时过境迁，现在终于是能看个一知半解了，作为一名秉持着**“白嫖也要知其所以然”**学术精神的白学家，效果分析只会迟到而不会不来，所以讲道理必须补一波“Sakura是怎样炼成的”，上Three.js从头搂一个专用的Sakura效果岂不美滋滋：
-
+时过境迁，现在终于是能看个一知半解了，作为一名秉持着**“白嫖也要知其所以然”**学术精神的白学家，所以讲道理必须补一波“Sakura是怎样炼成的”，上Threejs从头搂一个专用的Sakura效果岂不美滋滋：
 
 <iframe
      src="https://codesandbox.io/embed/sakura-tm298?fontsize=14&hidenavigation=1&theme=dark"
@@ -48,7 +47,7 @@ author: todaylg
   (<a href='https://codepen.io/todaylg'>@todaylg</a>) on <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-旋转一些角度并且通过透明度裁剪一下哗啦就可以画出基本形状了！
+旋转一些角度并且通过透明度裁剪一下，哗啦就可以画出基本形状了！
 
 <iframe height="300" style="width: 100%;" scrolling="no" title="Threejs-Sakura-Step2:Sakura Shape" src="https://codepen.io/todaylg/embed/yLLxweg?height=300&theme-id=default&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
   See the Pen <a href='https://codepen.io/todaylg/pen/yLLxweg'>Threejs-Sakura-Step2:Sakura Shape</a> by todaylg
@@ -75,7 +74,7 @@ author: todaylg
 
 ## Light/PostProcessing
 
-再加个简单的方向光和辉光、暗角的后处理，窃个 Megumi 的素材图，哗啦一下美爆了好吧！Rua！！（图片跨域的原因此处用的 codesandbox，速度会慢些）
+再加个简单的方向光和辉光、暗角的后处理，窃个 Megumi 的素材图，哗啦一下美爆了！Rua！！（图片跨域的原因此处换用的 codesandbox，速度会慢些）
 
 <iframe
      src="https://codesandbox.io/embed/sakura-tm298?fontsize=14&hidenavigation=1&theme=dark"

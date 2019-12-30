@@ -1,5 +1,5 @@
 ---
-title: Blender学习笔记
+title: Blender快捷键备忘
 category: "小结"
 cover: bg.png
 author: todaylg
@@ -13,17 +13,15 @@ author: todaylg
 
 这时我们要是对建模软件有所了解的话，就可以自己动手丰衣足食。比如建个简单的模型、绑个骨骼K个动画啥的。
 
-当然，能白嫖还是要白嫖，这动画关键帧真的谁K谁知道，抖M专属。
+当然，能白嫖还是要白嫖，抖M专属才自己K帧。。
 
 为啥选择[Blender](https://www.blender.org/)而不是Maya/3DMax呢？
 
-首先是因为Blender很轻，可以理解为VSCode，缺啥可以通过插件来补啥。Maya/3DMax相当于WebStorm，大而全。其实各有利弊。
-
-然后Blender还对MMD的支持比较好，当然其实也可以通过Blender转obj再到Maya/3DMax处理。
+首先是因为Blender很轻，可以理解为VSCode，缺啥可以通过插件来补啥。Maya/3DMax相当于WebStorm，大而全。
 
 所以其实归根结底还是看心情。
 
-Blender现在最新的版本是2.80，较之2.79更新的变化很大（相当于Unity4.6到5的差别）。秉承着面向未来学习，所以学习了解下2.80版本。
+Blender现在最新的版本是2.80，较之2.79更新的变化很大。。秉承着面向未来学习，所以了解下2.80版本。
 
 开始试着使用建模软件才发现鼠标中键的舒适度原来这么重要。。。
 
