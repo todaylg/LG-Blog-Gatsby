@@ -26,6 +26,8 @@ author: todaylg
 
 时过境迁，现在终于是能看个一知半解了，作为一名秉持着**“白嫖也要知其所以然”**学术精神的白学家，所以讲道理必须补一波“Sakura是怎样炼成的”，上Threejs从头搂一个专用的Sakura效果岂不美滋滋：
 
+<iframe src="https://codesandbox.io/embed/sakura-tm298?fontsize=14&hidenavigation=1&theme=dark" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" title="Sakura" allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin" ></iframe>
+
 ## Shape
 
 前面也提到了这是一个纯 WebGL 效果，没有使用素材图片，所以首先最基础的一步自然是 Sakura 的形状绘制。
@@ -67,3 +69,5 @@ author: todaylg
 ## Light/PostProcessing
 
 再加个简单的方向光和辉光、暗角的后处理，窃个 Megumi 的素材图，哗啦一下美爆了！Rua！！（图片跨域的原因此处换用的 codesandbox，速度会慢些）
+
+<iframe src="https://codesandbox.io/embed/sakura-tm298?fontsize=14&hidenavigation=1&theme=dark" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" title="Sakura" allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin" ></iframe>

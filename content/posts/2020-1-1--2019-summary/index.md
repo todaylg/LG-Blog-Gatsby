@@ -6,7 +6,7 @@ author: todaylg
 
 ---
 
-转眼2019就已过去，回顾这一整年真可谓是感慨万千呐，还是忍不住冒出来捣鼓两句。。。
+转眼2019就已过去，回顾这一整年真可谓是感慨万千呐。。。
 
 过去一年里最重要的就是对学习方向的调整，算是自己从Web2D转向Web3D的一个转折点吧。
 
@@ -16,17 +16,17 @@ author: todaylg
 
 在对一些基础知识学习以及一些瞎折腾(“LGL“)后，Threejs真香😂😂😂。
 
-其实使用Threejs的ShaderMaterial/RowMaterial已经可以很方便编写自定义材质了，还能复用一些它的ShaderChunk，再加上其强大的开源社区，还是真香吧。。。
+其实使用Threejs的ShaderMaterial/RawMaterial已经可以很方便编写自定义材质了，还能复用一些它的ShaderChunk，再加上其强大的开源社区，还是真香吧。。。
 
-后面接触和学习了：
+后面陆陆续续接触和学习了：
 
-1.应该是Web3D目前最好的钻石渲染(结合了光追的实现)：
+1.应该是Web3D目前渲染效果最好的钻石效果(结合了光追的实现)：
 
 <div style="text-align: center">  
 <img style="width:600px;" src="https://raw.githubusercontent.com/todaylg/LG-Blog-Gatsby/master/content/posts/2020-1-1--2019-summary/ring.png">  
 </div>
 
-2.SketchFab的从EnvMap离线预计算到PBR渲染：
+2.结合EnvMap离线预计算的PBR渲染：
 
 <div style="text-align: center">  
 <img style="width:600px;" src="https://raw.githubusercontent.com/todaylg/LG-Blog-Gatsby/master/content/posts/2020-1-1--2019-summary/pbr.png">  
@@ -57,6 +57,7 @@ author: todaylg
 - [ ] 增加锻炼，身体壮如牛，动不动就要去球场扣篮，头发乌黑浓密
 
 Rua~
+
 
 
 
