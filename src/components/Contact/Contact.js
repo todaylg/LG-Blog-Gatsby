@@ -28,7 +28,8 @@ class About extends React.Component {
             <div className="intro">
               <h2>关于LG：</h2>
               <p>Web3D学习中</p>
-              <p>宅</p>
+              <p>啊!大脑在颤抖!</p>
+              <p>阿宅</p>
               <p>Umika</p>
               <p> <a title="Find Me" target="_blank" href="https://github.com/todaylg">Github</a>/<a title="Find Me" target="_blank" href="https://twitter.com/WebAMV">Twitter</a></p>
             </div>

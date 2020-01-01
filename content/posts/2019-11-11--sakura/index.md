@@ -3,6 +3,7 @@ title: Sakura是怎样炼成的
 category: "小结"
 cover: bg.jpg
 author: todaylg
+
 ---
 
 平常在动漫里其实可以非常高频的看到各种伴随樱花的场景，而这些场景又都美得一批，每每看到这些场景让人都不由自主的连连称奇、拍案叫绝、惊为天人、振聋发聩、大呼过瘾
@@ -24,15 +25,6 @@ author: todaylg
 白嫖这个牛皮的效果其实很久了，可惜当年水平太垃圾，压根看不懂，只能瞎改几个数值凑凑效果。
 
 时过境迁，现在终于是能看个一知半解了，作为一名秉持着**“白嫖也要知其所以然”**学术精神的白学家，所以讲道理必须补一波“Sakura是怎样炼成的”，上Threejs从头搂一个专用的Sakura效果岂不美滋滋：
-
-<iframe
-     src="https://codesandbox.io/embed/sakura-tm298?fontsize=14&hidenavigation=1&theme=dark"
-     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
-     title="Sakura"
-     allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb"
-     sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
-></iframe>
-
 
 ## Shape
 
@@ -75,11 +67,3 @@ author: todaylg
 ## Light/PostProcessing
 
 再加个简单的方向光和辉光、暗角的后处理，窃个 Megumi 的素材图，哗啦一下美爆了！Rua！！（图片跨域的原因此处换用的 codesandbox，速度会慢些）
-
-<iframe
-     src="https://codesandbox.io/embed/sakura-tm298?fontsize=14&hidenavigation=1&theme=dark"
-     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
-     title="Sakura"
-     allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb"
-     sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
-></iframe>
