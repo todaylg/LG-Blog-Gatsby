@@ -752,13 +752,11 @@ Cube Texture Maps：
 
 立方体纹理贴图通常用于近似环境周围的反射，纹理的采样坐标为三维向量，表示从立方体中心发出的指向要采样的texel的方向向量。
 
-实践可见：[Example](http://localhost:8080/examples/?src=cubeMap.html)
-
 **着色模型(Shading Models)：**
 
 Blinn-Phong Shading：
 
-实践可见：[Example](http://localhost:8080/examples/?src=basePrimitives.html)
+实践可见：[Example](http://todaylg.com/LGL/examples/?src=basePrimitives.html)
 
 **凹凸映射(Bump Mapping)：**
 
@@ -786,4 +784,4 @@ Blinn-Phong Shading：
 
 * Todo：Implementation
 
-PBR实践可见：[Example](http://localhost:8080/examples/?src=glTFLoader.html)
+PBR实践可见：[Example](http://todaylg.com/LGL/examples/?src=glTFLoader.html)
