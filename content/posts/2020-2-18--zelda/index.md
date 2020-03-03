@@ -18,7 +18,7 @@ author: todaylg
 啊！我眼前是美丽的海拉鲁大陆！是可爱的卡通渲染！我来了！
 
 <div style="text-align: center">  
-<img style="width:400px;" src="https://raw.githubusercontent.com/todaylg/LG-Blog-Gatsby/master/content/posts/2020-2-18--zelda/1.jpg">  
+<img style="width:100%;" src="https://raw.githubusercontent.com/todaylg/LG-Blog-Gatsby/master/content/posts/2020-2-18--zelda/1.jpg">  
 </div>
 
 ### 机器问题
@@ -54,7 +54,7 @@ author: todaylg
 点亮整个地图的过程会发现制作组很多很有意思的设计，比如狗粮：
 
 <div style="text-align: center">  
-<img style="width:400px;" src="https://raw.githubusercontent.com/todaylg/LG-Blog-Gatsby/master/content/posts/2020-2-18--zelda/2.jpg">  
+<img style="width:100%;" src="https://raw.githubusercontent.com/todaylg/LG-Blog-Gatsby/master/content/posts/2020-2-18--zelda/2.jpg">  
 </div>
 
 ### 主线任务
@@ -64,7 +64,7 @@ author: todaylg
 控制四神兽的四位英杰性格鲜明，大姐大乌尔波扎、憨憨达尔克尔、傲娇力巴尔、温柔的米法，都可爱得一批：
 
 <div style="text-align: center">  
-<img style="width:400px;" src="https://raw.githubusercontent.com/todaylg/LG-Blog-Gatsby/master/content/posts/2020-2-18--zelda/3.jpg">  
+<img style="width:100%;" src="https://raw.githubusercontent.com/todaylg/LG-Blog-Gatsby/master/content/posts/2020-2-18--zelda/3.jpg">  
 </div>
 
 但是一想到他们都死了，就会忍不住去城堡再暴打一顿盖侬。。。然后。。。就通关了。。
@@ -74,13 +74,13 @@ author: todaylg
 通关以后内心会有一段时间感到空虚，心里想着那么可爱的塞尔达公主还在城堡里受苦，便久久不能释怀。
 
 <div style="text-align: center">  
-<img style="width:400px;" src="https://raw.githubusercontent.com/todaylg/LG-Blog-Gatsby/master/content/posts/2020-2-18--zelda/4.jpg">  
+<img style="width:100%;" src="https://raw.githubusercontent.com/todaylg/LG-Blog-Gatsby/master/content/posts/2020-2-18--zelda/4.jpg">  
 </div>
 
 这时候就需要通过游戏里其他花里胡哨的元素来充实自己，当你买房提车置办服装，满地图爆揍人马，一背包兽神武器，过上富裕生活以后：
 
 <div style="text-align: center">  
-<img style="width:400px;" src="https://raw.githubusercontent.com/todaylg/LG-Blog-Gatsby/master/content/posts/2020-2-18--zelda/5.jpg">  
+<img style="width:100%;" src="https://raw.githubusercontent.com/todaylg/LG-Blog-Gatsby/master/content/posts/2020-2-18--zelda/5.jpg">  
 </div>
 
 塞尔达是哪位？都受苦了100年了也不差我玩这会吧？
@@ -88,13 +88,13 @@ author: todaylg
 ### 剑之试炼
 
 <div style="text-align: center">  
-<img style="width:400px;" src="https://raw.githubusercontent.com/todaylg/LG-Blog-Gatsby/master/content/posts/2020-2-18--zelda/6.jpg">  
+<img style="width:100%;" src="https://raw.githubusercontent.com/todaylg/LG-Blog-Gatsby/master/content/posts/2020-2-18--zelda/6.jpg">  
 </div>
 
 开光大师剑其实注意一下终阶的古代剑分配就完事了，60攻单手剑真是扫荡地图没问题了哈哈
 
 <div style="text-align: center">  
-<img style="width:400px;" src="https://raw.githubusercontent.com/todaylg/LG-Blog-Gatsby/master/content/posts/2020-2-18--zelda/7.jpg">  
+<img style="width:100%;" src="https://raw.githubusercontent.com/todaylg/LG-Blog-Gatsby/master/content/posts/2020-2-18--zelda/7.jpg">  
 </div>
 
 帅得一批！
@@ -102,7 +102,7 @@ author: todaylg
 荒野之息续作已经在开发中了，疫情期间保住狗命要紧，留得青山在，才能玩二代！Rua！
 
 <div style="text-align: center">  
-<img style="width:400px;" src="https://raw.githubusercontent.com/todaylg/LG-Blog-Gatsby/master/content/posts/2020-2-18--zelda/8.jpg">  
+<img style="width:100%;" src="https://raw.githubusercontent.com/todaylg/LG-Blog-Gatsby/master/content/posts/2020-2-18--zelda/8.jpg">  
 </div>
 
 
