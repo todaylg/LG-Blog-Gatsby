@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[LG-Blog]]></title><description><![CDATA[LG-Blog]]></description><link>www.todaylg.com</link><generator>RSS for Node</generator><lastBuildDate>Tue, 03 Mar 2020 13:19:38 GMT</lastBuildDate><item><title><![CDATA[EnvTools]]></title><description><![CDATA[我们知道实时PBR渲染中的IBL部分是可以预计算的，主要包括： Diffuse部分：辐照度图(irradiance map)或SH(Spherical Harmonics) Specular部分：不同粗糙度级别对应的环境贴图、BRDF积分(LUT…]]></description><link>www.todaylg.com/envtools/</link><guid isPermaLink="false">www.todaylg.com/envtools/</guid><pubDate>Mon, 02 Mar 2020 16:00:00 GMT</pubDate><content:encoded>&lt;p&gt;我们知道实时PBR渲染中的IBL部分是可以预计算的，主要包括：&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[LG-Blog]]></title><description><![CDATA[LG-Blog]]></description><link>www.todaylg.com</link><generator>RSS for Node</generator><lastBuildDate>Fri, 06 Mar 2020 12:18:01 GMT</lastBuildDate><item><title><![CDATA[EnvTools]]></title><description><![CDATA[我们知道实时PBR渲染中的IBL部分是可以预计算的，主要包括： Diffuse部分：辐照度图(irradiance map)或SH(Spherical Harmonics) Specular部分：不同粗糙度级别对应的环境贴图、BRDF积分(LUT…]]></description><link>www.todaylg.com/envtools/</link><guid isPermaLink="false">www.todaylg.com/envtools/</guid><pubDate>Mon, 02 Mar 2020 16:00:00 GMT</pubDate><content:encoded>&lt;p&gt;我们知道实时PBR渲染中的IBL部分是可以预计算的，主要包括：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;Diffuse部分：辐照度图(irradiance map)或SH(Spherical Harmonics)&lt;/p&gt;
@@ -99,7 +99,7 @@
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2&gt;envBackground&lt;/h2&gt;
-&lt;p&gt;采用高斯模糊进行背景模糊计算，也是耗时最长的一步，&lt;/p&gt;
+&lt;p&gt;耗时最长的一步，相关文章：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;a href=&quot;http://stackoverflow.com/questions/17841098/gaussian-blur-standard-deviation-radius-and-kernel-size&quot;&gt;http://stackoverflow.com/questions/17841098/gaussian-blur-standard-deviation-radius-and-kernel-size&lt;/a&gt;&lt;/p&gt;
@@ -108,7 +108,7 @@
 &lt;p&gt;&lt;a href=&quot;https://developer.nvidia.com/gpugems/gpugems3/part-vi-gpu-computing/chapter-40-incremental-computation-gaussian&quot;&gt;https://developer.nvidia.com/gpugems/gpugems3/part-vi-gpu-computing/chapter-40-incremental-computation-gaussian&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;filament则是直接延用按粗糙度模糊的方法，速度相对较快，但是输出图像作为背景看起来的效果感觉却不太行。。&lt;/p&gt;
+&lt;p&gt;filament是直接延用按粗糙度模糊的方法，速度相对较快。&lt;/p&gt;
 &lt;h2&gt;extractLights&lt;/h2&gt;
 &lt;p&gt;分析环境贴图中的明亮区域，从而提取出方向光的方向及亮度等信息&lt;/p&gt;
 &lt;p&gt;一般用于提取环境贴图中的太阳信息，Viewer中可以在相应位置通过添加一盏方向光来模拟太阳。&lt;/p&gt;
