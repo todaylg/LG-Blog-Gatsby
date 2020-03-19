@@ -21,6 +21,8 @@ author: todaylg
 <img style="width:100%;" src="https://raw.githubusercontent.com/todaylg/LG-Blog-Gatsby/master/content/posts/2020-2-18--zelda/1.jpg">  
 </div>
 
+附：[塞尔达图形技术简析](https://zhuanlan.zhihu.com/p/43017975)
+
 ### 机器问题
 
 然而当我满怀期待的开机之后，却发现林克已经脱离了我的控制。
@@ -61,7 +63,7 @@ author: todaylg
 
 解放四神兽的顺序感觉是 水 => 风 => 火 => 雷比较好，水神兽的满血复活可以防一手各种莫名其妙的猝死，风神兽的起飞技能可以帮助后面解放火雷神兽，雷神兽最难放到最后。
 
-控制四神兽的四位英杰性格鲜明，大姐大乌尔波扎、憨憨达尔克尔、傲娇力巴尔、温柔的米法，都可爱得一批：
+控制四神兽的四位英杰性格鲜明，大姐大乌尔波扎、憨憨达尔克尔、傲娇力巴尔、温柔的米法，可爱得一批：
 
 <div style="text-align: center">  
 <img style="width:100%;" src="https://raw.githubusercontent.com/todaylg/LG-Blog-Gatsby/master/content/posts/2020-2-18--zelda/3.jpg">  
@@ -104,5 +106,4 @@ author: todaylg
 <div style="text-align: center">  
 <img style="width:100%;" src="https://raw.githubusercontent.com/todaylg/LG-Blog-Gatsby/master/content/posts/2020-2-18--zelda/8.jpg">  
 </div>
-
 

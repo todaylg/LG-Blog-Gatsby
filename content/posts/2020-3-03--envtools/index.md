@@ -131,14 +131,14 @@ Three PMREM(^R112)的实现，直接上的高斯模糊（应用在球面极坐�
 
 ## envBackground
 
-采用高斯模糊进行背景模糊计算，也是耗时最长的一步，
+耗时最长的一步，相关文章：
 
 -   [http://stackoverflow.com/questions/17841098/gaussian-blur-standard-deviation-radius-and-kernel-size](http://stackoverflow.com/questions/17841098/gaussian-blur-standard-deviation-radius-and-kernel-size)
     
 -   [https://developer.nvidia.com/gpugems/gpugems3/part-vi-gpu-computing/chapter-40-incremental-computation-gaussian](https://developer.nvidia.com/gpugems/gpugems3/part-vi-gpu-computing/chapter-40-incremental-computation-gaussian)
     
 
-filament则是直接延用按粗糙度模糊的方法，速度相对较快，但是输出图像作为背景看起来的效果感觉却不太行。。
+filament是直接延用按粗糙度模糊的方法，速度相对较快。
 
 ## extractLights
 
@@ -214,18 +214,14 @@ filament则是直接延用按粗糙度模糊的方法，速度相对较快，但
 
 最后调用compress\_zip\_cmd将整个文件进行zip打包
 
-整个envTools应用的效果可见：[](https://github.com/todaylg/three-viewer)[https://github.com/todaylg/three-viewer](https://github.com/todaylg/three-viewer)
+整个envTools应用的效果可见：[https://github.com/todaylg/three-viewer](https://github.com/todaylg/three-viewer)
 
 ## Todo
 
--   [x] 
+-   [x] 升级Unbutu及相关依赖包，删除冗余依赖
+
+-   [x] 仅打包Viewer所需资源，直接输出为单个zip包
     
-    升级Unbutu及相关依赖包，删除一些冗余依赖
+-   [ ] 直接输出多级背景模糊
     
--   [ ] 
-    
-    直接输出多级背景模糊
-    
--   [ ] 
-    
-    学习如何应用OpenCL/Cuda计算加速
+-   [ ] 学习如何应用OpenCL/Cuda计算加速
