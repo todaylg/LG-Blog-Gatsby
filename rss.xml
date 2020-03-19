@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[LG-Blog]]></title><description><![CDATA[LG-Blog]]></description><link>www.todaylg.com</link><generator>RSS for Node</generator><lastBuildDate>Thu, 19 Mar 2020 12:33:25 GMT</lastBuildDate><item><title><![CDATA[Viewer与PBR]]></title><description><![CDATA[在通过Envtools将预计算的资源进行打包后，自然就需要在Viewer进行解包和渲染啦: three-viewer 歪出来感叹一句，搂完Viewer以后照常发了个Twitter纪念，但是没想到得到了Threejs官推的转推以及Mr.doob…]]></description><link>www.todaylg.com/viewer-pbr/</link><guid isPermaLink="false">www.todaylg.com/viewer-pbr/</guid><pubDate>Wed, 18 Mar 2020 16:00:00 GMT</pubDate><content:encoded>&lt;p&gt;在通过Envtools将预计算的资源进行打包后，自然就需要在Viewer进行解包和渲染啦:&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://github.com/todaylg/three-viewer&quot;&gt;three-viewer&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;歪出来感叹一句，搂完Viewer以后照常发了个Twitter纪念，但是没想到得到了Threejs官推的转推以及Mr.doob大神的点赞，开心了好一会哈哈&lt;del&gt;快乐如此简单&lt;/del&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[LG-Blog]]></title><description><![CDATA[LG-Blog]]></description><link>www.todaylg.com</link><generator>RSS for Node</generator><lastBuildDate>Thu, 19 Mar 2020 12:42:06 GMT</lastBuildDate><item><title><![CDATA[Viewer与PBR]]></title><description><![CDATA[在通过Envtools将预计算的资源进行打包后，自然就需要在Viewer进行解包和渲染啦: https://github.com/todaylg/three-viewer 歪出来感叹一句，搂完Viewer以后照常发了个Twitter纪念，但是没想到得到了Threejs…]]></description><link>www.todaylg.com/viewer-pbr/</link><guid isPermaLink="false">www.todaylg.com/viewer-pbr/</guid><pubDate>Wed, 18 Mar 2020 16:00:00 GMT</pubDate><content:encoded>&lt;p&gt;在通过Envtools将预计算的资源进行打包后，自然就需要在Viewer进行解包和渲染啦:&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/todaylg/three-viewer&quot;&gt;https://github.com/todaylg/three-viewer&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;歪出来感叹一句，搂完Viewer以后照常发了个Twitter纪念，但是没想到得到了Threejs官推的转推以及Mr.doob大神的点赞，开心得一批哈哈哈&lt;del&gt;真是简单的快乐&lt;/del&gt;&lt;/p&gt;
 &lt;div style=&quot;text-align: center&quot;&gt;  
-&lt;img style=&quot;width:100%;&quot; src=&quot;https://raw.githubusercontent.com/todaylg/LG-Blog-Gatsby/master/content/posts/2020-3-19--viewer-pbr/twitter.png&quot;&gt;  
+&lt;img style=&quot;width:70%;&quot; src=&quot;https://raw.githubusercontent.com/todaylg/LG-Blog-Gatsby/master/content/posts/2020-3-19--viewer-pbr/twitter.png&quot;&gt;  
 &lt;/div&gt;
 &lt;p&gt;回到正题，首先需要Viewer完成的是IBL部分的光照，之前在EnvTools打包好的资源就派上用场啦，主要的解包流程可以直接参考osg.js的实现，解完包以后可以得到：&lt;/p&gt;
 &lt;ul&gt;
@@ -101,7 +101,8 @@
 &lt;p&gt;其实考虑到效果及后续扩展(比如各项异性材质)，渲染方程基本都是：&lt;/p&gt;
 &lt;p&gt;Diffuse: Lambert&lt;/p&gt;
 &lt;p&gt;Specular: D&lt;em&gt;GGX * Vis&lt;/em&gt;SmithJointApprox * F_Schlick&lt;/p&gt;
-&lt;p&gt;最后再放几张渲染效果(可爱的短发塞尔达！)：&lt;/p&gt;
+&lt;p&gt;最后再放几张渲染图：&lt;/p&gt;
+&lt;p&gt;可爱的短发塞尔达！&lt;/p&gt;
 &lt;div style=&quot;text-align: center&quot;&gt;  
 &lt;img style=&quot;width:100%;&quot; src=&quot;https://raw.githubusercontent.com/todaylg/LG-Blog-Gatsby/master/content/posts/2020-3-19--viewer-pbr/zelda.png&quot;&gt;  
 &lt;/div&gt;
@@ -109,6 +110,7 @@
 &lt;div style=&quot;text-align: center&quot;&gt;  
 &lt;img style=&quot;width:100%;&quot; src=&quot;https://raw.githubusercontent.com/todaylg/LG-Blog-Gatsby/master/content/posts/2020-3-19--viewer-pbr/masterSword.png&quot;&gt;  
 &lt;/div&gt;
+&lt;p&gt;来自深渊！&lt;/p&gt;
 &lt;div style=&quot;text-align: center&quot;&gt;  
 &lt;img style=&quot;width:100%;&quot; src=&quot;https://raw.githubusercontent.com/todaylg/LG-Blog-Gatsby/master/content/posts/2020-3-19--viewer-pbr/bg.png&quot;&gt;  
 &lt;/div&gt;
