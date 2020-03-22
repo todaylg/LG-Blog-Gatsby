@@ -7,12 +7,12 @@ author: todaylg
 
 在通过Envtools将预计算的资源进行打包后，自然就需要在Viewer进行解包和渲染啦:
 
-[three-viewer](https://github.com/todaylg/three-viewer)
+https://github.com/todaylg/three-viewer
 
-歪出来感叹一句，搂完Viewer以后照常发了个Twitter纪念，但是没想到得到了Threejs官推的转推以及Mr.doob大神的点赞，开心了好一会哈哈~~快乐如此简单~~
+歪出来感叹一句，搂完Viewer以后照常发了个Twitter纪念，但是没想到得到了Threejs官推的转推以及Mr.doob大神的点赞，开心得一批哈哈哈~~真是简单的快乐~~
 
 <div style="text-align: center">  
-<img style="width:100%;" src="https://raw.githubusercontent.com/todaylg/LG-Blog-Gatsby/master/content/posts/2020-3-19--viewer-pbr/twitter.jpg">  
+<img style="width:70%;" src="https://raw.githubusercontent.com/todaylg/LG-Blog-Gatsby/master/content/posts/2020-3-19--viewer-pbr/twitter.png">  
 </div>
 
 回到正题，首先需要Viewer完成的是IBL部分的光照，之前在EnvTools打包好的资源就派上用场啦，主要的解包流程可以直接参考osg.js的实现，解完包以后可以得到：
@@ -141,20 +141,24 @@ Diffuse: Lambert
 
 Specular: D_GGX * Vis_SmithJointApprox * F_Schlick
 
-最后再放几张渲染效果(可爱的短发塞尔达！)：
+最后再放几张渲染图：
+
+可爱的短发塞尔达！
 
 <div style="text-align: center">  
-<img style="width:100%;" src="https://raw.githubusercontent.com/todaylg/LG-Blog-Gatsby/master/content/posts/2020-3-19--viewer-pbr/zelda.jpg">  
+<img style="width:100%;" src="https://raw.githubusercontent.com/todaylg/three-viewer/master/intro/zelda.png">  
 </div>
 
 MMMMMMaster Sword!!！
 
 <div style="text-align: center">  
-<img style="width:100%;" src="https://raw.githubusercontent.com/todaylg/LG-Blog-Gatsby/master/content/posts/2020-3-19--viewer-pbr/masterSword.jpg">  
+<img style="width:100%;" src="https://raw.githubusercontent.com/todaylg/three-viewer/master/intro/masterSword.png">   
 </div>
 
+来自深渊！
+
 <div style="text-align: center">  
-<img style="width:100%;" src="https://raw.githubusercontent.com/todaylg/LG-Blog-Gatsby/master/content/posts/2020-3-19--viewer-pbr/bg.jpg">  
+<img style="width:100%;" src="https://raw.githubusercontent.com/todaylg/LG-Blog-Gatsby/master/content/posts/2020-3-19--viewer-pbr/bg.png">  
 </div>
 
 在线体验地址 ：https://todaylg.com/three-viewer/
