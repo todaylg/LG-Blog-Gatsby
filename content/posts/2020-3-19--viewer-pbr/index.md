@@ -59,20 +59,13 @@ https://zhuanlan.zhihu.com/p/66518450
 为了同步视觉效果，环境光的旋转不仅影响到IBL的计算，Background和Sunlight也需要同步旋转：
 
 ```javascript
-syncEnvTransform() {
-	this.invCameraQuaternion.copy(this.camera.quaternion).conjugate();
-	this.cameraRotationMatrix.makeRotationFromQuaternion(this.invCameraQuaternion);
-	this.oringinCameraMatrix.extractRotation(this.camera.matrixWorld);
-}
-
 updateEnvironmentRotation(value) {
-	// Add panel rotation
-	this.envRotationFromPanel.makeRotationY(value);
-	this.envRotationMat.value.multiplyMatrices(this.cameraRotationMatrix, this.envRotationFromPanel);
-	// Direction compute by position
-	let resultSunlight = this.sunLightStartPos.clone();
-	resultSunlight.applyMatrix4(this.envRotationMat.value).applyMatrix4(this.oringinCameraMatrix);
-	this.sunLight.position.copy(resultSunlight);
+  // Get panel rotation
+  this.envRotationMat.value.makeRotationY(value);
+  // Direction compute by position
+  let resultSunlight = this.sunLightStartPos.clone();
+  resultSunlight.applyMatrix4(this.envRotationMat.value);
+  this.sunLight.position.copy(resultSunlight);
 }
 ```
 
@@ -152,7 +145,7 @@ Specular: D_GGX * Vis_SmithJointApprox * F_Schlick
 MMMMMMaster Sword!!！
 
 <div style="text-align: center">  
-<img style="width:100%;" src="https://raw.githubusercontent.com/todaylg/three-viewer/master/intro/masterSword.png">   
+<img style="width:100%;" src="https://raw.githubusercontent.com/todaylg/LG-Blog-Gatsby/master/content/posts/2020-3-19--viewer-pbr/sword.png">   
 </div>
 
 来自深渊！
@@ -165,13 +158,19 @@ MMMMMMaster Sword!!！
 
 ### Todo
 
-- [ ] Anisotropy(GGX)
+- [x] Specular Glossiness Material
 
+- [x] Panorama EnvMap(For the devices that dont support lod)
+
+- [x] Fix energy loss in specular reflectance
+  
 - [ ] Clearcoat
 
+- [ ] Anisotropy(GGX)
+  
 - [ ] Sheen
 
-- [ ] Specular gloss
+- [ ] Spot/Point Light and Shadow
 
 - [ ] MorphTarget/Skin Animation
 
