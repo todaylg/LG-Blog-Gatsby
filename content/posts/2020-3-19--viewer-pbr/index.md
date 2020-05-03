@@ -61,10 +61,16 @@ https://zhuanlan.zhihu.com/p/66518450
 ```javascript
 updateEnvironmentRotation(value) {
   // Get panel rotation
-  this.envRotationMat.value.makeRotationY(value);
+  this.envRotationFromPanel.makeRotationY(value);
+  // Sync camera roatation
+  this.cameraRotationMatrix.makeRotationFromQuaternion(this.camera.quaternion);
+  this.envRotationMat4.multiplyMatrices(this.envRotationFromPanel, this.cameraRotationMatrix);
+  this.envRotationMat.value.setFromMatrix4(this.envRotationMat4);
+  this.envRotationMatBG.value.setFromMatrix4(this.envRotationFromPanel);
   // Direction compute by position
   let resultSunlight = this.sunLightStartPos.clone();
-  resultSunlight.applyMatrix4(this.envRotationMat.value);
+  this.sunLightPanelRotateMat.getInverse(this.envRotationFromPanel);
+  resultSunlight.applyMatrix4(this.sunLightPanelRotateMat);
   this.sunLight.position.copy(resultSunlight);
 }
 ```
