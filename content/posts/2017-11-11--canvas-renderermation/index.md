@@ -21,7 +21,7 @@ D3.js的灵活性高，但是Renderer还停留在Canvas2D+SVG的情况，在渲�
 
 基于Create.js：[CiCi](https://github.com/todaylg/CiCi)
 
-回到过程，看看又学习解锁了哪些新姿势吧~
+回到过程，看看又学习解锁了哪些新知识吧~
 
 ## 基础知识
 

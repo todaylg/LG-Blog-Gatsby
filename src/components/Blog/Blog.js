@@ -33,12 +33,11 @@ class Blog extends React.Component {
         <style jsx>{`
           .main {
             padding: 0 ${theme.space.inset.default};
-            opacity:0;
+            opacity:1;
             transform:translateY(400px);
             transition: all 1.5s ease-in-out;
           }
           .main.bgFixed{
-            opacity:1;
 	          transform:translateY(-600px);
           }
           ul {

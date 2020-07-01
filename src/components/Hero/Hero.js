@@ -23,6 +23,7 @@ class Hero extends React.Component {
     tempImg.src = imgSrc;
   }
   componentDidMount(){
+    if(window.innerWidth < 800) return;
     this.preLoadImg(this.refs['yz'],yzImg);
     this.preLoadImg(this.refs['bz'],bzImg);
   }

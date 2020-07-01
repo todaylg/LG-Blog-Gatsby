@@ -5,7 +5,7 @@ cover: bg.jpg
 author: todaylg
 ---
 
-前段日子一直断断续续跟着学习闫令琪老师的[《现代计算机图形学入门》](https://www.bilibili.com/video/BV1X7411F744?p=22)，完结撒花以后感觉是要从入门到入土了，水实在是太深了，印象最为深刻的是闫老师说他学了十年的图形学还是感觉自己什么都不知道。。。这。。让我等菜鸡何去何从。。。
+前段日子发现了一门神课：闫令琪老师的[《现代计算机图形学入门》](https://www.bilibili.com/video/BV1X7411F744?p=22)，强烈推荐，完结撒花以后感觉是要从入门到入土了，水好深。。看完课程印象最为深刻的却是闫老师说他学了十年的图形学还是感觉自己什么都不知道。。。这。。。
 
 好在前些日子我们的精神领袖切·格瓦拉重见天日，学是学不完的，这辈子都学不完的，只能随便看看，实在搞不动了就回家种种地，勉强维持一下生活这样子。
 
@@ -176,4 +176,12 @@ https://github.com/mrdoob/three.js/issues/14104
 
 又要Bloom又要背景透明其实很奇怪，不科学
 
+
+##  ToRecord
+
+- [ ] 移动端需要注意的Texture unit limit
+  
+- [ ] IOS深度精度问题：[issue](https://github.com/vanruesc/postprocessing/issues/199)
+- [ ] glViewport与glScissors
+- [ ] R118‘s VAO support
 
