@@ -1,5 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[LG-Blog]]></title><description><![CDATA[LG-Blog]]></description><link>www.todaylg.com</link><generator>RSS for Node</generator><lastBuildDate>Wed, 01 Jul 2020 12:24:44 GMT</lastBuildDate><item><title><![CDATA[个人主页开发小记]]></title><description><![CDATA[趁着有空，这些天又把主页更新了一波： todaylg.com 把喜欢的几部动漫和游戏都整进去了，开心得一批哈哈哈 Home Section 首先那必然是首屏的最终幻想7啦，其实之前并不了解最终幻想系列，直到看到了最终幻想7重制版的几个预告片，这Tifa和Aerith…]]></description><link>www.todaylg.com/hompage/</link><guid isPermaLink="false">www.todaylg.com/hompage/</guid><pubDate>Tue, 30 Jun 2020 16:00:00 GMT</pubDate><content:encoded>&lt;p&gt;趁着有空，这些天又把主页更新了一波：&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://todaylg.com&quot;&gt;todaylg.com&lt;/a&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[LG-Blog]]></title><description><![CDATA[LG-Blog]]></description><link>www.todaylg.com</link><generator>RSS for Node</generator><lastBuildDate>Fri, 03 Jul 2020 04:38:00 GMT</lastBuildDate><item><title><![CDATA[个人主页开发小记]]></title><description><![CDATA[趁着有空，这些天又把主页更新了一波： todaylg.com (
+国内 todaylg.cn 
+) 把喜欢的几部动漫和游戏都整进去了，开心得一批哈哈哈 Home Section 首先那必然是首屏的最终幻想7啦，其实之前并不了解最终幻想系列，直到看到了最终幻想…]]></description><link>www.todaylg.com/hompage/</link><guid isPermaLink="false">www.todaylg.com/hompage/</guid><pubDate>Tue, 30 Jun 2020 16:00:00 GMT</pubDate><content:encoded>&lt;p&gt;趁着有空，这些天又把主页更新了一波：&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://todaylg.com&quot;&gt;todaylg.com&lt;/a&gt;(
+国内&lt;a href=&quot;https://todaylg.cn&quot;&gt;todaylg.cn&lt;/a&gt;
+)&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/todaylg/self-introduction/master/intro/intro.gif&quot; alt=&quot;image&quot;&gt;&lt;/p&gt;
 &lt;p&gt;把喜欢的几部动漫和游戏都整进去了，开心得一批哈哈哈&lt;/p&gt;
 &lt;h2&gt;Home Section&lt;/h2&gt;
@@ -44,7 +48,7 @@
 &lt;li&gt;2019：一堆音视频混入一个3D樱花的&lt;a href=&quot;http://todaylg.github.io/WebAMV/Keep_Going/&quot;&gt;中二页面&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;最后到今年3D的&lt;a href=&quot;https://todaylg.com&quot;&gt;中二页面&lt;/a&gt;。&lt;/p&gt;
-&lt;p&gt;时间在一年年过去了，鲁迅先生说得好，人不中二枉少年，倒也没啥毛病。但是岁月不饶人啊，纸片人老婆又不能结婚（叹气）&lt;/p&gt;
+&lt;p&gt;时间在一年年过去，鲁迅先生说得好，人不中二枉少年，倒也没啥毛病。但是岁月不饶人啊，纸片人老婆又不能结婚（叹气）&lt;/p&gt;
 &lt;p&gt;只能去朝天空大喊一声：“这是我最后的波纹了！”&lt;/p&gt;
 &lt;p&gt;Rua!&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Loading]]></title><description><![CDATA[先躺一波。。。下波起来就是最后的波纹啦(惊起！)]]></description><link>www.todaylg.com/loading/</link><guid isPermaLink="false">www.todaylg.com/loading/</guid><pubDate>Sun, 31 May 2020 16:00:00 GMT</pubDate><content:encoded>&lt;p&gt;先躺一波。。。下波起来就是最后的波纹啦(惊起！)&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Threejs为啥笔记]]></title><description><![CDATA[…]]></description><link>www.todaylg.com/three-why/</link><guid isPermaLink="false">www.todaylg.com/three-why/</guid><pubDate>Sat, 02 May 2020 16:00:00 GMT</pubDate><content:encoded>&lt;p&gt;前段日子发现了一门神课：闫令琪老师的&lt;a href=&quot;https://www.bilibili.com/video/BV1X7411F744?p=22&quot;&gt;《现代计算机图形学入门》&lt;/a&gt;，强烈推荐，完结撒花以后感觉是要从入门到入土了，水好深。。看完课程印象最为深刻的却是闫老师说他学了十年的图形学还是感觉自己什么都不知道。。。这。。。&lt;/p&gt;
 &lt;p&gt;好在前些日子我们的精神领袖切·格瓦拉重见天日，学是学不完的，这辈子都学不完的，只能随便看看，实在搞不动了就回家种种地，勉强维持一下生活这样子。&lt;/p&gt;
