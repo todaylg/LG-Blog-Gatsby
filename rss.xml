@@ -1,11 +1,12 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[LG-Blog]]></title><description><![CDATA[LG-Blog]]></description><link>www.todaylg.com</link><generator>RSS for Node</generator><lastBuildDate>Fri, 03 Jul 2020 04:38:00 GMT</lastBuildDate><item><title><![CDATA[个人主页开发小记]]></title><description><![CDATA[趁着有空，这些天又把主页更新了一波： todaylg.com (
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[LG-Blog]]></title><description><![CDATA[LG-Blog]]></description><link>www.todaylg.com</link><generator>RSS for Node</generator><lastBuildDate>Thu, 13 Aug 2020 15:49:58 GMT</lastBuildDate><item><title><![CDATA[这就是最后的波纹了！]]></title><description><![CDATA[趁着有段空闲时间，这些天又把主页更新了一波： todaylg.com (
 国内 todaylg.cn 
-) 把喜欢的几部动漫和游戏都整进去了，开心得一批哈哈哈 Home Section 首先那必然是首屏的最终幻想7啦，其实之前并不了解最终幻想系列，直到看到了最终幻想…]]></description><link>www.todaylg.com/hompage/</link><guid isPermaLink="false">www.todaylg.com/hompage/</guid><pubDate>Tue, 30 Jun 2020 16:00:00 GMT</pubDate><content:encoded>&lt;p&gt;趁着有空，这些天又把主页更新了一波：&lt;/p&gt;
+) 把喜欢的几部动漫和游戏都整进去了，开心得一批哈哈哈 页面还在 https://webgl.souhonzan.org…]]></description><link>www.todaylg.com/hompage/</link><guid isPermaLink="false">www.todaylg.com/hompage/</guid><pubDate>Tue, 30 Jun 2020 16:00:00 GMT</pubDate><content:encoded>&lt;p&gt;趁着有段空闲时间，这些天又把主页更新了一波：&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://todaylg.com&quot;&gt;todaylg.com&lt;/a&gt;(
 国内&lt;a href=&quot;https://todaylg.cn&quot;&gt;todaylg.cn&lt;/a&gt;
 )&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/todaylg/self-introduction/master/intro/intro.gif&quot; alt=&quot;image&quot;&gt;&lt;/p&gt;
 &lt;p&gt;把喜欢的几部动漫和游戏都整进去了，开心得一批哈哈哈&lt;/p&gt;
+&lt;p&gt;页面还在&lt;a href=&quot;https://webgl.souhonzan.org/entry/?v=1755&quot;&gt;https://webgl.souhonzan.org&lt;/a&gt;获得了一篇专门的文章进行介绍，看来站长也是老二刺猿了哈哈哈&lt;/p&gt;
 &lt;h2&gt;Home Section&lt;/h2&gt;
 &lt;p&gt;首先那必然是首屏的最终幻想7啦，其实之前并不了解最终幻想系列，直到看到了最终幻想7重制版的几个预告片，这Tifa和Aerith实在是太好看了，这谁顶得住，遂入坑。。。&lt;/p&gt;
 &lt;p&gt;于是把核心危机、原作、圣子降临一整套全部补了一遍，再加上良心重置版的Aerith二周目剧情，差点激动得猛男落泪。。。太难顶了。。。&lt;/p&gt;
@@ -37,7 +38,7 @@
 &lt;p&gt;咳咳。。。&lt;/p&gt;
 &lt;p&gt;这个PBR材质前面&lt;a href=&quot;http://todaylg.com/LG-Blog-Gatsby/viewer-pbr/&quot;&gt;Viewer的文章&lt;/a&gt;已经详述了，这里就不再重复了&lt;/p&gt;
 &lt;h2&gt;About Section&lt;/h2&gt;
-&lt;p&gt;Work Section上的是《一拳超人》，直接吹爆好吧，饿狼篇最后对兴趣的讨论至今让我印象深刻，“妥协的兴趣与认真的兴趣”，直击灵魂，简直就是灵魂拷问。。。吹爆！&lt;/p&gt;
+&lt;p&gt;Work Section上的是《一拳超人》，直接吹爆好吧，饿狼篇最后对兴趣的讨论至今让我印象深刻，“妥协的兴趣与认真的兴趣”，直击灵魂，简直就是灵魂拷问。。。只要你也吹一拳超人，咱们就是失散多年的亲兄弟好吧！吹爆吹爆！&lt;/p&gt;
 &lt;p&gt;咳咳。。。&lt;/p&gt;
 &lt;p&gt;剩下也没啥了。。就一个Blur前面也有文章记录过了。&lt;/p&gt;
 &lt;h2&gt;总结&lt;/h2&gt;
@@ -48,8 +49,9 @@
 &lt;li&gt;2019：一堆音视频混入一个3D樱花的&lt;a href=&quot;http://todaylg.github.io/WebAMV/Keep_Going/&quot;&gt;中二页面&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;最后到今年3D的&lt;a href=&quot;https://todaylg.com&quot;&gt;中二页面&lt;/a&gt;。&lt;/p&gt;
-&lt;p&gt;时间在一年年过去，鲁迅先生说得好，人不中二枉少年，倒也没啥毛病。但是岁月不饶人啊，纸片人老婆又不能结婚（叹气）&lt;/p&gt;
-&lt;p&gt;只能去朝天空大喊一声：“这是我最后的波纹了！”&lt;/p&gt;
+&lt;p&gt;时间在一年年过去，鲁迅先生说得好，人不中二枉少年，倒也没啥毛病。可是岁月不饶人啊，随着年纪的增长，肩上扛的责任也越来越多，纸片人又不能结婚（叹气）&lt;/p&gt;
+&lt;p&gt;想必自己之后应该不会再有时间和精力来单纯的折腾了，除非天降富婆抬一手，这样看来可能富婆才是正道的光呢（叹气）&lt;/p&gt;
+&lt;p&gt;只能去朝天空大喊一声：“&lt;strong&gt;这是我最后的波纹了！&lt;/strong&gt;”&lt;/p&gt;
 &lt;p&gt;Rua!&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Loading]]></title><description><![CDATA[先躺一波。。。下波起来就是最后的波纹啦(惊起！)]]></description><link>www.todaylg.com/loading/</link><guid isPermaLink="false">www.todaylg.com/loading/</guid><pubDate>Sun, 31 May 2020 16:00:00 GMT</pubDate><content:encoded>&lt;p&gt;先躺一波。。。下波起来就是最后的波纹啦(惊起！)&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Threejs为啥笔记]]></title><description><![CDATA[…]]></description><link>www.todaylg.com/three-why/</link><guid isPermaLink="false">www.todaylg.com/three-why/</guid><pubDate>Sat, 02 May 2020 16:00:00 GMT</pubDate><content:encoded>&lt;p&gt;前段日子发现了一门神课：闫令琪老师的&lt;a href=&quot;https://www.bilibili.com/video/BV1X7411F744?p=22&quot;&gt;《现代计算机图形学入门》&lt;/a&gt;，强烈推荐，完结撒花以后感觉是要从入门到入土了，水好深。。看完课程印象最为深刻的却是闫老师说他学了十年的图形学还是感觉自己什么都不知道。。。这。。。&lt;/p&gt;
 &lt;p&gt;好在前些日子我们的精神领袖切·格瓦拉重见天日，学是学不完的，这辈子都学不完的，只能随便看看，实在搞不动了就回家种种地，勉强维持一下生活这样子。&lt;/p&gt;
 &lt;p&gt;不扯了不扯了。。。&lt;/p&gt;
@@ -4086,9 +4088,11 @@ Plane&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span clas
 &lt;li class=&quot;task-list-item&quot;&gt;
 &lt;p&gt;&lt;input type=&quot;checkbox&quot; checked disabled&gt; glTFLoader：这个单拆一篇文章&lt;/p&gt;
 &lt;/li&gt;
-&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[MikuMikuMi]]></title><description><![CDATA[中了Miku的毒。。。希望有朝一日可以搂一个炫酷的页面给公主殿下~Web3D搞起啊！！ 2019.8.31： 续一年（+1s）Up！Up！]]></description><link>www.todaylg.com/miku-setup/</link><guid isPermaLink="false">www.todaylg.com/miku-setup/</guid><pubDate>Fri, 31 Aug 2018 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;中了Miku的毒。。。希望有朝一日可以搂一个炫酷的页面给公主殿下~Web3D搞起啊！！&lt;/p&gt;
+&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[MikuMikuMi]]></title><description><![CDATA[中了Miku的毒。。。希望有朝一日可以搂一个炫酷的页面给公主殿下~Web3D搞起啊！！ 2019.8.31： 续一年（+1s）Up！Up！ 2020.8.13： 有生之年]]></description><link>www.todaylg.com/miku-setup/</link><guid isPermaLink="false">www.todaylg.com/miku-setup/</guid><pubDate>Fri, 31 Aug 2018 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;中了Miku的毒。。。希望有朝一日可以搂一个炫酷的页面给公主殿下~Web3D搞起啊！！&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;2019.8.31：&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;续一年（+1s）Up！Up！&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Vim快捷键备忘]]></title><description><![CDATA[自己用的场景还是偏少，所以命令根本记不住。。。备忘把常用的简单指令记一下。 基本移动 h j k l ⬅️ ⬇️ ⬆️ ➡️ H 本屏首行 L 本屏末行 o 这一行的最前处 $ 这一行的最末尾 G 移动到整个文档最后一行 gg 移动到整个文档首行，相当于1g n+Enter…]]></description><link>www.todaylg.com/vim/</link><guid isPermaLink="false">www.todaylg.com/vim/</guid><pubDate>Sat, 07 Jul 2018 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;自己用的场景还是偏少，所以命令根本记不住。。。备忘把常用的简单指令记一下。&lt;/p&gt;
+&lt;p&gt;续一年（+1s）Up！Up！&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;2020.8.13：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;有生之年&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Vim快捷键备忘]]></title><description><![CDATA[自己用的场景还是偏少，所以命令根本记不住。。。备忘把常用的简单指令记一下。 基本移动 h j k l ⬅️ ⬇️ ⬆️ ➡️ H 本屏首行 L 本屏末行 o 这一行的最前处 $ 这一行的最末尾 G 移动到整个文档最后一行 gg 移动到整个文档首行，相当于1g n+Enter…]]></description><link>www.todaylg.com/vim/</link><guid isPermaLink="false">www.todaylg.com/vim/</guid><pubDate>Sat, 07 Jul 2018 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;自己用的场景还是偏少，所以命令根本记不住。。。备忘把常用的简单指令记一下。&lt;/p&gt;
 &lt;h3&gt;基本移动&lt;/h3&gt;
 &lt;table&gt;
 &lt;thead&gt;
