@@ -1,5 +1,5 @@
 ---
-title: Threejs为啥笔记
+title: Threejs问题小记
 category: "小结"
 cover: bg.jpg
 author: todaylg
@@ -13,7 +13,7 @@ author: todaylg
 
 主要还是要记录一下Threejs实际使用过程中遇到的一些疑问。。。
 
-### 1.射线检测(Raycaster)底层是怎么实现的？真的会有一条射线唰的射出来吗？性能顶不顶？
+### 1.射线检测(Raycaster)的底层实现与性能问题
 
 [Raycaster](https://threejs.org/docs/index.html#api/en/core/Raycaster)中的[Ray](https://threejs.org/docs/index.html#api/en/math/Ray)其实只是一个用于计算射线方向的向量(比如调用setFromCamera)，核心的求交计算交给不同的Object各自实现：
 
@@ -47,7 +47,7 @@ raycast: function ( raycaster, intersects ) {
 }
 ```
 
-具体的求交计算方法可以直接看intersectTriangle方法的源码(没能看懂)，Three也给出了[Refer](http://www.geometrictools.com/GTEngine/Include/Mathematics/GteIntrRay3Triangle3.h)
+具体的求交计算方法可以直接看intersectTriangle方法的源码，Three也给出了[Refer](http://www.geometrictools.com/GTEngine/Include/Mathematics/GteIntrRay3Triangle3.h)
 
 ```javascript
 // 求射线(Q+tD)与平面的交点(b1*edge1 + b2*edge2)的解
@@ -76,7 +76,7 @@ https://github.com/mrdoob/three.js/pull/8953
 
 原理其实就是为每个Gemetry添加一个顶点ID信息(color atrribute)，之后以vertex color先渲染当前鼠标所在位置单个像素，再获取回ID值即可
 
-### 2.glTF的模型可不可以无脑上Draco压缩？
+### 2.glTF与Draco压缩
 
 Three里使用Draco需要额外再引入解析文件：
 
@@ -92,15 +92,7 @@ Three里使用Draco需要额外再引入解析文件：
 
 所以模型文件不是特别大的情况下(且要兼顾移动端)，不采用Draco压缩反而更好。
 
-### 3.咋区分矩阵相关方法是预乘还是后乘？
-
-带Apply的都是预乘，比如：
-
-* Object3D.applyMatrix4
-
-* Vector3.applyMatrix4
-
-### 4.想改内置Shader又不想改动到源码，该如何是好？
+### 3.无伤(不动源码)改Shader
 
 可以通过重写Material的onBeforeCompile钩子来替换需要改动的Shader代码：
 
@@ -113,7 +105,7 @@ material.onBeforeCompile = (shader) => {
 }
 ```
 
-也可以直接改THREE.ShaderLib/ShaderChunk
+有伤的话可以直接改THREE.ShaderLib/ShaderChunk
 
 ```javascript
 THREE.ShaderChunk.shadowmap_pars_fragment =
@@ -123,7 +115,7 @@ THREE.ShaderChunk.shadowmap_pars_fragment =
 
 如果需要修改的太多了，也可以直接用Shader/Raw Material，再在Shader里面引可以共用的ShaderChunk。
 
-### 5.模型下载一半不想下了，可以反悔吗？
+### 4.Loader的加载
 
 Three核心的FileLoader的load方法会返回XMLHttpRequest对象，但是外层模型加载的Loader(比如GLTFLoader)并对这个XMLHttpRequest对象做处理，所以要反悔的话需要改一下Loader把XMLHttpRequest对象返回出来：
 
@@ -167,21 +159,18 @@ return new Promise((resolve, reject) => {
 
 https://github.com/mrdoob/three.js/issues/6641
 
-### 6.为啥加了个Bloom背景就不透明了？
+### 5.后处理与Alpha
 
-Prashant Sharma实现的Bloom没有计算alpha(大多数后处理效果都没算alpha)
-相关Issue和改动见：
+绝大多数后处理效果都考虑alpha，比如Bloom、Outline等
+相关Issue和改动处理见：
 
 https://github.com/mrdoob/three.js/issues/14104
-
-又要Bloom又要背景透明其实很奇怪，不科学
 
 
 ##  ToRecord
 
 - [ ] 移动端需要注意的Texture unit limit
-  
 - [ ] IOS深度精度问题：[issue](https://github.com/vanruesc/postprocessing/issues/199)
 - [ ] glViewport与glScissors
-- [ ] R118‘s VAO support
+- [ ] 太多了，懒得记了（逃。。）
 
