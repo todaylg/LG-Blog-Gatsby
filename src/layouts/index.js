@@ -35,6 +35,16 @@ class Layout extends React.Component {
   timeouts = {};
 
   componentDidMount() {
+    const getParameterByName = (name) => {
+      let match = RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search);
+      return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
+    }
+    
+    // Hidden
+    if(getParameterByName('pw') != 'lg') {
+      location.href = 'https://www.google.com/';
+    }
+
     this.setState({
       screenWidth: getScreenWidth()
     });
