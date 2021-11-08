@@ -144,7 +144,7 @@ Face Culling =>  Rasterization => Fragment Shading => Fragment Operations
 
 * PQ > 0 : 二者同向
 
-* PQ > 0 : 二者反向
+* PQ < 0 : 二者反向
 
 2.点乘结果表明两个向量角度的接近程度 （即cos(a)的大小）
 
