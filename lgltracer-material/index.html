@@ -1,0 +1,695 @@
+<!DOCTYPE html><html lang="zh" prefix="og: http://ogp.me/ns#"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><style data-href="/LG-Blog-Gatsby/app.f9e276c6c50f389a4934.css">@font-face{font-display:swap;font-family:Open Sans;font-style:normal;font-weight:300;src:local("Open Sans Light "),local("Open Sans-Light"),url(/LG-Blog-Gatsby/static/open-sans-latin-300-60c866748ff15f5b347fdba64596b1b1.woff2) format("woff2"),url(/LG-Blog-Gatsby/static/open-sans-latin-300-521d17bc9f3526c690e8ada6eee55bec.woff) format("woff")}@font-face{font-display:swap;font-family:Open Sans;font-style:italic;font-weight:300;src:local("Open Sans Light italic"),local("Open Sans-Lightitalic"),url(/LG-Blog-Gatsby/static/open-sans-latin-300italic-06bbd3188b34820cd83a0e0b3d0a6f57.woff2) format("woff2"),url(/LG-Blog-Gatsby/static/open-sans-latin-300italic-8a648ff38ded89ea15916e84529d62d3.woff) format("woff")}@font-face{font-display:swap;font-family:Open Sans;font-style:normal;font-weight:400;src:local("Open Sans Regular "),local("Open Sans-Regular"),url(/LG-Blog-Gatsby/static/open-sans-latin-400-cffb686d7d2f4682df8342bd4d276e09.woff2) format("woff2"),url(/LG-Blog-Gatsby/static/open-sans-latin-400-bf2d0783515b7d75c35bde69e01b3135.woff) format("woff")}@font-face{font-display:swap;font-family:Open Sans;font-style:italic;font-weight:400;src:local("Open Sans Regular italic"),local("Open Sans-Regularitalic"),url(/LG-Blog-Gatsby/static/open-sans-latin-400italic-987032ea5d57c93d8da215678eae3b86.woff2) format("woff2"),url(/LG-Blog-Gatsby/static/open-sans-latin-400italic-db70d0b9cb27ada1a260a2b35e756b8b.woff) format("woff")}@font-face{font-display:swap;font-family:Open Sans;font-style:normal;font-weight:600;src:local("Open Sans SemiBold "),local("Open Sans-SemiBold"),url(/LG-Blog-Gatsby/static/open-sans-latin-600-223a277bd88d8a90c8cdf24cda0ad5f5.woff2) format("woff2"),url(/LG-Blog-Gatsby/static/open-sans-latin-600-1cd5320f8937d337b61d5117cf9d7b28.woff) format("woff")}@font-face{font-display:swap;font-family:Open Sans;font-style:italic;font-weight:600;src:local("Open Sans SemiBold italic"),local("Open Sans-SemiBolditalic"),url(/LG-Blog-Gatsby/static/open-sans-latin-600italic-4950a7205f0b5cefe41fc03ac346e236.woff2) format("woff2"),url(/LG-Blog-Gatsby/static/open-sans-latin-600italic-318ea1ada4102c0704a0637228dcad03.woff) format("woff")}@font-face{font-display:swap;font-family:Open Sans;font-style:normal;font-weight:700;src:local("Open Sans Bold "),local("Open Sans-Bold"),url(/LG-Blog-Gatsby/static/open-sans-latin-700-d08c09f2f169f4a6edbcf8b8d1636cb4.woff2) format("woff2"),url(/LG-Blog-Gatsby/static/open-sans-latin-700-623e3205570002af47fc2b88f9335d19.woff) format("woff")}@font-face{font-display:swap;font-family:Open Sans;font-style:italic;font-weight:700;src:local("Open Sans Bold italic"),local("Open Sans-Bolditalic"),url(/LG-Blog-Gatsby/static/open-sans-latin-700italic-c02f5da6e82e1efe0b45841bfd49ce37.woff2) format("woff2"),url(/LG-Blog-Gatsby/static/open-sans-latin-700italic-72e19cbb0e38c6773a7751156752cec4.woff) format("woff")}@font-face{font-display:swap;font-family:Open Sans;font-style:normal;font-weight:800;src:local("Open Sans ExtraBold "),local("Open Sans-ExtraBold"),url(/LG-Blog-Gatsby/static/open-sans-latin-800-aaeffaf205b9bbb09920089a14dbe9e8.woff2) format("woff2"),url(/LG-Blog-Gatsby/static/open-sans-latin-800-c6aa0c4a601fb6ac66f8253fa594dff5.woff) format("woff")}@font-face{font-display:swap;font-family:Open Sans;font-style:italic;font-weight:800;src:local("Open Sans ExtraBold italic"),local("Open Sans-ExtraBolditalic"),url(/LG-Blog-Gatsby/static/open-sans-latin-800italic-6b3973ffe02bb6a8be0f8453506ec032.woff2) format("woff2"),url(/LG-Blog-Gatsby/static/open-sans-latin-800italic-79b58175343190550489efe46a7f1138.woff) format("woff")}</style><style data-href="/LG-Blog-Gatsby/component---src-templates-post-template-js.b74dea4256657570f57d.css">code[class*=language-],pre[class*=language-]{-moz-tab-size:4;-ms-hyphens:none;-o-tab-size:4;-webkit-hyphens:none;background:none;color:#f8f8f2;font-family:Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace;hyphens:none;line-height:1.5;tab-size:4;text-align:left;text-shadow:0 1px rgba(0,0,0,.3);white-space:pre;word-break:normal;word-spacing:normal;word-wrap:normal}pre[class*=language-]{border-radius:.3em;margin:.5em 0;overflow:auto;padding:1em}:not(pre)>code[class*=language-],pre[class*=language-]{background:#272822}:not(pre)>code[class*=language-]{border-radius:.3em;padding:.1em;white-space:normal}.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#708090}.token.punctuation{color:#f8f8f2}.namespace{opacity:.7}.token.constant,.token.deleted,.token.property,.token.symbol,.token.tag{color:#f92672}.token.boolean,.token.number{color:#ae81ff}.token.attr-name,.token.builtin,.token.char,.token.inserted,.token.selector,.token.string{color:#a6e22e}.language-css .token.string,.style .token.string,.token.entity,.token.operator,.token.url,.token.variable{color:#f8f8f2}.token.atrule,.token.attr-value,.token.class-name,.token.function{color:#e6db74}.token.keyword{color:#66d9ef}.token.important,.token.regex{color:#fd971f}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}</style><meta name="generator" content="Gatsby 2.0.21"/><style id="__jsx-3982648812">.item.jsx-3982648812,.showItem.jsx-3982648812{background:transparent;-webkit-transition:all 0.5s;-webkit-transition:all 0.5s;transition:all 0.5s;display:-webkit-box;display:-ms-flexbox;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;}
+.item.jsx-3982648812 a,.showItem.jsx-3982648812 a{padding:10px;display:-webkit-box;display:-ms-flexbox;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;}
+.item.jsx-3982648812 svg,.showItem.jsx-3982648812 svg{margin:0 5px 0 0;opacity:0.3;}
+.itemList .hideItem{display:none;}
+@media screen and (min-width:1024px){.item.jsx-3982648812 a{color:#3e3e3c;padding:10px;-webkit-transition:all 0.5s;-webkit-transition:all 0.5s;transition:all 0.5s;border-radius:5px;}.homepage:not(.fixed) .item.jsx-3982648812 a{color:#ffffff;}.item.jsx-3982648812 a:hover{color:#00a5e6;background:#ffffff;background:rgba(255,255,255,0.4);}.item.jsx-3982648812 svg{-webkit-transition:all 0.5s;-webkit-transition:all 0.5s;transition:all 0.5s;}.item.jsx-3982648812:hover svg{fill:#00a5e6;opacity:1;}.hero .item.jsx-3982648812:hover svg svg{fill:green;}.showItem.jsx-3982648812{display:none;}.hiddenItem.jsx-3982648812{text-align:left;padding:5px;}.hiddenItem.jsx-3982648812 a.inHiddenItem{color:#3e3e3c;}.hiddenItem.jsx-3982648812 a.inHiddenItem:hover{color:#00a5e6;}}</style><style id="__jsx-674193961">.menu.jsx-674193961{-webkit-box-align:center;-ms-flex-align:center;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;background:#ffffff;bottom:0;display:-webkit-box;display:-ms-flexbox;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-flex:1;-ms-flex-positive:1;-webkit-box-flex:1;-webkit-flex-grow:1;-ms-flex-positive:1;flex-grow:1;left:0;max-height:50px;padding:0 10px;position:fixed;width:100%;z-index:1;-webkit-transition:all 0.5s;-webkit-transition:all 0.5s;transition:all 0.5s;}
+.itemList.jsx-674193961{display:-webkit-box;display:-ms-flexbox;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;-webkit-flex-wrap:wrap;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-box-pack:center;-ms-flex-pack:center;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;list-style:none;margin:0;padding:0;position:relative;width:100%;}
+@media screen and (max-width:1023px){.menu.jsx-674193961:after{position:absolute;content:"";left:20px;right:20px;top:0;height:1px;background:#00a5e6;}.menu.open.jsx-674193961{padding:20px;}.homepage:not(.fixed) .menu.jsx-674193961{bottom:-100px;}}
+@media screen and (min-width:1024px){.menu.jsx-674193961{border-top:none;background:transparent;display:-webkit-box;display:-ms-flexbox;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;position:relative;-webkit-box-pack:end;-ms-flex-pack:end;-webkit-box-pack:end;-webkit-justify-content:flex-end;-ms-flex-pack:end;justify-content:flex-end;padding-left:50px;-webkit-transition:none;-webkit-transition:none;transition:none;}.itemList.jsx-674193961{-webkit-box-pack:end;-ms-flex-pack:end;-webkit-box-pack:end;-webkit-justify-content:flex-end;-ms-flex-pack:end;justify-content:flex-end;padding:0;}.hiddenItemList.jsx-674193961{list-style:none;margin:0;position:absolute;background:#ffffff;border:1px solid #ecebea;top:48px;right:10px;display:-webkit-box;display:-ms-flexbox;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;-webkit-box-pack:start;-ms-flex-pack:start;-webkit-box-pack:start;-webkit-justify-content:flex-start;-ms-flex-pack:start;justify-content:flex-start;padding:20px;border-radius:5px;border-top-right-radius:0;}.hiddenItemList.jsx-674193961:after{content:"";background:#ffffff;z-index:10;top:-10px;right:-1px;width:44px;height:10px;position:absolute;border-left:1px solid #ecebea;border-right:1px solid #ecebea;}.homepage:not(.fixed) .hiddenItemList.jsx-674193961{border:1px solid transparent;background:#ffffff;background:rgba(255,255,255,0.9);top:50px;}.homepage:not(.fixed) .hiddenItemList.jsx-674193961:after{top:-11px;border-left:1px solid transparent;border-right:1px solid transparent;background:#ffffff;background:rgba(255,255,255,0.9);}.fixed .hiddenItemList.jsx-674193961{top:44px;}}</style><style id="__jsx-768897745">.header.jsx-768897745{-webkit-box-align:center;-ms-flex-align:center;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;background-color:#ffffff;display:-webkit-box;display:-ms-flexbox;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;height:80px;position:relative;top:0;width:100%;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;}
+.header.jsx-768897745 a.logoType{-webkit-box-align:center;-ms-flex-align:center;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;display:-webkit-box;display:-ms-flexbox;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:"column";-webkit-flex-direction:"column";-ms-flex-direction:"column";flex-direction:"column";color:#3e3e3c;}
+.header.jsx-768897745 a.logoType .logo.jsx-768897745{-ms-flex-negative:0;-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0;}
+.header.homepage.jsx-768897745{position:absolute;background-color:transparent;height:100px;;}
+h1.jsx-768897745{font-size:1.35em;font-weight:400;margin:0 0 5px 0;}
+h2.jsx-768897745{font-weight:400;font-size:.8em;-webkit-letter-spacing:0;-moz-letter-spacing:0;-ms-letter-spacing:0;letter-spacing:0;margin:0;}
+.logo.jsx-768897745{border-radius:65% 75%;border:1px solid #eee;display:inline-block;height:44px;margin:0 20px 0 0;overflow:hidden;width:44px;-webkit-transition:all 0.5s;-webkit-transition:all 0.5s;transition:all 0.5s;}
+.homepage.jsx-768897745 .logo.jsx-768897745{height:60px;width:60px;}
+.logo.jsx-768897745 img.jsx-768897745{width:100%;}
+.sensor.jsx-768897745{display:block;position:absolute;bottom:0;z-index:1;left:0;right:0;height:1px;top:80px;}
+@media screen and (min-width:600px){.header.jsx-768897745{padding:40px;}.header.homepage.jsx-768897745{height:100px;;}}
+@media screen and (max-width:1023px){.header.homepage.jsx-768897745 .logo.jsx-768897745{border:none;}.header.homepage.jsx-768897745 a.logoType,.header.homepage.jsx-768897745 h1.jsx-768897745{color:#ffffff;}.header.homepage.jsx-768897745 h2.jsx-768897745{color:#dddbda;}}
+@media screen and (min-width:1024px){.header.jsx-768897745{-webkit-box-align:center;-ms-flex-align:center;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;background-color:#ffffff;display:-webkit-box;display:-ms-flexbox;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;position:absolute;top:0;width:100%;-webkit-box-pack:justify;-ms-flex-pack:justify;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;-webkit-transition:padding 0.5s;-webkit-transition:padding 0.5s;transition:padding 0.5s;}.header.fixed.jsx-768897745{height:50px;;background-color:#ffffff;left:0;padding:0 20px;position:fixed;top:0;width:100%;z-index:1;}.header.fixed.jsx-768897745 h1.jsx-768897745{margin:0 0 2px 0;}.header.fixed.jsx-768897745 h2.jsx-768897745{display:none;}.header.homepage.jsx-768897745:not(.fixed) a.logoType,.header.homepage.jsx-768897745:not(.fixed) h1.jsx-768897745{color:#ffffff;}.header.homepage.jsx-768897745:not(.fixed) h2.jsx-768897745{color:#dddbda;}.header.jsx-768897745 a.logoType{text-align:left;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;-ms-flex-negative:0;-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0;width:auto;}.logo.jsx-768897745{margin:0 20px 0 0;}.fixed.jsx-768897745 .logo.jsx-768897745{height:36px;width:36px;}.header.homepage.jsx-768897745:not(.fixed) .logo.jsx-768897745{border:none;}h2.jsx-768897745{-webkit-animation-duration:0.5s;-webkit-animation-duration:0.5s;animation-duration:0.5s;-webkit-animation-name:h2Entry;-webkit-animation-name:h2Entry-jsx-768897745;animation-name:h2Entry-jsx-768897745;}@-webkit-keyframes h2Entry{from.jsx-768897745{opacity:0;}to.jsx-768897745{opacity:1;}}@-webkit-keyframes h2Entry-jsx-768897745{from{opacity:0;}to{opacity:1;}}@keyframes h2Entry-jsx-768897745{from{opacity:0;}to{opacity:1;}}}</style><style id="__jsx-3306258923">h1.jsx-3306258923{font-size:2.2em;margin:0 0 40px 0;-webkit-animation-name:headlineEntry;-webkit-animation-name:headlineEntry-jsx-3306258923;animation-name:headlineEntry-jsx-3306258923;-webkit-animation-duration:1s;-webkit-animation-duration:1s;animation-duration:1s;}
+h1.jsx-3306258923 span{font-weight:400;display:block;font-size:0.5em;-webkit-letter-spacing:0;-moz-letter-spacing:0;-ms-letter-spacing:0;letter-spacing:0;margin:0 0 5px 0;}
+h1.jsx-3306258923 svg{height:0.75em;fill:#00a5e6;}
+@-webkit-keyframes headlineEntry{from.jsx-3306258923{opacity:0.5;}to.jsx-3306258923{opacity:1;}}
+@-webkit-keyframes headlineEntry-jsx-3306258923{from{opacity:0.5;}to{opacity:1;}}
+@keyframes headlineEntry-jsx-3306258923{from{opacity:0.5;}to{opacity:1;}}
+@media screen and (min-width:600px){h1.jsx-3306258923{font-size:calc(2em * 1.2);}}
+@media screen and (min-width:1024px){h1.jsx-3306258923{font-size:calc(2em * 1.4);}}</style><style id="__jsx-2889715964">.meta.jsx-2889715964{display:-webkit-box;display:-ms-flexbox;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-flow:row wrap;-webkit-flex-flow:row wrap;-ms-flex-flow:row wrap;flex-flow:row wrap;font-size:0.8em;margin:20px 0;background:transparent;}
+.meta.jsx-2889715964 svg{fill:#00a5e6;margin:0 5px 0 0;}
+.meta.jsx-2889715964 span.jsx-2889715964{-webkit-box-align:center;-ms-flex-align:center;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;display:-webkit-box;display:-ms-flexbox;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;margin:5px 10px 5px 0;}
+@media screen and (min-width:600px){.meta.jsx-2889715964{margin:calc(20px * 1.5) 0 20px;}}</style><style id="__jsx-2925212198">.bodytext.jsx-2925212198{-webkit-animation-name:bodytextEntry;-webkit-animation-name:bodytextEntry-jsx-2925212198;animation-name:bodytextEntry-jsx-2925212198;-webkit-animation-duration:1s;-webkit-animation-duration:1s;animation-duration:1s;}
+.bodytext.jsx-2925212198 h2,.bodytext.jsx-2925212198 h3{margin:1.5em 0 1em;}
+.bodytext.jsx-2925212198 h2{line-height:1.2;font-size:1.7em;}
+.bodytext.jsx-2925212198 h3{font-size:1.35em;line-height:1.3;}
+.bodytext.jsx-2925212198 p{font-size:1.1em;line-height:1.6;margin:0 0 1.5em;}
+.bodytext.jsx-2925212198 ul{list-style:circle;margin:0 0 1.5em;padding:0 0 0 1.5em;}
+.bodytext.jsx-2925212198 li{margin:0.7em 0;line-height:1.5;}
+.bodytext.jsx-2925212198 a{font-weight:600;color:#00a5e6;-webkit-text-decoration:underline;text-decoration:underline;}
+.bodytext.jsx-2925212198 a.gatsby-resp-image-link{border:0;display:block;margin:2.5em 0;border-radius:10px;overflow:hidden;border:1px solid #ecebea;}
+.bodytext.jsx-2925212198 code.language-text{background:#ecebea;text-shadow:none;color:inherit;padding:0.1em 0.3em 0.2em;border-radius:0.1em;}
+@-webkit-keyframes bodytextEntry{from.jsx-2925212198{opacity:0;}to.jsx-2925212198{opacity:1;}}
+@-webkit-keyframes bodytextEntry-jsx-2925212198{from{opacity:0;}to{opacity:1;}}
+@keyframes bodytextEntry-jsx-2925212198{from{opacity:0;}to{opacity:1;}}</style><style id="__jsx-3827537667">.gotop.jsx-3827537667{position:fixed;right:20px;bottom:-10px;-webkit-transition:all 1s;-webkit-transition:all 1s;transition:all 1s;cursor:pointer;}
+.gotop.isShowTop.jsx-3827537667{opacity:1;-webkit-transform:translateY(0);-webkit-transform:translateY(0);-ms-transform:translateY(0);transform:translateY(0);}
+.gotop.jsx-3827537667{opacity:0;-webkit-transform:translateY(100%);-webkit-transform:translateY(100%);-ms-transform:translateY(100%);transform:translateY(100%);}
+.gotop.jsx-3827537667:hover{-webkit-transform:rotate(1deg);-webkit-transform:rotate(1deg);-ms-transform:rotate(1deg);transform:rotate(1deg);}
+#backToTop.jsx-3827537667{position:fixed;right:0px;top:-900px;width:70px;height:900px;background:url(/LG-Blog-Gatsby/static/line-73cb43199ea69a76e36ba5b0990e97e4.png);-webkit-transition:all .5s ease-in-out;-webkit-transition:all .5s ease-in-out;transition:all .5s ease-in-out;}</style><style id="__jsx-126278577">.links.jsx-126278577{display:-webkit-box;display:-ms-flexbox;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;padding:0 20px 40px;border-bottom:1px solid #ecebea;margin:0 0 40px 0;}
+.links.jsx-126278577 a{display:-webkit-box;display:-ms-flexbox;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;}
+.links.jsx-126278577 a:nth-child(2){margin:20px 0 0;}
+.links.jsx-126278577 svg{fill:orange;width:20px;height:20px;-ms-flex-negative:0;-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0;-webkit-box-flex:0;-ms-flex-positive:0;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;margin:0 20px 0 0;}
+h4.jsx-126278577{font-weight:600;margin:0;font-size:1.1em;}
+time.jsx-126278577{color:#969492;display:block;font-weight:400;font-size:0.8em;margin-top:0.5em;}
+@media screen and (min-width:1024px){.links.jsx-126278577{-webkit-box-orient:horizontal;-webkit-box-direction:reverse;-ms-flex-direction:row-reverse;-webkit-flex-direction:row-reverse;-ms-flex-direction:row-reverse;flex-direction:row-reverse;-webkit-box-pack:center;-ms-flex-pack:center;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;}.links.jsx-126278577 a{-ms-flex-preferred-size:50%;-webkit-flex-basis:50%;-ms-flex-preferred-size:50%;flex-basis:50%;}.links.jsx-126278577 a:nth-child(2){margin:0;}.links.jsx-126278577 svg{-webkit-transition:all 0.5s;-webkit-transition:all 0.5s;transition:all 0.5s;margin:0 10px 0 0;}@media (hover:hover){.links.jsx-126278577 a:hover svg{-webkit-transform:scale(1.5);-webkit-transform:scale(1.5);-ms-transform:scale(1.5);transform:scale(1.5);}}}</style><style id="__jsx-1766939654">.article.jsx-1766939654{padding:20px;margin:0 auto;}
+@media screen and (min-width:600px){.article.jsx-1766939654{padding:calc(20px) calc(20px * 2);max-width:650px;}}
+@media screen and (min-width:1024px){.article.jsx-1766939654{padding:calc(20px * 2 + 90px) 0 calc(20px * 2);max-width:700px;}}</style><style id="__jsx-2344609357">.footer.jsx-2344609357{background:#ffffff;padding:20px;padding-top:0;padding-bottom:120px;}
+.footer.jsx-2344609357 ul{list-style:none;text-align:center;padding:0;}
+.footer.jsx-2344609357 ul li{color:#969492;font-size:.8em;padding:2px 10px;position:relative;display:inline-block;}
+.footer.jsx-2344609357 ul li:after{content:"•";position:absolute;right:calc(5px * -1);}
+.footer.jsx-2344609357 ul li:last-child:after{content:"";}
+@media screen and (min-width:1024px){.footer.jsx-2344609357{padding:0 1em 1.5em;}}</style><style id="__jsx-3017011455">main.jsx-3017011455{min-height:80vh;}</style><style id="__jsx-3148707342">html{-webkit-box-sizing:border-box;box-sizing:border-box;}
+*,*:after,*:before{-webkit-box-sizing:inherit;box-sizing:inherit;margin:0;padding:0;}
+body{font-family:Arial, sans-serif;;}
+h1,h2,h3{font-weight:400;line-height:1.1;-webkit-letter-spacing:-0.03em;-moz-letter-spacing:-0.03em;-ms-letter-spacing:-0.03em;letter-spacing:-0.03em;margin:0;}
+h1{-webkit-letter-spacing:-0.04em;-moz-letter-spacing:-0.04em;-ms-letter-spacing:-0.04em;letter-spacing:-0.04em;}
+p{margin:0;}
+strong{font-weight:400;}
+a{-webkit-text-decoration:none;text-decoration:none;color:#666;}
+main{width:auto;display:block;}</style><title data-react-helmet="true">【WebGL与光线追踪】(二) Disney BSDF - LG-Blog</title><meta data-react-helmet="true" name="description" content="LG-Blog"/><meta data-react-helmet="true" property="og:url" content="www.todaylg.com/LG-Blog-Gatsby//lgltracer-material/"/><meta data-react-helmet="true" property="og:title" content="【WebGL与光线追踪】(二) Disney BSDF - LG-Blog"/><meta data-react-helmet="true" property="og:description" content="LG-Blog"/><meta data-react-helmet="true" property="og:image" content="[object Object]"/><meta data-react-helmet="true" property="og:type" content="website"/><meta data-react-helmet="true" name="twitter:card" content="summary"/><meta data-react-helmet="true" name="twitter:creator" content="WebAMV"/><link rel="manifest" href="/LG-Blog-Gatsby/manifest.webmanifest"/><meta name="theme-color" content="#666"/><link rel="alternate" type="application/rss+xml" href="/LG-Blog-Gatsby/rss.xml"/><link as="script" rel="preload" href="/LG-Blog-Gatsby/0-173268826a81d226ae89.js"/><link as="script" rel="preload" href="/LG-Blog-Gatsby/component---src-templates-post-template-js-d0269ec85ce8b10088b0.js"/><link as="script" rel="preload" href="/LG-Blog-Gatsby/app-3355988a5e97fea6ebdf.js"/><link as="script" rel="preload" href="/LG-Blog-Gatsby/webpack-runtime-d0d7adfb6fc26a90196d.js"/><link rel="preload" href="/LG-Blog-Gatsby/static/d/290/path---lgltracer-material-da-0-10b-xqge9G50nw5IblKssQ1ZPdnkMz8.json" as="fetch" crossOrigin="use-credentials"/><meta name="apple-mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="#D0E0D8"/><meta name="apple-mobile-web-app-title" content="Lazywill"/><link rel="apple-touch-icon" href="/icons/apple-icon-57x57.png" sizes="57x57"/><link rel="apple-touch-icon" href="/icons/apple-icon-60x60.png" sizes="60x60"/><link rel="apple-touch-icon" href="/icons/apple-icon-72x72.png" sizes="72x72"/><link rel="apple-touch-icon" href="/icons/apple-icon-76x76.png" sizes="76x76"/><link rel="apple-touch-icon" href="/icons/apple-icon-114x114.png" sizes="114x114"/><link rel="apple-touch-icon" href="/icons/apple-icon-120x120.png" sizes="120x120"/><link rel="apple-touch-icon" href="/icons/apple-icon-144x144.png" sizes="144x144"/><link rel="apple-touch-icon" href="/icons/apple-icon-152x152.png" sizes="152x152"/><link rel="apple-touch-icon" href="/icons/apple-icon-180x180.png" sizes="180x180"/><link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png"/><link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png"/><link rel="icon" type="image/png" sizes="96x96" href="/icons/favicon-96x96.png"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" role="group"><header class="jsx-768897745 header  "><a class="logoType" href="/LG-Blog-Gatsby/"><div class="jsx-768897745 logo"><img src="/LG-Blog-Gatsby/static/avatar-421bc1a993c325eb033296a4b73eee0c.jpg" alt="LG-Blog" class="jsx-768897745"/></div><div class="jsx-768897745 type"><h1 class="jsx-768897745">todaylg</h1><h2 class="jsx-768897745"></h2></div></a><nav rel="js-menu" class="jsx-674193961 menu "><ul class="jsx-674193961 itemList"><li class="jsx-3982648812 item"><a class="" data-slug="/" href="/LG-Blog-Gatsby/"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 576 512" height="1em" width="1em"><path d="M488 312.7V456c0 13.3-10.7 24-24 24H348c-6.6 0-12-5.4-12-12V356c0-6.6-5.4-12-12-12h-72c-6.6 0-12 5.4-12 12v112c0 6.6-5.4 12-12 12H112c-13.3 0-24-10.7-24-24V312.7c0-3.6 1.6-7 4.4-9.3l188-154.8c4.4-3.6 10.8-3.6 15.3 0l188 154.8c2.7 2.3 4.3 5.7 4.3 9.3zm83.6-60.9L488 182.9V44.4c0-6.6-5.4-12-12-12h-56c-6.6 0-12 5.4-12 12V117l-89.5-73.7c-17.7-14.6-43.3-14.6-61 0L4.4 251.8c-5.1 4.2-5.8 11.8-1.6 16.9l25.5 31c4.2 5.1 11.8 5.8 16.9 1.6l235.2-193.7c4.4-3.6 10.8-3.6 15.3 0l235.2 193.7c5.1 4.2 12.7 3.5 16.9-1.6l25.5-31c4.2-5.2 3.4-12.7-1.7-16.9z"></path></svg> <!-- -->Home</a></li><li class="jsx-3982648812 item"><a class="" data-slug="/category/" href="/LG-Blog-Gatsby/category/"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" height="1em" width="1em"><path d="M0 252.118V48C0 21.49 21.49 0 48 0h204.118a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882L293.823 497.941c-18.745 18.745-49.137 18.745-67.882 0L14.059 286.059A48 48 0 0 1 0 252.118zM112 64c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48z"></path></svg> <!-- -->Categories</a></li><li class="jsx-3982648812 item"><a class="" data-slug="/contact/" href="/LG-Blog-Gatsby/contact/"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" height="1em" width="1em"><path d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z"></path></svg> <!-- -->About</a></li></ul></nav></header><div class="jsx-768897745 sensor"></div><main class="jsx-3017011455 jsx-3148707342"><article class="jsx-1766939654 article"><header><h1 class="jsx-3306258923">【WebGL与光线追踪】(二) Disney BSDF</h1><p class="jsx-2889715964 meta"><span class="jsx-2889715964"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 448 512" size="18" height="18" width="18"><path d="M12 192h424c6.6 0 12 5.4 12 12v260c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V204c0-6.6 5.4-12 12-12zm436-44v-36c0-26.5-21.5-48-48-48h-48V12c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v52H160V12c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v52H48C21.5 64 0 85.5 0 112v36c0 6.6 5.4 12 12 12h424c6.6 0 12-5.4 12-12z"></path></svg> <!-- -->2021-11-07</span><span class="jsx-2889715964"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 448 512" size="18" height="18" width="18"><path d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z"></path></svg> <!-- -->todaylg</span><span class="jsx-2889715964"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" size="18" height="18" width="18"><path d="M0 252.118V48C0 21.49 21.49 0 48 0h204.118a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882L293.823 497.941c-18.745 18.745-49.137 18.745-67.882 0L14.059 286.059A48 48 0 0 1 0 252.118zM112 64c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48z"></path></svg><a href="/LG-Blog-Gatsby/category/小结">小结</a></span></p></header><div class="jsx-2925212198 bodytext"><p>材质部分实现的是Disney BSDF，这里再做一次从基础开始的总结，比较熟悉的兄弟可直接跳过了哈</p>
+<p>首先一切的一切，都得从渲染方程开始：</p>
+<p>$$ L<em>{o}\left(p, \omega</em>{o}\right)=L<em>{e}\left(p, \omega</em>{o}\right)+\int<em>{\Omega^{+}} L</em>{i}\left(p, \omega<em>{i}\right) f</em>{r}\left(p, \omega<em>{i}, \omega</em>{o}\right)\left(n \cdot \omega<em>{i}\right) \mathrm{d} \omega</em>{i} $$</p>
+<h2>辐射度量学</h2>
+<p>而要理解渲染方程，得先回顾下辐射度量学的一些基本概念：</p>
+<h3><strong>辐射能(radiant energy)</strong>：</h3>
+<p>表示以辐射的形式发射、传播或接收的能量。单位为焦耳(J)，使用符号Q表示。每个光子都携带一定的能量，这个能量正比于它的频率v，h为普朗克常数：</p>
+<p>$$ Q = hv $$ </p>
+<h3><strong>辐射通量(radiant flux)</strong>：</h3>
+<p>表示光源每秒钟发射的功率，单位为瓦特(Watt)，使用符号$\Phi$表示：</p>
+<p>$$ \Phi\equiv\frac{dQ}{dt} $$</p>
+<p>辐射能量测量中通常都使用辐射通量</p>
+<h3><strong>立体角(solid angle)</strong>：</h3>
+<p>表示单位球体上一块区域对应的球面部分的面积，2D使用弧度表示“角度”大小，3D则使用单位球体上区域面积来表示对应“立体角”的大小。</p>
+<p>常用 ω 来表示，单位为 sr(steradian，球面度)，其值为该角对应的面积除以半径的平方:</p>
+<p>$$ \omega = \frac{A}{r^2} $$</p>
+<p>微分视角下，可用弧长乘弧长的矩形面积来表示立体角对应的面积dA：</p>
+<p>$$ dA = (dθ<em>r)</em>(dφ<em>r</em>\cosθ) $$</p>
+<p>微分立体角即为：</p>
+<p>$$ d\omega = \frac{dA}{r^2}=\sinθdθdφ $$</p>
+<p>可顺带推出整个球的表面积：</p>
+<p>$$ A=\int<em>{0}^{2\pi}\int</em>{0}^{\pi}dA = \int<em>{0}^{2\pi}\int</em>{0}^{\pi} \sin\theta r^{2}d\theta d \varphi = r^{2}\int<em>{0}^{2\pi}[-cos\theta]</em>{0}^{\pi}d \varphi = r^{2}[2\varphi]_{0}^{2\pi} = 4 \pi r^2 $$</p>
+<h3><strong>辐射强度(radiant intensity)</strong>：</h3>
+<p>表示单位立体角所对应的辐射通量，用 I 来表示，单位为 W/sr:</p>
+<p>$$ I\equiv \frac{d\Phi}{d\omega} $$</p>
+<h3><strong>辐射照度(irradiance)</strong>：</h3>
+<p>表示单位面积接收到的辐射通量，使用E表示，单位为$W/m^2$：</p>
+<p>$$ E\equiv\frac{d\Phi}{dA} $$</p>
+<p>辐射强度随方向与面法线的夹角余弦变化而变化：</p>
+<p>$$ E=\frac{d\Phi}{dA}\cos\theta $$</p>
+<h3><strong>辐射亮度/辐射率(radiance)</strong>：</h3>
+<p>表示单位面积下接收到的来自单位立体角的辐射通量，用 L 来表示，单位为$W/sr\cdot m^2$：</p>
+<p>$$ L(p,\omega)=\frac{d^2\Phi}{d\omega dA^{\bot}}\ $$</p>
+<p>需要注意的是定义irradiance时面积元是$dA$，而定义radiance时是投影后的面积元${d} A^{\perp}$</p>
+<p>微分视角下radiance即代表单束光线从某个方向射向某个位置的辐射通量（立体角足够小 => 代表方向，面积足够小 => 代表点）</p>
+<h3><strong>radiance与irradiance的关系</strong>：</h3>
+<p>设一束光线的辐射率为L(p,ω)，则可得ω方向上对P点贡献的辐照度dE(p,ω)为：</p>
+<p>$$ dE(p,ω)=L(p,ω) cos\theta d\omega $$</p>
+<p>最终P点的辐照度就应该是半球内所有光线提供的辐照度的积分（$\Omega^{+}$代表正半球域）：</p>
+<p>$$ E(p)=\int<em>{\Omega^{+}}L</em>i(p,\omega<em>i)n\cdot \omega</em>i d\omega_i $$</p>
+<p>回看渲染方程：</p>
+<p>$$ L<em>{o}\left(p, \omega</em>{o}\right)=L<em>{e}\left(p, \omega</em>{o}\right)+\int<em>{\Omega^{+}} L</em>{i}\left(p, \omega<em>{i}\right) f</em>{r}\left(p, \omega<em>{i}, \omega</em>{o}\right)\left(n \cdot \omega<em>{i}\right) \mathrm{d} \omega</em>{i} $$</p>
+<p>只看反射方程，现在就只剩下$f<em>r(p,\omega</em>i,\omega_o)$啦</p>
+<h2>双向反射分布函数（BRDF，Bidirectional Reflectance Distribution Function）</h2>
+<p>BRDF的定义是出射Radiance比入射Irradiance的比值，表示反射方向上radiance增量与入射方向irradiance增量的比率(以描述表面入射光与反射光的关系):</p>
+<p>$$ f<em>r(p,\omega</em>i,\omega<em>o) = \frac{L(p,\omega</em>o)}{L(p,\omega<em>i)n\cdot \omega</em>i d\omega_i} $$</p>
+<p>BRDF的两个性质：</p>
+<p>1.赫姆霍兹互反定律：BRDF的入射方向和出射方向可以互换，值保持不变：</p>
+<p>$$ f<em>r(p,\omega</em>i,\omega<em>o) = f</em>i(p,\omega<em>i,\omega</em>o) $$</p>
+<p>2.能量守恒定律：所有反射的能量不能大于所有吸收的能量(不包括自发光)</p>
+<p>$$ \int<em>{\Omega}f</em>r(p,\omega<em>i,\omega</em>o)n\cdot \omega<em>i d\omega</em>i &#x3C;= 1$$</p>
+<p>即给定一个入射方向，所有出射方向的BRDF积分值小于1</p>
+<p>再回顾一些概念：</p>
+<p><a href="https://zhuanlan.zhihu.com/p/56967462">https://zhuanlan.zhihu.com/p/56967462</a> 中的人眼视觉、物理光学(反射/折射/散射/吸收) 部分</p>
+<h3><strong>菲涅尔方程</strong>：</h3>
+<p>详细介绍可见：<a href="https://zhuanlan.zhihu.com/p/56967462">https://zhuanlan.zhihu.com/p/56967462</a> 中的菲涅尔反射部分</p>
+<p>菲涅尔方程描述了反射与折射的比率</p>
+<p>因为菲涅尔反射率大部分范围内趋近于F0，所以F0也称为材质的特征镜面反射率(characteristic specular reflectance)，同时因为满足具有RGB分量且在0-1之间，通常还称为镜面颜色(specular color)</p>
+<p>F0可通过折射率公式计算。折射到表面中的光量即为1-F0</p>
+<p>$$
+F<em>0 = (\frac{n</em>1-n<em>2}{n</em>1+n_2})^2 \
+$$</p>
+<p>通常假设n1=1近似于空气的折射率，并用n替换n2</p>
+<p>$$
+F_0 = (\frac{n-1}{n+1})^2 \
+$$</p>
+<p>折射定律：</p>
+<p>$$
+n1sinθ1=n2sinθ2
+$$</p>
+<p>大多数常见电介质的F0范围为0.02-0.05, 对于导体，F0范围为0.5-1.0</p>
+<h3><strong>法线分布函数(Normal Distribution Function)</strong>：</h3>
+<p>详细介绍可见：<a href="https://zhuanlan.zhihu.com/p/69380665">https://zhuanlan.zhihu.com/p/69380665</a></p>
+<p>NDF描述了微观表面上的表面法线m的统计分布</p>
+<p>明确定义：单位宏表面上法向量为m的微表面总面积的球面密度</p>
+<p>仅在微观表面法线m等于宏观表面的半矢量h朝向相同的表面点，才<strong>有机会</strong>(最终能不能传播到还取决于G项)被观察到</p>
+<p>NDF的本质是一个密度函数(即具有正确朝向的微表面法线浓度)，单位为1/球面度(1/steradians)</p>
+<p>投影到宏观表面平面上的微平面区域，等于宏观表面的面积，即任何一个法线分布函数D(m)都必须满足在宏表面投影面积为1，投影D(m)(n·m)是被归一化的：</p>
+<p>$$
+\int_{\mathbf{m}\in \Theta} D(\mathbf{m})\mathbf{(n \cdot m)}d \mathbf{m} = 1 \
+$$</p>
+<p>任何方向上微观表面投影面积始终与宏观表面投影面积相同（宏观法线n，微观法线m）</p>
+<p>$$ \int_{\mathbf{m}\in \Theta} D(\mathbf{m})\mathbf{(v \cdot m)}d \mathbf{m} = \mathbf{v \cdot n} \ $$</p>
+<p>Θ符号表示在整球体上积分，半球积分用Ω表示。图形学中使用的大多数微结构模型都是高度场（heightfields），这意味着对于Ω外的所有方向，D(m) = 0。 但是，上式也适用于非高度场微观结构。</p>
+<h3><strong>几何函数(Geometry Function)</strong></h3>
+<p>详细介绍可见：<a href="https://zhuanlan.zhihu.com/p/81708753">https://zhuanlan.zhihu.com/p/81708753</a></p>
+<p>几何函数表示在具有半矢量法线的微平面中(满足了m = h)，未被遮挡的百分比。</p>
+<p>两种微表面的交互行为：</p>
+<ul>
+<li>阴影（Shadowing）表示微平面对入射光的遮挡，一般为对光源方向L而言</li>
+<li>遮蔽（masking）表示微平面对出射光的遮挡，一般为对观察方向V而言</li>
+</ul>
+<p>G与D的联系：</p>
+<p>1.几何函数的解析形式的确认依赖于法线分布函数</p>
+<p>2.法线分布函数需要结合几何函数，得到有效的法线分布强度</p>
+<h2><strong>Cook-Torrance BRDF</strong></h2>
+<p>$$ f<em>{r}=k</em>{d} f<em>{lambert}+k</em>{s} f_{cook-torrance} \ $$</p>
+<h3><strong>漫反射项:</strong></h3>
+<p>也是从反射方程开始：</p>
+<p>$$ L<em>o(\omega</em>{o}) = \int<em>\Omega f</em>{r} L<em>i(\omega</em>{i}) cos(\theta<em>i) d\omega</em>i $$</p>
+<p>因为漫反射是均匀向整个半球方向反射(Labertian模型)，则$f<em>{r}$为常数，且$L</em>i$与方向无关，并且$L<em>o = cL</em>i$，c为反照率/固有色，表示光在介质内部出射部分比例</p>
+<p>$$ L<em>o = f</em>{r} L<em>i \int</em>\Omega  cos(\theta<em>i) d\omega</em>i = c\pi f<em>{r} L</em>i $$</p>
+<p>则：</p>
+<p>$$ f_{lambert}=\frac{c}{\pi} \ $$</p>
+<p><strong>积分$\int _{\Omega} \cos \phi, d\omega$的计算：</strong></p>
+<p>$\int _{\Omega} \cos \phi, d\omega$是半球积分，将其转为球坐标系可得:</p>
+<p>$$ \int _{\Omega} \cos \phi, d\omega = \int _{0} ^{2\pi} \int _{0} ^{\pi / 2} \sin \phi ,\cos \phi ,d\phi ,d\theta $$</p>
+<p>换元：</p>
+<p>$$ \int _{0} ^{\pi / 2} \sin \phi \cos \phi d\phi = \frac 1 2 \int _{0} ^{\pi / 2}  \sin \phi, d(\sin \phi) = \frac 1 2 \sin^2(2\phi) | _{0} ^{\pi / 2} = \frac 1 2 (1^2 - 0^2) = \frac 1 2  $$</p>
+<p>再带入后即可得：</p>
+<p>$$ \int _{\Omega} \cos \phi, d\omega = \int _{0} ^{2\pi} \frac 1 2 d\theta = \pi $$</p>
+<h3><strong>镜面反射项:</strong></h3>
+<p>$$ f_{cook-torrance}=\frac{F(l, h) G(l, v) D(h)}{4(n \cdot l)(n \cdot v)} \ $$</p>
+<p>D(h)代表每单位面积中每单位立体角所有法向为h的微平面的面积</p>
+<p>则对于面积为dA的微表面，出射面积即为：</p>
+<p>$$ d^2A\left(\omega<em>{h}\right)=D\left(\omega</em>{h}\right) d \omega_{h} d A $$</p>
+<p>$\omega<em>i$为入射方向，$\omega</em>o$为观察方向，$\omega_h$为微平面法向</p>
+<p>$dA(\omega<em>h)$是微表面中法线方向为$\omega</em>h$的面积，入射面积即为这个面积投影到入射平面上:</p>
+<p>$$cos(\theta_h)dA$$</p>
+<p>设入射radiance为$L<em>{i}\left(\omega</em>{i}\right)$, 则入射的辐射通量：</p>
+<p>$$
+\begin{aligned} d^3\Phi<em>{i}&#x26;=L</em>{i}\left(\omega<em>{i}\right) d \omega</em>{i} d^2 A^{\perp}\left(\omega<em>{h}\right)\&#x26;=L</em>{i}\left(\omega<em>{i}\right) d \omega</em>{i} \cos \theta<em>{h} d^2 A\left(\omega</em>{h}\right) \&#x26;=L<em>{i}\left(\omega</em>{i}\right) d \omega<em>{i} \cos \theta</em>{h} D\left(\omega<em>{h}\right) d \omega</em>{h} d A \end{aligned} \
+$$</p>
+<p>先不考虑F、G项的光线损失，则入射辐射通量等于出射辐射通量：</p>
+<p>$$ d^3 \Phi<em>{o}=d^3 \Phi</em>{i} \ $$</p>
+<p>由radiance的定义，出射radiance为：</p>
+<p>$$ d L<em>{o}\left(\omega</em>{o}\right)=\frac{d^3 \Phi<em>{o}}{d \omega</em>{o} \cos \theta<em>{o} d A}=\frac{ L</em>{i}\left(\omega<em>{i}\right) d \omega</em>{i} \cos \theta<em>{h} D\left(\omega</em>{h}\right) d \omega<em>{h} d A}{d \omega</em>{o} \cos \theta_{o} d A} \ $$</p>
+<p>再由BRDF定义：</p>
+<p>$$ f<em>{cook-torrance}\left(\omega</em>{i}, \omega<em>{o}\right)=\frac{d L</em>{o}\left(\omega<em>{o}\right)}{d E</em>{i}\left(\omega<em>{i}\right)}=\frac{d L</em>{o}\left(\omega<em>{o}\right)}{L</em>{i}\left(\omega<em>{i}\right) \cos \theta</em>{i} d \omega<em>{i}}=\frac{\cos \theta</em>{h} D\left(\omega<em>{h}\right) d \omega</em>{h}}{\cos \theta<em>{o} \cos \theta</em>{i} d \omega_{o}} \ $$</p>
+<p>$\theta<em>i$是入射光线$\omega</em>i$与宏观法线方向n的夹角，$\theta<em>o$是出射光线$\omega</em>o$与宏观法线方向n的夹角，$\theta<em>h$是入射光线$\omega</em>i$与微平面法线方向$\omega_h$的夹角</p>
+<p>最后问题化简为了求</p>
+<p>$$\frac{d\omega<em>h}{d\omega</em>o}$$</p>
+<div style="text-align: center">  
+
+  <a class="gatsby-resp-image-link" href="/LG-Blog-Gatsby/static/reflection-03b02468c038b2b2e62e4a9e47540abb-f911d.png" style="display: block" target="_blank" rel="noopener">
+  
+  <span class="gatsby-resp-image-wrapper" style="position: relative; display: block; ; max-width: 432px; margin-left: auto; margin-right: auto;">
+    <span class="gatsby-resp-image-background-image" style="padding-bottom: 149.7685185185185%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAeCAYAAAAsEj5rAAAACXBIWXMAABJ0AAASdAHeZh94AAADIElEQVRIx5VWaVPiQBDlb61KyEW4Qw5QkRDlckH2AC3dKi1/e2+/1s4mAdH90JVmpqen3+tjqNi2TRDLsrKvYzsUBCEtFgu6vk4piiIaj8c0GAyo3W6TaZqFM6pDKqrkNxzHobu7De3ud/T88kzr1Yp+/d7SbndP58MhGYaR2ZeDqehirVaTBdwO/fT0VOTk5IQdVHnNFB37ruvKV20LEXqeR5vNhnzfFzj4Xl5e0mQyEZhpmtJ8PqfZbEZJkjAF17IO236/TyuOvtFoZDRIhEEQiCPcjAu63a4Ydzod+YLDXq/Hup+tN5tNkSFTUK/XM9jCIThRyBDoupbXDcNkgZ2ZWzMOc3hMkCTTRPa/URz7DD0VVEBTTig7tHKHrb2saRSA9fqypelNX2CjhOBQufs0QnWKSFqtFp2fD2kxHzNvuMR4h259XDaHBNGl6YSm0xk1PJeaDYMFPL/RcKi4K+Wo1ADOkMU4jt95rHEl1LkS3hwiyqMR5m8CL4B5cXEh3NmWw6ViUhiYXJ+p1CNKyfPqhyPM3wBBZNPpNMsw+FqvErq5CdlJk2uyS2EYSUFr2RR6Od/DKG7I09OTHMB6tWrQdrugOPLp7KzK9rjkTPYQqaAoRwhnugH+0BnoHuiua9MkCVivCn+oySQZ0NVVm78TocD3e7xe+xdh/ha9AAnBYc+z6OFhyX275mirUoePj3+o23GZ3zdbSAYZEHVBk4Kivb1dCrwobFEyDrkmI+YukNqEY9O0sz4ucAiH5fKBIRrf9/s0GnU5UQ7T4HOU33MtVwwm4xCL+VtUkMEoijnjobQaeAUN2nJWCW7mUBfgGJFBPBbHcZmvHv38MZORpQjUTrul4LBc7WqUnzR6QPW8zV5h59vtEOzP9r/Uev8jR4fDMcOv7O/1cnniHIP7kX3lGFRNANoPpVLO6ocR5t9YrS8d7cvlUnoao2y9Xsvzqe+y2hfeZZ19eHfRUpgwOISnFPpoNJLe1fda/47gvYaOUbcHGQfDMBSJZXB6IugMHNQ/AHCA39D1N2zMQ5D1nVXIOsIQIRCojih1xOFMGfJfhkxGtx0n+LMAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;">
+      <img class="gatsby-resp-image-image" style="width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px transparent;" alt="reflection" title="" src="/LG-Blog-Gatsby/static/reflection-03b02468c038b2b2e62e4a9e47540abb-f911d.png" srcset="/LG-Blog-Gatsby/static/reflection-03b02468c038b2b2e62e4a9e47540abb-908da.png 200w,
+/LG-Blog-Gatsby/static/reflection-03b02468c038b2b2e62e4a9e47540abb-28198.png 400w,
+/LG-Blog-Gatsby/static/reflection-03b02468c038b2b2e62e4a9e47540abb-f911d.png 432w" sizes="(max-width: 432px) 100vw, 432px">
+    </span>
+  </span>
+  
+  </a>
+      
+</div>
+<p>可得：</p>
+<p>$$ {d\omega<em>h} = \frac{ cos\theta</em>h}{{|h<em>r|^2}}d\omega</em>o$$</p>
+<p>由余弦定理：</p>
+<p>$$ \frac{d\omega<em>h}{d\omega</em>o} = \frac{cos\theta<em>h}{1+1-2*cos(\pi-2\theta</em>h)} =  \frac{1}{4cos\theta_h}\ $$</p>
+<p>法二：</p>
+<p>多重积分换元需要乘一项Jacobian行列式，几何意义代表面积变化的比例
+，在这里可以直接两个面积比(单位球面的角度微元等于面积微元)：$\lim<em>{d</em>{\omega<em>o} \to 0}\frac{d{\omega</em>h}}{d{\omega_o}}$，（硬拿雅克比行列式算过程可参考<a href="https://zhuanlan.zhihu.com/p/21489591">这里</a>）</p>
+<p>法三：</p>
+<p>通过以$\omega<em>i$作为z轴建立球面坐标系, 因为$\omega</em>i, \omega<em>o$关于$\omega</em>h$对称，$\theta<em>o’ = 2\theta</em>h’=2\theta_h$, 可得：</p>
+<p>$$ d\omega<em>h=sin \theta</em>{\mathrm{h}} \mathrm{d} \theta_{\mathrm{h}} \mathrm{d} \phi $$</p>
+<p>$$ d\omega<em>o=sin2\theta</em>h <em>2d\theta_h</em>d\phi=4sin\theta<em>hcos\theta</em>hd\theta_hd\phi $$</p>
+<p>化简之后可得：</p>
+<p>$$ \frac{d\omega<em>h}{d\omega</em>o} = \frac{1}{4cos\theta_h} \ $$</p>
+<p>最后再把F、G项带入即可得：</p>
+<p>$$ f<em>{cook-torrance}\left(\omega</em>{i},\omega<em>{o}\right)=\frac{F</em>{r}\left(\omega<em>{o},\omega</em>h \right) D\left(\omega<em>{h}\right) G\left(\omega</em>{i}, \omega<em>{o}\right)}{4 \cos \theta</em>{o} \cos \theta_{i}} \ $$</p>
+<h2>Disney Principled BRDF</h2>
+<p>这里推荐直接一波四合一套餐：</p>
+<p><a href="https://github.com/wdas/brdf/blob/main/src/brdfs/disney.brdf">Disney BRDF Shader</a></p>
+<p><a href="https://media.disneyanimation.com/uploads/production/publication_asset/48/asset/s2012_pbs_disney_brdf_notes_v3.pdf">Disney BRDF Paper</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/60977923">paper概括</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/57771965">实践总结</a></p>
+<p>核心microfacet模型：</p>
+<p>$$ f(l,v)=\textrm{diffuse}+ \frac{D(\theta<em>h)F(\theta</em>d)G(\theta<em>l,\theta</em>v)}{4\ cos\theta<em>lcos \theta</em>v} \ $$</p>
+<p>通过对实际材质、现有公式效果的观察及对比，从而得出最后的经验模型:</p>
+<div class="gatsby-highlight" data-language="glsl"><pre class="language-glsl"><code class="language-glsl"><span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token number">1</span> <span class="token operator">/</span> PI<span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token function">mix</span><span class="token punctuation">(</span>Fd<span class="token punctuation">,</span> ss<span class="token punctuation">,</span> subsurface<span class="token punctuation">)</span> <span class="token operator">*</span> Cdlin <span class="token operator">+</span> Fsheen<span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token punctuation">(</span><span class="token number">1</span> <span class="token operator">-</span> metallic<span class="token punctuation">)</span> <span class="token operator">+</span> Gs <span class="token operator">*</span> Fs <span class="token operator">*</span> Ds <span class="token operator">+</span> <span class="token number">.25</span> <span class="token operator">*</span> clearcoat <span class="token operator">*</span> Gr <span class="token operator">*</span> Fr <span class="token operator">*</span> Dr<span class="token punctuation">;</span></code></pre></div>
+<p><strong>漫反射项：Disney Diffuse</strong></p>
+<p>观察发现Lambert漫反射模型在边缘太暗，最后使用了Schlick近似，但丢弃菲涅尔因子的折射率，并假定没有入射能量的损失，再修改让掠射逆反射（grazing retroreflection response）和粗糙度挂钩，得到一个新的经验模型:</p>
+<p>$$ f<em>d = \frac{baseColor}{\pi }(1+(F</em>{D90} -1)(1-cos\theta <em>l)^{5})(1 + (F</em>{D90}-1)(1-cos\theta _v)^5)  \ $$</p>
+<p>$$F<em>{D90} = 0.5 + 2 \ roughness \ cos^{2}\theta</em>d$$</p>
+<p>$\theta<em>d$ 是入射方向$\boldsymbol w</em>i$与half vector $\boldsymbol \omega<em>h = \mathrm{normalize(\boldsymbol w</em>i + \boldsymbol w_o)}$ 的夹角。</p>
+<p>这样即使$\theta_d$到90度时，边缘暗度依旧限制在0.5，并且逆反射也随粗糙增加而增加。</p>
+<div class="gatsby-highlight" data-language="glsl"><pre class="language-glsl"><code class="language-glsl"><span class="token keyword">float</span> <span class="token function">SchlickFresnel</span><span class="token punctuation">(</span><span class="token keyword">float</span> u<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">float</span> m <span class="token operator">=</span> <span class="token function">clamp</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token operator">-</span>u<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">float</span> m2 <span class="token operator">=</span> m<span class="token operator">*</span>m<span class="token punctuation">;</span>
+    <span class="token keyword">return</span> m2<span class="token operator">*</span>m2<span class="token operator">*</span>m<span class="token punctuation">;</span> <span class="token comment">// pow(m,5)</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// Diffuse fresnel - go from 1 at normal incidence to .5 at grazing</span>
+<span class="token comment">// and mix in diffuse retro-reflection based on roughness</span>
+<span class="token keyword">float</span> FL <span class="token operator">=</span> <span class="token function">SchlickFresnel</span><span class="token punctuation">(</span>NdotL<span class="token punctuation">)</span><span class="token punctuation">,</span> FV <span class="token operator">=</span> <span class="token function">SchlickFresnel</span><span class="token punctuation">(</span>NdotV<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">float</span> Fd90 <span class="token operator">=</span> <span class="token number">0.5</span> <span class="token operator">+</span> <span class="token number">2</span> <span class="token operator">*</span> LdotH<span class="token operator">*</span>LdotH <span class="token operator">*</span> roughness<span class="token punctuation">;</span>
+<span class="token keyword">float</span> Fd <span class="token operator">=</span> <span class="token function">mix</span><span class="token punctuation">(</span><span class="token number">1.0</span><span class="token punctuation">,</span> Fd90<span class="token punctuation">,</span> FL<span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token function">mix</span><span class="token punctuation">(</span><span class="token number">1.0</span><span class="token punctuation">,</span> Fd90<span class="token punctuation">,</span> FV<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+<p>次表面散射部分没有用复杂模型，而是使用了一个BRDF(<a href="https://cseweb.ucsd.edu/~ravir/6998/papers/p165-hanrahan.pdf">Hanrahan-Krueger BRDF</a>的改进)进行近似：</p>
+<p>$$ \begin{aligned} &#x26;f<em>\mathrm{subsurface} = 1.25\frac{\mathrm{baseColor}}{\pi}(F</em>{ss} (1 / (\cos\theta<em>i + \cos\theta</em>o) - 0.5) + 0.5) \ &#x26;F<em>{ss} = (1 + (F</em>{ss90} - 1)(1 - \cos\theta<em>i)^5)(1 + (F</em>{ss90} - 1)(1 - \cos\theta<em>o)^5) \ &#x26;F</em>{ss90} = \cos^2\theta_d\mathrm{roughness} \end{aligned} \ $$</p>
+<p>代码部分：</p>
+<div class="gatsby-highlight" data-language="glsl"><pre class="language-glsl"><code class="language-glsl"><span class="token comment">// Based on Hanrahan-Krueger brdf approximation of isotropic bssrdf</span>
+<span class="token comment">// 1.25 scale is used to (roughly) preserve albedo</span>
+<span class="token comment">// Fss90 used to "flatten" retroreflection based on roughness</span>
+<span class="token keyword">float</span> Fss90 <span class="token operator">=</span> LdotH<span class="token operator">*</span>LdotH<span class="token operator">*</span>roughness<span class="token punctuation">;</span>
+<span class="token keyword">float</span> Fss <span class="token operator">=</span> <span class="token function">mix</span><span class="token punctuation">(</span><span class="token number">1.0</span><span class="token punctuation">,</span> Fss90<span class="token punctuation">,</span> FL<span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token function">mix</span><span class="token punctuation">(</span><span class="token number">1.0</span><span class="token punctuation">,</span> Fss90<span class="token punctuation">,</span> FV<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">float</span> ss <span class="token operator">=</span> <span class="token number">1.25</span> <span class="token operator">*</span> <span class="token punctuation">(</span>Fss <span class="token operator">*</span> <span class="token punctuation">(</span><span class="token number">1</span> <span class="token operator">/</span> <span class="token punctuation">(</span>NdotL <span class="token operator">+</span> NdotV<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">.5</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">.5</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+<p><strong>法线分布项（Specular D）：GTR</strong></p>
+<p>GTR的公式及推导可见paper的附录(p24-p25)</p>
+<p>各项同性：</p>
+<p>$$ D_{GTR} = c/(\alpha ^{2} cos ^{2}\theta _h + sin^{2}\theta _h)^\gamma \ $$</p>
+<ul>
+<li>
+<p>γ=1时，GTR即Berry分布</p>
+</li>
+<li>
+<p>γ=2时，GTR即Trowbridge-Reitz分布</p>
+</li>
+</ul>
+<p>Disney BRDF中有两处使用了GTR函数，一处是高光项(各项同性+各项异性)，另一处是清漆的反射。高光项中，$\gamma$值为2，清漆项中，$\gamma$值为1</p>
+<p>代码部分：</p>
+<div class="gatsby-highlight" data-language="glsl"><pre class="language-glsl"><code class="language-glsl"><span class="token keyword">float</span> <span class="token function">GTR1</span><span class="token punctuation">(</span><span class="token keyword">float</span> NdotH<span class="token punctuation">,</span> <span class="token keyword">float</span> a<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>a <span class="token operator">>=</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token number">1</span><span class="token operator">/</span>PI<span class="token punctuation">;</span>
+    <span class="token keyword">float</span> a2 <span class="token operator">=</span> a<span class="token operator">*</span>a<span class="token punctuation">;</span>
+    <span class="token keyword">float</span> t <span class="token operator">=</span> <span class="token number">1</span> <span class="token operator">+</span> <span class="token punctuation">(</span>a2<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">*</span>NdotH<span class="token operator">*</span>NdotH<span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>a2<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token punctuation">(</span>PI<span class="token operator">*</span><span class="token function">log</span><span class="token punctuation">(</span>a2<span class="token punctuation">)</span><span class="token operator">*</span>t<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">float</span> <span class="token function">GTR2</span><span class="token punctuation">(</span><span class="token keyword">float</span> NdotH<span class="token punctuation">,</span> <span class="token keyword">float</span> a<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">float</span> a2 <span class="token operator">=</span> a<span class="token operator">*</span>a<span class="token punctuation">;</span>
+    <span class="token keyword">float</span> t <span class="token operator">=</span> <span class="token number">1</span> <span class="token operator">+</span> <span class="token punctuation">(</span>a2<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">*</span>NdotH<span class="token operator">*</span>NdotH<span class="token punctuation">;</span>
+    <span class="token keyword">return</span> a2 <span class="token operator">/</span> <span class="token punctuation">(</span>PI <span class="token operator">*</span> t<span class="token operator">*</span>t<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>各项异性：</p>
+<p>$$ D(\theta<em>h, \phi</em>h) = \frac{c}{\left(\sin^2\theta<em>h\left(\dfrac{\cos^2\phi}{\alpha</em>x^2} + \dfrac{\sin^2\phi}{\alpha<em>y^2}\right) + \cos^2\theta</em>h\right)^\gamma}\</p>
+<p>$$
+其中：
+$$
+\begin{aligned} \alpha<em>x &#x26;= \mathrm{roughness}^2 / a \ \alpha</em>y &#x26;= \mathrm{roughness}^2 * a \ a &#x26;= \sqrt{1 - 0.9\mathrm{anisotropic}} \end{aligned}\
+$$</p>
+<p>由</p>
+<p>$$ \int<em>{\mathcal H^2}\cos\theta</em>h D(\theta<em>h, \phi</em>h)d\omega_h = 1\ $$</p>
+<p>及$\gamma$ = 2，可得：</p>
+<p>$$ \begin{aligned} &#x26;\int<em>{\mathcal H^2}\frac{c\cos\theta</em>h}{\left(\sin^2\theta<em>h\left(\frac{\cos^2\phi}{\alpha</em>x^2} + \frac{\sin^2\phi}{\alpha<em>y^2}\right) + \cos^2\theta\right)^2}d\omega</em>h \ = &#x26;c\int<em>{0}^{2\pi}\int</em>{0}^{\pi/2}\frac{\sin\theta<em>h\cos\theta</em>h}{\left(\sin^2\theta<em>h\left(\frac{\cos^2\phi}{\alpha</em>x^2} + \frac{\sin^2\phi}{\alpha<em>y^2}\right) + \cos^2\theta\right)^2}d\theta</em>h d\phi<em>h \ = &#x26;\frac c 2 \int</em>0^{2\pi}\frac 1 {\frac{\cos^2\phi<em>h}{\alpha</em>x^2} + \frac{\sin^2\phi<em>h}{\alpha</em>y^2}}d\phi<em>h = \pi\alpha</em>x\alpha_yc = 1 \end{aligned}\
+$$</p>
+<p>解得$c = 1 / (\pi\alpha<em>x\alpha</em>y)$, 即：</p>
+<p>$$ D(\theta<em>h, \phi</em>h) = \frac 1 {\pi\alpha<em>x\alpha</em>y\left(\sin^2\theta<em>h\left(\frac{\cos^2\phi}{\alpha</em>x^2} + \frac{\sin^2\phi}{\alpha<em>y^2}\right) + \cos^2\theta</em>h\right)^2}\ $$</p>
+<p>代码部分：</p>
+<div class="gatsby-highlight" data-language="glsl"><pre class="language-glsl"><code class="language-glsl"><span class="token keyword">float</span> <span class="token function">GTR2_aniso</span><span class="token punctuation">(</span><span class="token keyword">float</span> NdotH<span class="token punctuation">,</span> <span class="token keyword">float</span> HdotX<span class="token punctuation">,</span> <span class="token keyword">float</span> HdotY<span class="token punctuation">,</span> <span class="token keyword">float</span> ax<span class="token punctuation">,</span> <span class="token keyword">float</span> ay<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token number">1</span> <span class="token operator">/</span> <span class="token punctuation">(</span>PI <span class="token operator">*</span> ax<span class="token operator">*</span>ay <span class="token operator">*</span> <span class="token function">sqr</span><span class="token punctuation">(</span> <span class="token function">sqr</span><span class="token punctuation">(</span>HdotX<span class="token operator">/</span>ax<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token function">sqr</span><span class="token punctuation">(</span>HdotY<span class="token operator">/</span>ay<span class="token punctuation">)</span> <span class="token operator">+</span> NdotH<span class="token operator">*</span>NdotH <span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>NDF关联重要性采样的PDF计算：</p>
+<p>$$ p(\boldsymbol \omega<em>i) = p(\boldsymbol \omega</em>h)\frac{d\omega<em>h}{d\omega</em>i} = p(\boldsymbol \omega<em>h)\frac{1}{4(\omega</em>h \cdot \omega<em>i)} = \frac{D(\theta</em>h, \phi<em>h)\cos\theta</em>h}{4(\omega<em>h \cdot \omega</em>i)}\ $$</p>
+<p><strong>菲涅尔项（Specular F）：Schlick Fresnel</strong></p>
+<p>Disney使用的还是Schlick Fresnel近似</p>
+<p>$$  F<em>{Schlick}=F</em>0+(1-F_0)(1-cos\theta _d)^5 \$$</p>
+<p>代码部分：</p>
+<div class="gatsby-highlight" data-language="glsl"><pre class="language-glsl"><code class="language-glsl"><span class="token keyword">float</span> <span class="token function">SchlickFresnel</span><span class="token punctuation">(</span><span class="token keyword">float</span> u<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">float</span> m <span class="token operator">=</span> <span class="token function">clamp</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token operator">-</span>u<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">float</span> m2 <span class="token operator">=</span> m<span class="token operator">*</span>m<span class="token punctuation">;</span>
+    <span class="token keyword">return</span> m2<span class="token operator">*</span>m2<span class="token operator">*</span>m<span class="token punctuation">;</span> <span class="token comment">// pow(m,5)</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">float</span> FH <span class="token operator">=</span> <span class="token function">SchlickFresnel</span><span class="token punctuation">(</span>LdotH<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">vec3</span> Fs <span class="token operator">=</span> <span class="token function">mix</span><span class="token punctuation">(</span>Cspec0<span class="token punctuation">,</span> <span class="token keyword">vec3</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> FH<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+<p><strong>几何项（Specular G）：Smith-GGX</strong></p>
+<p>Disney使用了Smith GGX导出的G项:</p>
+<p>$$ G\mathbf{(l,v,h)}= G<em>1{(\mathbf{l})} \ G</em>1{(\mathbf{v})} \  $$</p>
+<p>各项同性：</p>
+<p>$$ G\mathbf{(l,v,h)}= G<em>1{(\mathbf{l})} \ G</em>1{(\mathbf{v})} \<br>
+G_1(\mathbf{v})=\frac{2 (\mathbf{n\cdot v})}{(\mathbf{n\cdot v}) + \sqrt{\alpha ^{2}+(1- \alpha^{2})(\mathbf{n\cdot v)^{2}}}}
+$$</p>
+<div class="gatsby-highlight" data-language="glsl"><pre class="language-glsl"><code class="language-glsl"><span class="token keyword">float</span> <span class="token function">smithG_GGX</span><span class="token punctuation">(</span><span class="token keyword">float</span> NdotV<span class="token punctuation">,</span> <span class="token keyword">float</span> alphaG<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">float</span> a <span class="token operator">=</span> alphaG<span class="token operator">*</span>alphaG<span class="token punctuation">;</span>
+    <span class="token keyword">float</span> b <span class="token operator">=</span> NdotV<span class="token operator">*</span>NdotV<span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token number">1</span> <span class="token operator">/</span> <span class="token punctuation">(</span>NdotV <span class="token operator">+</span> <span class="token function">sqrt</span><span class="token punctuation">(</span>a <span class="token operator">+</span> b <span class="token operator">-</span> a<span class="token operator">*</span>b<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// clearcoat</span>
+<span class="token keyword">float</span> Gr <span class="token operator">=</span> <span class="token function">smithG_GGX</span><span class="token punctuation">(</span>NdotL<span class="token punctuation">,</span> <span class="token number">.25</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token function">smithG_GGX</span><span class="token punctuation">(</span>NdotV<span class="token punctuation">,</span> <span class="token number">.25</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+<p>各项异性：</p>
+<p>$$ \begin{aligned} &#x26;G<em>1(\boldsymbol \omega) = \frac 1 {1 + \Lambda(\boldsymbol \omega)} \ &#x26;\Lambda(\boldsymbol \omega) = -\frac 1 2 + \frac 1 2 \sqrt{1 + (\alpha</em>x^2\cos^2\phi + \alpha_y^2\sin^2\phi)\tan^2\theta} \end{aligned}\ $$</p>
+<div class="gatsby-highlight" data-language="glsl"><pre class="language-glsl"><code class="language-glsl"><span class="token keyword">float</span> <span class="token function">smithG_GGX_aniso</span><span class="token punctuation">(</span><span class="token keyword">float</span> NdotV<span class="token punctuation">,</span> <span class="token keyword">float</span> VdotX<span class="token punctuation">,</span> <span class="token keyword">float</span> VdotY<span class="token punctuation">,</span> <span class="token keyword">float</span> ax<span class="token punctuation">,</span> <span class="token keyword">float</span> ay<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token number">1</span> <span class="token operator">/</span> <span class="token punctuation">(</span>NdotV <span class="token operator">+</span> <span class="token function">sqrt</span><span class="token punctuation">(</span> <span class="token function">sqr</span><span class="token punctuation">(</span>VdotX<span class="token operator">*</span>ax<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token function">sqr</span><span class="token punctuation">(</span>VdotY<span class="token operator">*</span>ay<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token function">sqr</span><span class="token punctuation">(</span>NdotV<span class="token punctuation">)</span> <span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">float</span> Gs<span class="token punctuation">;</span>
+Gs  <span class="token operator">=</span> <span class="token function">smithG_GGX_aniso</span><span class="token punctuation">(</span>NdotL<span class="token punctuation">,</span> <span class="token function">dot</span><span class="token punctuation">(</span>L<span class="token punctuation">,</span> X<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">dot</span><span class="token punctuation">(</span>L<span class="token punctuation">,</span> Y<span class="token punctuation">)</span><span class="token punctuation">,</span> ax<span class="token punctuation">,</span> ay<span class="token punctuation">)</span><span class="token punctuation">;</span>
+Gs <span class="token operator">*</span><span class="token operator">=</span> <span class="token function">smithG_GGX_aniso</span><span class="token punctuation">(</span>NdotV<span class="token punctuation">,</span> <span class="token function">dot</span><span class="token punctuation">(</span>V<span class="token punctuation">,</span> X<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">dot</span><span class="token punctuation">(</span>V<span class="token punctuation">,</span> Y<span class="token punctuation">)</span><span class="token punctuation">,</span> ax<span class="token punctuation">,</span> ay<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+<p><strong>Sheen</strong></p>
+<p>通过对布料材质的观察，发现缺了一个类似菲涅尔项的额外的掠射反射量。Disney BRDF也就直接多加了个缩放的Schlick公式来进行模拟: $sheen * (1 - \cos\theta_d)^5$，并且还添加sheenTint参数进行颜色控制</p>
+<p>代码部分：</p>
+<div class="gatsby-highlight" data-language="glsl"><pre class="language-glsl"><code class="language-glsl"><span class="token keyword">vec3</span> Cdlin <span class="token operator">=</span> <span class="token function">mon2lin</span><span class="token punctuation">(</span>baseColor<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">float</span> Cdlum <span class="token operator">=</span> <span class="token number">.3</span><span class="token operator">*</span>Cdlin<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token number">.6</span><span class="token operator">*</span>Cdlin<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>  <span class="token operator">+</span> <span class="token number">.1</span><span class="token operator">*</span>Cdlin<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">// luminance approx.</span>
+<span class="token keyword">vec3</span> Ctint <span class="token operator">=</span> Cdlum <span class="token operator">></span> <span class="token number">0</span> <span class="token operator">?</span> Cdlin<span class="token operator">/</span>Cdlum <span class="token punctuation">:</span> <span class="token keyword">vec3</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// normalize lum. to isolate hue+sat</span>
+<span class="token keyword">vec3</span> Cspec0 <span class="token operator">=</span> <span class="token function">mix</span><span class="token punctuation">(</span>specular<span class="token operator">*</span><span class="token number">.08</span><span class="token operator">*</span><span class="token function">mix</span><span class="token punctuation">(</span><span class="token keyword">vec3</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> Ctint<span class="token punctuation">,</span> specularTint<span class="token punctuation">)</span><span class="token punctuation">,</span> Cdlin<span class="token punctuation">,</span> metallic<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">vec3</span> Csheen <span class="token operator">=</span> <span class="token function">mix</span><span class="token punctuation">(</span><span class="token keyword">vec3</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> Ctint<span class="token punctuation">,</span> sheenTint<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">float</span> FH <span class="token operator">=</span> <span class="token function">SchlickFresnel</span><span class="token punctuation">(</span>LdotH<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">vec3</span> Fsheen <span class="token operator">=</span> FH <span class="token operator">*</span> sheen <span class="token operator">*</span> Csheen<span class="token punctuation">;</span></code></pre></div>
+<p><strong>ClearCoat</strong></p>
+<p>清漆项的次级波瓣，F项固定取折射率为1.5的绝缘体，NDF取$\gamma = 1$的各向同性GTR函数，G项是直接固定粗糙度为0.25的GGX遮蔽项：</p>
+<div class="gatsby-highlight" data-language="glsl"><pre class="language-glsl"><code class="language-glsl"><span class="token comment">// clearcoat (ior = 1.5 -> F0 = 0.04)</span>
+<span class="token keyword">float</span> Dr <span class="token operator">=</span> <span class="token function">GTR1</span><span class="token punctuation">(</span>NdotH<span class="token punctuation">,</span> <span class="token function">mix</span><span class="token punctuation">(</span><span class="token number">.1</span><span class="token punctuation">,</span><span class="token number">.001</span><span class="token punctuation">,</span>clearcoatGloss<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">float</span> Fr <span class="token operator">=</span> <span class="token function">mix</span><span class="token punctuation">(</span><span class="token number">.04</span><span class="token punctuation">,</span> <span class="token number">1.0</span><span class="token punctuation">,</span> FH<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">float</span> Gr <span class="token operator">=</span> <span class="token function">smithG_GGX</span><span class="token punctuation">(</span>NdotL<span class="token punctuation">,</span> <span class="token number">.25</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token function">smithG_GGX</span><span class="token punctuation">(</span>NdotV<span class="token punctuation">,</span> <span class="token number">.25</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// Fin => .25*clearcoat*Gr*Fr*Dr</span></code></pre></div>
+<h3><strong>汇总</strong></h3>
+<div style="text-align: center">  
+
+  <a class="gatsby-resp-image-link" href="/LG-Blog-Gatsby/static/BRDFModel-86e374ab5255614a385b4e92fe9fb4a8-2fe46.jpg" style="display: block" target="_blank" rel="noopener">
+  
+  <span class="gatsby-resp-image-wrapper" style="position: relative; display: block; ; max-width: 442px; margin-left: auto; margin-right: auto;">
+    <span class="gatsby-resp-image-background-image" style="padding-bottom: 67.42081447963801%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAYAAACpUE5eAAAACXBIWXMAAAsSAAALEgHS3X78AAACbElEQVQ4y31TaU/bQBTM//8L/YhUiUotpVVbriQ0RSHgOr7Xjte3czhOCOSGAJq+XVKJVKiWRs/P0o7fzLyt4I1nOBxCURRomgbTNMEYQ7VaRa1Wk/3/nspsNkO3m2NYFCiKAUoiS9MEtm0RYRvttgrLMqm3oes6OOfo9/t0pruDNE3x/PyMSq/Xk43NPBiWA51gOi4cz4frB2AdDj8IcXt7i7u7O0wmE4xGI4zHYwnxLr65rovNZoPKaFRCt100O0O00xm0bAY1mUIJJ7jiY1xT/WnE0obVaon5fI7FYrGD1WqFOI63hOUQmu3hKrjB3pe6xP5REx+rCt7tf8ePlosW/cw0LdzfryEs+heCNAzDv4QlfhsO6lYPVT3DiRrhTEtRN3PUjAwNVqCuJzAME0EQYDqdYrlcyjolMlF3CAsKIydT3SCFF+XoEET1wkyC0XeXx5JEyBZelTTEer3GmqSuyQYheYcwy3I4PKXDmYRDJAIszCUcP5YBPDw8SImcJuW+D7sTQmOBDOaVhyVUklwjifUtzkm+wJmWkGwhPYVFWzC5uaHDlC4F+fW4hqNrjl9kSVP3EdA6PT4+oiL2zmA+TtUQ77818OHkUgZyUFexd0gBHTdxwfq4VjWkSYKIJmGOhYPjBo4UjsOGiXMthOd5eHp6eplQs9jLoWCMK79EawvRK9EEF3aOOMmwIckiAFF5lOLS7dFqjWB6IaJo6+FgMJAmR0kKHsYIolegnocRTZVI78QOvqyJCKjAyekpPh18hm1ZSGh6SSiukUhvsZi/uWPzbRU3RdwIAfEuhhA3LElidOm2+RSS8PAP3eGv3TRe/MAAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;">
+      <img class="gatsby-resp-image-image" style="width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px transparent;" alt="BRDFModel" title="" src="/LG-Blog-Gatsby/static/BRDFModel-86e374ab5255614a385b4e92fe9fb4a8-2fe46.jpg" srcset="/LG-Blog-Gatsby/static/BRDFModel-86e374ab5255614a385b4e92fe9fb4a8-90a65.jpg 200w,
+/LG-Blog-Gatsby/static/BRDFModel-86e374ab5255614a385b4e92fe9fb4a8-5fe86.jpg 400w,
+/LG-Blog-Gatsby/static/BRDFModel-86e374ab5255614a385b4e92fe9fb4a8-2fe46.jpg 442w" sizes="(max-width: 442px) 100vw, 442px">
+    </span>
+  </span>
+  
+  </a>
+      
+</div>
+<p>$$
+\begin{aligned} f<em>\text{disney}(\boldsymbol \omega</em>i, \boldsymbol \omega<em>o) =~&#x26;\left(\frac{C}{\pi}\mathrm{mix}(f</em>d(\boldsymbol \omega<em>i, \boldsymbol \omega</em>o), f<em>{ss}(\boldsymbol \omega</em>i, \boldsymbol \omega<em>o), \sigma</em>{ss}) + f<em>{sh}(\boldsymbol \omega</em>i, \boldsymbol \omega<em>o)\right) (1 - \sigma</em>m)\ +~&#x26;\frac{F<em>s(\theta</em>d)G<em>s(\boldsymbol \omega</em>i, \boldsymbol \omega<em>o)D</em>s(\boldsymbol \omega<em>h)}{4\cos\theta</em>i\cos\theta<em>o} \ +~&#x26;\frac {\sigma</em>c} 4 \frac{F<em>c(\theta</em>d)G<em>c(\boldsymbol \omega</em>i, \boldsymbol \omega<em>o)D</em>c(\boldsymbol \omega<em>i, \boldsymbol \omega</em>o)}{4\cos\theta<em>i\cos\theta</em>o} \end{aligned}\
+$$</p>
+<div class="gatsby-highlight" data-language="glsl"><pre class="language-glsl"><code class="language-glsl"><span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token number">1</span> <span class="token operator">/</span> PI<span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token function">mix</span><span class="token punctuation">(</span>Fd<span class="token punctuation">,</span> ss<span class="token punctuation">,</span> subsurface<span class="token punctuation">)</span> <span class="token operator">*</span> Cdlin <span class="token operator">+</span> Fsheen<span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token punctuation">(</span><span class="token number">1</span> <span class="token operator">-</span> metallic<span class="token punctuation">)</span> <span class="token operator">+</span> Gs <span class="token operator">*</span> Fs <span class="token operator">*</span> Ds <span class="token operator">+</span> <span class="token number">.25</span> <span class="token operator">*</span> clearcoat <span class="token operator">*</span> Gr <span class="token operator">*</span> Fr <span class="token operator">*</span> Dr<span class="token punctuation">;</span></code></pre></div>
+<p>Disney BRDF的所有参数：</p>
+<div style="text-align: center">  
+
+  <a class="gatsby-resp-image-link" href="/LG-Blog-Gatsby/static/BRDFParam-82a0621d6958cbf7e01cea05fe425f0e-9682a.jpg" style="display: block" target="_blank" rel="noopener">
+  
+  <span class="gatsby-resp-image-wrapper" style="position: relative; display: block; ; max-width: 800px; margin-left: auto; margin-right: auto;">
+    <span class="gatsby-resp-image-background-image" style="padding-bottom: 77.44565217391303%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAPABQDASIAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAAIDBP/EABYBAQEBAAAAAAAAAAAAAAAAAAEAAv/aAAwDAQACEAMQAAABoqxNaCRH/8QAGBABAAMBAAAAAAAAAAAAAAAAAAEREgL/2gAIAQEAAQUCum2nakP/xAAWEQEBAQAAAAAAAAAAAAAAAAABACH/2gAIAQMBAT8BEsv/xAAVEQEBAAAAAAAAAAAAAAAAAAAQEf/aAAgBAgEBPwGH/8QAFhAAAwAAAAAAAAAAAAAAAAAAACAx/9oACAEBAAY/AiL/AP/EABoQAQACAwEAAAAAAAAAAAAAAAEAETFRcUH/2gAIAQEAAT8hdY9nCFvCFQrctqFrE//aAAwDAQACAAMAAAAQW/8A/8QAFhEBAQEAAAAAAAAAAAAAAAAAAQAh/9oACAEDAQE/EAGyz//EABYRAQEBAAAAAAAAAAAAAAAAAAARAf/aAAgBAgEBPxDaR//EABoQAAMBAQEBAAAAAAAAAAAAAAABESFBcfD/2gAIAQEAAT8QXp0OaGvB1OHiIAuun3aE2vR//9k=&apos;); background-size: cover; display: block;">
+      <img class="gatsby-resp-image-image" style="width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px transparent;" alt="BRDFParam" title="" src="/LG-Blog-Gatsby/static/BRDFParam-82a0621d6958cbf7e01cea05fe425f0e-78f2b.jpg" srcset="/LG-Blog-Gatsby/static/BRDFParam-82a0621d6958cbf7e01cea05fe425f0e-dce19.jpg 200w,
+/LG-Blog-Gatsby/static/BRDFParam-82a0621d6958cbf7e01cea05fe425f0e-c1413.jpg 400w,
+/LG-Blog-Gatsby/static/BRDFParam-82a0621d6958cbf7e01cea05fe425f0e-78f2b.jpg 800w,
+/LG-Blog-Gatsby/static/BRDFParam-82a0621d6958cbf7e01cea05fe425f0e-9682a.jpg 1104w" sizes="(max-width: 800px) 100vw, 800px">
+    </span>
+  </span>
+  
+  </a>
+      
+</div>
+<p>$$
+\begin{aligned} C &#x26;= \mathrm{baseColor} \ \sigma<em>m &#x26;= \mathrm{metallic} \ \sigma</em>{ss} &#x26;= \mathrm{subsurface} \ \sigma<em>s &#x26;= \mathrm{specular} \ \sigma</em>{st} &#x26;= \mathrm{specularTint} \ \sigma<em>r &#x26;= \mathrm{roughness} \ \sigma</em>a &#x26;= \mathrm{anisotropic} \ \sigma<em>{sh} &#x26;= \mathrm{sheen} \ \sigma</em>{sht} &#x26;= \mathrm{sheenTint} \ \sigma<em>{c} &#x26;= \mathrm{clearcoat} \ \sigma</em>{cg} &#x26;= \mathrm{clearcoatGloss} \end{aligned}\
+$$</p>
+<p>其中$f_d$为漫反射：</p>
+<p>$$
+\begin{aligned} f<em>d(\boldsymbol \omega</em>i, \boldsymbol \omega<em>o) &#x26;= (1 + (F</em>{D90} - 1)(1 - \cos\theta<em>i)^5)(1 + (F</em>{D90} - 1)(1 - \cos\theta<em>o)^5) \ F</em>{D90} &#x26;= 0.5 + 2\cos^2\theta<em>d\sigma</em>r \end{aligned}\
+$$</p>
+<p>$f_{ss}$为次表面散射项：</p>
+<p>$$
+\begin{aligned} f<em>{ss}(\boldsymbol \omega</em>i, \boldsymbol \omega<em>o) &#x26;= 1.25(F</em>{ss} (1 / (\cos\theta<em>i + \cos\theta</em>o) - 0.5) + 0.5) \ F<em>{ss} &#x26;= (1 + (F</em>{ss90} - 1)(1 - \cos\theta<em>i)^5)(1 + (F</em>{ss90} - 1)(1 - \cos\theta<em>o)^5) \ F</em>{ss90} &#x26;= \cos^2\theta<em>d\sigma</em>r \end{aligned}\
+$$</p>
+<p>$f_{sh}$为sheen项：</p>
+<p>$$
+\begin{aligned} f<em>{sh}(\boldsymbol \omega</em>i, \boldsymbol \omega<em>o) &#x26;= \mathrm{mix}(\mathrm{one}, C</em>{tint}, \sigma<em>{sht})\sigma</em>{sh}(1 - \cos\theta<em>d)^5 \ C</em>{tint} &#x26;= \frac{C}{\mathrm{lum}(C)} \end{aligned}\</p>
+<p>\mathrm{lum}(C) \approx 0.2126 \times C.r + 0.7152 \times C.g + 0.0722 \times C.b\
+$$</p>
+<p>$F<em>{s}$是高光的frensel项，用Schlick公式做了近似。对绝缘体而言，Schlick公式中的垂直入射反射比例 $R</em>{0}$可以用一个实数表示；而对金属而言，$R_{0}$是带有颜色信息的，也就是金属工作流，因此Disney BRDF利用金属度参数在两种情况间进行了插值：</p>
+<p>$$
+\begin{aligned} F<em>s(\theta</em>d) &#x26;= C<em>s + (1 - C</em>s)(1 - \cos\theta<em>d)^5 \ C</em>s &#x26;= \mathrm{mix}(0.08\sigma<em>s\mathrm{mix}(\mathrm{one}, C</em>{tint}, \sigma<em>{st}), C, \sigma</em>m) \end{aligned}\
+$$</p>
+<p>$G_{s}$是高光的遮蔽项，采用各向异性GGX对应的Smith函数</p>
+<p>$$
+\begin{aligned} G<em>s(\boldsymbol \omega</em>i, \boldsymbol \omega<em>o) &#x26;= G</em>{s1}(\boldsymbol \omega<em>i)G</em>{s1}(\boldsymbol \omega<em>o) \ G</em>{s1}(\boldsymbol \omega) &#x26;= \frac 1 {1 + \Lambda<em>s(\boldsymbol \omega)} \ \Lambda</em>s(\boldsymbol \omega) &#x26;= -\frac 1 2 + \frac 1 2 \sqrt{1 + (\alpha<em>x^2\cos^2\phi + \alpha</em>y^2\sin^2\phi)\tan^2\theta} \end{aligned}\
+$$</p>
+<p>$D_{s}$是高光的微表面法线分布函数，采用各向异性GTR2函数（其实就是GGX）：</p>
+<p>$$
+\begin{aligned} D<em>s(\boldsymbol \omega</em>h) &#x26;= \frac 1 {\pi\alpha<em>x\alpha</em>y\left(\sin^2\theta<em>h\left(\frac{\cos^2\phi}{\alpha</em>x^2} + \frac{\sin^2\phi}{\alpha<em>y^2}\right) + \cos^2\theta</em>h\right)^2} \ \alpha<em>x &#x26;= \sigma</em>r^2 / a \ \alpha<em>y &#x26;= \sigma</em>r^2 a \ a &#x26;= \sqrt{1 - 0.9\sigma_a} \end{aligned}\
+$$</p>
+<p>$F_{c}$是清漆的fresnel项，采用折射率固定为1.5的绝缘体对应的Schlick公式：</p>
+<p>$$
+F<em>c(\theta</em>d) = 0.04 + 0.96(1 - \cos\theta_d)^5\
+$$</p>
+<p>$G_{c}$是清漆的遮蔽项，采用粗糙度为0.25的各向同性GGX对应的Smith函数：</p>
+<p>$$
+\begin{aligned} G<em>c(\boldsymbol \omega</em>i, \boldsymbol \omega<em>o) &#x26;= G</em>{c1}(\boldsymbol \omega<em>i)G</em>{c1}(\boldsymbol \omega<em>o) \ G</em>{c1}(\boldsymbol \omega) &#x26;= \frac 1 {1 + \Lambda<em>c(\boldsymbol \omega)} \ \Lambda</em>c(\boldsymbol \omega) &#x26;= -\frac 1 2 + \frac 1 2 \sqrt{1 + \alpha^2\tan^2\theta} \end{aligned}\
+$$</p>
+<p>$D_{c}$是清漆的微表面法线分布，采用各向同性的GTR1函数：</p>
+<p>$$
+\begin{aligned} D<em>c(\boldsymbol \omega</em>h) &#x26;= \frac {\alpha^2 - 1} {2\pi\ln\alpha(\alpha^2\cos^2\theta<em>h + \sin^2\theta</em>h)} \ \alpha &#x26;= \mathrm{mix}(0.1, 0.01, \sigma_{cg}) \end{aligned}\
+$$</p>
+<h2><strong>Disney BSDF</strong></h2>
+<div style="text-align: center">  
+
+  <a class="gatsby-resp-image-link" href="/LG-Blog-Gatsby/static/ModelCompare-b448f76a0271da3fc62cfa10b5ccb6cc-c907a.png" style="display: block" target="_blank" rel="noopener">
+  
+  <span class="gatsby-resp-image-wrapper" style="position: relative; display: block; ; max-width: 800px; margin-left: auto; margin-right: auto;">
+    <span class="gatsby-resp-image-background-image" style="padding-bottom: 30.949720670391063%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAGCAYAAADDl76dAAAACXBIWXMAABJ0AAASdAHeZh94AAABHklEQVQY011QyW7CMBTk/7+Ia0+gqgdoIEUJtpKQBWdxYgeRFabPCYtaS+PxPD+P7VngMe73+8y3EV3boO/7V+3RMaHtOtpvX3q83d5niRdmmjRNSSaxdXxYBxellKi1xjD08CIBJ0hxTgvkmcDWdrHjMRLSl1qjruv/hvMN9jHAcrWH5QY4C4FEZBjopetvF8u1jQPzkec5dscTPvcc3ilGnJyRF+Vfw+dgQYKVxeB4ERzmYWMfTQbY/HB8fNk4xQK2wwgcupJQpaQeF8yP3oZmMQwDOsqmqiooVaEsS2itUBE3TUNaQhYFJMVgakZrikMpNfcSm/PjOM6G5huc8wlhFCEMwwm+H4AxhlSkU88TBZkbNhc8a4Iiul6v+AWM3caWDksOnQAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;">
+      <img class="gatsby-resp-image-image" style="width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px transparent;" alt="ModelCompare" title="" src="/LG-Blog-Gatsby/static/ModelCompare-b448f76a0271da3fc62cfa10b5ccb6cc-48538.png" srcset="/LG-Blog-Gatsby/static/ModelCompare-b448f76a0271da3fc62cfa10b5ccb6cc-bed0f.png 200w,
+/LG-Blog-Gatsby/static/ModelCompare-b448f76a0271da3fc62cfa10b5ccb6cc-5fd34.png 400w,
+/LG-Blog-Gatsby/static/ModelCompare-b448f76a0271da3fc62cfa10b5ccb6cc-48538.png 800w,
+/LG-Blog-Gatsby/static/ModelCompare-b448f76a0271da3fc62cfa10b5ccb6cc-c907a.png 895w" sizes="(max-width: 800px) 100vw, 800px">
+    </span>
+  </span>
+  
+  </a>
+      
+</div>
+<div style="text-align: center">  
+
+  <a class="gatsby-resp-image-link" href="/LG-Blog-Gatsby/static/BSDFModel-f2d33a0edf607beeca22afb186dc489d-68aa3.jpg" style="display: block" target="_blank" rel="noopener">
+  
+  <span class="gatsby-resp-image-wrapper" style="position: relative; display: block; ; max-width: 800px; margin-left: auto; margin-right: auto;">
+    <span class="gatsby-resp-image-background-image" style="padding-bottom: 44.74431818181818%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAJABQDASIAAhEBAxEB/8QAGQAAAgMBAAAAAAAAAAAAAAAAAAQBAgMF/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAH/2gAMAwEAAhADEAAAAedC1IZMA//EABkQAAMBAQEAAAAAAAAAAAAAAAABAgMQE//aAAgBAQABBQLeDaWeDLHz/8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAwEBPwE//8QAFREBAQAAAAAAAAAAAAAAAAAAEBH/2gAIAQIBAT8Bh//EABoQAAICAwAAAAAAAAAAAAAAAAAxAjIBIEH/2gAIAQEABj8CikRquFsaf//EABoQAAIDAQEAAAAAAAAAAAAAAAERACFBEDH/2gAIAQEAAT8hICCE3oxR09wQrUOYmOf/2gAMAwEAAgADAAAAEHQf/8QAFhEBAQEAAAAAAAAAAAAAAAAAABEh/9oACAEDAQE/EKx//8QAGBEAAgMAAAAAAAAAAAAAAAAAAAERIVH/2gAIAQIBAT8QTUQ9P//EAB0QAQACAgMBAQAAAAAAAAAAAAEAESExQVFxYaH/2gAIAQEAAT8QIFofOfmfkXUQpsFgG+2E5lGCtXxN/M18Tqf/2Q==&apos;); background-size: cover; display: block;">
+      <img class="gatsby-resp-image-image" style="width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px transparent;" alt="BSDFModel" title="" src="/LG-Blog-Gatsby/static/BSDFModel-f2d33a0edf607beeca22afb186dc489d-78f2b.jpg" srcset="/LG-Blog-Gatsby/static/BSDFModel-f2d33a0edf607beeca22afb186dc489d-dce19.jpg 200w,
+/LG-Blog-Gatsby/static/BSDFModel-f2d33a0edf607beeca22afb186dc489d-c1413.jpg 400w,
+/LG-Blog-Gatsby/static/BSDFModel-f2d33a0edf607beeca22afb186dc489d-78f2b.jpg 800w,
+/LG-Blog-Gatsby/static/BSDFModel-f2d33a0edf607beeca22afb186dc489d-ab4c4.jpg 1200w,
+/LG-Blog-Gatsby/static/BSDFModel-f2d33a0edf607beeca22afb186dc489d-68aa3.jpg 1408w" sizes="(max-width: 800px) 100vw, 800px">
+    </span>
+  </span>
+  
+  </a>
+      
+</div>
+<p>Disney BRDF本质是金属BRDF和非金属BRDF的插值模型(通过metallic)，而Disney BSDF本质是金属BRDF、非金属BRDF、与Specular BSDF三者的插值模型(通过specTrans、metallic)。</p>
+<h3><strong>Dielectric BRDF + Subsurface</strong></h3>
+<p><strong>先回看BRDF的Fd：</strong></p>
+<p>$$ f<em>{d} = \frac{baseColor}{\pi}\left( 1 +\left( F</em>{D90} - 1  \right) \left( 1 - cos \theta<em>{l} \right)^{5} \right)\left( 1 +\left( F</em>{D90} - 1  \right) \left( 1 - cos \theta_{v} \right)^{5} \right) $$</p>
+<p>$$ F<em>{D90} = 0.5 + 2 \times roughness\times cos^{2}\theta</em>{d} $$</p>
+<p>1.光滑的次表面散射模型</p>
+<p>Diffuse入的能量自然是扣完反射部分的，也就是1-菲涅尔项(即$1-\left( 1 - \left(n \cdot l\right)^{+} \right)^{5}$)，出的时候还得再扣一次，也就是再乘$1-\left( 1 - \left(n \cdot v\right)^{+} \right)^{5}$</p>
+<p>2.粗糙的次表面散射模型</p>
+<p>需要考虑补上逆射（retro-reflection）效果，表面越粗糙，在掠射角处，反而有越多的微平面是垂直于光线的现象。观察到兰伯特漫反射边缘本就很暗，再加上1-菲涅尔项项，结果变得更暗。</p>
+<p>BRDF的Fd就是混合了两个模型的经验模型，直观上看很矛盾：越掠射菲涅尔反射越强，所以留给次表面散射的能量就少，但是逆射又越强。那么到底谁强谁弱呢，取决于粗糙度，$F_{D90}$ 大于1时，越掠射反射越强；小于1时，越掠射反射越弱。而粗糙度决定了这个临界点出现的早晚</p>
+<p><strong>BSDF对Fd的改进：</strong></p>
+<p>1.具体思路是将漫反射波瓣重构为两部分: 方向性的微表面效应（microsurface effect），主要为逆反射（retroreflection）；非方向性的次表面效应（subsurface effect），即Lambertian漫反射。</p>
+<p>为了扩展支持次表面散射，首先将漫反射波瓣重构为两部分：方向性微表面效果(主要就是逆射增益)和非方向性（即Lambertian）次表面效果，然后再用扩散模型或体积散射模型去替换Lambertian部分。这样就保留下微表面效果的同时支持了次表面散射，当散射距离较小时，散射模型也可以收敛到与原BRDF相同的结果：</p>
+<p>$$<br>
+f<em>{d} = f</em>{Lambert}\left( 1 - 0.5F<em>{L} \right)\left( 1 - 0.5F</em>{V} \right) + f<em>{retro-reflection}
+$$
+$$
+f</em>{Lambert} = \frac{baseColor}{\pi}
+$$
+$$
+f<em>{retro-reflection} = \frac{baseColor}{\pi}R</em>{R}\left( F<em>{L} + F</em>{V} + F<em>{L}F</em>{V}\left( R_{R} - 1 \right) \right)
+$$</p>
+<p>其中：
+$$
+F<em>{L} = \left( 1 - cos \theta</em>{l} \right)^{5}
+$$
+$$
+F<em>{V} = \left( 1 - cos \theta</em>{v} \right)^{5}
+$$
+$$
+R<em>{R} =2 \times roughness\times cos^{2}\theta</em>{d}
+$$</p>
+<p><strong>Subsurface diffusion：</strong></p>
+<p>Disney通过蒙特卡洛模拟（Monte Carlo simulation），观察到对于典型的散射参数，包括单次散射的扩散剖面（diffusion profile），使用两个指数项的总和（a sum of two exponentials）便可以很好地进行模拟，且得到了比偶极子剖面（dipole diffusion）更好的渲染结果。</p>
+<p>通过观察发现能由两个指数之和很好地近似包括单次散射的散射曲线：</p>
+<p>$$
+R_{d}\left( r \right) = \frac{e^{-\frac{r}{d}}+e^{-\frac{r}{3d}}}{8\pi dr}
+$$</p>
+<p>扩散模型本质上仍然只是对次表面散射的近似，是用公式对真实次表面散射随扩散距离变化曲线的拟合</p>
+<p>其中，d是艺术家调整的平均扩散距离（物理上取决于albedo和平均自由程），r就是采样点与当前要评估brdf的着色点之间的距离。只要采样周围点的入射光，并乘以该距离对应的反射率$R_{d}$即可。</p>
+<p>直言Todo</p>
+<h3><strong>Specular BSDF（Bidirectional Scattering Distribution Function）</strong></h3>
+<p>Specular BSDF = Specular BRDF + Specular BTDF（Bidirectional transmittance distribution function）, BRDF的微平面反射lobe扩展到折射，积分域从半球扩展到整个球。</p>
+<p>$$ f<em>{s}\left( i,o,n \right)  = f</em>{r}\left( i,o,n \right)  + f_{t}\left( i,o,n \right) $$</p>
+<p>反射与折射的半矢量：</p>
+<p>$$h_{r} = \frac{i + o}{\left|\left| i + o \right|\right|}$$</p>
+<p>$$h_{t} = - \frac{i + \eta  o}{\left| \left| i + \eta o \right|\right|}$$</p>
+<p>推导： </p>
+<p>$$
+\eta<em>{i} \theta</em>{i} = \eta<em>{o} \theta</em>{o}
+$$</p>
+<p>$$
+\eta =  \frac{\eta<em>{o}}{\eta _{i}}  = \frac{\theta</em>{i}}{\theta<em>{o}} = \frac{cos\left( \frac{\pi}{2} - \theta</em>{i} \right)}{cos\left( \frac{\pi}{2} - \theta<em>{o} \right)} = \frac{h</em>{t} \cdot i}{-h<em>{t} \cdot o} => h</em>{t} = - \frac{i + \eta  o}{\left| \left| i + \eta o \right|\right|}
+$$</p>
+<p>代码部分：</p>
+<div class="gatsby-highlight" data-language="glsl"><pre class="language-glsl"><code class="language-glsl"><span class="token keyword">bool</span> refl <span class="token operator">=</span> <span class="token function">dot</span><span class="token punctuation">(</span>N<span class="token punctuation">,</span> L<span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">0.0</span><span class="token punctuation">;</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>refl<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    H <span class="token operator">=</span> <span class="token function">normalize</span><span class="token punctuation">(</span>L <span class="token operator">+</span> V<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    H <span class="token operator">=</span> <span class="token function">normalize</span><span class="token punctuation">(</span>L <span class="token operator">+</span> V <span class="token operator">*</span> si<span class="token punctuation">.</span>eta<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">dot</span><span class="token punctuation">(</span>V<span class="token punctuation">,</span> H<span class="token punctuation">)</span> <span class="token operator">&lt;</span> <span class="token number">0.0</span><span class="token punctuation">)</span>
+    H <span class="token operator">=</span> <span class="token operator">-</span>H<span class="token punctuation">;</span></code></pre></div>
+<p>brdf和btdf的推导：</p>
+<p><a href="https://www.pbr-book.org/3ed-2018/Reflection_Models/Microfacet_Models">https://www.pbr-book.org/3ed-2018/Reflection<em>Models/Microfacet</em>Models</a></p>
+<p>由前面cook-torrance的推导：</p>
+<p>$$ f<em>{cook-torrance}\left(\omega</em>{i}, \omega<em>{o}\right)=\frac{d L</em>{o}\left(\omega<em>{o}\right)}{d E</em>{i}\left(\omega<em>{i}\right)}=\frac{d L</em>{o}\left(\omega<em>{o}\right)}{L</em>{i}\left(\omega<em>{i}\right) \cos \theta</em>{i} d \omega<em>{i}}=\frac{\cos \theta</em>{h} D\left(\omega<em>{h}\right) d \omega</em>{h}}{\cos \theta<em>{o} \cos \theta</em>{i} d \omega_{o}} \ $$</p>
+<p>之前只考虑了反射，这里还需要考虑折射的情况：</p>
+<p>问题又回到了求</p>
+<p>$$\frac{d\omega<em>m}{d\omega</em>o}$$</p>
+<p>由相似三角形以及定义公式：</p>
+<p>$$d\omega = \frac{dA}{r^2}$$</p>
+<p>可得： </p>
+<div style="text-align: center">  
+
+  <a class="gatsby-resp-image-link" href="/LG-Blog-Gatsby/static/dwm_dwo-87bef904bfecc332b1752e95d9461b62-34f26.jpg" style="display: block" target="_blank" rel="noopener">
+  
+  <span class="gatsby-resp-image-wrapper" style="position: relative; display: block; ; max-width: 720px; margin-left: auto; margin-right: auto;">
+    <span class="gatsby-resp-image-background-image" style="padding-bottom: 72.36111111111111%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAOABQDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAEE/8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEAMQAAABwkAP/8QAFBABAAAAAAAAAAAAAAAAAAAAIP/aAAgBAQABBQJf/8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAwEBPwE//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAgEBPwE//8QAFBABAAAAAAAAAAAAAAAAAAAAIP/aAAgBAQAGPwJf/8QAFxABAQEBAAAAAAAAAAAAAAAAAAExEf/aAAgBAQABPyGYmrriLr//2gAMAwEAAgADAAAAEJPP/8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAwEBPxA//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAgEBPxA//8QAGhAAAwADAQAAAAAAAAAAAAAAAAERITFRQf/aAAgBAQABPxCmy84XMcY2Um+CZp5NrYIqyf/Z&apos;); background-size: cover; display: block;">
+      <img class="gatsby-resp-image-image" style="width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px transparent;" alt="dwm dwo" title="" src="/LG-Blog-Gatsby/static/dwm_dwo-87bef904bfecc332b1752e95d9461b62-34f26.jpg" srcset="/LG-Blog-Gatsby/static/dwm_dwo-87bef904bfecc332b1752e95d9461b62-a3779.jpg 200w,
+/LG-Blog-Gatsby/static/dwm_dwo-87bef904bfecc332b1752e95d9461b62-3e4a1.jpg 400w,
+/LG-Blog-Gatsby/static/dwm_dwo-87bef904bfecc332b1752e95d9461b62-34f26.jpg 720w" sizes="(max-width: 720px) 100vw, 720px">
+    </span>
+  </span>
+  
+  </a>
+      
+</div>
+<p>对于反射的情况，带入可得：</p>
+<p>$$
+f<em>{r}\left( i, o \right) = \frac{ \left| i \cdot h</em>{r} \right| \left| o \cdot h<em>{r} \right|}          { cos\theta</em>{i}cos\theta<em>{o} \left| \left| i + o \right| \right|^{2}} F \left( i, h</em>{r} \right)G\left( i, o, m \right)D\left( m \right)
+$$</p>
+<p>最后化简可得：</p>
+<p>$$
+f<em>{r}\left( i, o \right) = \frac{F \left( i, h</em>{r} \right) G\left( i, o, m \right)D\left( m \right) }          { 4cos\theta<em>{i}cos\theta</em>{o}}
+$$</p>
+<p>代码部分：</p>
+<div class="gatsby-highlight" data-language="glsl"><pre class="language-glsl"><code class="language-glsl"><span class="token keyword">vec3</span> <span class="token function">EvalDielectricReflection</span><span class="token punctuation">(</span>SurfaceInteraction si<span class="token punctuation">,</span> <span class="token keyword">vec3</span> V<span class="token punctuation">,</span> <span class="token keyword">vec3</span> N<span class="token punctuation">,</span> <span class="token keyword">vec3</span> L<span class="token punctuation">,</span> <span class="token keyword">vec3</span> H<span class="token punctuation">,</span> <span class="token keyword">inout</span> <span class="token keyword">float</span> pdf<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    pdf <span class="token operator">=</span> <span class="token number">0.0</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">dot</span><span class="token punctuation">(</span>N<span class="token punctuation">,</span> L<span class="token punctuation">)</span> <span class="token operator">&lt;=</span> <span class="token number">0.0</span><span class="token punctuation">)</span>
+		<span class="token keyword">return</span> <span class="token keyword">vec3</span><span class="token punctuation">(</span><span class="token number">0.0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">float</span> F <span class="token operator">=</span> <span class="token function">DielectricFresnel</span><span class="token punctuation">(</span><span class="token function">dot</span><span class="token punctuation">(</span>V<span class="token punctuation">,</span> H<span class="token punctuation">)</span><span class="token punctuation">,</span> si<span class="token punctuation">.</span>eta<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">float</span> D <span class="token operator">=</span> <span class="token function">GTR2</span><span class="token punctuation">(</span><span class="token function">dot</span><span class="token punctuation">(</span>N<span class="token punctuation">,</span> H<span class="token punctuation">)</span><span class="token punctuation">,</span> si<span class="token punctuation">.</span>roughness<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// MicrofacetReflection::Sample_f</span>
+    pdf <span class="token operator">=</span> D <span class="token operator">*</span> <span class="token function">dot</span><span class="token punctuation">(</span>N<span class="token punctuation">,</span> H<span class="token punctuation">)</span> <span class="token operator">*</span> F <span class="token operator">/</span> <span class="token punctuation">(</span><span class="token number">4.0</span> <span class="token operator">*</span> <span class="token function">abs</span><span class="token punctuation">(</span><span class="token function">dot</span><span class="token punctuation">(</span>V<span class="token punctuation">,</span> H<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">float</span> G <span class="token operator">=</span> <span class="token function">SmithG_GGX</span><span class="token punctuation">(</span><span class="token function">abs</span><span class="token punctuation">(</span><span class="token function">dot</span><span class="token punctuation">(</span>N<span class="token punctuation">,</span> L<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span> si<span class="token punctuation">.</span>roughness<span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token function">SmithG_GGX</span><span class="token punctuation">(</span><span class="token function">abs</span><span class="token punctuation">(</span><span class="token function">dot</span><span class="token punctuation">(</span>N<span class="token punctuation">,</span> V<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span> si<span class="token punctuation">.</span>roughness<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> si<span class="token punctuation">.</span>color <span class="token operator">*</span> F <span class="token operator">*</span> D <span class="token operator">*</span> G<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>折射的情况带入，没得化简，直接可得：</p>
+<p>$$
+f<em>{r}\left( i, o \right) = \frac{ \left| i \cdot h</em>{t} \right| \left| o \cdot h<em>{t}  \right| \eta^{2}}          { cos\theta</em>{i}cos\theta<em>{o} \left| \left| i + \eta o \right| \right|^{2}} (1-F \left( i, h</em>{r} \right))G\left( i, o, m \right)D\left( m \right)
+$$</p>
+<p>代码部分：</p>
+<div class="gatsby-highlight" data-language="glsl"><pre class="language-glsl"><code class="language-glsl"><span class="token comment">// https://www.pbr-book.org/3ed-2018/Reflection_Models/Microfacet_Models</span>
+<span class="token keyword">vec3</span> <span class="token function">EvalDielectricRefraction</span><span class="token punctuation">(</span>SurfaceInteraction si<span class="token punctuation">,</span> <span class="token keyword">vec3</span> V<span class="token punctuation">,</span> <span class="token keyword">vec3</span> N<span class="token punctuation">,</span> <span class="token keyword">vec3</span> L<span class="token punctuation">,</span> <span class="token keyword">vec3</span> H<span class="token punctuation">,</span> <span class="token keyword">inout</span> <span class="token keyword">float</span> pdf<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    pdf <span class="token operator">=</span> <span class="token number">0.0</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">dot</span><span class="token punctuation">(</span>N<span class="token punctuation">,</span> L<span class="token punctuation">)</span> <span class="token operator">>=</span> <span class="token number">0.0</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> <span class="token keyword">vec3</span><span class="token punctuation">(</span><span class="token number">0.0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">float</span> F <span class="token operator">=</span> <span class="token function">DielectricFresnel</span><span class="token punctuation">(</span><span class="token function">abs</span><span class="token punctuation">(</span><span class="token function">dot</span><span class="token punctuation">(</span>V<span class="token punctuation">,</span> H<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span> si<span class="token punctuation">.</span>eta<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">float</span> D <span class="token operator">=</span> <span class="token function">GTR2</span><span class="token punctuation">(</span><span class="token function">dot</span><span class="token punctuation">(</span>N<span class="token punctuation">,</span> H<span class="token punctuation">)</span><span class="token punctuation">,</span> si<span class="token punctuation">.</span>roughness<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// MicrofacetTransmission::Pdf</span>
+    <span class="token keyword">float</span> denomSqrt <span class="token operator">=</span> <span class="token function">dot</span><span class="token punctuation">(</span>L<span class="token punctuation">,</span> H<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token function">dot</span><span class="token punctuation">(</span>V<span class="token punctuation">,</span> H<span class="token punctuation">)</span> <span class="token operator">*</span> si<span class="token punctuation">.</span>eta<span class="token punctuation">;</span>
+    pdf <span class="token operator">=</span> D <span class="token operator">*</span> <span class="token function">dot</span><span class="token punctuation">(</span>N<span class="token punctuation">,</span> H<span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token punctuation">(</span><span class="token number">1.0</span> <span class="token operator">-</span> F<span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token function">abs</span><span class="token punctuation">(</span><span class="token function">dot</span><span class="token punctuation">(</span>L<span class="token punctuation">,</span> H<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token punctuation">(</span>denomSqrt <span class="token operator">*</span> denomSqrt<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">float</span> G <span class="token operator">=</span> <span class="token function">SmithG_GGX</span><span class="token punctuation">(</span><span class="token function">abs</span><span class="token punctuation">(</span><span class="token function">dot</span><span class="token punctuation">(</span>N<span class="token punctuation">,</span> L<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span> si<span class="token punctuation">.</span>roughness<span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token function">SmithG_GGX</span><span class="token punctuation">(</span><span class="token function">abs</span><span class="token punctuation">(</span><span class="token function">dot</span><span class="token punctuation">(</span>N<span class="token punctuation">,</span> V<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span> si<span class="token punctuation">.</span>roughness<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// 乘4是补V项多除掉的4</span>
+    <span class="token keyword">return</span> si<span class="token punctuation">.</span>color <span class="token operator">*</span> <span class="token punctuation">(</span><span class="token number">1.0</span> <span class="token operator">-</span> F<span class="token punctuation">)</span> <span class="token operator">*</span> D <span class="token operator">*</span> G <span class="token operator">*</span> <span class="token function">abs</span><span class="token punctuation">(</span><span class="token function">dot</span><span class="token punctuation">(</span>V<span class="token punctuation">,</span> H<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token function">abs</span><span class="token punctuation">(</span><span class="token function">dot</span><span class="token punctuation">(</span>L<span class="token punctuation">,</span> H<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">4.0</span> <span class="token operator">*</span> si<span class="token punctuation">.</span>eta <span class="token operator">*</span> si<span class="token punctuation">.</span>eta <span class="token operator">/</span> <span class="token punctuation">(</span>denomSqrt <span class="token operator">*</span> denomSqrt<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>此外的几项：</p>
+<p><strong>1.clearcoat</strong></p>
+<p>直接从BRDF接过来，未做改变，贡献额外的反射，不参与折射</p>
+<p>代码部分：</p>
+<div class="gatsby-highlight" data-language="glsl"><pre class="language-glsl"><code class="language-glsl"><span class="token keyword">vec3</span> <span class="token function">EvalClearcoat</span><span class="token punctuation">(</span>SurfaceInteraction si<span class="token punctuation">,</span> <span class="token keyword">vec3</span> V<span class="token punctuation">,</span> <span class="token keyword">vec3</span> N<span class="token punctuation">,</span> <span class="token keyword">vec3</span> L<span class="token punctuation">,</span> <span class="token keyword">vec3</span> H<span class="token punctuation">,</span> <span class="token keyword">inout</span> <span class="token keyword">float</span> pdf<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">float</span> NDotL <span class="token operator">=</span> <span class="token function">dot</span><span class="token punctuation">(</span>N<span class="token punctuation">,</span> L<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    pdf <span class="token operator">=</span> <span class="token number">0.0</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>NDotL <span class="token operator">&lt;=</span> <span class="token number">0.0</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> <span class="token keyword">vec3</span><span class="token punctuation">(</span><span class="token number">0.0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    
+    <span class="token keyword">float</span> NDotV <span class="token operator">=</span> <span class="token function">dot</span><span class="token punctuation">(</span>N<span class="token punctuation">,</span> V<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">float</span> NDotH <span class="token operator">=</span> <span class="token function">dot</span><span class="token punctuation">(</span>N<span class="token punctuation">,</span> H<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">float</span> LDotH <span class="token operator">=</span> <span class="token function">dot</span><span class="token punctuation">(</span>L<span class="token punctuation">,</span> H<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">float</span> D <span class="token operator">=</span> <span class="token function">GTR1</span><span class="token punctuation">(</span>NDotH<span class="token punctuation">,</span> <span class="token function">mix</span><span class="token punctuation">(</span><span class="token number">0.1</span><span class="token punctuation">,</span> <span class="token number">0.001</span><span class="token punctuation">,</span> si<span class="token punctuation">.</span>clearcoatGloss<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    pdf <span class="token operator">=</span> D <span class="token operator">*</span> NDotH <span class="token operator">/</span> <span class="token punctuation">(</span><span class="token number">4.0</span> <span class="token operator">*</span> LDotH<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">float</span> FH <span class="token operator">=</span> <span class="token function">SchlickFresnel</span><span class="token punctuation">(</span>LDotH<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">float</span> F <span class="token operator">=</span> <span class="token function">mix</span><span class="token punctuation">(</span><span class="token number">0.04</span><span class="token punctuation">,</span> <span class="token number">1.0</span><span class="token punctuation">,</span> FH<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">float</span> G <span class="token operator">=</span> <span class="token function">SmithG_GGX</span><span class="token punctuation">(</span>NDotL<span class="token punctuation">,</span> <span class="token number">0.25</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token function">SmithG_GGX</span><span class="token punctuation">(</span>NDotV<span class="token punctuation">,</span> <span class="token number">0.25</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token keyword">vec3</span><span class="token punctuation">(</span><span class="token number">0.25</span> <span class="token operator">*</span> si<span class="token punctuation">.</span>clearcoat <span class="token operator">*</span> F <span class="token operator">*</span> D <span class="token operator">*</span> G<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p><strong>2.surface absorption</strong>（表面吸收）</p>
+<p>将折射结果乘以表面颜色的平方根，在考虑了进入和离开的散射事件后，产生预期反射率</p>
+<p>ToCheck in pbrt</p>
+<p><strong>3.volumetric absorption</strong>（体积吸收）</p>
+<p>根据折射路径长度来应用体积吸收，并且参数化。</p>
+<p>由Beer-Lambert定律可得公式：</p>
+<p>$$T = e^{−σ_{a} d}$$</p>
+<p>其中：T为透射率，$σ_{a}$为吸收系数，d为距离。则通过增加两个参数透射颜色(extinction)和距离系数(atDistance)，就可以反转透射方程来计算吸收系数：</p>
+<p>$$σ_{a} = -log(T)/d$$</p>
+<p>代码部分：</p>
+<div class="gatsby-highlight" data-language="glsl"><pre class="language-glsl"><code class="language-glsl"><span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">dot</span><span class="token punctuation">(</span>si<span class="token punctuation">.</span>normal<span class="token punctuation">,</span> si<span class="token punctuation">.</span>ffnormal<span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">0.0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	path<span class="token punctuation">.</span>absorption <span class="token operator">=</span> <span class="token keyword">vec3</span><span class="token punctuation">(</span><span class="token number">0.0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// ToCheck: why exp here</span>
+path<span class="token punctuation">.</span>beta <span class="token operator">*</span><span class="token operator">=</span> <span class="token function">exp</span><span class="token punctuation">(</span><span class="token operator">-</span>path<span class="token punctuation">.</span>absorption <span class="token operator">*</span> si<span class="token punctuation">.</span>t<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">dot</span><span class="token punctuation">(</span>si<span class="token punctuation">.</span>ffnormal<span class="token punctuation">,</span> bsdfSampleRec<span class="token punctuation">.</span>L<span class="token punctuation">)</span> <span class="token operator">&lt;</span> <span class="token number">0.0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	path<span class="token punctuation">.</span>absorption <span class="token operator">=</span> <span class="token operator">-</span><span class="token function">log</span><span class="token punctuation">(</span>si<span class="token punctuation">.</span>extinction<span class="token punctuation">)</span> <span class="token operator">/</span> si<span class="token punctuation">.</span>atDistance<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p><strong>4.sheen</strong></p>
+<p>也是直接从BRDF接过来，未做改变。尽管是非物理的，但是可以用来补偿当前微表面模型不考虑多次反射/折射所丢失的能量(手动版Kulla-Conty Approximation)</p>
+<p>代码部分：</p>
+<div class="gatsby-highlight" data-language="glsl"><pre class="language-glsl"><code class="language-glsl"><span class="token keyword">vec3</span> Csheen <span class="token operator">=</span> <span class="token function">mix</span><span class="token punctuation">(</span><span class="token keyword">vec3</span><span class="token punctuation">(</span><span class="token number">1.0</span><span class="token punctuation">)</span><span class="token punctuation">,</span> Ctint<span class="token punctuation">,</span> si<span class="token punctuation">.</span>sheenTint<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">vec3</span> Fsheen <span class="token operator">=</span> FH <span class="token operator">*</span> si<span class="token punctuation">.</span>sheen <span class="token operator">*</span> Csheen<span class="token punctuation">;</span></code></pre></div>
+<p><strong>5.Thin-surface BSDF</strong></p>
+<p>Disney还提供了另一种薄面模型</p>
+<p>未做实践</p>
+<p>1.新增diffTrans参数，用以插值反射的diffuse和透射的diffuse（因为是薄表面，所以可以直接建模成diffuse出去，而不必考虑多次散射）。就是把原本brdf diffuse分到的能量，又分成了两份</p>
+<p>2.透射的diffuse只是简单使用了兰伯特漫反射，而反射出来的diffuse跟原模型一样，只是次表面散射仍然使用ss项简单应付一下，不过改名成了flatness来插值漫反射和次表面散射，以避免与真正的次表面散射混淆。</p>
+<p>3.由于薄表面上的折射引起的弯曲被近似抵消（光线进出相互抵消），所以折射并未改变方向。但是两次折射却会放大或减弱透射模糊，因此还基于IOR缩放透射Specular的粗糙度：</p>
+<p>$$(0.65 * \eta - 0.35) * rough$$</p>
+<p>整体而言，薄面模型比起固体模型透射模糊效果更淡，但仍随着折射率逐渐变大</p>
+<h3><strong>汇总</strong></h3>
+<p>Blender对Disney BSDF实现的所有参数：</p>
+<div style="text-align: center">  
+
+  <a class="gatsby-resp-image-link" href="/LG-Blog-Gatsby/static/BSDFParam-1337e1967e95f38c1bc09e731f479417-d603c.jpg" style="display: block" target="_blank" rel="noopener">
+  
+  <span class="gatsby-resp-image-wrapper" style="position: relative; display: block; ; max-width: 800px; margin-left: auto; margin-right: auto;">
+    <span class="gatsby-resp-image-background-image" style="padding-bottom: 96.875%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAATABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAMBBf/EABYBAQEBAAAAAAAAAAAAAAAAAAEAAv/aAAwDAQACEAMQAAAB5NY0ExMQ4wV//8QAGxAAAQUBAQAAAAAAAAAAAAAAAAECEBExEiH/2gAIAQEAAQUCZkNyjwtUOlj/xAAXEQADAQAAAAAAAAAAAAAAAAAAAREQ/9oACAEDAQE/Aairf//EABYRAQEBAAAAAAAAAAAAAAAAABEAEP/aAAgBAgEBPwEjf//EABkQAAIDAQAAAAAAAAAAAAAAAAAxECAyof/aAAgBAQAGPwJGRcq4/8QAHBAAAwACAwEAAAAAAAAAAAAAAAERIVEQQWGR/9oACAEBAAE/IZqqzGnwa8BcqiNEHUbQ9rj/2gAMAwEAAgADAAAAEM8nAf/EABYRAQEBAAAAAAAAAAAAAAAAAAEgIf/aAAgBAwEBPxAA2H//xAAZEQABBQAAAAAAAAAAAAAAAAAAARAhUXH/2gAIAQIBAT8QlZhX/8QAHxABAAEEAQUAAAAAAAAAAAAAAQARITGRQWGBsdHw/9oACAEBAAE/ECMw5ToRFjW9Ra2LthtwangnzWIODcLAxBoNOIgvvirdas//2Q==&apos;); background-size: cover; display: block;">
+      <img class="gatsby-resp-image-image" style="width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px transparent;" alt="BSDFParam" title="" src="/LG-Blog-Gatsby/static/BSDFParam-1337e1967e95f38c1bc09e731f479417-78f2b.jpg" srcset="/LG-Blog-Gatsby/static/BSDFParam-1337e1967e95f38c1bc09e731f479417-dce19.jpg 200w,
+/LG-Blog-Gatsby/static/BSDFParam-1337e1967e95f38c1bc09e731f479417-c1413.jpg 400w,
+/LG-Blog-Gatsby/static/BSDFParam-1337e1967e95f38c1bc09e731f479417-78f2b.jpg 800w,
+/LG-Blog-Gatsby/static/BSDFParam-1337e1967e95f38c1bc09e731f479417-d603c.jpg 960w" sizes="(max-width: 800px) 100vw, 800px">
+    </span>
+  </span>
+  
+  </a>
+      
+</div>
+<p>所有lglTracer的实际代码还待检验</p>
+<p>Todo：BSSRDF from Atrc</p></div><div class="jsx-3827537667"><div id="backToTop" class="jsx-3827537667"></div><div class="jsx-3827537667 gotop "><img src="/LG-Blog-Gatsby/static/recive-9df7de779021f757d61dad14241a3686.png" width="100px" class="jsx-3827537667"/></div></div><footer><div class="jsx-126278577 links"><a href="/LG-Blog-Gatsby/lgltracer-tracing/"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 448 512" height="1em" width="1em"><path d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"></path></svg><h4 class="jsx-126278577">【WebGL与光线追踪】(三) Path Tracing<!-- --> <time class="jsx-126278577">2021-11-08<!-- --> </time></h4></a><a href="/LG-Blog-Gatsby/lgltracer-intro/"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 448 512" height="1em" width="1em"><path d="M257.5 445.1l-22.2 22.2c-9.4 9.4-24.6 9.4-33.9 0L7 273c-9.4-9.4-9.4-24.6 0-33.9L201.4 44.7c9.4-9.4 24.6-9.4 33.9 0l22.2 22.2c9.5 9.5 9.3 25-.4 34.3L136.6 216H424c13.3 0 24 10.7 24 24v32c0 13.3-10.7 24-24 24H136.6l120.5 114.8c9.8 9.3 10 24.8.4 34.3z"></path></svg><h4 class="jsx-126278577">【WebGL与光线追踪】(一) 简介<!-- --> <time class="jsx-126278577">2021-11-06</time></h4></a></div></footer></article></main><footer class="jsx-2344609357 footer"><ul>
+<li>© todaylg</li>
+<li>build base on <a href="https://www.gatsbyjs.org/">gatsby</a> and <a href="https://github.com/greglobinski/gatsby-starter-hero-blog">hero-starter</a></li>
+</ul></footer></div></div><script>
+  
+  
+  if(true) {
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  }
+  if (typeof ga === "function") {
+    ga('create', 'undefined', 'auto', {});
+      
+      }
+      </script><script id="gatsby-script-loader">/*<![CDATA[*/window.page={"componentChunkName":"component---src-templates-post-template-js","jsonName":"lgltracer-material-da0","path":"/lgltracer-material/"};window.dataPath="290/path---lgltracer-material-da-0-10b-xqge9G50nw5IblKssQ1ZPdnkMz8";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"app":["/app.f9e276c6c50f389a4934.css","/app-3355988a5e97fea6ebdf.js"],"component---node-modules-gatsby-plugin-offline-app-shell-js":["/component---node-modules-gatsby-plugin-offline-app-shell-js-50b1dba0d464d9ea6cfb.js"],"component---src-templates-category-template-js":["/component---src-templates-category-template-js-ddda5bf754930263754c.js"],"component---src-templates-post-template-js":["/component---src-templates-post-template-js.b74dea4256657570f57d.css","/component---src-templates-post-template-js-d0269ec85ce8b10088b0.js"],"component---src-templates-page-template-js":["/component---src-templates-page-template-js-eee5f3b759da6aeeac45.js"],"component---src-pages-404-js":["/component---src-pages-404-js-25f60c1ca45d8d7d48ca.js"],"component---src-pages-category-js":["/component---src-pages-category-js-935b6975884b655d18fb.js"],"component---src-pages-contact-js":["/component---src-pages-contact-js-42ef5f534a9934a39d9d.js"],"component---src-pages-index-js":["/component---src-pages-index-js-2b0f6336d9cc94c95037.js"],"component---src-pages-search-js":["/component---src-pages-search-js-b327842d0f95d4276ea6.js"]};/*]]>*/</script><script src="/LG-Blog-Gatsby/webpack-runtime-d0d7adfb6fc26a90196d.js" async=""></script><script src="/LG-Blog-Gatsby/app-3355988a5e97fea6ebdf.js" async=""></script><script src="/LG-Blog-Gatsby/component---src-templates-post-template-js-d0269ec85ce8b10088b0.js" async=""></script><script src="/LG-Blog-Gatsby/0-173268826a81d226ae89.js" async=""></script></body></html>
