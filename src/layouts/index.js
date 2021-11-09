@@ -42,7 +42,7 @@ class Layout extends React.Component {
     
     // Hidden
     if(getParameterByName('pw') != 'lg') {
-      location.href = 'https://www.google.com/';
+      location.href = 'https://www.bing.com/';
     }
 
     this.setState({

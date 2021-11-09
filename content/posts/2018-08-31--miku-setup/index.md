@@ -17,3 +17,13 @@ author: todaylg
 **2020.8.31：**
 
 有生之年
+
+**2021.8.31：**
+
+已还愿
+
+[lgltracer](https://lgltracer.com/)
+
+<div style="text-align: center">  
+<img style="width:70%;" src="https://raw.githubusercontent.com/todaylg/LG-Blog-Gatsby/master/content/posts/2018-08-31--miku-setup/miku.png">  
+</div>
