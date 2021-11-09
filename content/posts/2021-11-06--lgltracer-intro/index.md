@@ -1,4 +1,9 @@
-【WebGL与光线追踪】(一) 简介
+---
+title: 【WebGL与光线追踪】(一) 简介
+category: "小结"
+cover: gltf1.png
+author: todaylg
+---
 
 先上最后结果的渲染器：
 

@@ -1,4 +1,9 @@
-【WebGL与光线追踪】(三) 实践及工程化
+---
+title: 【WebGL与光线追踪】(四) 实践及工程化
+category: "小结"
+cover: diningRoom.png
+author: todaylg
+---
 
 前面的章节已经提供了全部的理论基础，剩下的就是如何实践落地到Web啦。
 
@@ -117,11 +122,7 @@ Metalness Workflow下，Metalness Map来区分金属和非金属，Albedo Map同
 
 Specular Workflow下，这两者则由单独的两张贴图直接对应。
 
-[------
-
 https://www.jianshu.com/p/0ec495c3904c
-
-------]
 
 <div style="text-align: center">  
 <img style="width:100%;" src="./sg.png">  

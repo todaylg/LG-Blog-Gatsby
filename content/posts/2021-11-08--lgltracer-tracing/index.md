@@ -1,4 +1,9 @@
-【WebGL与光线追踪】(三) Path Tracing
+---
+title: 【WebGL与光线追踪】(三) Path Tracing
+category: "小结"
+cover: gltf.png
+author: todaylg
+---
 
 还是先回顾一些概念：
 
@@ -111,7 +116,7 @@ $$
 L_o(o,ω_o)=\int_{\Omega} f_r(p,\omega_i,\omega_o)L_i(p,\omega_i) \frac{n\cdot \omega_i*n'\cdot\omega_i}{|x^{\prime}-x|^2}dA
 $$
 
-[------
+
 
 光源采样推导还可见Game101：
 
@@ -119,7 +124,7 @@ https://zhuanlan.zhihu.com/p/146714484
 
 https://zhuanlan.zhihu.com/p/370162390
 
-------]
+
 
 **环境光照(无穷大的面光)**
 
@@ -326,7 +331,7 @@ http://www.pbr-book.org/3ed-2018/Primitives_and_Intersection_Acceleration/Boundi
 
 第二步中通过对所有图元递归的按照SAH进行二分排序，最后构成仅包含单个图元的叶子节点，以及包含子节点信息的中间节点
 
-[------
+
 
 核心：排序、递归、二叉树
 
@@ -334,7 +339,7 @@ http://www.pbr-book.org/3ed-2018/Primitives_and_Intersection_Acceleration/Boundi
 
 将包围空间沿着跨度最长的那个坐标轴的方向将空间均等的划分为若干个桶（Buckets），划分只会出现在桶与桶之间的位置上
 
-------]
+
 
 SAH计算Cost的公式：
 
@@ -361,7 +366,7 @@ for (int i = 0; i < nBuckets - 1; ++i) {
                        count1 * b1.SurfaceArea()) / bounds.SurfaceArea();
 }
 ```
-[------
+
 
 第三步flatten得到一维数组后
 
@@ -369,7 +374,7 @@ for (int i = 0; i < nBuckets - 1; ++i) {
 
 2.Shader里解包，如何加速检测
 
-------]
+
 
 ### 蒙特卡洛路径追踪
 

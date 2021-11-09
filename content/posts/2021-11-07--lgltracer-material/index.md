@@ -1,4 +1,9 @@
-【WebGL与光线追踪】(二) Disney BSDF
+---
+title: 【WebGL与光线追踪】(二) Disney BSDF
+category: "小结"
+cover: cornellBox.png
+author: todaylg
+---
 
 材质部分实现的是Disney BSDF，这里再做一次从基础开始的总结，比较熟悉的兄弟可直接跳过了哈
 
@@ -112,7 +117,7 @@ https://zhuanlan.zhihu.com/p/56967462 中的人眼视觉、物理光学(反射/�
 
 详细介绍可见：https://zhuanlan.zhihu.com/p/56967462 中的菲涅尔反射部分
 
-[------
+
 
 菲涅尔方程描述了反射与折射的比率
 
@@ -138,13 +143,13 @@ $$
 
 大多数常见电介质的F0范围为0.02-0.05, 对于导体，F0范围为0.5-1.0
 
-------]
+
 
 ### **法线分布函数(Normal Distribution Function)**：
 
 详细介绍可见：https://zhuanlan.zhihu.com/p/69380665
 
-[------
+
 
 NDF描述了微观表面上的表面法线m的统计分布
 
@@ -166,13 +171,13 @@ $$ \int_{\mathbf{m}\in \Theta} D(\mathbf{m})\mathbf{(v \cdot m)}d \mathbf{m} = \
 
 Θ符号表示在整球体上积分，半球积分用Ω表示。图形学中使用的大多数微结构模型都是高度场（heightfields），这意味着对于Ω外的所有方向，D(m) = 0。 但是，上式也适用于非高度场微观结构。
 
-------]
+
 
 ### **几何函数(Geometry Function)**
 
 详细介绍可见：https://zhuanlan.zhihu.com/p/81708753
 
-[------
+
 
 几何函数表示在具有半矢量法线的微平面中(满足了m = h)，未被遮挡的百分比。
 
@@ -187,7 +192,7 @@ G与D的联系：
 
 2.法线分布函数需要结合几何函数，得到有效的法线分布强度
 
-------]
+
 
 ## **Cook-Torrance BRDF**
 
@@ -273,7 +278,7 @@ $$ {d\omega_h} = \frac{ cos\theta_h}{{|h_r|^2}}d\omega_o$$
 
 $$ \frac{d\omega_h}{d\omega_o} = \frac{cos\theta_h}{1+1-2*cos(\pi-2\theta_h)} =  \frac{1}{4cos\theta_h}\\ $$
 
-[------
+
 
 法二：
 
@@ -288,7 +293,7 @@ $$ d\omega_h=sin \theta_{\mathrm{h}} \mathrm{d} \theta_{\mathrm{h}} \mathrm{d} \
 
 $$ d\omega_o=sin2\theta_h *2d\theta_h*d\phi=4sin\theta_hcos\theta_hd\theta_hd\phi $$
 
-------]
+
 
 化简之后可得：
 
@@ -393,7 +398,7 @@ float GTR2(float NdotH, float a) {
 
 各项异性：
 
-[------
+
 
 $$ D(\theta_h, \phi_h) = \frac{c}{\left(\sin^2\theta_h\left(\dfrac{\cos^2\phi}{\alpha_x^2} + \dfrac{\sin^2\phi}{\alpha_y^2}\right) + \cos^2\theta_h\right)^\gamma}\\
 
@@ -416,7 +421,7 @@ $$
 
 $$ D(\theta_h, \phi_h) = \frac 1 {\pi\alpha_x\alpha_y\left(\sin^2\theta_h\left(\frac{\cos^2\phi}{\alpha_x^2} + \frac{\sin^2\phi}{\alpha_y^2}\right) + \cos^2\theta_h\right)^2}\\ $$
 
-------]
+
 
 代码部分：
 
@@ -456,11 +461,11 @@ $$ G\mathbf{(l,v,h)}= G_1{(\mathbf{l})} \ G_1{(\mathbf{v})} \\  $$
 
 各项同性：
 
-[------
+
 $$ G\mathbf{(l,v,h)}= G_1{(\mathbf{l})} \ G_1{(\mathbf{v})} \\  
 G_1(\mathbf{v})=\frac{2 (\mathbf{n\cdot v})}{(\mathbf{n\cdot v}) + \sqrt{\alpha ^{2}+(1- \alpha^{2})(\mathbf{n\cdot v)^{2}}}}
 $$
-------]
+
 
 ```glsl
 float smithG_GGX(float NdotV, float alphaG) {
@@ -474,9 +479,9 @@ float Gr = smithG_GGX(NdotL, .25) * smithG_GGX(NdotV, .25);
 
 各项异性：
 
-[------
+
 $$ \begin{aligned} &G_1(\boldsymbol \omega) = \frac 1 {1 + \Lambda(\boldsymbol \omega)} \\ &\Lambda(\boldsymbol \omega) = -\frac 1 2 + \frac 1 2 \sqrt{1 + (\alpha_x^2\cos^2\phi + \alpha_y^2\sin^2\phi)\tan^2\theta} \end{aligned}\\ $$
-------]
+
 
 ```glsl
 float smithG_GGX_aniso(float NdotV, float VdotX, float VdotY, float ax, float ay) {
@@ -536,7 +541,7 @@ Disney BRDF的所有参数：
 <img style="width:100%;" src="./BRDFParam.jpg">  
 </div>
 
-[------
+
 
 $$
 \begin{aligned} C &= \mathrm{baseColor} \\ \sigma_m &= \mathrm{metallic} \\ \sigma_{ss} &= \mathrm{subsurface} \\ \sigma_s &= \mathrm{specular} \\ \sigma_{st} &= \mathrm{specularTint} \\ \sigma_r &= \mathrm{roughness} \\ \sigma_a &= \mathrm{anisotropic} \\ \sigma_{sh} &= \mathrm{sheen} \\ \sigma_{sht} &= \mathrm{sheenTint} \\ \sigma_{c} &= \mathrm{clearcoat} \\ \sigma_{cg} &= \mathrm{clearcoatGloss} \end{aligned}\\
@@ -598,7 +603,7 @@ $D_{c}$是清漆的微表面法线分布，采用各向同性的GTR1函数：
 $$
 \begin{aligned} D_c(\boldsymbol \omega_h) &= \frac {\alpha^2 - 1} {2\pi\ln\alpha(\alpha^2\cos^2\theta_h + \sin^2\theta_h)} \\ \alpha &= \mathrm{mix}(0.1, 0.01, \sigma_{cg}) \end{aligned}\\
 $$
-------]
+
 
 ## **Disney BSDF**
 
@@ -620,7 +625,7 @@ $$ f_{d} = \frac{baseColor}{\pi}\left( 1 +\left( F_{D90} - 1  \right) \left( 1 -
 
 $$ F_{D90} = 0.5 + 2 \times roughness\times cos^{2}\theta_{d} $$
 
-[------
+
 
 1.光滑的次表面散射模型
 
@@ -632,12 +637,12 @@ Diffuse入的能量自然是扣完反射部分的，也就是1-菲涅尔项(即$
 
 BRDF的Fd就是混合了两个模型的经验模型，直观上看很矛盾：越掠射菲涅尔反射越强，所以留给次表面散射的能量就少，但是逆射又越强。那么到底谁强谁弱呢，取决于粗糙度，$F_{D90}$ 大于1时，越掠射反射越强；小于1时，越掠射反射越弱。而粗糙度决定了这个临界点出现的早晚
 
-------]
+
 
 **BSDF对Fd的改进：**
-[------
+
 1.具体思路是将漫反射波瓣重构为两部分: 方向性的微表面效应（microsurface effect），主要为逆反射（retroreflection）；非方向性的次表面效应（subsurface effect），即Lambertian漫反射。
-------]
+
 
 为了扩展支持次表面散射，首先将漫反射波瓣重构为两部分：方向性微表面效果(主要就是逆射增益)和非方向性（即Lambertian）次表面效果，然后再用扩散模型或体积散射模型去替换Lambertian部分。这样就保留下微表面效果的同时支持了次表面散射，当散射距离较小时，散射模型也可以收敛到与原BRDF相同的结果：
 
@@ -664,11 +669,11 @@ $$
 
 **Subsurface diffusion：**
 
-[------
+
 
 Disney通过蒙特卡洛模拟（Monte Carlo simulation），观察到对于典型的散射参数，包括单次散射的扩散剖面（diffusion profile），使用两个指数项的总和（a sum of two exponentials）便可以很好地进行模拟，且得到了比偶极子剖面（dipole diffusion）更好的渲染结果。
 
-------]
+
 
 通过观察发现能由两个指数之和很好地近似包括单次散射的散射曲线：
 
@@ -678,11 +683,11 @@ $$
 
 扩散模型本质上仍然只是对次表面散射的近似，是用公式对真实次表面散射随扩散距离变化曲线的拟合
 
-[------
+
 
 其中，d是艺术家调整的平均扩散距离（物理上取决于albedo和平均自由程），r就是采样点与当前要评估brdf的着色点之间的距离。只要采样周围点的入射光，并乘以该距离对应的反射率$R_{d}$即可。
 
-------]
+
 
 直言Todo
 
@@ -875,7 +880,7 @@ vec3 Csheen = mix(vec3(1.0), Ctint, si.sheenTint);
 vec3 Fsheen = FH * si.sheen * Csheen;
 ```
 
-[------
+
 
 **5.Thin-surface BSDF**
 
@@ -893,7 +898,7 @@ $$(0.65 * \eta - 0.35) * rough$$
 
 整体而言，薄面模型比起固体模型透射模糊效果更淡，但仍随着折射率逐渐变大
 
-------]
+
 
 ### **汇总**
 
